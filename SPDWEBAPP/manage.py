@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+
+# DO NOT TOUCH THIS FILE EVER! -- Sebe
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
