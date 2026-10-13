@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-9@j5+7m8qn+&6=*oexfi7m8vkt!3hio_n9f)o=0zfa2h0b#aak'
+# Removed obsolete example credential; our deployment loads the commented secret_config.py.
 
 ############## The secret key is now imported from a python file in the same directory as the new database location
 # Get the path to two directories above the current file (BASE_DIR)
