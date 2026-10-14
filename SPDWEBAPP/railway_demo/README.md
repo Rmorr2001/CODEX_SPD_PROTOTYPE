@@ -59,3 +59,13 @@ configured. The original home page is the deployment health check.
 
 Longer integration or architecture notes belong in this package's `docs/` when
 needed. Keep this README authoritative for the demo; link to it elsewhere.
+
+
+## Interactive file tree
+
+Open `/static/railway_demo/file-tree.html` on the demo host to browse the
+tracked source snapshot at `c1fc80d`. This generated, self-contained explorer
+contains file paths, descriptions, symbol names, and line counts, not credentials
+or private database data. It is a snapshot, not a live filesystem browser.
+Notes and review marks stay in the visitor's browser; copy/export them to share
+in chat. The static browser view works independently of the ChatGPT embed.
