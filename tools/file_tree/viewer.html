@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SPDWEBAPP file explorer</title>
+    <style>
+      __STYLE__
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="eyebrow">Explore · review · make notes</div>
+      <h1>Our app, folder by folder</h1>
+      <p>
+        Expand the tree, select a file, and keep your observations beside it.
+      </p>
+      <div class="snapshot">
+        <span class="pill" id="repo"></span
+        ><span class="pill" id="branch"></span
+        ><span class="pill" id="snapshot"></span>
+      </div>
+    </header>
+    <div class="toolbar">
+      <input
+        id="search"
+        type="search"
+        aria-label="Search file tree"
+        placeholder="Find a file, folder, or feature…"
+      /><label class="filter"
+        ><input type="checkbox" id="noted-only" /> With notes</label
+      ><button class="control" id="export">Copy / export notes</button>
+    </div>
+    <div class="layout">
+      <nav class="tree-pane" aria-label="Repository files">
+        <div class="tree-controls">
+          <span id="file-total"></span>
+          <div>
+            <button class="plain" id="expand">Expand all</button> ·
+            <button class="plain" id="collapse">Collapse</button>
+          </div>
+        </div>
+        <div id="tree" class="tree"></div>
+      </nav>
+      <section class="detail" aria-label="Selected file details">
+        <div id="crumbs" class="crumbs"></div>
+        <div class="title-row">
+          <h2 id="title"></h2>
+          <button id="review" class="control" aria-pressed="false">
+            👍 Mark reviewed
+          </button>
+        </div>
+        <p id="description" class="description"></p>
+        <div id="metrics" class="metrics"></div>
+        <a id="source" class="source" target="_blank" rel="noopener noreferrer"
+          >Open on GitHub ↗</a
+        >
+        <div id="specifics"></div>
+        <div class="note-label">
+          <label for="notes">Notes for this selection</label
+          ><span id="save-state">Notes ready</span>
+        </div>
+        <textarea
+          id="notes"
+          placeholder="What should we keep, change, or investigate here?"
+        ></textarea>
+        <p class="note-hint">
+          Notes do not automatically send a chat message. Copy or export them
+          when you want to discuss them here.
+        </p>
+      </section>
+    </div>
+    <footer>
+      <span id="tally"></span
+      ><span
+        >Updates every build · Generated files, virtualenv, and private database
+        excluded</span
+      >
+    </footer>
+    <div
+      id="modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="export-title"
+    >
+      <div class="dialog">
+        <h2 id="export-title">Your review notes</h2>
+        <p>
+          Copy this into chat to discuss the selected files. Export includes
+          your notes and review marks.
+        </p>
+        <textarea
+          id="export-text"
+          readonly
+          aria-label="Exported notes"
+        ></textarea>
+        <div class="dialog-actions">
+          <button class="control" id="copy">Copy text</button
+          ><button class="control" id="download">Download JSON</button
+          ><button class="control" id="close">Close</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      __SCRIPT__;
+    </script>
+  </body>
+</html>

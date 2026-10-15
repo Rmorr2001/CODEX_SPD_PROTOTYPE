@@ -22,6 +22,8 @@ within a directory when present. Keep work focused on the requested change.
 - `requirements.txt` pins original dependencies including Django 6.1.1;
   `requirements-demo.txt` adds Gunicorn/WhiteNoise. Docker and railway.json
   define the disposable interactive demo deployment.
+- [`tools/file_tree/`](tools/file_tree/README.md) generates the source explorer
+  during each Docker build; generated HTML is not committed.
 - Demo SQLite/media live separately in `/tmp`; never import private member data.
   No lint, formatter, type checker, or CI is configured.
 

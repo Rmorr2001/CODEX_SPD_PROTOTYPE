@@ -35,3 +35,6 @@ SECURE_SSL_REDIRECT = False
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# The explorer changes with each build; revalidate its static URL on reload.
+from railway_demo.static_headers import add_headers as WHITENOISE_ADD_HEADERS_FUNCTION

@@ -6,3 +6,6 @@
 **/staticfiles
 
 .env
+
+# Never let a prior generated snapshot enter the new source manifest.
+SPDWEBAPP/railway_demo/static/railway_demo/file-tree.html

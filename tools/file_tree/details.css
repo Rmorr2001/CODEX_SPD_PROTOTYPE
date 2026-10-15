@@ -1,0 +1,241 @@
+.detail {
+  padding: 22px 25px;
+  min-width: 0;
+}
+.crumbs {
+  font-size: 11px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  margin-bottom: 13px;
+}
+.crumbs button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--blue);
+  font-size: 11px;
+  cursor: pointer;
+}
+.title-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+h2 {
+  font-size: 21px;
+  margin: 0;
+  letter-spacing: -0.4px;
+  overflow-wrap: anywhere;
+}
+#review {
+  white-space: nowrap;
+}
+.reviewed {
+  background: #eaf7ef !important;
+  color: #246340 !important;
+  border-color: #a9d4b5 !important;
+}
+.description {
+  margin: 13px 0;
+  color: #526171;
+}
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 15px;
+}
+.metrics span {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+.source {
+  color: var(--blue);
+  font-size: 12px;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 17px;
+}
+.source:hover {
+  text-decoration: underline;
+}
+h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #657589;
+  margin: 18px 0 9px;
+}
+.entry-list {
+  display: grid;
+  gap: 5px;
+  max-height: 190px;
+  overflow: auto;
+}
+.entry {
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: var(--ink);
+}
+.entry:hover {
+  background: var(--paper);
+}
+.entry small {
+  margin-left: auto;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.code-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-height: 135px;
+  overflow: auto;
+}
+.code-list code {
+  background: var(--paper);
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.note-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+.note-label label {
+  font-size: 13px;
+  font-weight: 700;
+}
+#save-state {
+  font-size: 10px;
+  color: var(--muted);
+}
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  border: 1px solid #c7d2e0;
+  border-radius: 8px;
+  padding: 11px;
+  margin-top: 8px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #fffef9;
+}
+textarea::placeholder {
+  color: #89919a;
+}
+.note-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+footer {
+  padding: 13px 26px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #526171;
+}
+.status {
+  color: #3c6850;
+}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #15213377;
+  padding: 25px;
+  z-index: 5;
+  align-items: center;
+  justify-content: center;
+}
+.modal.open {
+  display: flex;
+}
+.dialog {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 620px;
+  width: 100%;
+  padding: 22px;
+}
+.dialog textarea {
+  min-height: 260px;
+  background: #f8fafc;
+}
+.dialog h2 {
+  font-size: 18px;
+}
+.dialog p {
+  font-size: 12px;
+  color: var(--muted);
+}
+.dialog-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 18px;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  .toolbar {
+    padding: 12px 18px;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .tree-pane {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .tree {
+    height: 300px;
+  }
+  .detail {
+    padding: 20px 18px;
+  }
+  .title-row {
+    flex-wrap: wrap;
+  }
+  footer {
+    padding: 12px 18px;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .entry-list {
+    max-height: 170px;
+  }
+}

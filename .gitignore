@@ -64,3 +64,6 @@ SPDWEBAPP/staticfiles/
 
 
 # secret_config.py is safe configuration code, not a literal credential file.
+
+# File explorer is regenerated from source for every image build.
+SPDWEBAPP/railway_demo/static/railway_demo/file-tree.html

@@ -63,9 +63,27 @@ needed. Keep this README authoritative for the demo; link to it elsewhere.
 
 ## Interactive file tree
 
-Open `/static/railway_demo/file-tree.html` on the demo host to browse the
-tracked source snapshot at `c1fc80d`. This generated, self-contained explorer
-contains file paths, descriptions, symbol names, and line counts, not credentials
-or private database data. It is a snapshot, not a live filesystem browser.
-Notes and review marks stay in the visitor's browser; copy/export them to share
-in chat. The static browser view works independently of the ChatGPT embed.
+Open `/static/railway_demo/file-tree.html` on the demo host. Each Docker build
+regenerates it from that build's clean source context before static collection;
+it no longer embeds a committed, manually maintained file list. Refresh the page
+after a deployment to see file additions, removals, and metadata changes. It is
+not a live filesystem view between builds. The URL revalidates on refresh.
+
+`tools/file_tree/` owns the generator, purpose labels, viewer source, and checks.
+It lists file paths, descriptions, symbol names, and line counts, not credentials
+or private database data. It never imports application code to inspect files and
+never reads configuration file contents. Generated files, private runtime data,
+virtual environments, and outside symlinks are excluded.
+
+When Railway provides `RAILWAY_GIT_COMMIT_SHA` as a build argument, the viewer
+shows and links to that commit. Otherwise it labels a digest of the source
+manifest and links to the configured demo branch without inventing a commit.
+
+Notes and review marks are keyed by repository and file path in the browser,
+not by deployment commit. The viewer reads the old snapshot keys automatically
+and keeps the originals. Notes for removed paths remain in exports. Storage is
+browser-local, so copy/export notes to share or back them up. The browser view
+works independently of the ChatGPT embed.
+
+See [the generator README](../../tools/file_tree/README.md) for manual build and
+verification commands.
