@@ -16,6 +16,9 @@ within a directory when present. Keep work focused on the requested change.
 - `SPDWEBAPP/SPDWEBAPP_CORE/` contains framework settings, root URLs, ASGI/WSGI.
 - Existing domains: `HOME`, `AUTHENTICATE`, `PARLEYPRO`, `PHILANTHROPY`,
   `NEWMEMBER`, and `MISC`. Preserve existing routes and naming in relevant work.
+- Domain regression work uses singular `test/` for tests and testing documentation.
+  See [the six-domain testing map](docs/testing/README.md). Wave 1 contains design
+  documents only; existing placeholder `tests.py` files remain until Wave 2.
 - `SPDWEBAPP/static/` contains shared site styles/images. Each domain owns its
   templates, models, views, migrations, and currently scaffold-only tests.
 - [`railway_demo`](SPDWEBAPP/railway_demo/README.md) owns separate demo settings,
@@ -83,12 +86,12 @@ SPDWEBAPP/
     ├── services.py                 # focused domain operations, if needed
     ├── views.py
     ├── urls.py
-    ├── tests/
+    ├── test/
     ├── docs/
     └── fulfillment/                # hypothetical distinct subdomain
         ├── README.md
         ├── services.py
-        ├── tests/
+        ├── test/
         └── docs/                   # only when longer explanations are needed
 ```
 

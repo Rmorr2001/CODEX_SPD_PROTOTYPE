@@ -46,3 +46,14 @@ You may change the admin path to whatever you wish. The environment should be se
 See [railway_demo/README.md](SPDWEBAPP/railway_demo/README.md) for the separate
 seeded interactive deployment. The demo uses our own inline-commented
 `SPDWEBAPP/secret_config.py`; the original manual setup above describes non-demo use.
+
+## Backend regression work
+
+Each business domain has a singular `test/` folder for its test entry point,
+regression specification, and future executable tests. Start with
+[the six-domain testing map](docs/testing/README.md).
+
+Wave 1 inventories current behavior and designs source-cited test pseudocode.
+These documents do not implement coverage or approve unresolved business rules.
+Wave 2 implements reviewed cases with shared isolated settings and fixtures.
+Existing domain `tests.py` placeholders remain unchanged during design.
