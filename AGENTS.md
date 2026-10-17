@@ -5,9 +5,9 @@ within a directory when present. Keep work focused on the requested change.
 
 ## Current repository
 
-- Active cloud checkout: `/workspace/CODEX-SPD-PROTOTYPE`. The GitHub remote is
-  still `Rmorr2001/SPDWEBAPP_ENV` until its rename is completed; use the actual
-  remote for source links. See the root README for pending remote names.
+- Active cloud checkout: `/workspace/CODEX-SPD-PROTOTYPE`. `origin` points to
+  `Rmorr2001/CODEX_SPD_PROTOTYPE` (underscores); `upstream` is the original source
+  for explicit comparisons, with local pushes disabled. See the root README.
 
 - This demo branch imports `smk37git/SPDWEBAPP_ENV` main commit `004a433`;
   it contains the full Sigma Phi Delta Mizzou application, not the older scaffold.

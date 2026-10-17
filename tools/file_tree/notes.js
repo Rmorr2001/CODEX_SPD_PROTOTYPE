@@ -1,8 +1,9 @@
 const stableKey = "spd-tree-notes:" + DATA.repo;
+const repositoryNames = [DATA.repo, ...(DATA.repositoryAliases || [])];
 const validState = (s) =>
   s &&
   (s.version === 1 || s.version === 2) &&
-  (!s.repository || s.repository === DATA.repo);
+  (!s.repository || repositoryNames.includes(s.repository));
 function applyState(s) {
   if (!validState(s)) return;
   notes = s.notes && typeof s.notes === "object" ? s.notes : {};
@@ -14,7 +15,10 @@ try {
     applyState(window.openai.widgetState);
     shared = true;
   } else {
-    const prior = JSON.parse(localStorage.getItem(stableKey) || "null");
+    // A repository rename must not discard existing browser review notes.
+    const prior = repositoryNames
+      .map((name) => JSON.parse(localStorage.getItem("spd-tree-notes:" + name) || "null"))
+      .find(validState);
     if (validState(prior)) {
       applyState(prior);
     } else {

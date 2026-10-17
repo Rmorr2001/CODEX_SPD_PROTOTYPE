@@ -3,12 +3,16 @@
 Our editable Sigma Phi Delta prototype. The active cloud checkout is
 `/workspace/CODEX-SPD-PROTOTYPE`.
 
-The GitHub repository is currently still
-[`Rmorr2001/SPDWEBAPP_ENV`](https://github.com/Rmorr2001/SPDWEBAPP_ENV): its remote
-rename to `Rmorr2001/CODEX-SPD-PROTOTYPE` is pending. Railway's project and service
-names are still `Codex App` and `spdwebapp-demo`; the configured project token
-does not authorize renaming them. Keep source links pointed at the existing
-repository until the remote rename is confirmed.
+The GitHub repository is
+[`Rmorr2001/CODEX_SPD_PROTOTYPE`](https://github.com/Rmorr2001/CODEX_SPD_PROTOTYPE)
+(underscores in the GitHub name). The local `origin` remote points here. Our
+working branch is `demo/sebe-mizzou-railway`; local `main` still represents the
+original imported upstream revision, not the prototype branch.
+
+`upstream` points to `smk37git/SPDWEBAPP_ENV` for deliberate source comparisons;
+local pushes to upstream are disabled. There is no automatic synchronization.
+Railway's project and service display names remain `Codex App` and
+`spdwebapp-demo`; the configured project token does not authorize renaming them.
 
 The original upstream is `smk37git/SPDWEBAPP_ENV`. Internal Django paths such as
 `SPDWEBAPP/` and `SPDWEBAPP_CORE/` are implementation identifiers, retained to

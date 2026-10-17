@@ -11,7 +11,7 @@ SKIP_FOLDERS = {".git", ".venv", "venv", "node_modules", "__pycache__",
                 "staticfiles", "media", "work", "output", ".pytest_cache"}
 SKIP_SUFFIXES = {".pyc", ".sqlite3", ".db", ".pem", ".key", ".p12", ".pfx"}
 GENERATED = "SPDWEBAPP/railway_demo/static/railway_demo/file-tree.html"
-REPOSITORY = "Rmorr2001/SPDWEBAPP_ENV"
+REPOSITORY = "Rmorr2001/CODEX_SPD_PROTOTYPE"
 DEFAULT_BRANCH = "demo/sebe-mizzou-railway"
 
 
@@ -51,7 +51,8 @@ def build_data(root: Path, commit: str = "", branch: str = DEFAULT_BRANCH) -> di
         raise ValueError("Commit must be a full hexadecimal Git object ID.")
     nodes = build_nodes(root, source_paths(root))
     digest = hashlib.sha256(json.dumps(nodes, sort_keys=True).encode()).hexdigest()
-    return {"nodes": nodes, "repo": REPOSITORY, "branch": branch,
+    return {"nodes": nodes, "repo": REPOSITORY,
+            "repositoryAliases": ["Rmorr2001/SPDWEBAPP_ENV"], "branch": branch,
             "commit": commit, "snapshotId": commit or digest,
             "snapshotLabel": f"Commit {commit[:7]}" if commit else f"Build manifest {digest[:7]}",
             "sourceRef": commit or branch,
