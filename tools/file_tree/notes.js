@@ -100,7 +100,7 @@ function exportData() {
 function exportText() {
   const d = exportData();
   return (
-    "# SPDWEBAPP review notes\n\nRepository: " +
+    "# CODEX-SPD-PROTOTYPE review notes\n\nRepository: " +
     d.repository +
     "\nBranch: " +
     d.branch +
@@ -157,7 +157,7 @@ $("download").onclick = () => {
     url = URL.createObjectURL(blob),
     a = document.createElement("a");
   a.href = url;
-  a.download = "spdwebapp-review-notes.json";
+  a.download = "codex-spd-prototype-review-notes.json";
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 };

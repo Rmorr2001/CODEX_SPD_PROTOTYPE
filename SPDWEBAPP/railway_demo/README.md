@@ -1,4 +1,4 @@
-# Railway browsing demo
+# CODEX-SPD-PROTOTYPE Railway demo
 
 Runs the existing application from `smk37git/SPDWEBAPP_ENV`, based on main commit
 `004a433`, with its original routes and design. This package owns demo-only

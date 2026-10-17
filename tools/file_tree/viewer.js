@@ -113,7 +113,7 @@ function select(path) {
 function renderCrumbs() {
   const crumbs = $("crumbs");
   crumbs.replaceChildren();
-  const home = elem("button", "", "SPDWEBAPP_ENV");
+  const home = elem("button", "", nodes["."].name);
   home.onclick = () => {
     select(".");
     reveal(".");

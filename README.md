@@ -1,4 +1,21 @@
-# Sigma Phi Delta Mizzou New Website
+# CODEX-SPD-PROTOTYPE
+
+Our editable Sigma Phi Delta prototype. The active cloud checkout is
+`/workspace/CODEX-SPD-PROTOTYPE`.
+
+The GitHub repository is currently still
+[`Rmorr2001/SPDWEBAPP_ENV`](https://github.com/Rmorr2001/SPDWEBAPP_ENV): its remote
+rename to `Rmorr2001/CODEX-SPD-PROTOTYPE` is pending. Railway's project and service
+names are still `Codex App` and `spdwebapp-demo`; the configured project token
+does not authorize renaming them. Keep source links pointed at the existing
+repository until the remote rename is confirmed.
+
+The original upstream is `smk37git/SPDWEBAPP_ENV`. Internal Django paths such as
+`SPDWEBAPP/` and `SPDWEBAPP_CORE/` are implementation identifiers, retained to
+preserve imports, migrations, and deployment entry points.
+
+## Original application setup
+
 ## Setup Instructions
 For security purposes, the website stores the database, secret key, development environment, and the path to the admin panel in a seperate file that is *two directories above the website files*, aka, *the same directory that the git repo is stored in*.
 

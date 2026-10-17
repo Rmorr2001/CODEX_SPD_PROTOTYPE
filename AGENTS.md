@@ -1,9 +1,13 @@
-# Development guidance
+# CODEX-SPD-PROTOTYPE development guidance
 
-Applies throughout `Rmorr2001/SPDWEBAPP_ENV`. Follow more specific instructions
+Applies throughout the `CODEX-SPD-PROTOTYPE` checkout. Follow more specific instructions
 within a directory when present. Keep work focused on the requested change.
 
 ## Current repository
+
+- Active cloud checkout: `/workspace/CODEX-SPD-PROTOTYPE`. The GitHub remote is
+  still `Rmorr2001/SPDWEBAPP_ENV` until its rename is completed; use the actual
+  remote for source links. See the root README for pending remote names.
 
 - This demo branch imports `smk37git/SPDWEBAPP_ENV` main commit `004a433`;
   it contains the full Sigma Phi Delta Mizzou application, not the older scaffold.

@@ -68,7 +68,7 @@ def describe_file(root: Path, relative: str) -> dict:
 
 
 def build_nodes(root: Path, paths: list[str]) -> dict:
-    nodes = {".": {"path": ".", "name": "SPDWEBAPP_ENV", "kind": "folder",
+    nodes = {".": {"path": ".", "name": "CODEX-SPD-PROTOTYPE", "kind": "folder",
                    "description": "The source tree included in this deployment build.",
                    "children": []}}
     for relative in paths:
