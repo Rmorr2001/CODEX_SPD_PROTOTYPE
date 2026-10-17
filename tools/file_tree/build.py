@@ -12,7 +12,7 @@ SKIP_FOLDERS = {".git", ".venv", "venv", "node_modules", "__pycache__",
 SKIP_SUFFIXES = {".pyc", ".sqlite3", ".db", ".pem", ".key", ".p12", ".pfx"}
 GENERATED = "SPDWEBAPP/railway_demo/static/railway_demo/file-tree.html"
 REPOSITORY = "Rmorr2001/CODEX_SPD_PROTOTYPE"
-DEFAULT_BRANCH = "demo/sebe-mizzou-railway"
+DEFAULT_BRANCH = "prototype/railway"
 
 
 def allowed(relative: str) -> bool:
