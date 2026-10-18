@@ -1,5 +1,9 @@
 # Wave 1 coordinator review
 
+Historical review of commit `c8bbc4e`. Wave 1.5 refines the case groups below;
+use [the current testing map](README.md) and domain case indexes for current
+case counts, readiness and shared fixture interfaces.
+
 ## Baseline and execution boundary
 
 All six specifications inspect `prototype/railway` at

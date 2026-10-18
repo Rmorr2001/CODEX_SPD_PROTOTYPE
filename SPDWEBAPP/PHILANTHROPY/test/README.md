@@ -1,41 +1,22 @@
-# Philanthropy regression testing
+# Philanthropy regression design
 
-Wave 1 is a source-inspected proposal, pending coordinator verification. No tests
-were implemented or executed in this wave. The [regression specification](regression-spec.md)
-covers submissions, approval/denial, chair edits, academic-year statistics,
-individual history, XLSX exports, the `hours_remaining` tag and domain admin.
+Wave 1.5 refines 33 parent groups into 118 atomic designs:
+66 READY, 41 POLICY_BLOCKED, 11 NEEDS_FIX and 0 INFRA_BLOCKED.
+No application tests or proposed cases were implemented or run in this refinement.
 
-Follow the [shared testing map](../../../docs/testing/README.md) and
-[Wave 1 contract](../../../docs/testing/wave-1-agent-prompt.md).
+- [Inventory, roles, decisions and Wave 2 checklist](regression-spec.md)
+- [Case index, status counts and complete parent mapping](case-index.md)
+- [Shared fixture contract](../../../docs/testing/fixture-contract.md)
+- [Wave 1.5 format/readiness contract](../../../docs/testing/wave-1-5-agent-prompt.md)
+- [Shared testing map](../../../docs/testing/README.md)
 
-`../tests.py` is an empty Django scaffold. Existing assertions in
-`../../railway_demo/tests.py:54–77,99–109` check a few page statuses and submission
-existence; they do not establish business regression coverage. See the spec for gaps.
+The domain covers requests, approvals, edits, academic-year statistics, individual
+history, XLSX exports, the remaining-hours tag and C03 domain admin.
+Source baseline is `7e25ac2`; documentation refinement baseline is `c8bbc4e`.
 
-Proposed singular-directory layout, to create only in Wave 2:
-
-```text
-test/
-  README.md
-  regression-spec.md
-  __init__.py
-  assertions.py           # reusable business/state/workbook assertions
-  test_requests.py       # P01, permissions and CSRF adapters
-  test_approvals.py       # P02, transitions and audit
-  test_edits.py           # P03 and failure boundaries
-  test_statistics.py     # P04, P07 pure helper and ORM cases
-  test_history.py        # P05
-  test_exports.py        # P06 XLSX values/types
-  test_admin.py          # C03 domain ModelAdmin
-```
-
-Use an isolated environment installed according to [root guidance](../../../AGENTS.md)
-and [demo setup](../../railway_demo/README.md). No real credentials, members,
-uploads or network are needed. Shared synthetic user/profile factories and a
-controlled clock must be reconciled with other domains before implementation.
-Use real ORM records; use PostgreSQL and independent connections for race claims.
-
-Current documented commands, from repository root (not run by this agent):
+Current scaffold [tests.py](../tests.py) has no assertions. Existing demo tests
+check page statuses and integer-submission existence; see the spec for gaps.
+Current documented commands from repository root, not run during this refinement:
 
 ```sh
 DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py check
@@ -43,15 +24,40 @@ DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.p
 DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY
 ```
 
-The last command currently targets an empty domain scaffold. Proposed commands
-after implementation/discovery verification:
+The domain command currently targets the empty scaffold. Follow
+[root setup](../../../AGENTS.md) and [demo setup](../../railway_demo/README.md).
+The shared fixture contract supplies business/demo safe settings, real synthetic
+users/profiles, explicit roles, real CSRF, controlled clocks and scoped snapshots.
+No runtime secrets, demo personas, actual uploads or network are needed.
+
+Proposed commands after the coordinator supplies safe business settings through
+DJANGO_SETTINGS_MODULE and verifies discovery:
 
 ```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY.test
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY.test.test_exports
+.venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY.test
+.venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY.test.test_exports
 ```
 
-Resolve package discovery alongside existing `tests.py`; do not count a zero-test
-run as success. The coordinator alone runs the shared baseline. No coverage,
-lint, type-check, or CI result is claimed. Fractional hours, approval transition
-policy, edit authority, history visibility and export scope remain decisions.
+Proposed Wave 2 singular-package layout (not created in this wave):
+
+```text
+test/
+  __init__.py
+  assertions.py
+  test_requests.py
+  test_approvals.py
+  test_edits.py
+  test_statistics.py
+  test_history.py
+  test_tags.py
+  test_exports.py
+  test_admin.py
+  test_integration.py
+```
+
+Keep reusable owner/hour/audit/total/workbook assertions separate from legacy
+HTTP/template/message adapters. Use TestCase for ORM requests, SimpleTestCase
+for pure helpers, and TransactionTestCase for post-write failures/races.
+PostgreSQL races need independent connections and bounded synchronization;
+passing SQLite checks cannot establish those guarantees. Resolve placeholder
+`tests.py` coexistence without dropping demo tests; a zero-discovery run is not success.

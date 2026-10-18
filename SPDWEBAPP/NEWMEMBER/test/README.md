@@ -1,7 +1,7 @@
 # New-member marks regression design
 
-Wave 1 is source inspection and test pseudocode only, pending coordinator source
-verification. No executable tests were added and no application tests were run.
+Wave 1.5 refines source inspection into independent case designs, pending coordinator
+verification. See the [case index and readiness counts](regression-spec.md#case-readiness-and-index). No executable tests were added and no application tests were run.
 Scope: public landing, mark requests/approval/editing, dashboards/helpers, history,
 XLSX exports, the local template filter, and marks admin. See the
 [regression specification](regression-spec.md), [shared testing map](../../../docs/testing/README.md),
@@ -20,6 +20,8 @@ DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.p
 ```
 
 The latter currently targets a placeholder, not meaningful marks coverage.
+The [shared fixture contract](../../../docs/testing/fixture-contract.md) defines
+business/demo modes and future helpers; no shared harness exists yet.
 Coordinator alone runs the shared baseline in Wave 1. Do not assume the local
 coordinator environment path is portable or install dependencies in this wave.
 
@@ -44,9 +46,16 @@ DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.p
 DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test NEWMEMBER.test.test_requests
 ```
 
-Use isolated synthetic users with explicit roles, real ORM rows and a controlled
-clock. Coordinate shared factories/settings rather than creating a second
-fixture framework. Demo middleware intentionally blocks admin; C03 needs a
-coordinator-approved isolated admin test configuration. PostgreSQL race checks
-need a separate test database and connections. Policy questions and current
-security/validation defects are gates, not passing legacy contracts.
+Case files: [boundaries](cases/boundaries.md), [requests](cases/requests.md),
+[decisions](cases/decisions.md), [editing](cases/editing.md),
+[read models](cases/read-models.md), [history/filter](cases/history-filter.md),
+[exports](cases/exports.md), and [admin](cases/admin.md).
+
+38 original groups become 88 independently named designs:
+50 READY, 14 NEEDS_FIX, 24 POLICY_BLOCKED,
+0 INFRA_BLOCKED. These are readiness counts, not executed test results.
+No old dense case prose remains. Original-parent mapping is in the specification.
+Admin uses the common business mode; PostgreSQL races remain policy-blocked
+until reviewer conflict semantics are defined. Current commands above are
+existing setup references. Proposed commands require the future isolated
+business settings module chosen by the coordinator, not runtime secret imports.

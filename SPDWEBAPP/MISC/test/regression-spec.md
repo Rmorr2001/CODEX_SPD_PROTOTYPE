@@ -1,4 +1,4 @@
-# MISC Wave 1 regression specification
+# MISC regression specification
 
 ## Evidence and execution boundary
 
@@ -7,10 +7,11 @@ Inspected branch `prototype/railway`, commit
 `/workspace/CODEX-SPD-PROTOTYPE`, assigned repository
 `Rmorr2001/CODEX_SPD_PROTOTYPE`. Read root `AGENTS.md` and the complete
 `docs/testing/wave-1-agent-prompt.md`; no nested MISC guidance was found.
+Source baseline remains `7e25ac2`; documentation-refinement baseline is `c8bbc4e`.
 This is proposed design, not executed results or approved policy. Only source
 reads, branch/commit identification and documentation review were performed;
-application checks/tests are reserved to the coordinator. No secrets, uploads,
-private database, network, dependencies or application/Git changes were used.
+application checks/tests are reserved to the coordinator. No secrets, real uploads,
+private data, network calls, installs or application/Git changes were used.
 
 Source index (all paths repository-relative):
 
@@ -67,330 +68,128 @@ Stock admin history is an audit read boundary, covered with mutation log checks.
 | Authenticated without profile | check_user_role can raise; decision/fix required | Staff Django permissions operate independently of profile |
 | Inactive staff / staff without permissions | Dashboard subject to profile/role behavior | Inactive staff cannot enter; staff without permission cannot list/add/change/delete either model |
 | Active staff, view only | Same dashboard policy | List/detail view allowed; no add/change/delete |
-| Active staff, add only / change only / delete only, separately per model | Same dashboard policy | Only corresponding action granted; verify crafted direct URL/POST, not button visibility |
+| Active staff, add only / change only / delete only, separately per model | Same dashboard policy | Add permits creation; change also permits reads; delete alone has no list access. Verify direct requests. |
 | Staff with announcement permissions only, or DST permissions only | Same dashboard policy | Other model denied; add+change does not grant delete |
 | Active superuser (synthetic, non-demo) | Same dashboard policy, including NEW_MEMBER check | Both models allowed; not a substitute for narrow-role tests |
 | Reader A and reader B; staff A-created and staff B-created records | Same global active announcements/setting; neither model has owner field | Permissions model-wide, no creator/owner restriction in current implementation |
 
 Demo middleware's 403 is independently preserved by AUTHENTICATE; it cannot
-establish C03 model authorization. Do not disable a deployed boundary. Ask the
-coordinator for a test-only settings override shared with all C03 suites.
+establish C03 model authorization. Use the agreed shared business settings mode
+for C03 authorization; do not disable a deployed boundary.
 
-## Case conventions and invariants
+## Refined case index and execution status
 
-Below are **30 named proposed cases**, not completed tests. Each arrow sequence
-is setup → action → response → fresh state assertions. Unless explicitly noted,
-all cases assert MISC row PKs/fields, users/profiles/roles and sessions unchanged,
-no file operations and no business audit writes. Admin mutation cases allow only
-the stated row fields plus stock admin LogEntry, automatic updated_at and normal
-admin success-message transport (cookie/session according to shared settings); compare
-other rows including a second actor/target. Use TestCase/real ORM, SimpleTestCase
-for calendar logic, and TransactionTestCase for commit failures. No mock of
-selection/filtering/auth/model logic. Patch the clock at `MISC.utils.datetime`
-while retaining real constructors, or use a coordinator-controlled clock seam;
-patch tag/view imported utility names only for deliberate boundary failures.
-Do not assume patching django.utils.timezone.now controls datetime.now(tz).
+[Case/status index, complete original mapping and operation mapping](case-index.md)
+links 30 original parent groups to 103 independent designs: 80 READY,
+20 POLICY_BLOCKED, 2 NEEDS_FIX and 1 INFRA_BLOCKED. No proposed case was run.
+READY means an expected-current passing preservation design once the ordinary
+shared harness exists; it is not an approval or measured coverage statement.
 
-### C02 models and read behavior
+Detailed workflows:
 
-- **MISC-T01 active_selection** — P0/P, O01. Setup reader A/B, two active
-  announcements and one inactive, controlled timestamps → each GET dashboard →
-  200, context PK set exactly active set, titles/content present exactly once,
-  inactive sentinel absent → refresh all rows; exact original fields/timestamps.
-  Repeat after ORM deactivate one/activate another; next GET changes membership
-  only. Do not require implicit query order; ordering policy Q1.
-- **MISC-T02 empty_selection** — P1/P, O01/O04. Empty DB, then inactive-only DB
-  → eligible GET → 200, no announcement table/close control/content → no new
-  records. Repeat request proves no auto-created defaults or dismissal state.
-- **MISC-T03 announcement_model_lifecycle** — P1/P, O07. Synthetic title/content
-  → create at t0 → active true, created/updated aware t0 and str=title → update
-  content/title at t1 → created unchanged, updated=t1, unrelated inactive row
-  unchanged. Save same values t2 → updated advances (not business idempotency).
-- **MISC-T04 announcement_validation_boundary** — P1/P+Q, O07/O09. Required blank
-  title/content, 255/256-char title → full_clean/form validation → required and
-  max-length errors where applicable; boundary 255 succeeds → invalid admin
-  requests leave no rows/logs. ORM save does not call full_clean; do not claim
-  universal DB rejection across backends. Decision Q5 for future service/API.
-- **MISC-T05 dst_model_defaults** — P1/P, O08. Omit active/name, then name=None,
-  empty and 255-char variants → create/read/string → active true; nullable/blank
-  accepted, str includes active status → change false/name; only those fields
-  change, second row unaffected. 256-char form/full_clean fails without write.
-- **MISC-T06 tag_default_and_direction** — P0/P, O02. No settings, real computed
-  spring date then fall date under controlled clock → call tag → visible true,
-  next_change matches aware utility result, precise date and forward/back
-  wording → zero settings created, no writes. Empty/null name does not override.
-- **MISC-T07 setting_override_and_activation** — P0/P, O02/O05. One active setting
-  custom `line1\nline2` → tag/render → override text and newline break; set false
-  → show_alert false, no clock/overlay/popup/script in fragment; set true again
-  → visible. State changes only explicit fixture saves; GET never toggles DB.
-- **MISC-T08 multi_setting_selection** — P1/Q, O02/O08. Create lowest-PK inactive
-  A and higher-PK active B in opposite name order → tag → current first-PK A
-  controls both message/visibility; edit B no effect; delete A → B takes over;
-  delete B → computed visible default. Assert no automatic singleton repair.
-  Q2 must approve deterministic selection or replacement singleton before a
-  permanent business assertion; retain characterization separately.
-- **MISC-T09 announcement_escape_and_dates** — P0/P, O04. Rows containing
-  `<script>`, `<img onerror=...>`, quotes and ampersands → render fragment →
-  title/content encoded, no executable nodes, updated date rendered; controlled
-  created!=updated proves correct date. Supply unsaved context object with
-  updated_at=None to exercise created fallback → no writes. Missing/empty context
-  yields no table. Check semantic DOM, not full snapshots.
-- **MISC-T10 dst_override_escape** — P0/D+Q, O02/O05. Store override containing
-  `<img src=x onerror=...>`, `<script>` and newline → render tag → inspected code
-  emits raw HTML through safe. Future acceptance: malicious markup inert while
-  approved linebreak presentation remains; Q3 chooses plain text vs sanitized
-  rich text. Never make executable raw override the passing business contract.
-  DB stays original, other rows/session unchanged; no browser/network required.
-- **MISC-T11 local_controls** — P2/P, O04/O05. Render eligible fragments → assert
-  announcement close targets containing table and DST toggle refers existing
-  alert/overlay IDs; no mutation endpoint/form. Optional future browser check
-  click open/close/reopen and announcement dismiss → expected DOM state, reload
-  restores display, zero network writes/cookies/session dismissal. Backend tests
-  assert markup interface only; JavaScript execution requires shared browser
-  tooling decision, not a new MISC runner.
+- [Announcement fields, filtering and escaping](cases/announcements.md)
+- [Alert defaults, selection and controls](cases/alerts.md)
+- [Chicago calendar and deliberate utility failures](cases/calendar-failures.md)
+- [Mounted boundaries and the unmapped callable](cases/integration.md)
+- [Admin capability and permissions](cases/admin-permissions.md)
+- [Admin forms, writes and malformed requests](cases/admin-writes.md)
+- [Admin CSRF, delete, transactions and audit](cases/admin-audit-failures.md)
 
-### Chicago calendar and deliberate failures
+Use the exact [shared fixture contract](../../../docs/testing/fixture-contract.md).
+`make_user` always has explicit username; `make_profile` only creates the missing
+profile. Settings modes are `business` and `demo`; shared interfaces include
+`login_actor`, `csrf_client`, `at_time`, `snapshot_scope`, `assert_unchanged`.
+They are agreed interfaces, not installed helpers. Grant real Django permissions
+through ORM; no parallel factory, settings module, harness or CI is introduced.
+`at_time` must patch `MISC.utils.datetime.now(tz)` and Django model/log clocks
+when those are asserted. Patching timezone.now alone cannot freeze this utility.
 
-Use UTC instants to distinguish repeated local hours. Candidate spring for 2026
-is March 8 02:00 -06:00 (08:00Z; pytz default localizes nonexistent wall time);
-physical spring jump is March 8 08:00Z. Candidate fall is November 1 02:00
--06:00 (08:00Z): `is_dst=True` cannot make unambiguous 02:00 daylight time.
-Physical fall rollback is November 1 07:00Z (02:00 CDT → 01:00 CST). This
-one-hour discrepancy requires a defect decision, not a false timezone guarantee.
+Use TestCase/real ORM for ordinary cases, SimpleTestCase for pure date logic,
+TransactionTestCase for commit/rollback. Mock only render/external/failure seams
+explicitly identified in cases; do not mock filtering, role logic or persistence.
+Refresh named rows and compare relation sets. Reads/denials compare session
+identity, not an identical session blob; CSRF metadata/messages may change.
+No MISC operation has uploads/exports, file storage, business ownership or custom
+commit hooks. No storage compensation claim is made. Admin writes permit only
+the named fields, automatic timestamps, stock LogEntry and message transport.
+Compare unrelated model rows and second actors' identities as specified.
 
-- **MISC-T12 spring_strict_future** — P0/P+Q, O03. Clock March 8 2026 at
-  07:59:59Z / 08:00:00Z / 08:00:01Z → real utility → before returns spring;
-  at/after returns fall candidate because strict `>`; returned values aware,
-  compared in UTC, calendar/date/direction correct → zero DB/session/file writes.
-  Q4 decides exact-at semantics and spring returned nonexistent wall-time label.
-- **MISC-T13 fall_physical_boundary** — P0/D+Q, O03. Clock November 1 2026 at
-  06:59:59Z / 07:00:00Z / 07:00:01Z → utility → inspected implementation still
-  chooses same-day 08:00Z candidate for all three; desired physical transition
-  semantics would choose next spring at/after 07:00Z. Assert aware result and
-  capture discrepancy; do not approve incorrect instant. No writes. Block final
-  acceptance on Q4 and corrected implementation.
-- **MISC-T14 fall_candidate_boundary** — P1/Q, O03. Clock November 1 2026 at
-  07:59:59Z / 08:00:00Z / 08:00:01Z → current utility → before returns candidate,
-  at/after returns March 14 2027 02:00 -06:00 (08:00Z). Separately label this
-  characterization rather than accepting the physical fall error. No writes.
-- **MISC-T15 year_rollover_and_calendar** — P1/P, O03. Clock December 31 2026
-  23:59:59 Chicago and January 1 2027 00:00:00 Chicago → utility → both next
-  March 14 2027; March 7/14 and November 1/7 calendar variants for 2027/2028
-  verify second/first Sunday with independently enumerated expected dates,
-  not a copied weekday formula. Next-year availability means ordinary clocks
-  do not produce None. Check server timezone override cannot alter Chicago
-  results for the same instant; no mutation.
-- **MISC-T16 utility_failure_and_fallback** — P0/D+Q, O02/O03/O06. Inject utility
-  return None at tag/view boundary → tag returns visible fallback message,
-  next_change=None; view prepares its distinct fallback. Then inject timezone
-  lookup error, clock error, DB OperationalError during setting read and
-  utility exception → current uncaught exceptions propagate before render
-  (even inactive setting still calls utility). No writes/partial defaults.
-  Q6 chooses fallback/logging vs error response; do not normalize outage crashes
-  as approved behavior. The tag DoesNotExist handler may be exercised by
-  deliberate injection only: `.first()` normally returns None, never that error.
-- **MISC-T17 unused_view_and_routes** — P1/D+Q, O06/O12. Inspect resolver under
-  actual core/demo root → no MISC include/name and no invented public route.
-  Direct RequestFactory calls with GET/POST and spring/fall/None utility values
-  → context wording/always-visible differs from tag; actual render attempts
-  `dls_alert.html`, absent from inspected template inventory. Capture
-  TemplateDoesNotExist as defect if confirmed in isolated settings. No DB
-  changes and no per-user settings applied. Q7 retire or namespaced repair/
-  mount with explicit authentication; never invent intended HTTP contract.
+## Defects, decisions and current evidence
 
-### Cross-domain interfaces only
+| Defect | Source-backed finding | Independent safety design |
+| --- | --- | --- |
+| D1 | Setting name reaches message\|safe; executable HTML can be emitted (S4/S6). | T10a NEEDS_FIX; harmless presentation remains Q3/T10b. |
+| D2 | Fall candidate is 02:00 CST=08:00Z, one hour after 2026 physical rollback. | T13a NEEDS_FIX; candidate/exact-at decisions remain Q4. |
+| D3 | Unmounted direct view requests absent unnamespaced dls_alert.html (S5). | T17c POLICY_BLOCKED because retire/repair is Q7. |
+| D4 | Dashboard role helper can raise for absent profile (S8/S10). | T20a POLICY_BLOCKED because safe transport is Q8. |
 
-- **MISC-T18 eligible_actor_matrix** — P0/P, O01/O12. Minimal users for each
-  eligible role row in matrix plus reader B → GET dashboard → 200 and same
-  active PK set; no owner filtering, unrelated rows unchanged. AUTHENTICATE
-  owns complete login/session/role route behavior; MISC checks fragment contract.
-- **MISC-T19 redirected_actor_matrix** — P0/P, O12. Anonymous and each NEW_MEMBER
-  combination → GET mounted dashboard → login redirect or literal `/newmember/`
-  respectively; no announcement content or tag output; rows/session unchanged
-  except normal auth fixture login. This is ANY presence of one role, not ALL
-  combinations or staff privilege override. AUTHENTICATE owns redirect details.
-- **MISC-T20 missing_profile_and_home** — P1/D+Q/P, O12. Authenticated user
-  without Brother_Profile → dashboard currently raises related-object error
-  through S10; Q8 requires handling policy, no passing crash contract. Separately
-  anonymous/eligible GET `/` with active announcements and DST setting → HOME
-  has neither MISC table nor clock; its unused import does not make integration.
-  Both paths leave MISC records untouched. HOME owns page/media/nav assertions.
-
-### C03 admin, permissions and transactions
-
-Admin cases run for **each model separately** with reversed real URLs in shared
-isolated admin-enabled settings. Minimal staff users A/B have exactly named
-`MISC.view_*`, `add_*`, `change_*`, `delete_*` permissions; use fresh clients after
-permission changes to avoid permission caching. Stock admin behavior is inferred
-from ModelAdmin registration and must be runtime-verified in Wave 2.
-
-- **MISC-T21 admin_permission_matrix** — P0/P, O09/O10/O11. Each actor/permission
-  row above, both own-created and other-created PKs → direct list/add/change/
-  delete GET plus crafted valid POST (and delete_selected) → nonstaff/inactive
-  cannot enter, staff lacking action permission gets 403; view-only reads but
-  cannot write; respective permissions allow only granted model/action. Assert
-  no target/other row/log mutation on denial. Superuser smoke once, never as
-  coverage for narrow grants. No ownership field means no owner bypass to test.
-- **MISC-T22 admin_announcement_create_edit** — P0/P+Q, O09/O07. Authorized staff,
-  t0/t1, second existing inactive record → GET form/list → only title/content
-  editable; list title/created_at; valid add then edit POST → 302, fresh row
-  values/default true/timestamps correct, logs correct actor/object/action,
-  unrelated row unchanged. Craft is_active=false/id/created_at/updated_at
-  extras on edit → excluded fields ignored, existing active flag/created/id
-  unchanged, updated autochanges; inactive row edit stays inactive. Q9 governs
-  missing activation UI; do not claim admins can deactivate announcements.
-  Parameterize `_save`, `_continue`, `_addanother` and forged `_saveasnew`
-  (save_as is not enabled): assert standard authorized redirect destinations
-  and exactly intended insert/update count; no hidden privilege or duplicate edit.
-- **MISC-T23 admin_dst_create_edit** — P0/P, O10/O08. Authorized staff and second
-  setting → valid add/edit POST → 302, only selected is_active/name persisted,
-  string/list label consistent, correct add/change log; omitted checkbox false,
-  omitted/empty name accepted (form normalization verified at runtime), whitespace
-  name follows Django form stripping. Repeated identical POST does not create
-  duplicate row on change but may create another change log; unrelated row stable.
-  Exercise the same save/continue/add-another flags as T22 for DST fields.
-- **MISC-T24 admin_invalid_and_missing** — P1/P, O09/O10/O11. Authorized staff →
-  missing required announcement fields, 256-char title/name, invalid PK URL,
-  nonexistent numeric PK, stale deleted PK update/delete, unknown action and
-  empty bulk selection → form errors or framework not-found/redirect behavior
-  verified per endpoint; never mutate a different object or create accidental
-  replacement. Assert no success log for invalid writes, other rows untouched.
-  Pin legacy status only after actual isolated observation, not incidental crash.
-- **MISC-T25 admin_csrf** — P0/P, O09/O10/O11. `Client(enforce_csrf_checks=True)`
-  authenticated authorized staff → add/change/delete/bulk POST without/invalid
-  token → 403, rows and logs unchanged; GET form valid cookie/token → identical
-  valid-token POST succeeds with only intended mutation/log. GET delete
-  confirmation and bulk first-stage confirmation never delete rows. Repeat
-  under public-demo boundary through AUTHENTICATE-owned interface: 403 regardless
-  of permission; no production middleware edits.
-- **MISC-T26 admin_delete_detail_bulk** — P0/P+Q, O11. Two selected and one
-  unselected row per model → detail confirmation then POST yes → target absent,
-  log records correct user/representation/action; bulk initial action POST →
-  confirmation only, confirmed delete_selected → exactly selected absent and
-  per-object logs, other model/row intact. Repeated stale deletion changes
-  nothing. Deleting selected first DST setting exposes next/default per T08;
-  no files/cascaded business rows exist. Q2/Q9 for last-row visibility policy.
-- **MISC-T27 admin_atomic_failure** — P0/P verification+D/Q, O09/O10/O11. In
-  TransactionTestCase with real DB and deliberate exception at admin log/write
-  boundary after model mutation → POST add/change/detail delete → expected
-  exception or safe error per shared handler; verify framework atomic request
-  blocks leave complete original rows and no partial success LogEntry. Repeat
-  model save/delete failure. For bulk action, separately inject failure after
-  logging but before queryset deletion: inspect actual log/row state, because
-  an action may lack the encompassing changeform/delete-view transaction. Any
-  surviving success log or partial deletion is D/Q11 for atomicity policy, never
-  an approved success contract. Verify selected DB alias and transaction scopes;
-  do not claim custom MISC transaction support or storage compensation. Commit
-  callbacks/external file operations are absent.
-- **MISC-T28 concurrent_admin_edits** — P1/Q, O09/O10. Two authorized independent
-  users load same target; A saves then stale B saves → characterize last writer
-  fields, unchanged PK/other rows and both logs. Q10 decides optimistic conflict
-  handling for migration; no approved version/locking guarantee today. Any true
-  simultaneous race requires independent PostgreSQL connections and bounded
-  synchronization in shared harness; SQLite sequential saves prove no race.
-- **MISC-T29 audit_history_boundary** — P1/P+Q, O09/O10/O11. Staff A mutates one
-  object, staff B another → admin history with view/change permissions → correct
-  permitted object's add/change history actor/time/content, no wrong-object logs;
-  unauthorized history access denied. Plain ORM fixture edits and reader GETs
-  do not create admin LogEntry. Q11 defines future cumulative business audit,
-  distinct from stock admin logs; no assertion claims broader logging exists.
-- **MISC-T30 read_failure_isolation** — P1/D+Q, O01/O02/O12. Inject DB failure at
-  lazy announcement evaluation or setting lookup during dashboard rendering →
-  current request fails rather than partial success guarantee; other domain rows,
-  sessions and MISC fields unchanged. Repeat after recovery → correct content,
-  no cached failure/default persisted. Q6 chooses graceful fragment isolation;
-  no test mocks queryset filtering itself or calls real external services.
-
-## Completeness, transaction registry and cumulative audit contribution
-
-| Operation | Named cases |
+| Decision | Candidate outcomes and owner |
 | --- | --- |
-| O01 | T01,T02,T18,T30 |
-| O02 | T06,T07,T08,T10,T16,T30 |
-| O03 | T12,T13,T14,T15,T16 |
-| O04 | T02,T09,T11 |
-| O05 | T07,T10,T11 |
-| O06 | T16,T17 |
-| O07 | T03,T04,T22 |
-| O08 | T05,T08,T23 |
-| O09 | T04,T21,T22,T24,T25,T27,T28,T29 |
-| O10 | T21,T23,T24,T25,T27,T28,T29 |
-| O11 | T21,T24,T25,T26,T27,T29 |
-| O12 | T17,T18,T19,T20,T30 |
+| Q1 | Announcement order: newest-first, oldest-first or unspecified; product/coordinator. |
+| Q2 | DST singleton versus first-PK precedence; absent row enables default or stays disabled; product. |
+| Q3 | Escape literal override text or permit sanitized harmless rich text; product/security. |
+| Q4 | Physical transition versus compatibility label, strict/inclusive exact instant, normalized spring label; product/coordinator. |
+| Q5 | Future service/form validation boundary and permitted blank values; migration owner. |
+| Q6 | Unavailable fragment with 200 versus explicit safe error, error logging; cross-domain owner. |
+| Q7 | Remove direct view or repair template, with separately decided route/auth/method if mounted; coordinator. |
+| Q8 | Missing profile: controlled denial, profile setup redirect or restricted dashboard; AUTHENTICATE. |
+| Q9 | Expose active field/action or retain trusted ORM control; last-delete/deactivate policy; admin/product. |
+| Q10 | Sequential/concurrent last writer wins versus version conflict/retry; migration owner. |
+| Q11 | Business audit event schema, retention/access, atomic success logs versus failed-attempt events; shared audit owner. |
 
-Domain registry rows to merge into the coordinator's single shared transaction
-registry (not another runner): `MISC-TX-READ` O01-O06/O12 no writes; `MISC-TX-ORM`
-O07/O08 plain ORM save/delete with no explicit domain atomic grouping or audit;
-`MISC-TX-ADMIN-SAVE` O09/O10 row plus standard LogEntry; `MISC-TX-ADMIN-DELETE`
-O11 selected rows plus logs. Registry columns should record action ID, touched
-models/fields, boundary and database alias, injected failure point, expected
-rollback, non-DB effect (none here), evidence/case ID and observed backend.
-T27 supplies candidate atomicity proof only after execution; T28 is a policy/race
-entry, not an established concurrency guarantee.
+Source correction to old grouped designs: `_saveasnew` is not disabled merely
+by hiding the button. Its POST changes Django's operation to add; add permission
+is required, and authorized cloning inserts a fresh row. T22f/T22g and T23f cover
+these explicit actions. A forged bulk action excluded by permissions may return
+a normal changelist rather than detail-delete's 403; state denial is asserted.
+Supplemental read-only framework inspection used the coordinator environment's
+`django/contrib/admin/options.py` (changeform_view, _changeform_view,
+_get_obj_does_not_exist_redirect, response_add/change, delete_view, history_view)
+and `actions.py:delete_selected`. This is not an application execution result;
+Wave 2 must verify behavior with the agreed installed framework/settings.
 
-For the cumulative audit, contribute operation/case IDs, source commit, changed
-field allowlists, denied/read no-write evidence, fresh-state diffs, LogEntry
-actor/object/action/timestamp checks and failure rollback results. No MISC custom
-audit exists; record that gap, not a fabricated business event. Never put content
-from real announcements, private accounts or credentials into reports. Shared
-runner should aggregate defects/decisions and actual outcomes once, keeping
-proposed, implemented, passed and blocked counts distinct.
+Existing `MISC/tests.py:1–3` remains a scaffold with no business assertions.
+Demo tests (S12) assert dashboard access/status and admin blocking, not MISC
+fields/filtering/escaping/date instants/admin permissions/failure atomicity.
+No coverage number is measured. This agent executed only documentation/source
+inspection and document structure/link/count/whitespace validation. Coordinator
+owns the shared application baseline; no test, check, installation or network
+operation was run here.
 
-Existing assertions: MISC scaffold contains none. Demo tests assert eligible
-executive 200, anonymous/new-member redirect and `/admin/` block (S12), but no
-active/inactive selection, timestamp/string, field exposure, permission model,
-escaping, DST/failure/atomicity or other-row invariants. No measured coverage.
-No application command was executed by this agent; coordinator baseline is the
-only shared execution result and must be linked after it is available.
+## Shared transaction and audit contributions
 
-## Shared interfaces, decisions and Wave 2 order
+Merge these domain rows into the coordinator's single registry, not another runner:
 
-Use the layout in README. `assertions.py` should assert business membership,
-visibility, dates, allowed state deltas and audit identities independently of
-legacy redirects/HTML. Legacy `test_rendering.py`/`test_admin.py` adapters own
-status, template/context, escaped DOM and Django ModelAdmin form assertions.
-No private copy of shared factories, test settings, transaction registry, CI or
-browser harness. Proposed shared interfaces are
-`make_user(roles=(), with_profile=True, **fields)`, `make_profile(user, **fields)`,
-aware controlled clock and isolated database; amend with explicit staff/active
-flags and per-model Django permission grants. No media fixture is needed here.
+| Registry ID | Operations / expected boundary | Design evidence |
+| --- | --- | --- |
+| MISC-TX-READ | O01–O06/O12: no writes, including failure/default paths. | T01/T02/T06/T07/T16/T17/T30 descendants. |
+| MISC-TX-ORM | O07/O08: plain ORM saves, no custom validation/atomic/audit hook. | T03/T04/T05/T29c. |
+| MISC-TX-ADMIN-SAVE | O09/O10: row plus stock add/change log under changeform atomic block. | T22/T23; injected failures T27a/T27b. |
+| MISC-TX-ADMIN-DELETE | O11: detail delete atomic block; bulk action has separate log/delete steps. | T26; T27c preserves detail rollback, T27d blocks audit semantics. |
 
-| Question | Blocking decision / owner |
-| --- | --- |
-| Q1 | Announcement ordering absent explicit Meta/order_by; product/coordinator choose whether chronological ordering is required. |
-| Q2 | First-PK DST settings vs singleton, and deleting last row re-enabling alert; product/coordinator. |
-| Q3 | Trusted HTML vs escaped plain text/sanitized rich text for override; stored executable HTML is a defect; product/security owner. |
-| Q4 | Exact transition semantics, physical fall instant, nonexistent spring label and current-vs-future strictness; product/coordinator. |
-| Q5 | Model full_clean vs service validation for future callers; title/content limits and blank policy; migration owner. |
-| Q6 | Clock/database/utility failures: fragment unavailable vs whole-page failure and expected error logging; cross-domain owner. |
-| Q7 | Retire or repair unused view, and whether any authenticated/public endpoint is wanted; coordinator. |
-| Q8 | Missing-profile dashboard behavior; AUTHENTICATE owns response/fix, MISC consumes safe rendering interface. |
-| Q9 | Announcement activation editing and delete/deactivate policy; current admin omits active/timestamps; product/admin owner. |
-| Q10 | Last writer wins vs conflict/version control for concurrent admin edits; migration owner. |
-| Q11 | Required cumulative business audit beyond stock admin LogEntry, retention and failure semantics; shared audit owner. |
+Contribute source commit, action/field allowlists, refreshed state deltas,
+LogEntry actor/content_type/object/action/time, failure point/database alias,
+rollback observations and no-write evidence. Existing custom business audit is
+absent; ORM changes do not create admin logs (T29c). Q11 decides broader audit.
+T28b names PostgreSQL independent connections/barriers/timeouts as additional
+facilities, but remains POLICY_BLOCKED primarily because winner semantics are
+undefined. SQLite sequential saves cannot establish concurrency guarantees.
+Only T11b is INFRA_BLOCKED with a clear DOM contract and missing browser capture.
 
-Dependencies sent to coordinator: AUTHENTICATE owns dashboard eligibility/redirects,
-missing-profile behavior and demo admin blocking; MISC owns fragment contract
-assertions only. HOME owns public composition; no MISC home display is currently
-implemented. Shared C03 test settings must expose real admin without production
-changes. Coordinate controlled clock, narrow permission fixtures and cumulative
-registry/audit schema before implementation; no tests rely on demo executive or
-seed contents. Pseudocode Q/D cases may become acceptance tests only after the
-specific decision/fix is approved, not silently converted into expected failures.
+AUTHENTICATE owns complete dashboard eligibility/session/login, missing-profile
+policy and demo admin boundary; MISC checks the content interface only. HOME owns
+public media/navigation/seeding composition and currently has no MISC display.
+No test uses the demo executive, member data, secret imports or runtime credentials.
 
-1. Coordinator verifies this commit/source inventory and reconciles 12 operations,
-   30 case IDs, cross-domain ownership and shared baseline results.
-2. Resolve P0 Q3/Q4/Q6/Q8; record behavior changes separately from preserved
-   contracts. Decide Q2/Q9 before freezing admin/default selection expectations.
-3. Agree shared test settings/fixtures/clock, admin CSRF setup and audit registry;
-   create singular `test/__init__.py` only in Wave 2 and verify discovery.
-4. Implement model/calendar/selection business assertions, including physical
-   transition discrepancies; keep characterization and accepted contracts separate.
-5. Add fragment escaping and minimal AUTHENTICATE/HOME interface assertions;
-   avoid duplicating their full route/login/seed/media suites.
-6. Implement narrow C03 admin action matrix, malicious/excluded fields, invalid
-   requests, CSRF, delete detail/bulk and fresh-state/audit assertions.
-7. Add deliberate failure/transaction tests; PostgreSQL races only if applicable
-   and shared harness exists. Confirm no hidden writes on read/error/denial.
-8. Run coordinator-approved targeted/discovery commands, review actual results
-   and migration adapters, then merge evidence into the single cumulative audit.
+## Ordered Wave 2 checklist
+
+1. Verify inventory, 30-parent mapping, 103 names and statuses with coordinator.
+2. Implement ordinary shared business/demo settings, fixture signatures and consumed clocks.
+3. Add singular test package/discovery and domain-local assertions from the README layout.
+4. Implement READY models/filtering/default/date/escaping and minimal integration adapters.
+5. Implement READY narrow admin/CSRF/field/save-flag/delete/history/rollback cases.
+6. Resolve Q1–Q11 independently; fix D1/D2 outside this design-only wave.
+7. Resolve Q7/Q8 before asserting repaired direct-view or missing-profile transport.
+8. Add browser or PostgreSQL cases only after their facilities and policies exist.
+9. Run coordinator-approved targeted and app-wide discovery; preserve demo assertions.
+10. Record actual pass/fail/blocked evidence in the shared registry and cumulative audit.

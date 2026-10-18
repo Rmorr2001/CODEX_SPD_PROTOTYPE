@@ -1,36 +1,22 @@
 # MISC regression testing
 
-Wave 1 is source inspection and proposed pseudocode only, pending coordinator
-verification. No application tests were run and no coverage percentage is claimed.
+Design only: 30 original groups refined into 103 named designs, with 80 READY,
+20 POLICY_BLOCKED, 2 NEEDS_FIX and 1 INFRA_BLOCKED. None was executed.
+Source baseline is `7e25ac2`; refinement baseline is `c8bbc4e`.
 
-MISC owns announcement records, Chicago DST calculation, alert selection,
-fragment rendering, and the two models' admin behavior. The dashboard is an
-AUTHENTICATE interface; HOME currently does not render these alerts. There is no
-mounted MISC public endpoint. See the [regression specification](regression-spec.md)
-for operation/case mapping, defects, transaction/audit contributions and decisions.
-Follow the [shared Wave 1 contract](../../../docs/testing/wave-1-agent-prompt.md)
-and [six-domain map](../../../docs/testing/README.md).
+Start with the [specification](regression-spec.md) and
+[case/status index and complete parent mapping](case-index.md).
+The [Wave 1.5 contract](../../../docs/testing/wave-1-5-agent-prompt.md) and
+[shared fixtures](../../../docs/testing/fixture-contract.md) govern implementation.
 
-`../tests.py` is an empty Django scaffold. Existing `railway_demo/tests.py`
-checks dashboard access/status and demo admin blocking, without MISC content,
-clock, model, permission or failure assertions.
+MISC owns announcements, Chicago calendar utility, alert tag/fragments and both
+models' admin cases. AUTHENTICATE owns dashboard access; HOME currently renders
+neither alert. MISC.urls is empty and unmounted. Do not invent a public endpoint.
 
-Proposed Wave 2 layout (not created):
+Existing `../tests.py` is a scaffold. Demo tests check dashboard status/access and
+admin blocking without MISC semantic assertions. No measured coverage is claimed.
 
-```text
-test/
-  __init__.py
-  assertions.py                 # business invariants, reusable after migration
-  test_models.py
-  test_dst.py
-  test_alert_tag.py
-  test_rendering.py
-  test_admin.py
-  test_transactions.py
-```
-
-From repository root, existing documented commands use an already configured
-isolated `.venv` and synthetic demo settings:
+Current documented commands from repository root (not run in this refinement):
 
 ```sh
 DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py check
@@ -38,17 +24,19 @@ DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.p
 DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test MISC
 ```
 
-The last command currently discovers no meaningful MISC assertions. Proposed
-explicit command after implementation is the same prefix followed by
-`SPDWEBAPP/manage.py test MISC.test`; verify both app-label and package discovery
-without double counting. C03 admin HTTP tests require coordinator-owned isolated
-test settings that permit the real admin URL, rather than the public-demo
-middleware's intentional 403. Use the shared settings module name only once
-agreed; do not change deployed settings to run tests.
+Proposed Wave 2 commands target `MISC.test` explicitly and `MISC` app-wide,
+using the coordinator's future shared `business` settings module; verify discovery
+without duplicate counts. That module path is not selected here. Use shared
+`demo` settings for the boundary case, not production secret imports or a change
+to public admin protection. No fixture helper/settings/discovery package exists yet.
 
-Setup needs Django/pytz from existing dependencies, migrated disposable database,
-minimal users with explicit profile/roles and Django permissions, controlled aware
-clock, and shared baseline isolation. No network, real accounts, member data,
-uploads, dependency installation, CI, shared harness or executable tests are part
-of this wave. Coordinator runs the shared baseline. Read the ordered Wave 2
-checklist before implementing.
+Proposed layout: `test/__init__.py`, `assertions.py`, `test_models.py`,
+`test_dst.py`, `test_alert_tag.py`, `test_rendering.py`, `test_admin.py`,
+`test_transactions.py`. Existing placeholder `tests.py` stays unchanged in this wave.
+Business assertions remain separate from legacy HTML/redirect adapters.
+
+Setup requires migrated disposable DB, existing Django/pytz dependencies,
+explicit synthetic users/profiles/permissions, shared CSRF clients and consumed
+aware clocks. Only browser capture is an infrastructure-only blocker; optional
+PostgreSQL races first need Q10 policy. Follow the spec's Wave 2 order; no code,
+application tests, installs, Git mutations or shared harness changes are included.

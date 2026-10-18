@@ -17,8 +17,8 @@ within a directory when present. Keep work focused on the requested change.
 - Existing domains: `HOME`, `AUTHENTICATE`, `PARLEYPRO`, `PHILANTHROPY`,
   `NEWMEMBER`, and `MISC`. Preserve existing routes and naming in relevant work.
 - Domain regression work uses singular `test/` for tests and testing documentation.
-  See [the six-domain testing map](docs/testing/README.md). Wave 1 contains design
-  documents only; existing placeholder `tests.py` files remain until Wave 2.
+  See [the six-domain testing map](docs/testing/README.md). Waves 1 and 1.5 contain
+  design documents only; existing placeholder `tests.py` files remain until Wave 2.
 - `SPDWEBAPP/static/` contains shared site styles/images. Each domain owns its
   templates, models, views, migrations, and currently scaffold-only tests.
 - [`railway_demo`](SPDWEBAPP/railway_demo/README.md) owns separate demo settings,

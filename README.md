@@ -55,5 +55,7 @@ regression specification, and future executable tests. Start with
 
 Wave 1 inventories current behavior and designs source-cited test pseudocode.
 These documents do not implement coverage or approve unresolved business rules.
+Wave 1.5 splits bundled designs into named cases in each domain's `test/cases/`,
+with explicit readiness and [one shared fixture contract](docs/testing/fixture-contract.md).
 Wave 2 implements reviewed cases with shared isolated settings and fixtures.
 Existing domain `tests.py` placeholders remain unchanged during design.

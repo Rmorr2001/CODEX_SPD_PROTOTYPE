@@ -1,10 +1,10 @@
 # Backend regression coverage
 
-Wave 1 designs six domain-owned regression specifications. Wave 2 implements
-them after source verification and reconciliation of shared fixture contracts.
-The specifications are proposals, not implemented tests or approved policy.
+Wave 1 inventories backend behavior. Wave 1.5 turns its bundled scenarios into
+named case designs with short GIVEN / WHEN / THEN steps. Wave 2 implements the
+reviewed designs. These are specifications, not executable tests or coverage.
 
-| Slice | Test and documentation entry point | Proposed case groups |
+| Slice | Test and documentation entry point | Original Wave 1 groups |
 | --- | --- | --- |
 | AUTHENTICATE | [Identity and members](../../SPDWEBAPP/AUTHENTICATE/test/README.md) | 55 |
 | PARLEYPRO | [Polling](../../SPDWEBAPP/PARLEYPRO/test/README.md) | 40 |
@@ -13,19 +13,49 @@ The specifications are proposals, not implemented tests or approved policy.
 | HOME | [Public content and demo integration](../../SPDWEBAPP/HOME/test/README.md) | 21 |
 | MISC | [Announcements and alerts](../../SPDWEBAPP/MISC/test/README.md) | 30 |
 
-The six agents used `gpt-6.1-sol` at medium reasoning. Their specifications contain
-217 proposed case groups; a group may have multiple inputs/assertions. This is a
-design inventory, not 217 implemented or passing tests. Defects and policy-gated
-cases remain separate from proposed preservation contracts.
+Six `gpt-6.1-sol` agents at medium reasoning produced the original 217 case groups
+in commit `c8bbc4e`. Each domain now links those original IDs to the new named
+case designs. A group may split into several tests or explicit parameter sets.
+The historical group counts above are not passing-test counts.
 
-The user-selected convention is `SPDWEBAPP/<DOMAIN>/test/` (singular), containing
-the test README and regression specification now, with executable `test_*.py`
-files added in Wave 2. Existing placeholder `tests.py` files are unchanged in
-Wave 1. Discovery must be verified when the executable packages are introduced.
+[Current case readiness](case-readiness.md) lists the 677 named designs and
+primary statuses. [The Wave 1.5 handoff](wave-1-5-review.md) explains verification
+and the boundary between a readable specification and an executable suite.
 
-[The full shared agent prompt](wave-1-agent-prompt.md) defines design standards,
-file ownership and the Wave 1 handoff contract. Shared test settings/factories
-are proposals until coordinator verification; each domain owns its assertions.
+For a short example, read
+[casting one Aye vote](../../SPDWEBAPP/PARLEYPRO/test/cases/voting.md#pp-07a--test_cast_aye_creates_own_current_choice).
+It names the fixture, request, response and records that must remain unchanged.
+
+## Readiness and shared setup
+
+- `READY`: complete preservation design; implement after the shared harness.
+- `NEEDS_FIX`: a specific defect prevents the required safe result.
+- `POLICY_BLOCKED`: the expected result needs a named business/transport decision.
+- `INFRA_BLOCKED`: an additional facility such as PostgreSQL or a browser is needed.
+
+Each case lists its primary status and all additional blockers. READY is a design
+assessment, not a claim the case ran. See each domain's case index for details.
+
+[The shared fixture contract](fixture-contract.md) fixes the interface for users,
+roles, clocks, requests, storage and state assertions. It is the Wave 2 target;
+the helpers/settings do not exist yet. It does not settle business-policy questions.
+
+The user-selected convention is `SPDWEBAPP/<DOMAIN>/test/` (singular):
+
+```text
+test/
+  README.md                 entry point and commands
+  regression-spec.md        inventory, decisions and case links
+  cases/*.md                named pseudocode cases grouped by workflow
+  test_*.py                 future Wave 2 executable tests
+```
+
+Existing placeholder `tests.py` files are unchanged. Discovery must be verified
+when executable packages are introduced; no empty package is added just for docs.
+
+[The original agent prompt](wave-1-agent-prompt.md) and
+[Wave 1.5 refinement prompt](wave-1-5-agent-prompt.md) record design standards
+and file ownership. Each domain owns its business assertions.
 
 [Coordinator review and baseline](wave-1-review.md) records actual execution,
 shared ownership decisions, source spot checks and unresolved policy boundaries.
