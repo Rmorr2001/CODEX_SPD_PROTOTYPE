@@ -1,63 +1,68 @@
-# Philanthropy regression design
+# Philanthropy regression tests
 
-Wave 1.5 refines 33 parent groups into 118 atomic designs:
-66 READY, 41 POLICY_BLOCKED, 11 NEEDS_FIX and 0 INFRA_BLOCKED.
-No application tests or proposed cases were implemented or run in this refinement.
+Wave 2 implements all 66 frozen READY cases from baseline `4b103f6`.
+Both explicit-package and app-wide runs pass: **66 tests, zero failures/errors,
+zero skips/expected failures**. The 52 non-READY designs remain documented and
+are not counted as implemented coverage.
 
-- [Inventory, roles, decisions and Wave 2 checklist](regression-spec.md)
-- [Case index, status counts and complete parent mapping](case-index.md)
+- [READY case-to-unittest mapping](case-map.json)
+- [Execution results and transaction rationale](wave-2-findings.md)
+- [Design inventory, roles and decisions](regression-spec.md)
+- [All 118 designs and their 33-parent mapping](case-index.md)
 - [Shared fixture contract](../../../docs/testing/fixture-contract.md)
-- [Wave 1.5 format/readiness contract](../../../docs/testing/wave-1-5-agent-prompt.md)
-- [Shared testing map](../../../docs/testing/README.md)
+- [Wave 2 goals](../../../docs/testing/wave-2-goals.md)
 
-The domain covers requests, approvals, edits, academic-year statistics, individual
-history, XLSX exports, the remaining-hours tag and C03 domain admin.
-Source baseline is `7e25ac2`; documentation refinement baseline is `c8bbc4e`.
+Scope includes role/ownership denials, real CSRF, exact integer submissions,
+initial approval/denial audit, edit reads, approved statistics/history, July–June
+boundaries, goals/empty cases, parsed XLSX cells/types/totals, domain admin C03 and
+remaining-hours tags. Fractional-hour storage, repeated/self decisions, export
+scope/authorization changes and other non-READY policy/fix designs are excluded.
 
-Current scaffold [tests.py](../tests.py) has no assertions. Existing demo tests
-check page statuses and integer-submission existence; see the spec for gaps.
-Current documented commands from repository root, not run during this refinement:
-
-```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py check
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test railway_demo
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY
-```
-
-The domain command currently targets the empty scaffold. Follow
-[root setup](../../../AGENTS.md) and [demo setup](../../railway_demo/README.md).
-The shared fixture contract supplies business/demo safe settings, real synthetic
-users/profiles, explicit roles, real CSRF, controlled clocks and scoped snapshots.
-No runtime secrets, demo personas, actual uploads or network are needed.
-
-Proposed commands after the coordinator supplies safe business settings through
-DJANGO_SETTINGS_MODULE and verifies discovery:
+From repository root, the commands actually run in this cloud checkout were:
 
 ```sh
-.venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY.test
-.venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY.test.test_exports
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY.test --noinput
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test PHILANTHROPY --noinput
 ```
 
-Proposed Wave 2 singular-package layout (not created in this wave):
+The interpreter path above is coordinator-provided and not portable. Follow
+[root setup](../../../AGENTS.md) to prepare a local isolated environment; use
+`.venv/bin/python` with the same standalone settings and test labels. These test
+settings use synthetic credentials, a test-only database, temporary media and
+real middleware/templates/admin; they do not import runtime secret configuration.
+No deployed service, network, demo persona or private/member data is needed.
+
+Executable singular-package layout:
 
 ```text
 test/
   __init__.py
-  assertions.py
+  support.py             # thin event factory and domain assertions
+  test_access.py
   test_requests.py
   test_approvals.py
   test_edits.py
   test_statistics.py
   test_history.py
-  test_tags.py
   test_exports.py
   test_admin.py
   test_integration.py
+  case-map.json
 ```
 
-Keep reusable owner/hour/audit/total/workbook assertions separate from legacy
-HTTP/template/message adapters. Use TestCase for ORM requests, SimpleTestCase
-for pure helpers, and TransactionTestCase for post-write failures/races.
-PostgreSQL races need independent connections and bounded synchronization;
-passing SQLite checks cannot establish those guarantees. Resolve placeholder
-`tests.py` coexistence without dropping demo tests; a zero-discovery run is not success.
+The obsolete empty `PHILANTHROPY/tests.py` was removed. Discovery audits establish
+that both labels find the identical 66 unittest IDs and each frozen READY case
+maps to one of those executed IDs. No additional framework smoke tests are
+counted toward the domain's 66 contracts.
+
+Shared factories, scoped row/relation snapshots, clocks and temporary-media
+isolation come from `SPDWEBAPP_CORE.testing`. Ordinary ORM tests extend
+RegressionTestCase; pure date/tag tests use SimpleTestCase. C06b/C07a use
+TransactionTestCase with shared temporary_media because their caught save errors
+must exercise request autocommit rather than TestCase's artificial outer atomic
+block. This coordinator-approved boundary change preserves their assertions.
+See the findings document for evidence and the initial failed-run history.
+
+No application/schema/dependency/configuration/deployment changes or business
+policy decisions were made. PostgreSQL races and other non-READY designs remain
+future work; this SQLite suite does not establish concurrency guarantees.

@@ -1,0 +1,21 @@
+[run]
+branch = True
+source =
+    SPDWEBAPP/AUTHENTICATE
+    SPDWEBAPP/PARLEYPRO
+    SPDWEBAPP/PHILANTHROPY
+    SPDWEBAPP/NEWMEMBER
+    SPDWEBAPP/HOME
+    SPDWEBAPP/MISC
+    SPDWEBAPP/railway_demo
+omit =
+    */migrations/*
+    */test/*
+    */tests.py
+
+[report]
+show_missing = True
+skip_empty = True
+
+[xml]
+output = coverage.xml

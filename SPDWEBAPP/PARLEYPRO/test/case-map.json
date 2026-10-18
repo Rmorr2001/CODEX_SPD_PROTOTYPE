@@ -1,0 +1,176 @@
+{
+  "PP-04a": [
+    "PARLEYPRO.test.test_access.AccessTests.test_anonymous_create_requires_login"
+  ],
+  "PP-04b": [
+    "PARLEYPRO.test.test_access.AccessTests.test_create_denies_missing_profile_or_required_role"
+  ],
+  "PP-04c": [
+    "PARLEYPRO.test.test_access.AccessTests.test_create_allows_exact_pair_and_extra_roles"
+  ],
+  "PP-04d": [
+    "PARLEYPRO.test.test_access.AccessTests.test_superuser_without_profile_cannot_create_public_poll"
+  ],
+  "PP-05a": [
+    "PARLEYPRO.test.test_access.AccessTests.test_create_rejects_missing_or_bad_csrf"
+  ],
+  "PP-05b": [
+    "PARLEYPRO.test.test_access.AccessTests.test_cast_rejects_missing_or_bad_csrf"
+  ],
+  "PP-05c": [
+    "PARLEYPRO.test.test_access.AccessTests.test_close_rejects_missing_or_bad_csrf"
+  ],
+  "PP-05d": [
+    "PARLEYPRO.test.test_access.AccessTests.test_token_authenticated_create_succeeds"
+  ],
+  "PP-05e": [
+    "PARLEYPRO.test.test_access.AccessTests.test_token_authenticated_cast_succeeds"
+  ],
+  "PP-05f": [
+    "PARLEYPRO.test.test_access.AccessTests.test_token_authenticated_close_succeeds"
+  ],
+  "PP-17b": [
+    "PARLEYPRO.test.test_access.AccessTests.test_close_route_denies_actors_without_active"
+  ],
+  "PP-29a": [
+    "PARLEYPRO.test.test_access.AccessTests.test_page_and_history_require_active_role"
+  ],
+  "PP-29b": [
+    "PARLEYPRO.test.test_access.AccessTests.test_cast_denial_preserves_choices"
+  ],
+  "PP-29c": [
+    "PARLEYPRO.test.test_access.AccessTests.test_active_and_extra_roles_can_read_and_cast"
+  ],
+  "PP-38a": [
+    "PARLEYPRO.test.test_access.AccessTests.test_route_denial_returns_to_safe_same_origin_referer"
+  ],
+  "PP-31a": [
+    "PARLEYPRO.test.test_admin.IconTests.test_admin_result_icon_labels_and_safe_html"
+  ],
+  "PP-31b": [
+    "PARLEYPRO.test.test_admin.AdminTests.test_admin_result_column_sorts_by_yes_count"
+  ],
+  "PP-33a": [
+    "PARLEYPRO.test.test_admin.AdminTests.test_admin_denies_anonymous_and_nonstaff_domain_executive"
+  ],
+  "PP-33b": [
+    "PARLEYPRO.test.test_admin.AdminTests.test_admin_staff_without_model_permissions_cannot_read_or_write"
+  ],
+  "PP-33c": [
+    "PARLEYPRO.test.test_admin.AdminTests.test_admin_view_only_actor_cannot_post_change_or_delete"
+  ],
+  "PP-33d": [
+    "PARLEYPRO.test.test_admin.AdminTests.test_admin_granular_permissions_gate_corresponding_actions"
+  ],
+  "PP-33e": [
+    "PARLEYPRO.test.test_admin.AdminTests.test_inactive_staff_is_not_admitted_to_admin"
+  ],
+  "PP-34b": [
+    "PARLEYPRO.test.test_admin.AdminTests.test_admin_invalid_poll_form_preserves_database"
+  ],
+  "PP-16a": [
+    "PARLEYPRO.test.test_closure.ClosureTests.test_close_saves_exact_totals_and_end_without_rewriting_metadata"
+  ],
+  "PP-16d": [
+    "PARLEYPRO.test.test_closure.ClosureTests.test_close_resets_current_rows_without_deleting_identity"
+  ],
+  "PP-18a": [
+    "PARLEYPRO.test.test_closure.ClosureTests.test_close_without_open_poll_is_noop"
+  ],
+  "PP-18b": [
+    "PARLEYPRO.test.test_closure.ClosureTests.test_repeat_close_does_not_rewrite_single_closed_poll"
+  ],
+  "PP-20a": [
+    "PARLEYPRO.test.test_closure.ClosureTests.test_close_tie_stores_equal_counts"
+  ],
+  "PP-20b": [
+    "PARLEYPRO.test.test_closure.ClosureTests.test_close_zero_votes_stores_zero_and_renders_no_votes"
+  ],
+  "PP-01a": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_create_form_exposes_name_and_csrf"
+  ],
+  "PP-01b": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_invalid_name_redisplay_escapes_html"
+  ],
+  "PP-02a": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_create_saves_name_and_open_defaults"
+  ],
+  "PP-02b": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_create_ignores_forged_model_fields"
+  ],
+  "PP-03a": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_create_rejects_blank_name"
+  ],
+  "PP-03b": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_create_rejects_name_over_max_length"
+  ],
+  "PP-03c": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_create_accepts_name_length_boundaries_and_unicode"
+  ],
+  "PP-03d": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_created_markup_name_is_escaped_on_page"
+  ],
+  "PP-39b": [
+    "PARLEYPRO.test.test_creation.CreationTests.test_auto_add_uses_model_clock_after_view_clock"
+  ],
+  "PP-36a": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_current_choice_is_unique_per_nonnull_user"
+  ],
+  "PP-36b": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_model_choice_validation_accepts_only_declared_nonnull_values"
+  ],
+  "PP-26a": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_current_page_shows_open_poll_and_live_counts"
+  ],
+  "PP-26b": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_no_open_poll_page_remains_read_only_with_residual_choices"
+  ],
+  "PP-26c": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_active_actor_reads_another_creators_current_poll"
+  ],
+  "PP-27a": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_history_contains_closed_polls_in_descending_end_order"
+  ],
+  "PP-27b": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_empty_history_renders_no_polls_message"
+  ],
+  "PP-27c": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_history_formats_chicago_dst_without_changing_sort_order"
+  ],
+  "PP-28a": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_active_live_results_have_exact_integer_json_payload"
+  ],
+  "PP-28c": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_anonymous_live_results_redirect_without_counts"
+  ],
+  "PP-28d": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_live_zero_counts_are_integer_zeros"
+  ],
+  "PP-30a": [
+    "PARLEYPRO.test.test_reads.ReadTests.test_poll_routes_reverse_and_resolve_to_mounted_views"
+  ],
+  "PP-07a": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_cast_aye_creates_own_current_choice"
+  ],
+  "PP-07b": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_cast_nay_creates_own_current_choice"
+  ],
+  "PP-07c": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_change_choice_keeps_user_row_identity"
+  ],
+  "PP-07d": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_repeat_identical_choice_is_idempotent_for_current_row"
+  ],
+  "PP-08a": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_forged_target_fields_cannot_create_another_users_choice"
+  ],
+  "PP-08b": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_forged_target_fields_cannot_redirect_existing_choice"
+  ],
+  "PP-15a": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_count_helper_excludes_nonchoice_literals"
+  ],
+  "PP-15b": [
+    "PARLEYPRO.test.test_votes.VoteTests.test_count_helper_respects_supplied_queryset"
+  ]
+}

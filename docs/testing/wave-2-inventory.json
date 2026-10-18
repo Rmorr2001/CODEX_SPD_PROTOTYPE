@@ -1,0 +1,5421 @@
+{
+  "baseline": "4b103f6",
+  "cases": [
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-01a",
+      "test_name": "test_demo_persona_entry_identity",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-01b",
+      "test_name": "test_demo_default_persona",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-01c",
+      "test_name": "test_demo_entry_after_username_change",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-01d",
+      "test_name": "test_demo_newmember_dashboard_redirect",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-02a",
+      "test_name": "test_demo_entry_post_only",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-02b",
+      "test_name": "test_demo_unknown_persona",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-02c",
+      "test_name": "test_demo_entry_disabled",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-02d",
+      "test_name": "test_demo_json_content_type_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-DEMO](../decisions.md#q-demo)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-03a",
+      "test_name": "test_demo_ineligible_account_rejected",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-03b",
+      "test_name": "test_demo_group_membership_trust_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-DEMO](../decisions.md#q-demo)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-04a",
+      "test_name": "test_demo_csrf_rejects_absent_and_bad_tokens",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D01-04b",
+      "test_name": "test_demo_csrf_accepts_token_and_rotates_identity",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D03-01a",
+      "test_name": "test_demo_admin_http_boundary",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D03-01b",
+      "test_name": "test_demo_admin_middleware_short_circuit",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D03-02a",
+      "test_name": "test_demo_custom_admin_prefix",
+      "status": "NEEDS_FIX",
+      "blockers": "[F-ADMIN-PREFIX](../decisions.md#f-admin-prefix)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-D03-02b",
+      "test_name": "test_demo_prefix_edge_paths",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ADMIN](../decisions.md#q-admin)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/demo.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-01a",
+      "test_name": "test_filter_clean_and_whitelist_inputs",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-01b",
+      "test_name": "test_filter_independent_blacklist_substring",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-02a",
+      "test_name": "test_filter_whitelist_cannot_hide_bad_term",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-FILTER-BYPASS](../decisions.md#f-filter-bypass); [Q-FILTER](../decisions.md#q-filter)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-02b",
+      "test_name": "test_filter_benign_substring_and_types",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-FILTER](../decisions.md#q-filter); [Q-PARSE](../decisions.md#q-parse)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-02c",
+      "test_name": "test_unused_cleaner_definition",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-UNDEFINED-FILTER](../decisions.md#f-undefined-filter); [Q-FILTER](../decisions.md#q-filter)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-03a",
+      "test_name": "test_cleanup_catalog_and_global_links",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-FILTER](../decisions.md#q-filter)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-03b",
+      "test_name": "test_cleanup_repeat_noop",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-FILTER](../decisions.md#q-filter)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-04a",
+      "test_name": "test_cleanup_command_count_output",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-FILTER](../decisions.md#q-filter)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A11-04b",
+      "test_name": "test_cleanup_second_delete_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ATOMIC](../decisions.md#q-atomic); [Q-FILTER](../decisions.md#q-filter); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/helpers.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-S01a",
+      "test_name": "test_anonymous_protected_routes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/http-boundaries.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-S01b",
+      "test_name": "test_anonymous_protected_post_routes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/http-boundaries.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-S01c",
+      "test_name": "test_own_mutations_ignore_foreign_target_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/http-boundaries.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-S02a",
+      "test_name": "test_csrf_rejects_profile_mutation_tokens",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/http-boundaries.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-S02b",
+      "test_name": "test_csrf_accepts_real_profile_tokens",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/http-boundaries.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-S02c",
+      "test_name": "test_login_csrf_token_boundary",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/http-boundaries.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-S02d",
+      "test_name": "test_other_mutation_methods_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-MUTATION-METHOD](../decisions.md#q-mutation-method)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/http-boundaries.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-01a",
+      "test_name": "test_identity_role_and_profile_constraints",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-01b",
+      "test_name": "test_user_delete_profile_cascade",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-01c",
+      "test_name": "test_orphan_profile_database_semantics",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PROFILE](../decisions.md#q-profile); database nullable-unique behavior",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-01d",
+      "test_name": "test_creation_form_hashes_without_privileges",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-01e",
+      "test_name": "test_creation_form_validation",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-02a",
+      "test_name": "test_all_role_gate_requires_each_role",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-02b",
+      "test_name": "test_all_role_gate_accepts_complete_set",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-02c",
+      "test_name": "test_role_gate_anonymous_and_missing_profile",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-02d",
+      "test_name": "test_role_gate_local_referrer",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-02e",
+      "test_name": "test_role_gate_external_referrer",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-REDIR](../decisions.md#f-redir); [Q-REDIR](../decisions.md#q-redir)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-02f",
+      "test_name": "test_role_gate_empty_requirement_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ROLE-EMPTY](../decisions.md#q-role-empty)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-03a",
+      "test_name": "test_admin_rejects_nonstaff_domain_executive",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-03b",
+      "test_name": "test_admin_staff_without_model_permissions",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-03c",
+      "test_name": "test_admin_forged_user_privilege_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-03d",
+      "test_name": "test_admin_user_missing_profile_display",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-ADMIN-PROFILE](../decisions.md#f-admin-profile); [Q-PROFILE](../decisions.md#q-profile); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-04a",
+      "test_name": "test_admin_authorized_profile_image_roles",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ADMIN](../decisions.md#q-admin)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-04b",
+      "test_name": "test_admin_image_failure_consistency",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ADMIN](../decisions.md#q-admin); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-04c",
+      "test_name": "test_unused_profile_form_commit_false",
+      "status": "NEEDS_FIX",
+      "blockers": "[F-FORM-COMMIT](../decisions.md#f-form-commit)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-04d",
+      "test_name": "test_unused_profile_form_unsaved_instance",
+      "status": "NEEDS_FIX",
+      "blockers": "[F-FORM-UNSAVED](../decisions.md#f-form-unsaved)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-05a",
+      "test_name": "test_admin_major_and_link_edit",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-05b",
+      "test_name": "test_admin_role_invalid_choice",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-05c",
+      "test_name": "test_model_admin_display_labels",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-05d",
+      "test_name": "test_invalid_legacy_role_repair_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ADMIN](../decisions.md#q-admin)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-C03-03e",
+      "test_name": "test_admin_superuser_without_domain_roles",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/identity-admin.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-01a",
+      "test_name": "test_photo_ajax_thumbnail_png",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-01b",
+      "test_name": "test_photo_form_preserves_small_jpeg",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-02a",
+      "test_name": "test_photo_successful_replacement",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-02b",
+      "test_name": "test_photo_repeat_filename_retention",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-IMAGE](../decisions.md#q-image)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-02c",
+      "test_name": "test_model_save_image_reencoding_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-IMAGE-REWRITE](../decisions.md#f-image-rewrite); [Q-IMAGE](../decisions.md#q-image)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-03a",
+      "test_name": "test_photo_corrupt_upload_retains_old_image",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-INVALID-IMAGE](../decisions.md#f-invalid-image); [Q-IMAGE](../decisions.md#q-image); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-03b",
+      "test_name": "test_photo_format_contenttype_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-IMAGE](../decisions.md#q-image)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-03c",
+      "test_name": "test_photo_size_dimension_boundaries",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-IMAGE](../decisions.md#q-image)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-04a",
+      "test_name": "test_photo_old_delete_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ATOMIC](../decisions.md#q-atomic); [Q-STORAGE](../decisions.md#q-storage); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-04b",
+      "test_name": "test_photo_new_storage_save_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-FILE-LOSS](../decisions.md#f-file-loss); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-04c",
+      "test_name": "test_photo_database_failure_after_new_file",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARTIAL](../decisions.md#f-partial); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-04d",
+      "test_name": "test_photo_response_lookup_failure_after_save",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-ERROR-LEAK](../decisions.md#f-error-leak); [Q-STORAGE](../decisions.md#q-storage); [Q-ERROR](../decisions.md#q-error); [Q-ATOMIC](../decisions.md#q-atomic)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-05a",
+      "test_name": "test_photo_missing_upload_is_noop",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-05b",
+      "test_name": "test_photo_without_profile",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PROFILE](../decisions.md#q-profile); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-05c",
+      "test_name": "test_photo_storage_without_local_path",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-STORAGE](../decisions.md#q-storage); [F-PATH-DEPENDENCY](../decisions.md#f-path-dependency)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A05-05d",
+      "test_name": "test_model_animation_alpha_format_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-IMAGE](../decisions.md#q-image)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A06-01a",
+      "test_name": "test_reset_photo_removes_own_file",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A06-01b",
+      "test_name": "test_reset_photo_without_image_idempotent",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A06-02a",
+      "test_name": "test_reset_photo_get_is_noop",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A06-02b",
+      "test_name": "test_reset_without_profile",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PROFILE](../decisions.md#q-profile); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A06-03a",
+      "test_name": "test_reset_storage_delete_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A06-03b",
+      "test_name": "test_reset_implicit_database_save_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-FILE-LOSS](../decisions.md#f-file-loss); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A06-03c",
+      "test_name": "test_reset_final_database_save_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/images.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-01a",
+      "test_name": "test_replace_own_major_set",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-01b",
+      "test_name": "test_clear_own_major_set",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-02a",
+      "test_name": "test_major_selection_missing_key",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-MAJORS](../decisions.md#q-majors)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-02b",
+      "test_name": "test_major_selection_json_shape",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARSE](../decisions.md#f-parse); [Q-PARSE](../decisions.md#q-parse); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-02c",
+      "test_name": "test_major_selection_name_validation",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-MAJORS](../decisions.md#q-majors); [Q-VALID](../decisions.md#q-valid); [Q-FILTER](../decisions.md#q-filter)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-02d",
+      "test_name": "test_major_selection_count_boundary",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-MAJORS](../decisions.md#q-majors)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-03a",
+      "test_name": "test_major_creation_mid_replace_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARTIAL](../decisions.md#f-partial); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-03b",
+      "test_name": "test_major_add_mid_replace_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARTIAL](../decisions.md#f-partial); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-04a",
+      "test_name": "test_major_selection_get_noop",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-04b",
+      "test_name": "test_major_selection_no_profile",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PROFILE](../decisions.md#q-profile); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-04c",
+      "test_name": "test_major_selection_preexisting_duplicates",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-UNIQUE](../decisions.md#q-unique); [F-PARTIAL](../decisions.md#f-partial); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-04d",
+      "test_name": "test_repeat_major_replacement",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A07-04e",
+      "test_name": "test_concurrent_major_replacement_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-MAJORS](../decisions.md#q-majors); PostgreSQL independent connections/barrier required",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-01a",
+      "test_name": "test_custom_major_normalization",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-01b",
+      "test_name": "test_custom_major_sequential_idempotency",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-01c",
+      "test_name": "test_custom_major_acronym_unicode_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-NORMALIZE](../decisions.md#q-normalize)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-02a",
+      "test_name": "test_custom_major_blacklist_rejection",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-02b",
+      "test_name": "test_custom_major_get_noop",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-03a",
+      "test_name": "test_custom_major_empty_or_typed_payload",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-VALID](../decisions.md#f-valid); [F-PARSE](../decisions.md#f-parse); [Q-VALID](../decisions.md#q-valid); [Q-PARSE](../decisions.md#q-parse); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-03b",
+      "test_name": "test_custom_major_no_profile_catalog_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-MAJORS](../decisions.md#q-majors); [Q-PROFILE](../decisions.md#q-profile)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-03c",
+      "test_name": "test_custom_major_browser_markup_safety",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VALID](../decisions.md#q-valid); browser execution required; template innerHTML sink",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-04a",
+      "test_name": "test_custom_major_existing_duplicate_resolution",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-UNIQUE](../decisions.md#q-unique); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A08-04b",
+      "test_name": "test_custom_major_postgresql_race",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-UNIQUE](../decisions.md#q-unique); PostgreSQL separate connections/barrier required",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/majors.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-01a",
+      "test_name": "test_edit_own_profile",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-01b",
+      "test_name": "test_profile_ignores_target_and_privilege_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-01c",
+      "test_name": "test_repeat_profile_update",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-02a",
+      "test_name": "test_profile_rejects_blacklist_field",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-02b",
+      "test_name": "test_profile_get_rejection",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-02c",
+      "test_name": "test_profile_accepts_exact_whitelist",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-03a",
+      "test_name": "test_profile_duplicate_username",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-VALID](../decisions.md#f-valid); [Q-VALID](../decisions.md#q-valid); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-03b",
+      "test_name": "test_profile_missing_fields",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARSE](../decisions.md#f-parse); [Q-VALID](../decisions.md#q-valid)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-03c",
+      "test_name": "test_profile_field_validation_boundaries",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VALID](../decisions.md#q-valid); database length behavior",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-04a",
+      "test_name": "test_profile_database_second_write_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARTIAL](../decisions.md#f-partial); [Q-ATOMIC](../decisions.md#q-atomic); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-04b",
+      "test_name": "test_profile_image_storage_failure_after_user_write",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARTIAL](../decisions.md#f-partial); [Q-ATOMIC](../decisions.md#q-atomic); [Q-IMAGE](../decisions.md#q-image); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-05a",
+      "test_name": "test_profile_missing_profile_response",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PROFILE](../decisions.md#q-profile); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A04-05b",
+      "test_name": "test_profile_text_edit_image_retention",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-IMAGE](../decisions.md#q-image); [F-IMAGE-REWRITE](../decisions.md#f-image-rewrite)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A10-01a",
+      "test_name": "test_profile_read_own_context",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A10-01b",
+      "test_name": "test_profile_sorted_majors_and_form_payloads",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A10-02a",
+      "test_name": "test_profile_url_failure_cannot_delete_reference",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-DESTRUCTIVE-READ](../decisions.md#f-destructive-read); [Q-STORAGE](../decisions.md#q-storage); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A10-02b",
+      "test_name": "test_profile_missing_physical_file_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-STORAGE](../decisions.md#q-storage)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A10-03a",
+      "test_name": "test_profile_read_without_profile",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PROFILE](../decisions.md#q-profile); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A10-03b",
+      "test_name": "test_profile_read_does_not_rewrite_image",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/profile.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-01a",
+      "test_name": "test_login_form",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-01b",
+      "test_name": "test_password_login_home",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-01c",
+      "test_name": "test_password_login_local_next",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-01d",
+      "test_name": "test_password_login_without_profile",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-02a",
+      "test_name": "test_reject_bad_login_credentials",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-02b",
+      "test_name": "test_reject_inactive_login",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-02c",
+      "test_name": "test_authenticated_login_get",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-03a",
+      "test_name": "test_reject_external_login_next",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-REDIR](../decisions.md#f-redir); [Q-REDIR](../decisions.md#q-redir)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-04a",
+      "test_name": "test_login_identity_switch",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-LOGIN-SWITCH](../decisions.md#q-login-switch)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-04b",
+      "test_name": "test_failed_login_keeps_existing_identity",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A01-04c",
+      "test_name": "test_login_other_methods",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-LOGIN-METHOD](../decisions.md#q-login-method)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A02-01a",
+      "test_name": "test_logout_clears_current_session",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-LOGOUT-METHOD](../decisions.md#q-logout-method)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A02-01b",
+      "test_name": "test_repeat_logout",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-LOGOUT-METHOD](../decisions.md#q-logout-method)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A02-02a",
+      "test_name": "test_logout_rejects_bad_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A02-02b",
+      "test_name": "test_cross_site_get_logout",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-LOGOUT-METHOD](../decisions.md#q-logout-method)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-01a",
+      "test_name": "test_password_change_keeps_current_session",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-01b",
+      "test_name": "test_password_change_invalidates_other_session",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-02a",
+      "test_name": "test_wrong_current_password",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-02b",
+      "test_name": "test_password_confirmation_mismatch",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-02c",
+      "test_name": "test_password_nonpost_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PASSWORD-METHOD](../decisions.md#q-password-method)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-03a",
+      "test_name": "test_password_malformed_json",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARSE](../decisions.md#f-parse); [Q-PARSE](../decisions.md#q-parse); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-03b",
+      "test_name": "test_password_missing_or_wrong_type_fields",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[F-PARSE](../decisions.md#f-parse); [Q-PARSE](../decisions.md#q-parse); [Q-PASSWORD](../decisions.md#q-password)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-03c",
+      "test_name": "test_password_empty_or_oversized_boundary",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PASSWORD](../decisions.md#q-password); [Q-PARSE](../decisions.md#q-parse)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-04a",
+      "test_name": "test_password_reuse_strength_whitespace",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PASSWORD](../decisions.md#q-password)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-04b",
+      "test_name": "test_password_user_save_failure",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A03-01c",
+      "test_name": "test_password_change_without_profile",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/sessions.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-01a",
+      "test_name": "test_dashboard_non_newmember_render",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-01b",
+      "test_name": "test_dashboard_newmember_precedence",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VIS](../decisions.md#q-vis)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-01c",
+      "test_name": "test_dashboard_missing_profile",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-PROFILE](../decisions.md#q-profile); [Q-ERROR](../decisions.md#q-error)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-02a",
+      "test_name": "test_dashboard_links_and_active_announcements",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-02b",
+      "test_name": "test_dashboard_empty_content",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-03a",
+      "test_name": "test_roster_partition_order_and_class_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VIS](../decisions.md#q-vis)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-03b",
+      "test_name": "test_roster_ties_and_missing_names",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VIS](../decisions.md#q-vis); [Q-ORDER](../decisions.md#q-order)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-04a",
+      "test_name": "test_roster_sensitive_field_visibility",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VIS](../decisions.md#q-vis)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-04b",
+      "test_name": "test_roster_literal_text_escaping",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VIS](../decisions.md#q-vis)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "id": "AUTH-A09-04c",
+      "test_name": "test_media_access_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "[Q-VIS](../decisions.md#q-vis); [Q-STORAGE](../decisions.md#q-storage)",
+      "source": "SPDWEBAPP/AUTHENTICATE/test/cases/visibility.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-04a",
+      "test_name": "test_anonymous_create_requires_login",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-04b",
+      "test_name": "test_create_denies_missing_profile_or_required_role",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-04c",
+      "test_name": "test_create_allows_exact_pair_and_extra_roles",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-04d",
+      "test_name": "test_superuser_without_profile_cannot_create_public_poll",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-05a",
+      "test_name": "test_create_rejects_missing_or_bad_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-05b",
+      "test_name": "test_cast_rejects_missing_or_bad_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-05c",
+      "test_name": "test_close_rejects_missing_or_bad_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-05d",
+      "test_name": "test_token_authenticated_create_succeeds",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-05e",
+      "test_name": "test_token_authenticated_cast_succeeds",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-05f",
+      "test_name": "test_token_authenticated_close_succeeds",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-05g",
+      "test_name": "test_live_post_obeys_csrf_while_get_remains_read_only",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-08: allowed methods; POL-03: live audience",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-17a",
+      "test_name": "test_active_nonexec_cannot_close_or_reset",
+      "status": "NEEDS_FIX",
+      "blockers": "DEF-01; denial transport choice is secondary to zero writes",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-17b",
+      "test_name": "test_close_route_denies_actors_without_active",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-17c",
+      "test_name": "test_direct_close_helper_has_explicit_actor_boundary",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-04: helper authorization boundary; current missing-profile crash",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-29a",
+      "test_name": "test_page_and_history_require_active_role",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-29b",
+      "test_name": "test_cast_denial_preserves_choices",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-29c",
+      "test_name": "test_active_and_extra_roles_can_read_and_cast",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-38a",
+      "test_name": "test_route_denial_returns_to_safe_same_origin_referer",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-38b",
+      "test_name": "test_route_denial_rejects_external_referer",
+      "status": "NEEDS_FIX",
+      "blockers": "DEF-05; shared safe-redirect fix owned by AUTHENTICATE",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-38c",
+      "test_name": "test_no_referer_denial_does_not_loop_back_to_denied_poll",
+      "status": "NEEDS_FIX",
+      "blockers": "DEF-05; AUTHENTICATE safe fallback contract",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/access.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-31a",
+      "test_name": "test_admin_result_icon_labels_and_safe_html",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-31b",
+      "test_name": "test_admin_result_column_sorts_by_yes_count",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-32a",
+      "test_name": "test_admin_nullable_counts_do_not_crash_or_silently_rewrite",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09: NULL semantics; DEF-04",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-33a",
+      "test_name": "test_admin_denies_anonymous_and_nonstaff_domain_executive",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-33b",
+      "test_name": "test_admin_staff_without_model_permissions_cannot_read_or_write",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-33c",
+      "test_name": "test_admin_view_only_actor_cannot_post_change_or_delete",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-33d",
+      "test_name": "test_admin_granular_permissions_gate_corresponding_actions",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-33e",
+      "test_name": "test_inactive_staff_is_not_admitted_to_admin",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-34a",
+      "test_name": "test_admin_add_has_explicit_creator_and_history_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09/POL-04: admin creator/lifecycle scope",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-34b",
+      "test_name": "test_admin_invalid_poll_form_preserves_database",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-34c",
+      "test_name": "test_admin_history_fields_have_explicit_edit_contract",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09: mutable history fields and audit",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-34d",
+      "test_name": "test_admin_single_delete_has_explicit_retention_contract",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09: poll/history deletion retention",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-34e",
+      "test_name": "test_admin_bulk_delete_has_explicit_confirmation_and_retention",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09: bulk deletion retention",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-35a",
+      "test_name": "test_admin_close_cannot_bypass_count_reset_protocol",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09/POL-06: admin lifecycle bypass; DEF-03",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-35b",
+      "test_name": "test_admin_reopen_cannot_silently_overwrite_history",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01/POL-09: reopening and historical immutability",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-35c",
+      "test_name": "test_admin_negative_counts_have_explicit_validation_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09: aggregate value range",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/admin.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-40a",
+      "test_name": "test_live_updates_from_initial_zero_render_without_missing_node_error",
+      "status": "INFRA_BLOCKED",
+      "blockers": "Browser runner and intercepted fetch facility; DEF-07",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/browser.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-40b",
+      "test_name": "test_no_open_poll_live_updates_have_explicit_ui_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01/POL-03; browser runner; DEF-07",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/browser.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-40c",
+      "test_name": "test_live_preference_persists_and_controls_fetch_cadence",
+      "status": "INFRA_BLOCKED",
+      "blockers": "Browser runner; fake timers and intercepted fetch",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/browser.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-16a",
+      "test_name": "test_close_saves_exact_totals_and_end_without_rewriting_metadata",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-16b",
+      "test_name": "test_close_reset_scope_for_nonvoters_and_corrupt_rows",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-03: count/reset eligibility",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-16c",
+      "test_name": "test_cross_creator_close_has_explicit_ownership_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-04: close ownership boundary",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-16d",
+      "test_name": "test_close_resets_current_rows_without_deleting_identity",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-18a",
+      "test_name": "test_close_without_open_poll_is_noop",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-18b",
+      "test_name": "test_repeat_close_does_not_rewrite_single_closed_poll",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-19a",
+      "test_name": "test_repeated_close_cannot_silently_advance_to_other_open_poll",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01: target identity under repeated close",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-20a",
+      "test_name": "test_close_tie_stores_equal_counts",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-20b",
+      "test_name": "test_close_zero_votes_stores_zero_and_renders_no_votes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-20c",
+      "test_name": "test_tie_business_outcome_is_separate_from_admin_label",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-05: tie, zero and quorum business semantics",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-37a",
+      "test_name": "test_close_response_does_not_present_closed_poll_as_current",
+      "status": "NEEDS_FIX",
+      "blockers": "DEF-06: stale pre-dispatch context",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/closure.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-01a",
+      "test_name": "test_create_form_exposes_name_and_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-01b",
+      "test_name": "test_invalid_name_redisplay_escapes_html",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-02a",
+      "test_name": "test_create_saves_name_and_open_defaults",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-02b",
+      "test_name": "test_create_ignores_forged_model_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-03a",
+      "test_name": "test_create_rejects_blank_name",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-03b",
+      "test_name": "test_create_rejects_name_over_max_length",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-03c",
+      "test_name": "test_create_accepts_name_length_boundaries_and_unicode",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-03d",
+      "test_name": "test_created_markup_name_is_escaped_on_page",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-06a",
+      "test_name": "test_create_while_another_poll_is_open",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01: single-open invariant and target identity",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-06b",
+      "test_name": "test_replayed_create_has_explicit_retry_semantics",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01 and POL-02: repeat-create identity",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-39a",
+      "test_name": "test_create_storage_failure_preserves_existing_state",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: failure transport and retry contract",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-39b",
+      "test_name": "test_auto_add_uses_model_clock_after_view_clock",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/creation.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-21a",
+      "test_name": "test_count_query_failure_leaves_close_state_untouched",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: failure transport",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-21b",
+      "test_name": "test_poll_save_failure_before_write_leaves_choices_untouched",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: failure transport",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-22a",
+      "test_name": "test_reset_failure_has_atomic_or_recoverable_close_contract",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: atomicity or recovery; DEF-03: partial persistence",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-22b",
+      "test_name": "test_retry_after_partial_reset_failure_can_recover_without_recount_loss",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: repair/retry protocol; DEF-03",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-23a",
+      "test_name": "test_dual_choice_second_save_failure_has_defined_atomicity",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02 and POL-06: multi-key handling and partial-write outcome",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-23b",
+      "test_name": "test_first_choice_save_failure_after_default_row_creation",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: default-row failure/retry semantics",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-24a",
+      "test_name": "test_committed_vote_before_close_is_counted_on_postgresql",
+      "status": "INFRA_BLOCKED",
+      "blockers": "PostgreSQL test database; independent connections and bounded synchronization",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-24b",
+      "test_name": "test_vote_between_count_and_reset_has_defined_acceptance_boundary",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01/POL-06; DEF-03; PostgreSQL independent connections",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-24c",
+      "test_name": "test_vote_after_reset_has_explicit_closed_poll_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01/POL-06; PostgreSQL independent connections",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-24d",
+      "test_name": "test_vote_change_between_count_queries_has_coherent_snapshot_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: consistent count snapshot; DEF-03; PostgreSQL",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-25a",
+      "test_name": "test_two_closers_before_reset_preserve_first_finalized_result",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06: close winner/loser; POL-04: noncreator permission; DEF-03; PostgreSQL",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-25b",
+      "test_name": "test_late_closer_cannot_overwrite_counts_after_first_reset",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-06; POL-04: noncreator close; DEF-03; PostgreSQL",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-25c",
+      "test_name": "test_concurrent_closers_with_multiple_opens_have_explicit_targets",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01/POL-06/POL-04; DEF-03; PostgreSQL",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/failures-and-races.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-36a",
+      "test_name": "test_current_choice_is_unique_per_nonnull_user",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/model-boundaries.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-36b",
+      "test_name": "test_model_choice_validation_accepts_only_declared_nonnull_values",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/model-boundaries.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-36c",
+      "test_name": "test_deleting_poll_creator_has_explicit_history_retention_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09: user-cascade historical retention",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/model-boundaries.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-26a",
+      "test_name": "test_current_page_shows_open_poll_and_live_counts",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-26b",
+      "test_name": "test_no_open_poll_page_remains_read_only_with_residual_choices",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-26c",
+      "test_name": "test_active_actor_reads_another_creators_current_poll",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-27a",
+      "test_name": "test_history_contains_closed_polls_in_descending_end_order",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-27b",
+      "test_name": "test_empty_history_renders_no_polls_message",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-27c",
+      "test_name": "test_history_formats_chicago_dst_without_changing_sort_order",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-27d",
+      "test_name": "test_history_equal_end_times_have_explicit_tiebreak_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-07: equal-end ordering",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-27e",
+      "test_name": "test_history_nullable_aggregates_have_explicit_display_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-09: nullable aggregates; related DEF-04",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-28a",
+      "test_name": "test_active_live_results_have_exact_integer_json_payload",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-28b",
+      "test_name": "test_live_audience_outside_active_has_explicit_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-03: live-results audience",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-28c",
+      "test_name": "test_anonymous_live_results_redirect_without_counts",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-28d",
+      "test_name": "test_live_zero_counts_are_integer_zeros",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-28e",
+      "test_name": "test_live_counts_without_open_poll_have_explicit_scope_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01/POL-03: no-open-poll live scope",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-30a",
+      "test_name": "test_poll_routes_reverse_and_resolve_to_mounted_views",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-30b",
+      "test_name": "test_live_route_is_defined_once",
+      "status": "NEEDS_FIX",
+      "blockers": "DEF-08: redundant URL entry",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-30c",
+      "test_name": "test_history_and_live_post_have_explicit_method_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-08: POST read routes; POL-03: live scope",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-30d",
+      "test_name": "test_other_unsafe_methods_do_not_gain_mutation_semantics",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-08: allowed methods and future API transport",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/reads-and-routes.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-07a",
+      "test_name": "test_cast_aye_creates_own_current_choice",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-07b",
+      "test_name": "test_cast_nay_creates_own_current_choice",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-07c",
+      "test_name": "test_change_choice_keeps_user_row_identity",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-07d",
+      "test_name": "test_repeat_identical_choice_is_idempotent_for_current_row",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-08a",
+      "test_name": "test_forged_target_fields_cannot_create_another_users_choice",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-08b",
+      "test_name": "test_forged_target_fields_cannot_redirect_existing_choice",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-09a",
+      "test_name": "test_dual_choice_keys_have_explicit_dispatch_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02: dual-choice rejection or precedence",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-10a",
+      "test_name": "test_unknown_payload_with_absent_choice_has_explicit_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02: missing/unknown action and default-row side effect",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-10b",
+      "test_name": "test_unknown_payload_with_existing_choice_has_explicit_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02: missing/unknown action and default-row side effect",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-11a",
+      "test_name": "test_hidden_start_key_has_explicit_navigation_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02; DEF-02: discarded redirect",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-11b",
+      "test_name": "test_start_key_mixed_with_actions_has_explicit_precedence",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02: mixed-action rule; DEF-02",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-12a",
+      "test_name": "test_end_plus_choice_keys_with_existing_actor_choice",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02: end mixed with choice keys",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-12b",
+      "test_name": "test_end_plus_choice_keys_with_absent_actor_choice",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-02: end mixed with choice keys",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-13a",
+      "test_name": "test_cast_without_open_poll_has_explicit_transition_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01: cast acceptance with no open poll",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-14a",
+      "test_name": "test_multiple_open_poll_cast_has_explicit_target_identity",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01: open-poll cardinality and targeting",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-14b",
+      "test_name": "test_equal_start_open_poll_selection_is_deterministic_by_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-01 and POL-07: equal-start selection",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-15a",
+      "test_name": "test_count_helper_excludes_nonchoice_literals",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-15b",
+      "test_name": "test_count_helper_respects_supplied_queryset",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PARLEYPRO",
+      "id": "PP-15c",
+      "test_name": "test_global_count_eligibility_has_explicit_role_and_orphan_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "POL-03: eligibility and nullable-user rows",
+      "source": "SPDWEBAPP/PARLEYPRO/test/cases/voting.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C01a",
+      "test_name": "test_anonymous_domain_requests_require_login",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C01b",
+      "test_name": "test_non_active_actors_cannot_submit_or_read_member_pages",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C01c",
+      "test_name": "test_approval_requires_both_narrow_roles",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C01d",
+      "test_name": "test_non_chairs_cannot_read_or_post_edit",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C01e",
+      "test_name": "test_missing_profiles_are_denied_by_role_decorators",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C01f",
+      "test_name": "test_chair_without_active_edit_authority_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q3 edit roles/status/ownership",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C02a",
+      "test_name": "test_submit_csrf_rejects_absent_or_bad_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C02b",
+      "test_name": "test_approve_csrf_rejects_absent_or_bad_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C02c",
+      "test_name": "test_deny_csrf_rejects_absent_or_bad_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C02d",
+      "test_name": "test_edit_csrf_rejects_absent_or_bad_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C03a",
+      "test_name": "test_mutation_route_other_methods_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q9 method allow-list",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C03b",
+      "test_name": "test_read_route_post_methods_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q9 method allow-list; Q6 export access",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C03c",
+      "test_name": "test_role_denial_uses_poll_without_referrer",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C03d",
+      "test_name": "test_role_denial_uses_safe_referrer",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C03e",
+      "test_name": "test_role_denial_rejects_external_referrer",
+      "status": "NEEDS_FIX",
+      "blockers": "D1 unsafe referrer redirect; shared decorator owner AUTHENTICATE",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/access.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C30a",
+      "test_name": "test_admin_list_obeys_staff_and_model_permissions",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C30b",
+      "test_name": "test_admin_permission_denied_add_and_change_do_not_write",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C30c",
+      "test_name": "test_admin_permission_sets_do_not_imply_domain_roles",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C31a",
+      "test_name": "test_admin_adds_integer_event_and_django_log",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C31b",
+      "test_name": "test_admin_change_authority_and_domain_audit_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 staff owner/status/audit authority; Q1/Q3/Q4 parity",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C31c",
+      "test_name": "test_admin_model_form_rejects_invalid_fields_without_logs",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C31d",
+      "test_name": "test_admin_negative_hours_need_business_parity_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q1 shared minimum; Q11 admin exception versus parity",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C32a",
+      "test_name": "test_admin_delete_confirmation_does_not_delete",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C32b",
+      "test_name": "test_admin_single_delete_needs_retention_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 hard deletion/audit retention",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C32c",
+      "test_name": "test_admin_bulk_delete_needs_retention_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 bulk deletion/audit retention",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C32d",
+      "test_name": "test_admin_delete_denial_preserves_events_and_logs",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C32e",
+      "test_name": "test_owner_deletion_cascade_needs_retention_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 event retention after owner deletion",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C32f",
+      "test_name": "test_editor_deletion_sets_null_on_other_owners_event",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/admin-lifecycle.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C09a",
+      "test_name": "test_pending_list_contains_only_requested_rows_by_date",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C09b",
+      "test_name": "test_initial_approval_updates_only_decision_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C10a",
+      "test_name": "test_initial_denial_updates_only_decision_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C10b",
+      "test_name": "test_denied_event_remains_personal_but_not_approved_history",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C11a",
+      "test_name": "test_bad_decision_event_ids_report_error_without_write",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C11b",
+      "test_name": "test_unknown_decision_action_cannot_report_success",
+      "status": "NEEDS_FIX",
+      "blockers": "D5 unknown action falsely saves/reports denial",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C11c",
+      "test_name": "test_decision_helper_nonpost_is_noop",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C11d",
+      "test_name": "test_direct_decision_callable_needs_authorization_boundary",
+      "status": "NEEDS_FIX",
+      "blockers": "D6 callable trusts request without role check; domain boundary repair",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C12a",
+      "test_name": "test_approved_to_approve_requires_transition_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 repeated/reverse transition and audit semantics",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C12b",
+      "test_name": "test_denied_to_deny_requires_transition_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 repeated/reverse transition and audit semantics",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C12c",
+      "test_name": "test_approved_to_deny_requires_transition_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 repeated/reverse transition and audit semantics",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C12d",
+      "test_name": "test_denied_to_approve_requires_transition_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 repeated/reverse transition and audit semantics",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C12e",
+      "test_name": "test_self_approve_requires_review_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 self-review and audit",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C12f",
+      "test_name": "test_self_deny_requires_review_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 self-review and audit",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C13a",
+      "test_name": "test_decision_prewrite_save_failure_preserves_request",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C13b",
+      "test_name": "test_decision_postwrite_exception_needs_commit_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 error-after-write outcome; TransactionTestCase",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C13c",
+      "test_name": "test_competing_approve_and_deny_need_conflict_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 winner/transition rule; Q8 locking/version rule; PostgreSQL connections/barrier",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/approvals.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C14a",
+      "test_name": "test_edit_get_populates_form_without_audit_write",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C14b",
+      "test_name": "test_chair_edit_field_whitelist_needs_reapproval_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q3 target scope and approval invalidation",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C14c",
+      "test_name": "test_second_edit_needs_latest_editor_and_audit_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q3 edits and approval invalidation",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C15a",
+      "test_name": "test_unknown_numeric_edit_target_is_404",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C15b",
+      "test_name": "test_noninteger_edit_paths_do_not_resolve",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C15c",
+      "test_name": "test_edit_missing_title_or_bad_date_is_controlled",
+      "status": "NEEDS_FIX",
+      "blockers": "D3 edit lacks validation/error handling; Q2 normalization; Q9 adapter",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C16a",
+      "test_name": "test_edit_prewrite_failure_preserves_entire_target",
+      "status": "NEEDS_FIX",
+      "blockers": "D3 uncaught edit save failure; Q9 adapter",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C16b",
+      "test_name": "test_edit_postwrite_exception_needs_commit_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 rollback/committed outcome; Q3 scope; TransactionTestCase",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C16c",
+      "test_name": "test_stale_edit_and_approval_need_conflict_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 merge/conflict strategy; Q3 audit; PostgreSQL connections/barrier",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C16d",
+      "test_name": "test_competing_edits_need_conflict_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 merge/conflict strategy; Q3 target scope; PostgreSQL connections/barrier",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/edits.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C25a",
+      "test_name": "test_xlsx_content_totals_and_typed_hours",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C25b",
+      "test_name": "test_xlsx_total_fill_thresholds_and_event_wrapping",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C26a",
+      "test_name": "test_export_actor_permissions_require_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q6 authorized export roles and profile requirement",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C26b",
+      "test_name": "test_export_year_owner_and_active_scope_require_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q6 year/owner/ACTIVE scope and fallback naming",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C27a",
+      "test_name": "test_same_name_active_owners_keep_separate_export_totals",
+      "status": "NEEDS_FIX",
+      "blockers": "D9 display-name grouping merges identities; Q6 presentation only",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C27b",
+      "test_name": "test_username_and_full_name_collision_requires_export_scope",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q6 inactive/profileless inclusion; D9 grouping identity",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C28a",
+      "test_name": "test_equals_prefixed_user_content_is_never_formula_typed",
+      "status": "NEEDS_FIX",
+      "blockers": "D10 openpyxl treats raw equals text as formula; Q6 actor scope only",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C28b",
+      "test_name": "test_other_formula_like_prefixes_need_client_protection_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q12 spreadsheet-client targets and escaping; Q6 profileless scope",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C28c",
+      "test_name": "test_unicode_and_plain_multiline_export_text_round_trips",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C29a",
+      "test_name": "test_export_with_no_approved_events_is_readable_empty_workbook",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C29b",
+      "test_name": "test_workbook_serialization_failure_is_controlled",
+      "status": "NEEDS_FIX",
+      "blockers": "D11 uncaught Workbook.save failure; Q9 error adapter",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/exports.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C21a",
+      "test_name": "test_history_helper_buckets_approved_events_and_lifetime",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C21b",
+      "test_name": "test_own_history_view_renders_approved_only",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C21c",
+      "test_name": "test_empty_approved_history_renders_zero_and_empty_text",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C21d",
+      "test_name": "test_history_marks_edited_event",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C21e",
+      "test_name": "test_history_edit_link_tracks_declared_chair_role",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C22a",
+      "test_name": "test_other_and_inactive_history_visibility_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q5 object visibility",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C22b",
+      "test_name": "test_missing_target_profile_redirects_without_record_changes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C23a",
+      "test_name": "test_hours_remaining_clamps_numeric_difference",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C23b",
+      "test_name": "test_dashboard_and_history_remaining_text_uses_tag",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C24a",
+      "test_name": "test_tag_invalid_and_nonfinite_inputs_need_contract",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 caller preconditions versus fallback",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C24b",
+      "test_name": "test_negative_or_huge_tag_operands_need_contract",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 finite operand domain",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/history-tags.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C33a",
+      "test_name": "test_submit_then_approve_updates_all_approved_projections_once",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/integration.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C33b",
+      "test_name": "test_cross_year_edit_projection_requires_approval_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q3 approval invalidation and edit scope; Q6 export scope",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/integration.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C33c",
+      "test_name": "test_reversed_decision_projections_need_transition_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 reverse decision; Q6 export scope",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/integration.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C17a",
+      "test_name": "test_academic_year_dates_are_july_through_june",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C17b",
+      "test_name": "test_available_years_before_and_after_july",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C17c",
+      "test_name": "test_available_year_count_can_be_zero_or_one",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C17d",
+      "test_name": "test_dashboard_default_year_before_july",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C17e",
+      "test_name": "test_dashboard_default_year_from_july",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C17f",
+      "test_name": "test_explicit_dashboard_year_overrides_clock",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C17g",
+      "test_name": "test_date_helper_invalid_arguments_need_contract",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2 pure-helper supported arguments",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C18a",
+      "test_name": "test_chapter_and_personal_approved_totals_are_scoped",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C18b",
+      "test_name": "test_goal_threshold_is_ten_approved_hours",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C18c",
+      "test_name": "test_multiple_nonactive_roles_do_not_duplicate_statistics",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C19a",
+      "test_name": "test_year_range_includes_july_first_and_june_thirtieth",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C19b",
+      "test_name": "test_empty_selected_year_retains_zero_active_members",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C19c",
+      "test_name": "test_statistics_empty_profile_input_returns_zeroes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C19d",
+      "test_name": "test_unwrapped_dashboard_zero_denominator_is_safe",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C20a",
+      "test_name": "test_invalid_dashboard_year_is_a_controlled_error",
+      "status": "NEEDS_FIX",
+      "blockers": "D7 uncaught int/date errors; Q2 supported range; Q9 adapter",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C20b",
+      "test_name": "test_historical_year_outside_dropdown_needs_range_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2 supported selected-year range",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C20c",
+      "test_name": "test_declared_chair_dashboard_flag_needs_canonical_role_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q7 canonical flag or flag removal",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C20d",
+      "test_name": "test_undeclared_chair_role_cannot_gain_decision_permissions",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q7 invalid-role flag handling; D8 role-name inconsistency",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/statistics.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C04a",
+      "test_name": "test_submission_form_exposes_three_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C04b",
+      "test_name": "test_integer_submission_persists_exact_values",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C04c",
+      "test_name": "test_submitted_owner_status_and_audit_are_ignored",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C05a",
+      "test_name": "test_submission_rejects_below_minimum_hours",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C05b",
+      "test_name": "test_integral_float_string_preserves_integer_hours",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C05c",
+      "test_name": "test_fractional_submission_requires_precision_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q1 precision/step; D2 float to IntegerField truncation",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C05d",
+      "test_name": "test_edit_minimum_and_fractional_hours_require_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q1 minimum/precision; Q3 edit scope; D2 integer truncation",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C06a",
+      "test_name": "test_submission_parse_errors_leave_no_event",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C06b",
+      "test_name": "test_submission_nonfinite_hours_create_no_record",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C06c",
+      "test_name": "test_edit_invalid_hours_returns_controlled_error",
+      "status": "NEEDS_FIX",
+      "blockers": "D3 uncaught edit conversion/save errors; Q9 error adapter",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C06d",
+      "test_name": "test_huge_finite_hours_need_upper_bound",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q1 upper bound; Q3 edit scope; backend integer range",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C07a",
+      "test_name": "test_missing_submission_keys_and_bad_dates_do_not_write",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C07b",
+      "test_name": "test_empty_and_overlong_titles_require_validation_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2 required/trimmed title and max handling; Q3 edit scope",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C07c",
+      "test_name": "test_hundred_character_title_round_trips",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C07d",
+      "test_name": "test_unicode_and_html_title_render_as_text",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C07e",
+      "test_name": "test_past_and_future_event_dates_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2 date range; Q3 edit scope",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C08a",
+      "test_name": "test_submit_prewrite_save_failure_is_reported_without_row",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C08b",
+      "test_name": "test_identical_submit_retry_requires_idempotency_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 retries and duplicate identity",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C08c",
+      "test_name": "test_submit_postwrite_exception_needs_commit_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 rollback versus committed-success/retry identity; TransactionTestCase",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "id": "PH-C08d",
+      "test_name": "test_submission_does_not_disclose_save_exception_details",
+      "status": "NEEDS_FIX",
+      "blockers": "D4 raw exception disclosure; Q9 error adapter",
+      "source": "SPDWEBAPP/PHILANTHROPY/test/cases/submissions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-01a",
+      "test_name": "test_admin_nonstaff_redirects_even_with_board_role",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-01b",
+      "test_name": "test_admin_changelist_shows_configured_columns",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-01c",
+      "test_name": "test_admin_staff_without_permissions_is_forbidden",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-01d",
+      "test_name": "test_admin_staff_explicit_permission_allows_corresponding_page",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-01e",
+      "test_name": "test_admin_staff_without_write_permission_cannot_add_or_change",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-01f",
+      "test_name": "test_admin_nonstaff_cannot_add_or_change_through_admin",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-02a",
+      "test_name": "test_admin_forms_reject_invalid_model_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-02b",
+      "test_name": "test_admin_write_audit_and_transition_parity_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 admin authorization/transition/audit parity",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-02c",
+      "test_name": "test_mark_string_representation_names_target",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-03a",
+      "test_name": "test_admin_mark_delete_removes_only_selected_mark",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-03b",
+      "test_name": "test_foreign_key_deletion_retention_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 retention/cascade policy",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-C03-03c",
+      "test_name": "test_admin_delete_without_permission_preserves_records",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/admin.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-00-01a",
+      "test_name": "test_landing_renders_public_navigation",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-01a",
+      "test_name": "test_anonymous_routes_redirect_to_login",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-02a",
+      "test_name": "test_request_requires_explicit_active_role",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-02b",
+      "test_name": "test_review_and_regular_edit_require_board_role",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-02c",
+      "test_name": "test_edit_deny_requires_both_roles",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-03a",
+      "test_name": "test_mutating_routes_reject_missing_or_bad_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-03b",
+      "test_name": "test_create_accepts_acquired_csrf_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-03c",
+      "test_name": "test_approve_accepts_acquired_csrf_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-03d",
+      "test_name": "test_update_accepts_acquired_csrf_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-03e",
+      "test_name": "test_edit_deny_accepts_acquired_csrf_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-SEC-04a",
+      "test_name": "test_profileless_actor_fails_safely",
+      "status": "NEEDS_FIX",
+      "blockers": "D01 missing-profile dereference; response adapter follows shared error policy",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/boundaries.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-01a",
+      "test_name": "test_pending_review_lists_only_requested_marks",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-01b",
+      "test_name": "test_board_approves_another_request",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-01c",
+      "test_name": "test_board_denies_another_request",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-02a",
+      "test_name": "test_unknown_mark_id_reports_not_found",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-02b",
+      "test_name": "test_unknown_approval_action_never_claims_success",
+      "status": "NEEDS_FIX",
+      "blockers": "D04 unknown action saved and reported as denied success",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-02c",
+      "test_name": "test_malformed_approval_ids_fail_without_exception_details",
+      "status": "NEEDS_FIX",
+      "blockers": "D02 unsafe generic exception text",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-03a",
+      "test_name": "test_approval_helper_enforces_board_authorization",
+      "status": "NEEDS_FIX",
+      "blockers": "D05 approval helper lacks board authorization",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-03b",
+      "test_name": "test_profileless_direct_reviewer_fails_safely",
+      "status": "NEEDS_FIX",
+      "blockers": "D01 missing profile and D02 exception disclosure",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-04a",
+      "test_name": "test_repeat_and_reverse_review_need_transition_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q04 repeated/reverse transitions and audit retention",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-04b",
+      "test_name": "test_self_review_needs_actor_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q04 self-review policy",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-05a",
+      "test_name": "test_simultaneous_review_needs_conflict_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q04 winner/conflict contract; PostgreSQL facility also missing",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-02-05b",
+      "test_name": "test_approval_save_failure_keeps_original_row",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/decisions.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-01a",
+      "test_name": "test_edit_form_prefills_single_target",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-01b",
+      "test_name": "test_board_edit_retargets_and_sets_editor_only",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-02a",
+      "test_name": "test_nonexistent_retarget_leaves_entire_mark_unchanged",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-02b",
+      "test_name": "test_malformed_edit_cannot_crash_or_partially_save",
+      "status": "NEEDS_FIX",
+      "blockers": "D06 raw edit parsing/save errors",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-02c",
+      "test_name": "test_edit_save_failure_preserves_database_state",
+      "status": "NEEDS_FIX",
+      "blockers": "D06 uncaught save failure",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-02d",
+      "test_name": "test_omitted_or_identical_retarget_needs_field_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q02 required versus optional target field",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-02e",
+      "test_name": "test_edit_content_boundaries_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q02 content/value/date limits",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-03a",
+      "test_name": "test_edit_target_eligibility_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q01 edit target eligibility",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-03b",
+      "test_name": "test_unknown_edit_action_needs_transport_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q02 unknown edit action",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-03-04a",
+      "test_name": "test_missing_edit_resource_returns_404",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-04-01a",
+      "test_name": "test_educator_board_edit_deny_sets_both_audits",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-04-01b",
+      "test_name": "test_deny_endpoint_permission_difference_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q05 endpoint-specific deny roles",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-04-02a",
+      "test_name": "test_repeat_override_or_self_edit_deny_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q04 transitions/self/audit; Q05 override authority",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-04-02b",
+      "test_name": "test_edit_deny_save_failure_preserves_both_audits",
+      "status": "NEEDS_FIX",
+      "blockers": "D06 uncaught edit-deny save failure",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/editing.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-01a",
+      "test_name": "test_export_current_workbook_has_signed_approved_values",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-01b",
+      "test_name": "test_historical_export_scope_needs_audience_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q07 historical export audience",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-02a",
+      "test_name": "test_new_member_current_export_is_allowed",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-02b",
+      "test_name": "test_previous_class_export_role_precedence_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q01 selector semantics; Q07 audience and role precedence",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-03a",
+      "test_name": "test_duplicate_names_never_merge_member_identities",
+      "status": "NEEDS_FIX",
+      "blockers": "D07 full-name dictionary key merges distinct users; Q09 display label",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-04a",
+      "test_name": "test_formula_like_export_text_remains_literal",
+      "status": "NEEDS_FIX",
+      "blockers": "D08 direct openpyxl values can create formulas; Q09 encoding strategy",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-05a",
+      "test_name": "test_empty_current_export_is_a_valid_workbook",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-05b",
+      "test_name": "test_export_requester_without_profile_uses_username",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-07-05c",
+      "test_name": "test_workbook_save_failure_returns_controlled_error",
+      "status": "NEEDS_FIX",
+      "blockers": "D09 uncaught workbook save error",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/exports.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-06-01a",
+      "test_name": "test_history_helper_returns_approved_target_total",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/history-filter.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-06-01b",
+      "test_name": "test_history_view_audience_and_edit_flags_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q07 cross-member history visibility",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/history-filter.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-06-02a",
+      "test_name": "test_missing_or_non_new_member_history_redirects",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/history-filter.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-06-02b",
+      "test_name": "test_empty_target_history_helper_returns_zero",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/history-filter.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-06-02c",
+      "test_name": "test_empty_history_view_needs_audience_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q07 history audience",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/history-filter.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-08-01a",
+      "test_name": "test_hours_remaining_converts_numbers_and_floors_zero",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/history-filter.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-08-01b",
+      "test_name": "test_invalid_and_nonfinite_filter_operands_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q08 invalid/nonfinite filter behavior",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/history-filter.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-01a",
+      "test_name": "test_signed_class_totals_and_order_exclude_unapproved",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-01b",
+      "test_name": "test_personal_stats_use_approved_signed_totals",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-02a",
+      "test_name": "test_two_bound_date_ranges_are_inclusive",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-02b",
+      "test_name": "test_one_sided_reversed_and_tied_ranges_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q06 one-sided/reversed ranges and tie ordering",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-02c",
+      "test_name": "test_active_analytics_count_events_and_signed_standing",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-02d",
+      "test_name": "test_future_week_events_and_timezone_cutoffs_need_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q06 future events and non-UTC date cutoff policy",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-03a",
+      "test_name": "test_own_denied_visibility_uses_actual_fourteen_days",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-04a",
+      "test_name": "test_single_role_dashboard_selects_matching_context",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-04b",
+      "test_name": "test_mixed_roles_and_unprivileged_dashboard_need_visibility_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q06 mixed-role presentation; Q07 dashboard visibility",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-04c",
+      "test_name": "test_class_choices_follow_reverse_enum_order",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-04d",
+      "test_name": "test_unknown_and_null_class_order_needs_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q06 unknown/null class presentation",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-05a",
+      "test_name": "test_empty_analytics_and_personal_totals_are_zero",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-05-05b",
+      "test_name": "test_pending_query_handles_missing_related_profiles",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/read-models.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-01a",
+      "test_name": "test_request_form_lists_new_member_targets",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-01b",
+      "test_name": "test_signed_multi_target_submission_creates_requested_marks",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-02a",
+      "test_name": "test_board_submission_autoapproves_and_ignores_forged_audit",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-03a",
+      "test_name": "test_malformed_request_fields_never_crash_or_insert",
+      "status": "NEEDS_FIX",
+      "blockers": "D02 raw parsing and unsafe exception text; safe error transport not prescribed",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-03b",
+      "test_name": "test_request_content_boundaries_require_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q02 content/value/date limits; backend range differences",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-04a",
+      "test_name": "test_empty_and_duplicate_target_batches_require_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q01 empty and duplicate batch semantics",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-04b",
+      "test_name": "test_ineligible_and_self_targets_require_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q01 eligibility/self and Q03 mixed-batch integrity",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-04c",
+      "test_name": "test_invalid_target_identifiers_cannot_partially_persist",
+      "status": "NEEDS_FIX",
+      "blockers": "D02 unsafe error exposure; Q03 for mixed-batch contract",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-05a",
+      "test_name": "test_request_helper_enforces_actor_authorization",
+      "status": "NEEDS_FIX",
+      "blockers": "D03 helper lacks ACTIVE authorization",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "NEWMEMBER",
+      "id": "NM-01-06a",
+      "test_name": "test_batch_commit_failure_requires_atomicity_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q03 transaction/error containment; PostgreSQL needed for backend-specific commit proof",
+      "source": "SPDWEBAPP/NEWMEMBER/test/cases/requests.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T13a",
+      "test_name": "test_admin_anonymous_and_nonstaff_are_denied",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T13b",
+      "test_name": "test_admin_individual_model_permissions_are_distinct",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T13c",
+      "test_name": "test_admin_unsafe_requests_require_real_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T13d",
+      "test_name": "test_admin_superuser_can_read_home_models",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T14a",
+      "test_name": "test_admin_invalid_forms_do_not_run_singleton_hooks",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T14b",
+      "test_name": "test_admin_add_creates_home_row_and_audit",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T14c",
+      "test_name": "test_admin_change_updates_home_row_and_audit",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T14d",
+      "test_name": "test_admin_delete_confirmation_and_cancel",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T14e",
+      "test_name": "test_admin_bulk_delete_removes_only_selected_rows",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T14f",
+      "test_name": "test_admin_stale_object_redirects_without_writes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T14g",
+      "test_name": "test_admin_db_failure_rolls_back_singleton_and_audit",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15a",
+      "test_name": "test_sortable_requires_post_and_change_permission",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15b",
+      "test_name": "test_sortable_updates_only_named_orders_and_repeats",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15c",
+      "test_name": "test_sortable_malformed_batches_are_not_partially_written",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15d",
+      "test_name": "test_sortable_empty_batch_is_noop",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15e",
+      "test_name": "test_sortable_page_move_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 page bounds/audit; pinned action payload verification",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15f",
+      "test_name": "test_admin_new_slide_uses_maximum_plus_one",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15g",
+      "test_name": "test_sortable_errors_do_not_disclose_database_detail",
+      "status": "NEEDS_FIX",
+      "blockers": "dependency returns raw caught exception string; sanitize adapter",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T15h",
+      "test_name": "test_sortable_noncanonical_order_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 duplicate PKs, ties, order types and audit",
+      "source": "SPDWEBAPP/HOME/test/cases/admin.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T08a",
+      "test_name": "test_singleton_initial_create_persists_value",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T08b",
+      "test_name": "test_successful_singleton_replacement_has_one_new_value",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T08c",
+      "test_name": "test_singleton_normal_update_and_repeat_remain_single",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T09a",
+      "test_name": "test_model_full_clean_rejects_required_and_length_errors",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T09b",
+      "test_name": "test_singleton_update_fields_does_not_erase_previous_row",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 supported save options; destructive update needs fix",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T09c",
+      "test_name": "test_singleton_forced_save_options_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 force_update/force_insert support; destructive hook also needs fix",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T09d",
+      "test_name": "test_bulk_and_alias_singleton_boundary_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 bulk/alternate alias support; isolated second DB alias if supported",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T09e",
+      "test_name": "test_direct_save_validation_boundary_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 bare-save validation guarantees; Q3 URL schemes",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T10a",
+      "test_name": "test_storage_save_failure_preserves_prior_banner_row",
+      "status": "NEEDS_FIX",
+      "blockers": "delete-before-storage-save data loss; Q7 cleanup choice",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T10b",
+      "test_name": "test_db_insert_failure_preserves_prior_singleton",
+      "status": "NEEDS_FIX",
+      "blockers": "delete-before-base-save loses old row; Q7 orphan cleanup",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T10c",
+      "test_name": "test_failed_replacement_retry_preserves_then_replaces",
+      "status": "NEEDS_FIX",
+      "blockers": "delete-before-save loss; depends on safe replacement fix",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T10d",
+      "test_name": "test_successful_replacement_and_delete_file_retention_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q7 retain old files versus delete-on-commit/retention window",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T10e",
+      "test_name": "test_cleanup_and_orphan_failure_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q7 compensation boundary; no current file-delete hook",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T11a",
+      "test_name": "test_concurrent_singleton_replacement_conflict_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q9 conflict winner; NEEDS_FIX singleton enforcement; PostgreSQL facility",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T11b",
+      "test_name": "test_concurrent_first_singleton_create_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q9 create conflict; NEEDS_FIX uniqueness; PostgreSQL facility",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T12a",
+      "test_name": "test_slide_create_and_edit_persists_target_fields",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T12b",
+      "test_name": "test_slide_integer_order_and_caption_boundary",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T12c",
+      "test_name": "test_slide_row_delete_is_repeatable",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/content-models.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T06a",
+      "test_name": "test_media_serves_synthetic_image_bytes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T06b",
+      "test_name": "test_missing_media_and_directories_do_not_disclose",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T06c",
+      "test_name": "test_lexical_media_traversal_is_denied",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T06d",
+      "test_name": "test_media_symlink_cannot_escape_root",
+      "status": "NEEDS_FIX",
+      "blockers": "lexical serve containment permits symlinks; symlink-capable fixture FS",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T06e",
+      "test_name": "test_public_board_and_media_visibility_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q1 public fields; Q6 public media audience",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T07a",
+      "test_name": "test_public_templates_reference_local_assets",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T07b",
+      "test_name": "test_collected_static_assets_are_served",
+      "status": "INFRA_BLOCKED",
+      "blockers": "isolated static collection plus WhiteNoise integration facility",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T07c",
+      "test_name": "test_demo_shell_context_controls_banner",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T07d",
+      "test_name": "test_explorer_cache_header_is_scoped",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T21a",
+      "test_name": "test_seed_copies_only_public_source_asset",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T21b",
+      "test_name": "test_seed_interest_url_uses_local_demo_host",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T21c",
+      "test_name": "test_seed_config_input_boundary_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q14: reject malformed domain/path or normalize to approved values",
+      "source": "SPDWEBAPP/HOME/test/cases/media-composition.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T03a",
+      "test_name": "test_slide_order_preserves_all_ties",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T03b",
+      "test_name": "test_slide_caption_and_image_attributes_escape_markup",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T03c",
+      "test_name": "test_board_fields_escape_injected_markup",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T03d",
+      "test_name": "test_shell_errors_messages_and_username_escape",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T03e",
+      "test_name": "test_configured_interest_link_renders_in_three_buttons",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T03f",
+      "test_name": "test_board_optional_fields_use_fallbacks",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T04a",
+      "test_name": "test_missing_interest_link_fallback_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q3: hide, disable or approved fallback destination",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T04b",
+      "test_name": "test_empty_image_reference_does_not_crash_page",
+      "status": "NEEDS_FIX",
+      "blockers": "Q4: fallback appearance; defect empty field .url raises",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T04c",
+      "test_name": "test_missing_nonempty_image_keeps_page_renderable",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T04d",
+      "test_name": "test_unsafe_interest_url_scheme_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q3: allowed schemes and rejection/fallback; unsafe ORM link",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T05a",
+      "test_name": "test_public_head_and_irrelevant_query_are_read_only",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T05b",
+      "test_name": "test_public_unsafe_method_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q5: render on unsafe methods or GET/HEAD-only",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T05c",
+      "test_name": "test_public_unsafe_request_rejects_bad_csrf",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T05d",
+      "test_name": "test_slideshow_and_panel_controls_are_local",
+      "status": "INFRA_BLOCKED",
+      "blockers": "browser with controlled timers and request interception",
+      "source": "SPDWEBAPP/HOME/test/cases/public-content.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T01a",
+      "test_name": "test_public_routes_render_for_narrow_actors",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T01b",
+      "test_name": "test_home_without_banner_omits_banner_image",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T01c",
+      "test_name": "test_history_empty_profile_count_is_zero",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T01d",
+      "test_name": "test_rush_without_slides_renders_empty_slideshow",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T01e",
+      "test_name": "test_board_without_officers_has_empty_message",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T01f",
+      "test_name": "test_public_shell_without_actor_profile_uses_fallback",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T02a",
+      "test_name": "test_active_count_uses_distinct_role_membership",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T02b",
+      "test_name": "test_mixed_and_null_user_count_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2: count all ACTIVE profiles or only eligible active users",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T02c",
+      "test_name": "test_board_role_order_and_multi_office_pairs",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T02d",
+      "test_name": "test_board_eligibility_and_holder_tie_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2: office alone versus ACTIVE/EXEC; tie ordering",
+      "source": "SPDWEBAPP/HOME/test/cases/public-routes.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T18a",
+      "test_name": "test_seed_non_demo_refusal_has_no_side_effects",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T18b",
+      "test_name": "test_seed_refuses_credentialed_or_privileged_identity",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T18c",
+      "test_name": "test_late_member_refusal_rolls_back_prior_member_writes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T19a",
+      "test_name": "test_late_seed_db_failure_rolls_back_all_database_writes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T19b",
+      "test_name": "test_media_setup_failures_roll_back_prior_db_writes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T19c",
+      "test_name": "test_failed_seed_file_compensation_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q12 prior media protection and cleanup; Q7 file retention",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T19d",
+      "test_name": "test_seed_retry_after_partial_failure_finishes_once",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T20a",
+      "test_name": "test_ambiguous_group_or_username_collision_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q13 unique identity/refusal; Q11 reset contract",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T20b",
+      "test_name": "test_nonunique_seed_key_collision_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 reserved sample keys; Q13 collisions and duplicate lookup rows",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T20c",
+      "test_name": "test_direct_seed_helper_guard_and_atomicity_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 supported internal helpers versus guarded public seed API",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T20d",
+      "test_name": "test_workflow_user_list_input_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 internal list contract; Q13 correct identity mapping",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-failures.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T16a",
+      "test_name": "test_first_seed_creates_exact_fictional_identities",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T16b",
+      "test_name": "test_first_seed_creates_public_content_and_media",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T16c",
+      "test_name": "test_first_seed_creates_alert_and_dashboard_manifest",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T16d",
+      "test_name": "test_first_seed_populates_hours_and_votes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T16e",
+      "test_name": "test_first_seed_populates_newmember_marks",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T16f",
+      "test_name": "test_first_seed_populates_open_and_closed_polls",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T17a",
+      "test_name": "test_repeat_seed_preserves_stable_row_identity",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T17b",
+      "test_name": "test_repeat_seed_preserves_unrelated_synthetic_records",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T17c",
+      "test_name": "test_member_field_role_and_photo_reset_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 approve reset versus preserve edited demo member fields",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T17d",
+      "test_name": "test_seed_preserves_existing_home_rows",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T17e",
+      "test_name": "test_alert_and_dashboard_refresh_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 approve refresh versus preserve edited matching-key content",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T17f",
+      "test_name": "test_workflow_vote_and_date_refresh_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 approve resetting sample workflows versus preserving interactions",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "HOME",
+      "id": "HOME-T17g",
+      "test_name": "test_group_bound_renamed_member_recovery_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 username reset; Q13 group identity ownership",
+      "source": "SPDWEBAPP/HOME/test/cases/seed-manifest.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T25a",
+      "test_name": "test_admin_mutations_reject_missing_or_bad_csrf_token",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T25b",
+      "test_name": "test_admin_valid_csrf_pair_allows_intended_write",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T25c",
+      "test_name": "test_demo_boundary_blocks_model_admin_even_with_permission",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T26a",
+      "test_name": "test_detail_delete_confirmation_get_is_read_only",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T26b",
+      "test_name": "test_detail_delete_removes_only_target_and_logs_once",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T26c",
+      "test_name": "test_bulk_delete_confirmation_preserves_selected_rows",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T26d",
+      "test_name": "test_confirmed_bulk_delete_keeps_unselected_records",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T26e",
+      "test_name": "test_repeated_stale_delete_is_non_mutating",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T26f",
+      "test_name": "test_last_setting_delete_requires_product_visibility_choice",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2 absent-setting fallback; Q9 delete/deactivate policy",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T27a",
+      "test_name": "test_admin_save_log_failure_rolls_back_model_write",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T27b",
+      "test_name": "test_admin_model_save_failure_creates_no_audit_entry",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T27c",
+      "test_name": "test_detail_delete_failure_rolls_back_preceding_delete_log",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T27d",
+      "test_name": "test_bulk_delete_failure_audit_contract_needs_decision",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 audit/transaction failure semantics; possible false-success logs",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T28a",
+      "test_name": "test_stale_admin_write_requires_conflict_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 stale-write conflict semantics",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T28b",
+      "test_name": "test_concurrent_admin_write_requires_policy_and_postgresql",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q10 winner/conflict rule; Q11 audit; case-specific PostgreSQL/barriers",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T29a",
+      "test_name": "test_admin_history_is_scoped_to_object_and_actor",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T29b",
+      "test_name": "test_admin_history_denies_staff_without_view_or_change",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T29c",
+      "test_name": "test_orm_and_reader_actions_do_not_create_admin_logs",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T29d",
+      "test_name": "test_business_audit_retention_requires_shared_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q11 cumulative business audit/retention",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-audit-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21a",
+      "test_name": "test_anonymous_nonstaff_and_inactive_staff_cannot_enter_admin",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21b",
+      "test_name": "test_staff_without_view_or_change_cannot_list_models",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21c",
+      "test_name": "test_view_permission_allows_read_without_writes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21d",
+      "test_name": "test_add_permission_is_required_for_direct_add_post",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21e",
+      "test_name": "test_change_permission_is_required_for_direct_edit_post",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21f",
+      "test_name": "test_delete_permission_is_required_for_detail_delete",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21g",
+      "test_name": "test_hidden_bulk_delete_cannot_bypass_delete_permission",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21h",
+      "test_name": "test_permissions_are_isolated_by_model",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21i",
+      "test_name": "test_chapter_role_and_record_creator_do_not_restrict_admin_read",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21j",
+      "test_name": "test_delete_only_permission_does_not_grant_changelist",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21k",
+      "test_name": "test_synthetic_superuser_can_read_both_models",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T21l",
+      "test_name": "test_admin_does_not_require_member_profile",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-permissions.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22a",
+      "test_name": "test_announcement_admin_exposes_only_title_and_content",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22b",
+      "test_name": "test_announcement_admin_add_sets_defaults_and_add_log",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22c",
+      "test_name": "test_announcement_admin_edit_preserves_inactive_flag",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22d",
+      "test_name": "test_announcement_admin_ignores_excluded_field_payloads",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22e",
+      "test_name": "test_save_continue_and_addanother_have_concrete_redirects",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22f",
+      "test_name": "test_saveasnew_requires_add_permission_even_when_button_hidden",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22g",
+      "test_name": "test_authorized_saveasnew_creates_separate_announcement",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22h",
+      "test_name": "test_announcement_activation_ui_needs_product_decision",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q9 announcement activation/deactivation UI",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22i",
+      "test_name": "test_add_only_staff_can_create_without_list_permission",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T23a",
+      "test_name": "test_dst_admin_form_and_list_expose_name_and_active",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T23b",
+      "test_name": "test_dst_admin_add_records_active_name_and_log",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T23c",
+      "test_name": "test_dst_admin_edit_omitted_checkbox_disables_setting",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T23d",
+      "test_name": "test_dst_admin_name_normalization_accepts_blank_values",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T23e",
+      "test_name": "test_repeated_dst_edit_does_not_insert_duplicate",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T23f",
+      "test_name": "test_dst_admin_save_flags_and_saveasnew_action",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T24a",
+      "test_name": "test_admin_invalid_fields_return_errors_without_writes",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T24b",
+      "test_name": "test_missing_and_malformed_admin_object_ids_do_not_mutate",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T24c",
+      "test_name": "test_unknown_or_empty_bulk_action_has_no_state_effect",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T22j",
+      "test_name": "test_announcement_add_flags_redirect_without_extra_inserts",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T23g",
+      "test_name": "test_dst_add_flags_redirect_without_extra_inserts",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/admin-writes.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T05a",
+      "test_name": "test_dst_model_default_optional_name_and_string",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T05b",
+      "test_name": "test_dst_model_update_keeps_other_settings",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T05c",
+      "test_name": "test_dst_model_full_clean_rejects_long_name",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T06a",
+      "test_name": "test_tag_without_setting_shows_spring_message",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T06b",
+      "test_name": "test_tag_without_setting_shows_fall_message",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T06c",
+      "test_name": "test_blank_override_preserves_computed_message",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T07a",
+      "test_name": "test_active_override_replaces_message_and_newlines",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T07b",
+      "test_name": "test_inactive_setting_hides_dst_fragment",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T07c",
+      "test_name": "test_explicit_reactivation_appears_on_next_read",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T08a",
+      "test_name": "test_multi_setting_selection_needs_singleton_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2 multiple-setting precedence",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T08b",
+      "test_name": "test_setting_delete_fallback_needs_visibility_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q2 last-setting/default visibility",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T10a",
+      "test_name": "test_override_content_cannot_create_executable_markup",
+      "status": "NEEDS_FIX",
+      "blockers": "D1 raw override HTML; Q3 presentation tracked separately",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T10b",
+      "test_name": "test_override_harmless_markup_needs_presentation_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q3 plain text versus sanitized rich text; D1",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T11a",
+      "test_name": "test_fragment_controls_have_local_targets",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T11b",
+      "test_name": "test_browser_dismissal_has_no_persistent_effect",
+      "status": "INFRA_BLOCKED",
+      "blockers": "shared browser with network/cookie capture",
+      "source": "SPDWEBAPP/MISC/test/cases/alerts.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T01a",
+      "test_name": "test_dashboard_selects_only_active_announcements",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T01b",
+      "test_name": "test_next_dashboard_read_reflects_activation_change",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T01c",
+      "test_name": "test_announcement_order_requires_product_rule",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q1 ordering",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T02a",
+      "test_name": "test_dashboard_empty_or_inactive_only_has_no_table",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T03a",
+      "test_name": "test_announcement_create_defaults_and_string",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T03b",
+      "test_name": "test_announcement_update_changes_only_update_timestamp",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T03c",
+      "test_name": "test_unchanged_announcement_save_advances_updated_at",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T04a",
+      "test_name": "test_announcement_full_clean_rejects_missing_or_long_title",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T04b",
+      "test_name": "test_announcement_full_clean_accepts_maximum_title",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T04c",
+      "test_name": "test_future_announcement_write_validation_needs_boundary",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q5 future write validation",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T09a",
+      "test_name": "test_announcement_template_escapes_untrusted_text",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T09b",
+      "test_name": "test_announcement_template_prefers_updated_date",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T09c",
+      "test_name": "test_announcement_template_created_date_fallback",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T09d",
+      "test_name": "test_announcement_fragment_without_context_is_empty",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/announcements.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T12a",
+      "test_name": "test_spring_boundary_returns_strictly_future_calendar_date",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T12b",
+      "test_name": "test_spring_returned_wall_label_needs_normalization_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 spring local-time label",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T13a",
+      "test_name": "test_fall_returned_transition_matches_physical_rollback",
+      "status": "NEEDS_FIX",
+      "blockers": "D2 physical fall UTC instant",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T13b",
+      "test_name": "test_fall_exact_and_after_boundary_need_strictness_decision",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 exact-at semantics; D2 fall candidate",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T14a",
+      "test_name": "test_fall_candidate_boundary_must_not_become_physical_contract",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q4 candidate compatibility; D2 physical fall instant",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T15a",
+      "test_name": "test_year_rollover_keeps_next_spring_date",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T15b",
+      "test_name": "test_second_and_first_sunday_dates_across_years",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T15c",
+      "test_name": "test_chicago_calendar_is_independent_of_django_timezone",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T16a",
+      "test_name": "test_tag_none_result_uses_unavailable_message",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T16b",
+      "test_name": "test_tag_none_result_still_allows_setting_override",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T16c",
+      "test_name": "test_clock_or_timezone_failure_needs_error_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q6 utility exception response/logging",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T16d",
+      "test_name": "test_tag_dependency_exception_needs_fallback_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q6 failure isolation and logging",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T16e",
+      "test_name": "test_setting_lookup_failure_needs_database_error_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q6 database failure response",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T16f",
+      "test_name": "test_injected_does_not_exist_keeps_tag_default",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/calendar-failures.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T17a",
+      "test_name": "test_resolver_contains_no_misc_view",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T17b",
+      "test_name": "test_direct_view_context_messages_without_public_endpoint",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T17c",
+      "test_name": "test_unused_view_lifecycle_needs_decision",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q7 retire/repair/mount policy; D3 wrong template path",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T18a",
+      "test_name": "test_eligible_roles_receive_global_active_content",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T19a",
+      "test_name": "test_anonymous_dashboard_redirect_discloses_no_fragment",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T19b",
+      "test_name": "test_any_new_member_combination_redirects_before_alert_render",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T20a",
+      "test_name": "test_missing_profile_dashboard_needs_response_policy",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q8 AUTHENTICATE response policy; D4 missing-profile exception",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T20b",
+      "test_name": "test_home_has_no_announcement_or_clock_integration",
+      "status": "READY",
+      "blockers": "none beyond shared harness",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    },
+    {
+      "domain": "MISC",
+      "id": "MISC-T30a",
+      "test_name": "test_dashboard_read_failure_requires_fragment_isolation_rule",
+      "status": "POLICY_BLOCKED",
+      "blockers": "Q6 shared rendering failure response/logging",
+      "source": "SPDWEBAPP/MISC/test/cases/integration.md"
+    }
+  ]
+}

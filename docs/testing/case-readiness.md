@@ -1,7 +1,8 @@
 # Regression case design readiness
 
 Wave 1.5 expands all 217 original groups into 677 independently named designs.
-These are pseudocode specifications, not implemented or executed tests. Each
+This table preserves the design classifications; Wave 2 now implements and
+verifies all 393 READY cases. See [execution results](wave-2-results.md). Each
 domain index links the original groups to its new cases and records all blockers.
 
 | Domain index | Original groups | Named designs | READY | NEEDS_FIX | POLICY_BLOCKED | INFRA_BLOCKED |
@@ -19,7 +20,6 @@ after the shared harness and discovery are verified. It does not claim execution
 or establish business approval. Cases requiring an undefined policy use
 POLICY_BLOCKED even if they also need a defect fix or PostgreSQL/browser support.
 
-Start Wave 2 with [the fixture contract](fixture-contract.md), then choose cases
-from the READY columns. Keep defect regressions/fixes and policy decisions
-separately reviewable. Do not turn blocked cases into passing coverage with
+Use [the implemented fixture contract](fixture-contract.md) for further tests.
+Keep defect regressions/fixes and policy decisions separately reviewable. Do not turn blocked cases into passing coverage with
 arbitrary assertions, skips or expected failures.

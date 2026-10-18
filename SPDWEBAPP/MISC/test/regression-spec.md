@@ -1,5 +1,8 @@
 # MISC regression specification
 
+Historical design record; Wave 2 execution is recorded in
+[wave-2-findings.md](wave-2-findings.md) and [case-map.json](case-map.json).
+
 ## Evidence and execution boundary
 
 Inspected branch `prototype/railway`, commit

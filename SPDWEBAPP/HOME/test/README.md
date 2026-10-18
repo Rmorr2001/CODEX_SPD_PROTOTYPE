@@ -1,54 +1,61 @@
-# HOME regression design
+# HOME regression tests
 
-Wave 1.5 refines 21 dense groups into 97 atomic, unexecuted case designs:
-63 READY, 6 NEEDS_FIX, 26 POLICY_BLOCKED and 2 INFRA_BLOCKED.
-READY means an implementation-ready preservation design, not approval or a passed test.
+Wave 2 implements all **63 frozen READY cases** from baseline `4b103f6` as 63
+named tests. Both `HOME.test` and `HOME` discover and pass all 63 with no skips or
+expected failures. [case-map.json](case-map.json) maps each design ID to its exact
+unittest method. A discovery check confirmed both labels match that map exactly.
+This is design-case accounting, not a measured source-coverage percentage.
 
-Start with the [inventory, roles and decisions](regression-spec.md), then the
-[case/status index and complete old-ID mapping](case-index.md).
-Detailed cases cover C01 public pages, C04 singleton lifecycle, HOME C03 admin,
-D02 demo seed integration and D03 media/composition. Demo code remains in
-`railway_demo`; AUTHENTICATE owns D01 entry and demo admin blocking.
-Other domains own their workflow rules; HOME checks cross-domain seed field shape.
+The other 34 designs remain unimplemented blockers: 6 NEEDS_FIX, 26 POLICY_BLOCKED
+and 2 INFRA_BLOCKED. See the [case/status index](case-index.md),
+[original inventory and decisions](regression-spec.md), and
+[implementation findings](wave-2-findings.md). No business policy or runtime code changed.
 
-Use the [shared fixture contract](../../../docs/testing/fixture-contract.md),
-[refinement rules](../../../docs/testing/wave-1-5-agent-prompt.md) and
-[six-domain map](../../../docs/testing/README.md). No helper is implemented here.
-All fixtures are synthetic. Never load runtime secrets, real uploads or member data.
+Scope: C01 public pages/content, C04 successful singleton/model persistence,
+HOME C03 Django admin/permissions/CSRF/reordering, D02 fictional seed integration,
+and D03 media/composition. Demo implementation remains in `railway_demo`;
+AUTHENTICATE owns persona entry/demo admin blocking. HOME seed tests inspect
+other domains' seeded fields/relations without duplicating their permission suites.
 
-Current documented commands from repository root (not run in this wave):
-
-```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test HOME
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test railway_demo
-```
-
-`HOME/tests.py` remains an assertion-free scaffold. Existing demo tests provide
-limited public-page and seed smoke assertions; the specification records their gaps.
-No executable tests, application imports, dependency installation or app checks ran.
-
-Proposed Wave 2 layout adds singular `test/__init__.py`, `assertions.py` and
-`test_public_pages.py`, `test_content_models.py`, `test_admin.py`, `test_demo_seed.py`,
-`test_media_composition.py` and `test_postgres_concurrency.py` beside these Markdown files.
-Keep reusable business state assertions separate from HTML/redirect/status adapters.
-Verify package and app-wide discovery while retaining existing demo tests.
-
-Proposed commands after the coordinator supplies the safe business/demo settings
-module paths and sets shell variable `SPD_TEST_SETTINGS_MODULE` to the relevant path:
+From repository root, the actual isolated commands used in this workspace are:
 
 ```sh
-DJANGO_SETTINGS_MODULE="$SPD_TEST_SETTINGS_MODULE" .venv/bin/python SPDWEBAPP/manage.py test HOME.test
-DJANGO_SETTINGS_MODULE="$SPD_TEST_SETTINGS_MODULE" .venv/bin/python SPDWEBAPP/manage.py test HOME
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test HOME.test --noinput
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test HOME --noinput
 ```
 
-Use business mode for actual admin/model permission checks and demo mode for composition.
-Neither mode may import runtime secret configuration. Tests use actual middleware,
-real ORM rows, `csrf_client` tokens, temporary media, `at_time` and named state snapshots.
-Model/commit failure cases distinguish DB state from filesystem residue.
-PostgreSQL races require independent connections and bounded synchronization.
-Browser controls and collected-static serving need the case-specific facilities
-listed in the index. Settings-module names and harness implementation remain coordinator-owned.
+Final package run: 63 tests, 15.240s, OK. App-label run: 63 tests, 7.747s, OK.
+Both runs reported no system-check issues. The environment path is local to this
+workspace; substitute an interpreter with the repository's dependencies elsewhere.
+The coordinator owns combined execution, the existing nine demo tests, mutation
+probes and the cross-domain mapping audit.
 
-[File-tree generator checks](../../../tools/file_tree/README.md) remain a separate
-tooling gate, not HOME business coverage. Only Markdown validation ran here;
-no measured numerical coverage or passing-suite claim is made.
+| File | Purpose |
+| --- | --- |
+| [test_public_pages.py](test_public_pages.py) | Real public routes/templates, exact roles, ordering, escaping and CSRF |
+| [test_content_models.py](test_content_models.py) | Successful ORM persistence, validation, boundaries and repeat deletion |
+| [test_admin.py](test_admin.py) | Real admin permissions, forms, CRUD/logs, JSON ordering and injected DB failure |
+| [test_demo_seed.py](test_demo_seed.py) | Exact fictional seed fields, stable identity, unrelated state and source/media boundaries |
+| [test_seed_failures.py](test_seed_failures.py) | TransactionTestCase refusals, partial DB rollback, IO failures and retry |
+| [test_media_composition.py](test_media_composition.py) | Temporary-media serving, traversal, static references, demo shell and pure cache headers |
+| [helpers.py](helpers.py) | Thin synthetic image/model constructors and standard-library HTML parser |
+
+`test/__init__.py` enables singular-package discovery. The obsolete empty
+`HOME/tests.py` was removed after package discovery was established.
+
+Tests use the [shared fixture contract](../../../docs/testing/fixture-contract.md)
+and safe `SPDWEBAPP_CORE.testing` settings. They use real models, templates,
+auth/session/message/CSRF middleware, synthetic users/images, temporary Path media,
+controlled clocks and refreshed state assertions. Seed cases explicitly enable
+DEMO_MODE, default DEMO_PUBLIC_DOMAIN to None, and use a temporary synthetic source
+root. No runtime config, real uploads/member DB, network or deployment is used.
+
+The media test URLconf intentionally binds the same real `django.views.static.serve`
+view to each test's temporary document_root, because core URLs capture MEDIA_ROOT
+at import. Demo cases explicitly install actual demo URL/middleware/context settings.
+Only deliberate IO/DB failures or file-copy observation boundaries are mocked.
+DB rollback assertions never claim filesystem compensation. PostgreSQL races,
+file-retention policy, browser/static integration and unsafe behavior remain blocked.
+
+[File-tree generator verification](../../../tools/file_tree/README.md) is a separate
+tooling gate and is not counted as new HOME business coverage.

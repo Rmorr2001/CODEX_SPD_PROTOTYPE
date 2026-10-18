@@ -1,0 +1,242 @@
+{
+  "MISC-T01a": [
+    "MISC.test.test_integration.IntegrationTests.test_dashboard_selects_only_active_announcements"
+  ],
+  "MISC-T01b": [
+    "MISC.test.test_integration.IntegrationTests.test_next_dashboard_read_reflects_activation_change"
+  ],
+  "MISC-T02a": [
+    "MISC.test.test_integration.IntegrationTests.test_dashboard_empty_or_inactive_only_has_no_table"
+  ],
+  "MISC-T03a": [
+    "MISC.test.test_records.RecordTests.test_announcement_create_defaults_and_string"
+  ],
+  "MISC-T03b": [
+    "MISC.test.test_records.RecordTests.test_announcement_update_changes_only_update_timestamp"
+  ],
+  "MISC-T03c": [
+    "MISC.test.test_records.RecordTests.test_unchanged_announcement_save_advances_updated_at"
+  ],
+  "MISC-T04a": [
+    "MISC.test.test_records.RecordTests.test_announcement_full_clean_rejects_missing_or_long_title"
+  ],
+  "MISC-T04b": [
+    "MISC.test.test_records.RecordTests.test_announcement_full_clean_accepts_maximum_title"
+  ],
+  "MISC-T05a": [
+    "MISC.test.test_records.RecordTests.test_dst_model_default_optional_name_and_string"
+  ],
+  "MISC-T05b": [
+    "MISC.test.test_records.RecordTests.test_dst_model_update_keeps_other_settings"
+  ],
+  "MISC-T05c": [
+    "MISC.test.test_records.RecordTests.test_dst_model_full_clean_rejects_long_name"
+  ],
+  "MISC-T06a": [
+    "MISC.test.test_alerts.AlertTests.test_tag_without_setting_shows_spring_message"
+  ],
+  "MISC-T06b": [
+    "MISC.test.test_alerts.AlertTests.test_tag_without_setting_shows_fall_message"
+  ],
+  "MISC-T06c": [
+    "MISC.test.test_alerts.AlertTests.test_blank_override_preserves_computed_message"
+  ],
+  "MISC-T07a": [
+    "MISC.test.test_alerts.AlertTests.test_active_override_replaces_message_and_newlines"
+  ],
+  "MISC-T07b": [
+    "MISC.test.test_alerts.AlertTests.test_inactive_setting_hides_dst_fragment"
+  ],
+  "MISC-T07c": [
+    "MISC.test.test_alerts.AlertTests.test_explicit_reactivation_appears_on_next_read"
+  ],
+  "MISC-T09a": [
+    "MISC.test.test_records.RecordTests.test_announcement_template_escapes_untrusted_text"
+  ],
+  "MISC-T09b": [
+    "MISC.test.test_records.RecordTests.test_announcement_template_prefers_updated_date"
+  ],
+  "MISC-T09c": [
+    "MISC.test.test_records.RecordTests.test_announcement_template_created_date_fallback"
+  ],
+  "MISC-T09d": [
+    "MISC.test.test_records.RecordTests.test_announcement_fragment_without_context_is_empty"
+  ],
+  "MISC-T11a": [
+    "MISC.test.test_alerts.AlertTests.test_fragment_controls_have_local_targets"
+  ],
+  "MISC-T12a": [
+    "MISC.test.test_calendar.CalendarTests.test_spring_boundary_returns_strictly_future_calendar_date"
+  ],
+  "MISC-T15a": [
+    "MISC.test.test_calendar.CalendarTests.test_year_rollover_keeps_next_spring_date"
+  ],
+  "MISC-T15b": [
+    "MISC.test.test_calendar.CalendarTests.test_second_and_first_sunday_dates_across_years"
+  ],
+  "MISC-T15c": [
+    "MISC.test.test_calendar.CalendarTests.test_chicago_calendar_is_independent_of_django_timezone"
+  ],
+  "MISC-T16a": [
+    "MISC.test.test_alerts.AlertTests.test_tag_none_result_uses_unavailable_message"
+  ],
+  "MISC-T16b": [
+    "MISC.test.test_alerts.AlertTests.test_tag_none_result_still_allows_setting_override"
+  ],
+  "MISC-T16f": [
+    "MISC.test.test_alerts.AlertTests.test_injected_does_not_exist_keeps_tag_default"
+  ],
+  "MISC-T17a": [
+    "MISC.test.test_integration.IntegrationTests.test_resolver_contains_no_misc_view"
+  ],
+  "MISC-T17b": [
+    "MISC.test.test_integration.IntegrationTests.test_direct_view_context_messages_without_public_endpoint"
+  ],
+  "MISC-T18a": [
+    "MISC.test.test_integration.IntegrationTests.test_eligible_roles_receive_global_active_content"
+  ],
+  "MISC-T19a": [
+    "MISC.test.test_integration.IntegrationTests.test_anonymous_dashboard_redirect_discloses_no_fragment"
+  ],
+  "MISC-T19b": [
+    "MISC.test.test_integration.IntegrationTests.test_any_new_member_combination_redirects_before_alert_render"
+  ],
+  "MISC-T20b": [
+    "MISC.test.test_integration.IntegrationTests.test_home_has_no_announcement_or_clock_integration"
+  ],
+  "MISC-T21a": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_anonymous_nonstaff_and_inactive_staff_cannot_enter_admin"
+  ],
+  "MISC-T21b": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_staff_without_view_or_change_cannot_list_models"
+  ],
+  "MISC-T21c": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_view_permission_allows_read_without_writes"
+  ],
+  "MISC-T21d": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_add_permission_is_required_for_direct_add_post"
+  ],
+  "MISC-T21e": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_change_permission_is_required_for_direct_edit_post"
+  ],
+  "MISC-T21f": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_delete_permission_is_required_for_detail_delete"
+  ],
+  "MISC-T21g": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_hidden_bulk_delete_cannot_bypass_delete_permission"
+  ],
+  "MISC-T21h": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_permissions_are_isolated_by_model"
+  ],
+  "MISC-T21i": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_chapter_role_and_record_creator_do_not_restrict_admin_read"
+  ],
+  "MISC-T21j": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_delete_only_permission_does_not_grant_changelist"
+  ],
+  "MISC-T21k": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_synthetic_superuser_can_read_both_models"
+  ],
+  "MISC-T21l": [
+    "MISC.test.test_admin_permissions.AdminPermissionTests.test_admin_does_not_require_member_profile"
+  ],
+  "MISC-T22a": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_announcement_admin_exposes_only_title_and_content"
+  ],
+  "MISC-T22b": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_announcement_admin_add_sets_defaults_and_add_log"
+  ],
+  "MISC-T22c": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_announcement_admin_edit_preserves_inactive_flag"
+  ],
+  "MISC-T22d": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_announcement_admin_ignores_excluded_field_payloads"
+  ],
+  "MISC-T22e": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_save_continue_and_addanother_have_concrete_redirects"
+  ],
+  "MISC-T22f": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_saveasnew_requires_add_permission_even_when_button_hidden"
+  ],
+  "MISC-T22g": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_authorized_saveasnew_creates_separate_announcement"
+  ],
+  "MISC-T22i": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_add_only_staff_can_create_without_list_permission"
+  ],
+  "MISC-T22j": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_announcement_add_flags_redirect_without_extra_inserts"
+  ],
+  "MISC-T23a": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_dst_admin_form_and_list_expose_name_and_active"
+  ],
+  "MISC-T23b": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_dst_admin_add_records_active_name_and_log"
+  ],
+  "MISC-T23c": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_dst_admin_edit_omitted_checkbox_disables_setting"
+  ],
+  "MISC-T23d": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_dst_admin_name_normalization_accepts_blank_values"
+  ],
+  "MISC-T23e": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_repeated_dst_edit_does_not_insert_duplicate"
+  ],
+  "MISC-T23f": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_dst_admin_save_flags_and_saveasnew_action"
+  ],
+  "MISC-T23g": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_dst_add_flags_redirect_without_extra_inserts"
+  ],
+  "MISC-T24a": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_admin_invalid_fields_return_errors_without_writes"
+  ],
+  "MISC-T24b": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_missing_and_malformed_admin_object_ids_do_not_mutate"
+  ],
+  "MISC-T24c": [
+    "MISC.test.test_admin_writes.AdminWriteTests.test_unknown_or_empty_bulk_action_has_no_state_effect"
+  ],
+  "MISC-T25a": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_admin_mutations_reject_missing_or_bad_csrf_token"
+  ],
+  "MISC-T25b": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_admin_valid_csrf_pair_allows_intended_write"
+  ],
+  "MISC-T25c": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_demo_boundary_blocks_model_admin_even_with_permission"
+  ],
+  "MISC-T26a": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_detail_delete_confirmation_get_is_read_only"
+  ],
+  "MISC-T26b": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_detail_delete_removes_only_target_and_logs_once"
+  ],
+  "MISC-T26c": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_bulk_delete_confirmation_preserves_selected_rows"
+  ],
+  "MISC-T26d": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_confirmed_bulk_delete_keeps_unselected_records"
+  ],
+  "MISC-T26e": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_repeated_stale_delete_is_non_mutating"
+  ],
+  "MISC-T27a": [
+    "MISC.test.test_transactions.AdminTransactionTests.test_admin_save_log_failure_rolls_back_model_write"
+  ],
+  "MISC-T27b": [
+    "MISC.test.test_transactions.AdminTransactionTests.test_admin_model_save_failure_creates_no_audit_entry"
+  ],
+  "MISC-T27c": [
+    "MISC.test.test_transactions.AdminTransactionTests.test_detail_delete_failure_rolls_back_preceding_delete_log"
+  ],
+  "MISC-T29a": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_admin_history_is_scoped_to_object_and_actor"
+  ],
+  "MISC-T29b": [
+    "MISC.test.test_admin_actions.AdminActionTests.test_admin_history_denies_staff_without_view_or_change"
+  ],
+  "MISC-T29c": [
+    "MISC.test.test_integration.IntegrationTests.test_orm_and_reader_actions_do_not_create_admin_logs"
+  ]
+}

@@ -1,48 +1,53 @@
 # PARLEYPRO regression testing
 
-Wave 1.5 is documentation only: 40 original groups now map to 114 named designs.
-58 are READY, 5 NEEDS_FIX, 48 POLICY_BLOCKED and 3 INFRA_BLOCKED.
-No application tests or case designs were executed by this agent.
+58 named unittest methods implement all 58 frozen READY designs. The remaining 56 designs
+stay blocked: 5 NEEDS_FIX, 48 POLICY_BLOCKED and 3 INFRA_BLOCKED. No unsafe close or other
+blocked behavior is treated as a passing contract. No coverage percentage is claimed.
 
-- [Inventory, roles, sources, decisions and Wave 2 order](regression-spec.md)
-- [Case index, status counts and complete old-to-new mapping](case-index.md)
-- [Creation](cases/creation.md), [access/CSRF](cases/access.md), [voting](cases/voting.md)
-- [Close/reset](cases/closure.md), [failures/races](cases/failures-and-races.md)
-- [Reads/routes](cases/reads-and-routes.md), [admin C03](cases/admin.md)
-- [Model/retention](cases/model-boundaries.md), [browser](cases/browser.md)
+- [Executable case mapping](case-map.json)
+- [Implementation findings and approved format clarifications](implementation-findings.md)
+- [Design inventory, roles and decisions](regression-spec.md)
+- [Frozen case index and all 40 original-to-new mappings](case-index.md)
 - [Shared fixture contract](../../../docs/testing/fixture-contract.md)
-- [Refinement contract](../../../docs/testing/wave-1-5-agent-prompt.md)
-- [Shared testing map](../../../docs/testing/README.md)
-- [Environment/setup](../../railway_demo/README.md)
+- [Wave 2 goals](../../../docs/testing/wave-2-goals.md)
 
-Source baseline is `7e25ac2`; refinement baseline is `c8bbc4e`.
-Existing `../tests.py` is an empty placeholder. Demo tests check executive polling
-page renders and one ACTIVE Aye write; they do not establish close safety or races.
-No measured coverage percentage is available. READY means ready design, not approval.
-
-Current documented commands from repository root, for coordinator/later execution:
+Run from the repository root with the coordinator's isolated interpreter/settings:
 
 ```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py check
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test railway_demo
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test PARLEYPRO
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test PARLEYPRO.test --noinput
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test PARLEYPRO --noinput
 ```
 
-The app label currently finds the placeholder. Proposed Wave 2 package command:
+The interpreter path is the actual execution environment, not a portable prerequisite.
+An equivalent configured virtual environment can use the same standalone settings and
+labels. No runtime secret configuration, real database, network or demo seed is required.
+Both discovery modes passed with zero skips or expected failures:
 
-```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test PARLEYPRO.test
-```
+| Scope | Discovered/executed | Result |
+| --- | ---: | --- |
+| PARLEYPRO.test | 58 | PASS (5.177s) |
+| PARLEYPRO | 58 | PASS (8.282s) |
 
-Wave 2 must verify both discovery modes and use the shared contract's safe business/demo
-settings rather than assume the current runtime-secret-loading settings are isolated tests.
-No final settings-module name is invented here. No helper or executable package exists yet.
+System checks reported no issues. Frozen-ID/method mapping checks and scoped diff checks
+passed. These are suite counts, not a statement/branch coverage measurement.
 
-Proposed layout is `test/__init__.py`, `assertions.py`, and workflow `test_*.py` modules
-listed in the specification. Use shared identity/request/clock/snapshot helpers, real ORM
-rows and explicit roles. Use real PostgreSQL separate connections for races; a browser
-runner with fake timers/intercepted fetch is required for browser designs. Business-mode
-admin uses actual permissions while demo admin blocking remains separately covered.
+Executable layout: `test_creation.py`, `test_access.py`, `test_votes.py`,
+`test_closure.py`, `test_reads.py`, `test_admin.py`; `support.py` holds thin ORM poll/choice
+fixtures and domain state assertions. The obsolete empty `../tests.py` has been removed.
+`test/__init__.py` enables singular-package discovery. Shared identity, clock, CSRF,
+snapshot and temporary-media facilities come from `SPDWEBAPP_CORE.testing`.
 
-Unsafe close, partial-write/race behavior, open-poll/dispatch/eligibility policy and admin
-retention are the major blockers. Coordinator verification precedes any implementation.
+Tests use explicit narrow role sets, real requests/forms/decorators/templates/ORM/admin,
+fresh state comparisons, unchanged actor/target metadata and enforced-CSRF clients.
+The only patches isolate actual clock imports; no business behavior is mocked.
+Pure icon formatting uses SimpleTestCase; ORM cases use RegressionTestCase.
+
+The `cases/` workflow files remain design specifications. PostgreSQL races and browser
+work need their named facilities and policy/fix decisions. No runnable race/browser test
+or skip/expected-failure placeholder is counted. AUTHENTICATE owns shared decorator
+unit contracts and public-demo admin blocking; these tests own poll-route integration
+and real business-mode admin permissions. Future blocked implementations must resolve
+POL-01–09 and DEF-01–08 before passing-test credit.
+
+Source design baseline: `7e25ac2`; refinement: `c8bbc4e`; implementation freeze: `4b103f6`.
+Coordinator owns combined/demo-suite runs, mapping audit and mutation effectiveness.

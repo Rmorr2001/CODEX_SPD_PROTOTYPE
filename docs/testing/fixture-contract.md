@@ -1,9 +1,8 @@
 # Shared fixture contract for Wave 2
 
-This is the agreed design interface for implementing the regression suite, not
-installed test infrastructure. The coordinator owns its eventual implementation
-under `SPDWEBAPP_CORE/testing/`. Domain agents reference this contract rather
-than inventing parallel factories. Business policy is not decided by fixtures.
+Implemented under `SPDWEBAPP/SPDWEBAPP_CORE/testing/`, with 11 harness tests.
+The coordinator owns these shared helpers; domains keep thin workflow-specific
+constructors beside their tests. Business policy is not decided by fixtures.
 
 ## Identity and roles
 
@@ -32,7 +31,7 @@ make_profile(user, *, roles=(), **profile_fields) -> Brother_Profile
 
 ## Requests and isolation
 
-Provide two safe settings modes: `business` uses core routes and real admin
+Two standalone settings modes are available: `business` uses core routes and real admin
 without demo blocking; `demo` uses actual demo URLs and middleware. Both use a
 synthetic key, test-only database, temporary media, local hosts and no external
 services or runtime secret imports. Keep real auth, session, message and CSRF
@@ -48,7 +47,8 @@ at_time(aware_datetime)   # context manager: patch the clocks consumed by case
 `login_actor` must not be used as evidence of password-login behavior. Login
 cases submit credentials. CSRF cases acquire a real cookie/token pair from the
 appropriate rendered form and specify absent/bad/valid variants. `at_time`
-patches each actual import/model clock used; local datetime/DST needs its own
+patches `django.utils.timezone.now`; use its `targets=(...)` option for additional
+fully qualified imported clock references. Local datetime/DST needs its own
 aware clock boundary. Do not assume patching one module freezes all time.
 
 Domain-local fixtures are thin real-ORM constructors with explicit owner,
@@ -61,7 +61,7 @@ before = snapshot_scope(named_rows, relations=(), files=())
 assert_unchanged(before, except_fields={...})
 ```
 
-These are proposed assertion helpers, not deep snapshots of the whole database.
+These helpers capture selected state, not deep snapshots of the whole database.
 Each case names affected rows/relations/files, then refreshes those records.
 Denied requests may add a message or rotate CSRF metadata; compare session
 identity rather than requiring an identical session blob. File assertions check
@@ -73,12 +73,18 @@ barriers and bounded timeouts on the intended PostgreSQL backend.
 
 ## Discovery and availability
 
-Wave 2 adds `test/__init__.py` and `test/test_*.py` under each domain, verifies
-explicit-package and app-wide discovery, and resolves old placeholder modules
-without dropping existing demo tests. Current `.venv` commands in each README
-remain distinct from proposed commands/settings. No helper above exists yet.
+Each domain has `test/__init__.py`, executable `test_*.py` files and an audited
+`case-map.json`. Explicit-package and app-label discovery both passed; the empty
+app-root `tests.py` placeholders were removed. Existing demo tests remain intact.
 
-`READY` case designs share the ordinary harness/discovery prerequisite. Only
-additional case-specific facilities (PostgreSQL, browser, special storage)
-justify `INFRA_BLOCKED`; do not mark every design blocked merely because Wave 2
-has not started.
+Use `SPDWEBAPP_CORE.testing.settings` for business/admin tests and
+`SPDWEBAPP_CORE.testing.demo_settings` for the original demo suite. Both are
+standalone; neither imports runtime settings or `secret_config`. Demo settings
+copy the template configuration before adding the real demo context processor.
+`RegressionTestCase` provides per-test temporary media; autocommit-dependent
+error paths use `TransactionTestCase` and `temporary_media()` explicitly.
+
+Run the full mapping/discovery/execution audit as documented in the
+[root testing map](README.md). PostgreSQL concurrency, browser behavior and other
+case-specific facilities remain explicitly blocked; SQLite success does not
+verify them. See [actual Wave 2 results](wave-2-results.md).

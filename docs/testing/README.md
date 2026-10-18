@@ -1,65 +1,94 @@
-# Backend regression coverage
+# Backend regression suite
 
-Wave 1 inventories backend behavior. Wave 1.5 turns its bundled scenarios into
-named case designs with short GIVEN / WHEN / THEN steps. Wave 2 implements the
-reviewed designs. These are specifications, not executable tests or coverage.
+Wave 2 implements all **393 READY designs** frozen at `4b103f6`. The audited
+combined suite runs 404 tests: 393 domain methods and 11 shared-harness tests.
+The existing nine demo tests run separately. There are no skipped or expected
+failures in these passing counts. See [actual results](wave-2-results.md) and
+[the goals declared before dispatch](wave-2-goals.md).
 
-| Slice | Test and documentation entry point | Original Wave 1 groups |
-| --- | --- | --- |
-| AUTHENTICATE | [Identity and members](../../SPDWEBAPP/AUTHENTICATE/test/README.md) | 55 |
-| PARLEYPRO | [Polling](../../SPDWEBAPP/PARLEYPRO/test/README.md) | 40 |
-| PHILANTHROPY | [Service hours](../../SPDWEBAPP/PHILANTHROPY/test/README.md) | 33 |
-| NEWMEMBER | [New-member marks](../../SPDWEBAPP/NEWMEMBER/test/README.md) | 38 |
-| HOME | [Public content and demo integration](../../SPDWEBAPP/HOME/test/README.md) | 21 |
-| MISC | [Announcements and alerts](../../SPDWEBAPP/MISC/test/README.md) | 30 |
+| Domain | Tests and documentation | Verified READY | Blocked designs |
+| --- | --- | ---: | ---: |
+| AUTHENTICATE | [Identity and members](../../SPDWEBAPP/AUTHENTICATE/test/README.md) | 76 | 81 |
+| PARLEYPRO | [Polling](../../SPDWEBAPP/PARLEYPRO/test/README.md) | 58 | 56 |
+| PHILANTHROPY | [Service hours](../../SPDWEBAPP/PHILANTHROPY/test/README.md) | 66 | 52 |
+| NEWMEMBER | [New-member marks](../../SPDWEBAPP/NEWMEMBER/test/README.md) | 50 | 38 |
+| HOME | [Public content and demo integration](../../SPDWEBAPP/HOME/test/README.md) | 63 | 34 |
+| MISC | [Announcements and alerts](../../SPDWEBAPP/MISC/test/README.md) | 80 | 23 |
+| Total | | 393 | 284 |
 
-Six `gpt-6.1-sol` agents at medium reasoning produced the original 217 case groups
-in commit `c8bbc4e`. Each domain now links those original IDs to the new named
-case designs. A group may split into several tests or explicit parameter sets.
-The historical group counts above are not passing-test counts.
+## Setup and commands
 
-[Current case readiness](case-readiness.md) lists the 677 named designs and
-primary statuses. [The Wave 1.5 handoff](wave-1-5-review.md) explains verification
-and the boundary between a readable specification and an executable suite.
+From the repository root, Python 3.12:
 
-For a short example, read
-[casting one Aye vote](../../SPDWEBAPP/PARLEYPRO/test/cases/voting.md#pp-07a--test_cast_aye_creates_own_current_choice).
-It names the fixture, request, response and records that must remain unchanged.
-
-## Readiness and shared setup
-
-- `READY`: complete preservation design; implement after the shared harness.
-- `NEEDS_FIX`: a specific defect prevents the required safe result.
-- `POLICY_BLOCKED`: the expected result needs a named business/transport decision.
-- `INFRA_BLOCKED`: an additional facility such as PostgreSQL or a browser is needed.
-
-Each case lists its primary status and all additional blockers. READY is a design
-assessment, not a claim the case ran. See each domain's case index for details.
-
-[The shared fixture contract](fixture-contract.md) fixes the interface for users,
-roles, clocks, requests, storage and state assertions. It is the Wave 2 target;
-the helpers/settings do not exist yet. It does not settle business-policy questions.
-
-The user-selected convention is `SPDWEBAPP/<DOMAIN>/test/` (singular):
-
-```text
-test/
-  README.md                 entry point and commands
-  regression-spec.md        inventory, decisions and case links
-  cases/*.md                named pseudocode cases grouped by workflow
-  test_*.py                 future Wave 2 executable tests
+```sh
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements-test.txt
+.venv/bin/python -m coverage run tools/testing/run_regressions.py
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.demo_settings .venv/bin/python -m coverage run --append SPDWEBAPP/manage.py test railway_demo --noinput
+.venv/bin/python -m coverage report
+.venv/bin/python -m coverage xml
+.venv/bin/python tools/testing/probe_regressions.py
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings .venv/bin/python SPDWEBAPP/manage.py check
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings .venv/bin/python SPDWEBAPP/manage.py makemigrations --check --dry-run
+.venv/bin/python -m unittest discover -s tools/file_tree -p 'test_*.py'
 ```
 
-Existing placeholder `tests.py` files are unchanged. Discovery must be verified
-when executable packages are introduced; no empty package is added just for docs.
+For a scoped run, use the business settings above with
+`SPDWEBAPP/manage.py test PARLEYPRO.test --noinput` or app label `PARLEYPRO`.
+Both discovery forms were verified for every domain. Run the mapping audit for
+completion; plain Django discovery alone does not check the frozen inventory.
+No formatter, lint or static type-check command is configured.
 
-[The original agent prompt](wave-1-agent-prompt.md) and
-[Wave 1.5 refinement prompt](wave-1-5-agent-prompt.md) record design standards
-and file ownership. Each domain owns its business assertions.
+`run_regressions.py` rejects missing, invalid and undiscovered READY mappings,
+then requires every mapped method to finish successfully. Skips, expected
+failures and unexpected successes fail the audit. It writes
+`work/test-results.json`, including all 284 blocked designs and their reasons.
+`probe_regressions.py` applies one bounded in-memory behavior mutation per domain:
+clean test must pass, mutant must fail by assertion, restored test must pass.
+It never edits source files and writes `work/mutation-results.json`.
 
-[Coordinator review and baseline](wave-1-review.md) records actual execution,
-shared ownership decisions, source spot checks and unresolved policy boundaries.
+GitHub Actions runs these checks on pull requests and pushes to
+`prototype/railway`, uploading both JSON reports and `coverage.xml`. Reports and
+coverage files are ignored locally. Coverage includes the six domains and demo
+code, excluding migrations and test code; there is no percentage floor yet.
 
-Admin cases stay with their owning domains. AUTHENTICATE covers demo entry and
-admin blocking; HOME covers cross-domain fictional seeding and media composition.
-These delivery assignments do not move code out of `railway_demo`.
+## Isolation and limits
+
+[The shared fixture contract](fixture-contract.md) describes the implemented
+`SPDWEBAPP_CORE/testing/` settings, real-ORM factories, clock, CSRF, media and
+state assertions. Tests use a fresh in-memory SQLite database, synthetic users,
+local hosts and temporary files; they do not import runtime secret configuration
+or require deployed services. Business/admin and demo settings are distinct.
+Application roles grant neither inferred roles nor staff/model permissions.
+
+The [677-design inventory](wave-2-inventory.json) preserves every original status:
+393 READY, 41 NEEDS_FIX, 237 POLICY_BLOCKED and 6 INFRA_BLOCKED. The last three
+categories receive no passing-test credit. PostgreSQL concurrency, browser
+behavior, deployment and unresolved business rules remain unverified. SQLite
+success and code coverage percentages do not settle these boundaries.
+
+## Where to work
+
+The user-selected singular directory keeps tests recognizable beside their docs:
+
+```text
+SPDWEBAPP/<DOMAIN>/test/
+  README.md                 commands, purpose and boundaries
+  regression-spec.md        inventory and decisions
+  cases/*.md                named GIVEN / WHEN / THEN designs
+  case-map.json             READY ID -> fully qualified unittest methods
+  test_*.py                 executable regression tests
+  support.py or helpers.py  domain-specific synthetic fixtures, when needed
+```
+
+Maintain one authoritative explanation and link to it. Update specifications,
+case mappings and meaningful assertions with behavior changes. Do not make
+unsafe behavior contractual just to convert a blocker into a green test.
+Admin cases remain with their domains; demo entry belongs to AUTHENTICATE and
+cross-domain fictional seeding/media composition belongs to HOME. These testing
+assignments do not move runtime code out of `railway_demo`.
+
+History: [Wave 1 review](wave-1-review.md), [Wave 1.5 review](wave-1-5-review.md),
+[design readiness](case-readiness.md), [original agent prompt](wave-1-agent-prompt.md)
+and [refinement prompt](wave-1-5-agent-prompt.md). The original 217 groups became
+677 named designs; those historical design counts are not passing-test counts.

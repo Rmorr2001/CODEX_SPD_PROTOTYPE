@@ -1,0 +1,191 @@
+{
+  "HOME-T01a": [
+    "HOME.test.test_public_pages.PublicPageTests.test_public_routes_render_for_narrow_actors"
+  ],
+  "HOME-T01b": [
+    "HOME.test.test_public_pages.PublicPageTests.test_home_without_banner_omits_banner_image"
+  ],
+  "HOME-T01c": [
+    "HOME.test.test_public_pages.PublicPageTests.test_history_empty_profile_count_is_zero"
+  ],
+  "HOME-T01d": [
+    "HOME.test.test_public_pages.PublicPageTests.test_rush_without_slides_renders_empty_slideshow"
+  ],
+  "HOME-T01e": [
+    "HOME.test.test_public_pages.PublicPageTests.test_board_without_officers_has_empty_message"
+  ],
+  "HOME-T01f": [
+    "HOME.test.test_public_pages.PublicPageTests.test_public_shell_without_actor_profile_uses_fallback"
+  ],
+  "HOME-T02a": [
+    "HOME.test.test_public_pages.PublicPageTests.test_active_count_uses_distinct_role_membership"
+  ],
+  "HOME-T02c": [
+    "HOME.test.test_public_pages.PublicPageTests.test_board_role_order_and_multi_office_pairs"
+  ],
+  "HOME-T03a": [
+    "HOME.test.test_public_pages.PublicPageTests.test_slide_order_preserves_all_ties"
+  ],
+  "HOME-T03b": [
+    "HOME.test.test_public_pages.PublicPageTests.test_slide_caption_and_image_attributes_escape_markup"
+  ],
+  "HOME-T03c": [
+    "HOME.test.test_public_pages.PublicPageTests.test_board_fields_escape_injected_markup"
+  ],
+  "HOME-T03d": [
+    "HOME.test.test_public_pages.PublicPageTests.test_shell_errors_messages_and_username_escape"
+  ],
+  "HOME-T03e": [
+    "HOME.test.test_public_pages.PublicPageTests.test_configured_interest_link_renders_in_three_buttons"
+  ],
+  "HOME-T03f": [
+    "HOME.test.test_public_pages.PublicPageTests.test_board_optional_fields_use_fallbacks"
+  ],
+  "HOME-T04c": [
+    "HOME.test.test_public_pages.PublicPageTests.test_missing_nonempty_image_keeps_page_renderable"
+  ],
+  "HOME-T05a": [
+    "HOME.test.test_public_pages.PublicPageTests.test_public_head_and_irrelevant_query_are_read_only"
+  ],
+  "HOME-T05c": [
+    "HOME.test.test_public_pages.PublicPageTests.test_public_unsafe_request_rejects_bad_csrf"
+  ],
+  "HOME-T06a": [
+    "HOME.test.test_media_composition.MediaCompositionTests.test_media_serves_synthetic_image_bytes"
+  ],
+  "HOME-T06b": [
+    "HOME.test.test_media_composition.MediaCompositionTests.test_missing_media_and_directories_do_not_disclose"
+  ],
+  "HOME-T06c": [
+    "HOME.test.test_media_composition.MediaCompositionTests.test_lexical_media_traversal_is_denied"
+  ],
+  "HOME-T07a": [
+    "HOME.test.test_media_composition.MediaCompositionTests.test_public_templates_reference_local_assets"
+  ],
+  "HOME-T07c": [
+    "HOME.test.test_media_composition.MediaCompositionTests.test_demo_shell_context_controls_banner"
+  ],
+  "HOME-T07d": [
+    "HOME.test.test_media_composition.CacheHeaderTests.test_explorer_cache_header_is_scoped"
+  ],
+  "HOME-T08a": [
+    "HOME.test.test_content_models.ContentModelTests.test_singleton_initial_create_persists_value"
+  ],
+  "HOME-T08b": [
+    "HOME.test.test_content_models.ContentModelTests.test_successful_singleton_replacement_has_one_new_value"
+  ],
+  "HOME-T08c": [
+    "HOME.test.test_content_models.ContentModelTests.test_singleton_normal_update_and_repeat_remain_single"
+  ],
+  "HOME-T09a": [
+    "HOME.test.test_content_models.ContentModelTests.test_model_full_clean_rejects_required_and_length_errors"
+  ],
+  "HOME-T12a": [
+    "HOME.test.test_content_models.ContentModelTests.test_slide_create_and_edit_persists_target_fields"
+  ],
+  "HOME-T12b": [
+    "HOME.test.test_content_models.ContentModelTests.test_slide_integer_order_and_caption_boundary"
+  ],
+  "HOME-T12c": [
+    "HOME.test.test_content_models.ContentModelTests.test_slide_row_delete_is_repeatable"
+  ],
+  "HOME-T13a": [
+    "HOME.test.test_admin.AdminTests.test_admin_anonymous_and_nonstaff_are_denied"
+  ],
+  "HOME-T13b": [
+    "HOME.test.test_admin.AdminTests.test_admin_individual_model_permissions_are_distinct"
+  ],
+  "HOME-T13c": [
+    "HOME.test.test_admin.AdminTests.test_admin_unsafe_requests_require_real_csrf"
+  ],
+  "HOME-T13d": [
+    "HOME.test.test_admin.AdminTests.test_admin_superuser_can_read_home_models"
+  ],
+  "HOME-T14a": [
+    "HOME.test.test_admin.AdminTests.test_admin_invalid_forms_do_not_run_singleton_hooks"
+  ],
+  "HOME-T14b": [
+    "HOME.test.test_admin.AdminTests.test_admin_add_creates_home_row_and_audit"
+  ],
+  "HOME-T14c": [
+    "HOME.test.test_admin.AdminTests.test_admin_change_updates_home_row_and_audit"
+  ],
+  "HOME-T14d": [
+    "HOME.test.test_admin.AdminTests.test_admin_delete_confirmation_and_cancel"
+  ],
+  "HOME-T14e": [
+    "HOME.test.test_admin.AdminTests.test_admin_bulk_delete_removes_only_selected_rows"
+  ],
+  "HOME-T14f": [
+    "HOME.test.test_admin.AdminTests.test_admin_stale_object_redirects_without_writes"
+  ],
+  "HOME-T14g": [
+    "HOME.test.test_admin.AdminTests.test_admin_db_failure_rolls_back_singleton_and_audit"
+  ],
+  "HOME-T15a": [
+    "HOME.test.test_admin.AdminTests.test_sortable_requires_post_and_change_permission"
+  ],
+  "HOME-T15b": [
+    "HOME.test.test_admin.AdminTests.test_sortable_updates_only_named_orders_and_repeats"
+  ],
+  "HOME-T15c": [
+    "HOME.test.test_admin.AdminTests.test_sortable_malformed_batches_are_not_partially_written"
+  ],
+  "HOME-T15d": [
+    "HOME.test.test_admin.AdminTests.test_sortable_empty_batch_is_noop"
+  ],
+  "HOME-T15f": [
+    "HOME.test.test_admin.AdminTests.test_admin_new_slide_uses_maximum_plus_one"
+  ],
+  "HOME-T16a": [
+    "HOME.test.test_demo_seed.SeedTests.test_first_seed_creates_exact_fictional_identities"
+  ],
+  "HOME-T16b": [
+    "HOME.test.test_demo_seed.SeedTests.test_first_seed_creates_public_content_and_media"
+  ],
+  "HOME-T16c": [
+    "HOME.test.test_demo_seed.SeedTests.test_first_seed_creates_alert_and_dashboard_manifest"
+  ],
+  "HOME-T16d": [
+    "HOME.test.test_demo_seed.SeedTests.test_first_seed_populates_hours_and_votes"
+  ],
+  "HOME-T16e": [
+    "HOME.test.test_demo_seed.SeedTests.test_first_seed_populates_newmember_marks"
+  ],
+  "HOME-T16f": [
+    "HOME.test.test_demo_seed.SeedTests.test_first_seed_populates_open_and_closed_polls"
+  ],
+  "HOME-T17a": [
+    "HOME.test.test_demo_seed.SeedTests.test_repeat_seed_preserves_stable_row_identity"
+  ],
+  "HOME-T17b": [
+    "HOME.test.test_demo_seed.SeedTests.test_repeat_seed_preserves_unrelated_synthetic_records"
+  ],
+  "HOME-T17d": [
+    "HOME.test.test_demo_seed.SeedTests.test_seed_preserves_existing_home_rows"
+  ],
+  "HOME-T18a": [
+    "HOME.test.test_seed_failures.SeedFailureTests.test_seed_non_demo_refusal_has_no_side_effects"
+  ],
+  "HOME-T18b": [
+    "HOME.test.test_seed_failures.SeedFailureTests.test_seed_refuses_credentialed_or_privileged_identity"
+  ],
+  "HOME-T18c": [
+    "HOME.test.test_seed_failures.SeedFailureTests.test_late_member_refusal_rolls_back_prior_member_writes"
+  ],
+  "HOME-T19a": [
+    "HOME.test.test_seed_failures.SeedFailureTests.test_late_seed_db_failure_rolls_back_all_database_writes"
+  ],
+  "HOME-T19b": [
+    "HOME.test.test_seed_failures.SeedFailureTests.test_media_setup_failures_roll_back_prior_db_writes"
+  ],
+  "HOME-T19d": [
+    "HOME.test.test_seed_failures.SeedFailureTests.test_seed_retry_after_partial_failure_finishes_once"
+  ],
+  "HOME-T21a": [
+    "HOME.test.test_demo_seed.SeedTests.test_seed_copies_only_public_source_asset"
+  ],
+  "HOME-T21b": [
+    "HOME.test.test_demo_seed.SeedTests.test_seed_interest_url_uses_local_demo_host"
+  ]
+}

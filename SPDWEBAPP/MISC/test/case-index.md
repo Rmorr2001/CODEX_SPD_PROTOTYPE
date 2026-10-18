@@ -1,5 +1,8 @@
 # MISC case and readiness index
 
+Historical design record; Wave 2 execution is recorded in
+[wave-2-findings.md](wave-2-findings.md) and [case-map.json](case-map.json).
+
 Source baseline `7e25ac2`; refinement baseline `c8bbc4e`.
 These statuses describe proposed designs, not executed tests or policy approval.
 All READY cases still need the ordinary [shared harness](../../../docs/testing/fixture-contract.md).

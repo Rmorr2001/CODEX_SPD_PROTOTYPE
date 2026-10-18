@@ -7,7 +7,7 @@
 
 Shared denial/CSRF checks live here; workflows own accepted business effects.
 P is form payload username="updated-a", email="updated@example.invalid",
-firstName="Alex", lastName="Example", hometown="Columbia", pclass="Alpha".
+firstName="Alex", lastName="Example", hometown="Demo Town", pclass="Alpha".
 A/B are distinct users. Password JSON names are current_password, new_password1,
 new_password2, with TEST_PASSWORD and matching Replacement-22!word values.
 

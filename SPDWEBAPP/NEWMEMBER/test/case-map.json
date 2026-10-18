@@ -1,0 +1,152 @@
+{
+  "NM-00-01a": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_landing_renders_public_navigation"
+  ],
+  "NM-01-01a": [
+    "NEWMEMBER.test.test_requests.RequestTests.test_request_form_lists_new_member_targets"
+  ],
+  "NM-01-01b": [
+    "NEWMEMBER.test.test_requests.RequestTests.test_signed_multi_target_submission_creates_requested_marks"
+  ],
+  "NM-01-02a": [
+    "NEWMEMBER.test.test_requests.RequestTests.test_board_submission_autoapproves_and_ignores_forged_audit"
+  ],
+  "NM-02-01a": [
+    "NEWMEMBER.test.test_decisions.DecisionTests.test_pending_review_lists_only_requested_marks"
+  ],
+  "NM-02-01b": [
+    "NEWMEMBER.test.test_decisions.DecisionTests.test_board_approves_another_request"
+  ],
+  "NM-02-01c": [
+    "NEWMEMBER.test.test_decisions.DecisionTests.test_board_denies_another_request"
+  ],
+  "NM-02-02a": [
+    "NEWMEMBER.test.test_decisions.DecisionTests.test_unknown_mark_id_reports_not_found"
+  ],
+  "NM-02-05b": [
+    "NEWMEMBER.test.test_decisions.DecisionTests.test_approval_save_failure_keeps_original_row"
+  ],
+  "NM-03-01a": [
+    "NEWMEMBER.test.test_decisions.EditTests.test_edit_form_prefills_single_target"
+  ],
+  "NM-03-01b": [
+    "NEWMEMBER.test.test_decisions.EditTests.test_board_edit_retargets_and_sets_editor_only"
+  ],
+  "NM-03-02a": [
+    "NEWMEMBER.test.test_decisions.EditTests.test_nonexistent_retarget_leaves_entire_mark_unchanged"
+  ],
+  "NM-03-04a": [
+    "NEWMEMBER.test.test_decisions.EditTests.test_missing_edit_resource_returns_404"
+  ],
+  "NM-04-01a": [
+    "NEWMEMBER.test.test_decisions.EditTests.test_educator_board_edit_deny_sets_both_audits"
+  ],
+  "NM-05-01a": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_signed_class_totals_and_order_exclude_unapproved"
+  ],
+  "NM-05-01b": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_use_approved_signed_totals"
+  ],
+  "NM-05-02a": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_two_bound_date_ranges_are_inclusive"
+  ],
+  "NM-05-02c": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_active_analytics_count_events_and_signed_standing"
+  ],
+  "NM-05-03a": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_own_denied_visibility_uses_actual_fourteen_days"
+  ],
+  "NM-05-04a": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_single_role_dashboard_selects_matching_context"
+  ],
+  "NM-05-04c": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_class_choices_follow_reverse_enum_order"
+  ],
+  "NM-05-05a": [
+    "NEWMEMBER.test.test_read_models.EmptyReadTests.test_empty_analytics_and_personal_totals_are_zero"
+  ],
+  "NM-05-05b": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_pending_query_handles_missing_related_profiles"
+  ],
+  "NM-06-01a": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_history_helper_returns_approved_target_total"
+  ],
+  "NM-06-02a": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_missing_or_non_new_member_history_redirects"
+  ],
+  "NM-06-02b": [
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_empty_target_history_helper_returns_zero"
+  ],
+  "NM-07-01a": [
+    "NEWMEMBER.test.test_exports.ExportTests.test_export_current_workbook_has_signed_approved_values"
+  ],
+  "NM-07-02a": [
+    "NEWMEMBER.test.test_exports.ExportTests.test_new_member_current_export_is_allowed"
+  ],
+  "NM-07-05a": [
+    "NEWMEMBER.test.test_exports.ExportTests.test_empty_current_export_is_a_valid_workbook"
+  ],
+  "NM-07-05b": [
+    "NEWMEMBER.test.test_exports.ExportTests.test_export_requester_without_profile_uses_username"
+  ],
+  "NM-08-01a": [
+    "NEWMEMBER.test.test_read_models.FilterTests.test_hours_remaining_converts_numbers_and_floors_zero"
+  ],
+  "NM-C03-01a": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_nonstaff_redirects_even_with_board_role"
+  ],
+  "NM-C03-01b": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_changelist_shows_configured_columns"
+  ],
+  "NM-C03-01c": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_staff_without_permissions_is_forbidden"
+  ],
+  "NM-C03-01d": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_staff_explicit_permission_allows_corresponding_page"
+  ],
+  "NM-C03-01e": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_staff_without_write_permission_cannot_add_or_change"
+  ],
+  "NM-C03-01f": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_nonstaff_cannot_add_or_change_through_admin"
+  ],
+  "NM-C03-02a": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_forms_reject_invalid_model_fields"
+  ],
+  "NM-C03-02c": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_mark_string_representation_names_target"
+  ],
+  "NM-C03-03a": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_mark_delete_removes_only_selected_mark"
+  ],
+  "NM-C03-03c": [
+    "NEWMEMBER.test.test_admin.AdminTests.test_admin_delete_without_permission_preserves_records"
+  ],
+  "NM-SEC-01a": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_anonymous_routes_redirect_to_login"
+  ],
+  "NM-SEC-02a": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_request_requires_explicit_active_role"
+  ],
+  "NM-SEC-02b": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_review_and_regular_edit_require_board_role"
+  ],
+  "NM-SEC-02c": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_edit_deny_requires_both_roles"
+  ],
+  "NM-SEC-03a": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_mutating_routes_reject_missing_or_bad_csrf"
+  ],
+  "NM-SEC-03b": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_create_accepts_acquired_csrf_token"
+  ],
+  "NM-SEC-03c": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_approve_accepts_acquired_csrf_token"
+  ],
+  "NM-SEC-03d": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_update_accepts_acquired_csrf_token"
+  ],
+  "NM-SEC-03e": [
+    "NEWMEMBER.test.test_boundaries.BoundaryTests.test_edit_deny_accepts_acquired_csrf_token"
+  ]
+}

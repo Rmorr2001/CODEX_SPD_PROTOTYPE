@@ -4,7 +4,8 @@ Source baseline: `7e25ac2f06b2d88a0220526771585f30df10c57a`.
 Documentation-refinement baseline: `c8bbc4e`.
 
 40 original groups expand to 114 independently named designs.
-No cases have been executed; READY is a design readiness label.
+This is the frozen design index. Wave 2 execution of all 58 READY cases is recorded
+in [README](README.md) and [case-map.json](case-map.json); 56 blocked designs remain unexecuted.
 See [inventory and decisions](regression-spec.md) and the
 [shared fixture contract](../../../docs/testing/fixture-contract.md).
 

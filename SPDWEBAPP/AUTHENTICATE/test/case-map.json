@@ -1,0 +1,230 @@
+{
+  "AUTH-D01-01a": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_persona_entry_identity"
+  ],
+  "AUTH-D01-01b": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_default_persona"
+  ],
+  "AUTH-D01-01c": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_entry_after_username_change"
+  ],
+  "AUTH-D01-01d": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_newmember_dashboard_redirect"
+  ],
+  "AUTH-D01-02a": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_entry_post_only"
+  ],
+  "AUTH-D01-02b": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_unknown_persona"
+  ],
+  "AUTH-D01-02c": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_entry_disabled"
+  ],
+  "AUTH-D01-03a": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_ineligible_account_rejected"
+  ],
+  "AUTH-D01-04a": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_csrf_rejects_absent_and_bad_tokens"
+  ],
+  "AUTH-D01-04b": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_csrf_accepts_token_and_rotates_identity"
+  ],
+  "AUTH-D03-01a": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_admin_http_boundary"
+  ],
+  "AUTH-D03-01b": [
+    "AUTHENTICATE.test.test_demo.DemoTests.test_demo_admin_middleware_short_circuit"
+  ],
+  "AUTH-A11-01a": [
+    "AUTHENTICATE.test.test_majors.FilterTests.test_filter_clean_and_whitelist_inputs"
+  ],
+  "AUTH-A11-01b": [
+    "AUTHENTICATE.test.test_majors.FilterTests.test_filter_independent_blacklist_substring"
+  ],
+  "AUTH-S01a": [
+    "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_anonymous_protected_routes"
+  ],
+  "AUTH-S01b": [
+    "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_anonymous_protected_post_routes"
+  ],
+  "AUTH-S01c": [
+    "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_own_mutations_ignore_foreign_target_fields"
+  ],
+  "AUTH-S02a": [
+    "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_csrf_rejects_profile_mutation_tokens"
+  ],
+  "AUTH-S02b": [
+    "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_csrf_accepts_real_profile_tokens"
+  ],
+  "AUTH-S02c": [
+    "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_login_csrf_token_boundary"
+  ],
+  "AUTH-C03-01a": [
+    "AUTHENTICATE.test.test_identity.IdentityTests.test_identity_role_and_profile_constraints"
+  ],
+  "AUTH-C03-01b": [
+    "AUTHENTICATE.test.test_identity.IdentityTests.test_user_delete_profile_cascade"
+  ],
+  "AUTH-C03-01d": [
+    "AUTHENTICATE.test.test_identity.IdentityTests.test_creation_form_hashes_without_privileges"
+  ],
+  "AUTH-C03-01e": [
+    "AUTHENTICATE.test.test_identity.IdentityTests.test_creation_form_validation"
+  ],
+  "AUTH-C03-02a": [
+    "AUTHENTICATE.test.test_identity.RoleGateTests.test_all_role_gate_requires_each_role"
+  ],
+  "AUTH-C03-02b": [
+    "AUTHENTICATE.test.test_identity.RoleGateTests.test_all_role_gate_accepts_complete_set"
+  ],
+  "AUTH-C03-02c": [
+    "AUTHENTICATE.test.test_identity.RoleGateTests.test_role_gate_anonymous_and_missing_profile"
+  ],
+  "AUTH-C03-02d": [
+    "AUTHENTICATE.test.test_identity.RoleGateTests.test_role_gate_local_referrer"
+  ],
+  "AUTH-C03-03a": [
+    "AUTHENTICATE.test.test_admin.AdminTests.test_admin_rejects_nonstaff_domain_executive"
+  ],
+  "AUTH-C03-03b": [
+    "AUTHENTICATE.test.test_admin.AdminTests.test_admin_staff_without_model_permissions"
+  ],
+  "AUTH-C03-03c": [
+    "AUTHENTICATE.test.test_admin.AdminTests.test_admin_forged_user_privilege_fields"
+  ],
+  "AUTH-C03-05a": [
+    "AUTHENTICATE.test.test_admin.AdminTests.test_admin_major_and_link_edit"
+  ],
+  "AUTH-C03-05b": [
+    "AUTHENTICATE.test.test_admin.AdminTests.test_admin_role_invalid_choice"
+  ],
+  "AUTH-C03-05c": [
+    "AUTHENTICATE.test.test_admin.AdminTests.test_model_admin_display_labels"
+  ],
+  "AUTH-C03-03e": [
+    "AUTHENTICATE.test.test_admin.AdminTests.test_admin_superuser_without_domain_roles"
+  ],
+  "AUTH-A05-01a": [
+    "AUTHENTICATE.test.test_photos.PhotoTests.test_photo_ajax_thumbnail_png"
+  ],
+  "AUTH-A05-01b": [
+    "AUTHENTICATE.test.test_photos.PhotoTests.test_photo_form_preserves_small_jpeg"
+  ],
+  "AUTH-A05-02a": [
+    "AUTHENTICATE.test.test_photos.PhotoTests.test_photo_successful_replacement"
+  ],
+  "AUTH-A05-05a": [
+    "AUTHENTICATE.test.test_photos.PhotoTests.test_photo_missing_upload_is_noop"
+  ],
+  "AUTH-A06-01a": [
+    "AUTHENTICATE.test.test_photos.PhotoTests.test_reset_photo_removes_own_file"
+  ],
+  "AUTH-A06-01b": [
+    "AUTHENTICATE.test.test_photos.PhotoTests.test_reset_photo_without_image_idempotent"
+  ],
+  "AUTH-A06-02a": [
+    "AUTHENTICATE.test.test_photos.PhotoTests.test_reset_photo_get_is_noop"
+  ],
+  "AUTH-A07-01a": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_replace_own_major_set"
+  ],
+  "AUTH-A07-01b": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_clear_own_major_set"
+  ],
+  "AUTH-A07-04a": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_major_selection_get_noop"
+  ],
+  "AUTH-A07-04d": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_repeat_major_replacement"
+  ],
+  "AUTH-A08-01a": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_custom_major_normalization"
+  ],
+  "AUTH-A08-01b": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_custom_major_sequential_idempotency"
+  ],
+  "AUTH-A08-02a": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_custom_major_blacklist_rejection"
+  ],
+  "AUTH-A08-02b": [
+    "AUTHENTICATE.test.test_majors.MajorTests.test_custom_major_get_noop"
+  ],
+  "AUTH-A04-01a": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile"
+  ],
+  "AUTH-A04-01b": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_profile_ignores_target_and_privilege_fields"
+  ],
+  "AUTH-A04-01c": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_repeat_profile_update"
+  ],
+  "AUTH-A04-02a": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_profile_rejects_blacklist_field"
+  ],
+  "AUTH-A04-02b": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_profile_get_rejection"
+  ],
+  "AUTH-A04-02c": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_profile_accepts_exact_whitelist"
+  ],
+  "AUTH-A10-01a": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_profile_read_own_context"
+  ],
+  "AUTH-A10-01b": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_profile_sorted_majors_and_form_payloads"
+  ],
+  "AUTH-A10-03b": [
+    "AUTHENTICATE.test.test_profile.ProfileTests.test_profile_read_does_not_rewrite_image"
+  ],
+  "AUTH-A01-01a": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_login_form"
+  ],
+  "AUTH-A01-01b": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_password_login_home"
+  ],
+  "AUTH-A01-01c": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_password_login_local_next"
+  ],
+  "AUTH-A01-01d": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_password_login_without_profile"
+  ],
+  "AUTH-A01-02a": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_reject_bad_login_credentials"
+  ],
+  "AUTH-A01-02b": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_reject_inactive_login"
+  ],
+  "AUTH-A01-02c": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_authenticated_login_get"
+  ],
+  "AUTH-A01-04b": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_failed_login_keeps_existing_identity"
+  ],
+  "AUTH-A02-02a": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_logout_rejects_bad_csrf"
+  ],
+  "AUTH-A03-01a": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_password_change_keeps_current_session"
+  ],
+  "AUTH-A03-01b": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_password_change_invalidates_other_session"
+  ],
+  "AUTH-A03-02a": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_wrong_current_password"
+  ],
+  "AUTH-A03-02b": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_password_confirmation_mismatch"
+  ],
+  "AUTH-A03-01c": [
+    "AUTHENTICATE.test.test_sessions.SessionTests.test_password_change_without_profile"
+  ],
+  "AUTH-A09-01a": [
+    "AUTHENTICATE.test.test_visibility.DashboardTests.test_dashboard_non_newmember_render"
+  ],
+  "AUTH-A09-02a": [
+    "AUTHENTICATE.test.test_visibility.DashboardTests.test_dashboard_links_and_active_announcements"
+  ],
+  "AUTH-A09-02b": [
+    "AUTHENTICATE.test.test_visibility.DashboardTests.test_dashboard_empty_content"
+  ]
+}

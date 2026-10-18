@@ -17,10 +17,10 @@ within a directory when present. Keep work focused on the requested change.
 - Existing domains: `HOME`, `AUTHENTICATE`, `PARLEYPRO`, `PHILANTHROPY`,
   `NEWMEMBER`, and `MISC`. Preserve existing routes and naming in relevant work.
 - Domain regression work uses singular `test/` for tests and testing documentation.
-  See [the six-domain testing map](docs/testing/README.md). Waves 1 and 1.5 contain
-  design documents only; existing placeholder `tests.py` files remain until Wave 2.
+  See [the six-domain testing map](docs/testing/README.md). Wave 2 implements
+  READY designs with case mappings; obsolete empty `tests.py` files were removed.
 - `SPDWEBAPP/static/` contains shared site styles/images. Each domain owns its
-  templates, models, views, migrations, and currently scaffold-only tests.
+  templates, models, views, migrations, and executable regression tests.
 - [`railway_demo`](SPDWEBAPP/railway_demo/README.md) owns separate demo settings,
   persona entry, fictional seeding, and meaningful demo tests. The root README
   links to its authoritative setup/deployment instructions.
@@ -32,7 +32,8 @@ within a directory when present. Keep work focused on the requested change.
 - [`tools/file_tree/`](tools/file_tree/README.md) generates the source explorer
   during each Docker build; generated HTML is not committed.
 - Demo SQLite/media live separately in `/tmp`; never import private member data.
-  No lint, formatter, type checker, or CI is configured.
+  GitHub Actions runs the regression audit, demo tests, migration checks and
+  coverage. No lint, formatter or type checker is configured.
 
 This section is the current architecture map. Update it as the application grows
 and link each domain README here (or link a single root architecture document
@@ -128,18 +129,22 @@ Run from the repository root, using an isolated Python environment:
 
 ```sh
 python -m venv .venv
-.venv/bin/python -m pip install -r requirements-demo.txt
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py check
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test railway_demo
+.venv/bin/python -m pip install -r requirements-test.txt
+.venv/bin/python -m coverage run tools/testing/run_regressions.py
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.demo_settings .venv/bin/python -m coverage run --append SPDWEBAPP/manage.py test railway_demo --noinput
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings .venv/bin/python SPDWEBAPP/manage.py check
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings .venv/bin/python SPDWEBAPP/manage.py makemigrations --check --dry-run
+.venv/bin/python -m unittest discover -s tools/file_tree -p 'test_*.py'
+.venv/bin/python -m coverage report
 ```
 
-- See the demo README for migration, seeding, static collection, and deployment.
-  Preserve original non-demo setup instructions separately.
-- Run `DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python
-  SPDWEBAPP/manage.py makemigrations --check --dry-run` for model migration drift.
-- Existing business tests are placeholders. The demo suite exercises original
-  pages, roles, CSRF, seed idempotency, and interactive workflows. Add meaningful
-  domain-local tests for changed business behavior.
+- Standalone test settings avoid runtime secrets and use synthetic SQLite/media.
+  See [testing commands and limits](docs/testing/README.md) for domain runs,
+  assertion-effectiveness probes and unresolved case blockers.
+- See the demo README for runtime migration, seeding and deployment; keep runtime
+  settings distinct from the standalone testing settings above.
+- Add meaningful domain-local tests for changed business behavior; maintain case
+  mappings when changing the existing regression contracts.
 - No lint, formatting, or type-check commands are configured. Do not claim these
   checks ran. If tooling is introduced, record its actual commands here and
   declare its dependencies/configuration in the same change.

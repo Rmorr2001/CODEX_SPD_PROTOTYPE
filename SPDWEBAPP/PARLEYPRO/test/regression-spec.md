@@ -1,13 +1,15 @@
 # PARLEYPRO regression specification
 
-Wave 1.5 design only; coordinator source verification and policy resolution precede Wave 2.
+Frozen Wave 1.5 design; Wave 2 implements the 58 READY cases under this test package.
+See [execution mapping](case-map.json) and [implementation findings](implementation-findings.md).
 Repository: `Rmorr2001/CODEX_SPD_PROTOTYPE`; branch: `prototype/railway`.
 Source baseline: `7e25ac2f06b2d88a0220526771585f30df10c57a`.
 Documentation-refinement baseline: `c8bbc4e`, confirmed as current HEAD during refinement.
 
 [Case index, status counts and complete old-to-new mapping](case-index.md) replaces the
 40 dense original groups with 114 independent designs: 58 READY, 5 NEEDS_FIX,
-48 POLICY_BLOCKED and 3 INFRA_BLOCKED. None have been executed or declared approved.
+48 POLICY_BLOCKED and 3 INFRA_BLOCKED. All 58 READY cases now have executable mapped tests;
+the other 56 remain blocked and unexecuted. Readiness counts below are frozen design counts.
 
 ## Reading and fixture contract
 
@@ -35,7 +37,7 @@ Preserve/defect/decision classifications below remain separate from readiness la
 
 All paths are repository-relative. `P/` abbreviates `SPDWEBAPP/PARLEYPRO/`.
 Root `AGENTS.md`, Wave 1/1.5 prompts and fixture contract were read; no nested guidance
-was found. Source inspection and Markdown validation are the only checks run by this agent.
+was found. Wave 1/1.5 used source/Markdown inspection; Wave 2 execution results are in README.
 
 | Source | Verified evidence |
 | --- | --- |
@@ -151,11 +153,11 @@ Browser cases name the missing runner/timer/fetch interception facility explicit
 
 ## Existing coverage and proposed implementation
 
-`P/tests.py:1–3` contains no test methods. `SPDWEBAPP/railway_demo/tests.py:58–67` checks
+The former `P/tests.py:1–3` placeholder contained no test methods and is now removed. `SPDWEBAPP/railway_demo/tests.py:58–67` checks
 executive polling GET 200/current name; `:99–104` checks ACTIVE Aye response and own row;
 `:31–40` checks seeded poll count. No close, fine-grained denial, count, admin or race
-assertions were found there. Existing tests were inspected, not run by this agent.
-The coordinator owns baseline execution. No numerical coverage percentage is claimed.
+assertions were found there. Those demo tests remain coordinator-owned.
+The domain suite is now executed under standalone settings; see README. No numerical coverage percentage is claimed.
 
 Proposed Wave 2 files under singular `test/`: `__init__.py`, `assertions.py`,
 `test_creation.py`, `test_access.py`, `test_votes.py`, `test_closure.py`,

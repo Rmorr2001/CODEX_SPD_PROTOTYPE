@@ -49,13 +49,12 @@ seeded interactive deployment. The demo uses our own inline-commented
 
 ## Backend regression work
 
-Each business domain has a singular `test/` folder for its test entry point,
-regression specification, and future executable tests. Start with
-[the six-domain testing map](docs/testing/README.md).
+Each business domain has a singular `test/` folder containing executable tests,
+case mappings, specifications and testing documentation. Start with
+[the six-domain testing map](docs/testing/README.md) for setup and commands.
 
-Wave 1 inventories current behavior and designs source-cited test pseudocode.
-These documents do not implement coverage or approve unresolved business rules.
-Wave 1.5 splits bundled designs into named cases in each domain's `test/cases/`,
-with explicit readiness and [one shared fixture contract](docs/testing/fixture-contract.md).
-Wave 2 implements reviewed cases with shared isolated settings and fixtures.
-Existing domain `tests.py` placeholders remain unchanged during design.
+Wave 2 verifies all 393 READY case designs: 404 combined tests including the
+shared harness, plus the nine existing demo tests. The 284 remaining designs
+retain explicit defect, policy or infrastructure blockers. An executable mapping
+audit prevents missing or skipped tests from being counted as verified cases.
+See [Wave 2 results](docs/testing/wave-2-results.md) for evidence and limitations.

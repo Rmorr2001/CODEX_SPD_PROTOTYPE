@@ -1,46 +1,48 @@
-# AUTHENTICATE regression design
+# AUTHENTICATE regression tests
 
-Wave 1.5 documentation only; no executable tests or application changes.
-Source baseline: `prototype/railway` at `7e25ac2f06b2d88a0220526771585f30df10c57a`.
-Refinement baseline: `c8bbc4e`. Cases require coordinator verification.
+Implements all **76 frozen READY designs** from baseline `4b103f6` as 76 discoverable
+Django unittest methods. Explicit-package and app-label runs both pass; these
+counts describe case mappings, not measured line/branch coverage. The 81 non-READY
+designs remain documented and unimplemented.
 
-Start with [inventory/role matrix](regression-spec.md), then
-[atomic case index and status counts](case-index.md) and [decisions](decisions.md).
-The index maps every one of the original 55 bundled groups to suffixed cases.
-Scope includes login/sessions, profiles/images, majors/helpers, visibility,
-identity/admin, shared ALL-role gate and demo entry/admin exclusion.
+Read [case-map.json](case-map.json) for executable IDs,
+[findings/results](wave-2-findings.md) for approved fixture/source clarifications,
+[case index](case-index.md) for the complete design inventory, and
+[regression specification](regression-spec.md) for routes/roles/source evidence.
+Source/refinement design baselines remain `7e25ac2` / `c8bbc4e`.
 
-Follow the [refinement contract](../../../docs/testing/wave-1-5-agent-prompt.md),
-[fixture contract](../../../docs/testing/fixture-contract.md) and
-[root guidance](../../../AGENTS.md). Use the coordinator's shared fixtures/settings;
-no parallel factory interface is proposed here. No secret/runtime config reads,
-real data/uploads, network or app tests were used in this refinement.
+Use the coordinator-owned [fixture contract](../../../docs/testing/fixture-contract.md)
+and standalone `SPDWEBAPP_CORE.testing` harness. The local
+[fixture legend](fixture-notes.md) defines named actors; support.py contains only
+thin synthetic media/form helpers and identity-specific state assertions.
+No runtime secret_config import, real member database/upload, network or deployment
+is required. RegressionTestCase supplies isolated media for every test.
 
-Existing `../tests.py:1–3` is an empty scaffold. Demo integration assertions cover
-some rendering, entry, role routing and profile response flags; the
-[inventory](regression-spec.md#existing-assertion-evidence) maps their limits.
-
-Current documented commands, repository root with an already configured `.venv`:
+Actual successful commands from repository root:
 
 ```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test AUTHENTICATE
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test railway_demo
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test AUTHENTICATE.test --noinput
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test AUTHENTICATE --noinput
 ```
 
-These are existing commands, not execution results. The first currently reaches
-only placeholder domain tests. Wave 2 adds singular `test/__init__.py`,
-`assertions.py`, and `test_sessions.py`, `test_profile.py`, `test_photos.py`,
-`test_majors.py`, `test_visibility.py`, `test_identity_admin.py`,
-`test_demo_boundary.py`, `test_http_boundaries.py`. Pure helper assertions may
-share test_majors.py. Keep business invariants separate from HTTP adapters.
+Both discover and pass 76 methods. The absolute environment path records this
+session's existing environment; it is not a portable installation instruction.
+The old empty tests.py was removed. Singular test/ now contains:
 
-Proposed package discovery command after files and safe settings exist:
+- test_sessions.py: credential/session/password and logout CSRF behavior.
+- test_profile.py / test_photos.py: own fields, real image bytes and ownership.
+- test_majors.py / test_visibility.py: catalog/relations/helpers and dashboard data.
+- test_identity.py / test_admin.py: constraints/forms, shared ALL-role sentinel,
+  and real core admin permission/logging behavior.
+- test_demo.py: actual demo view/URLconf/middleware with explicit HTTPS/token settings.
+- test_http_boundaries.py: anonymous, foreign-target and enforced-CSRF matrices.
 
-```sh
-DJANGO_SETTINGS_MODULE=<coordinator-safe-business-settings> .venv/bin/python SPDWEBAPP/manage.py test AUTHENTICATE.test
-```
+Test-only role_urls.py puts the production role decorator behind real request
+middleware; PARLEYPRO owns integration at its own mounted business routes. Admin
+cases use business mode. Demo cases explicitly enable actual demo URLs, boundary
+middleware, context processor and secure cookies without weakening permissions.
 
-The settings argument is a design placeholder, not runnable shell input.
-Use corresponding coordinator demo mode for demo cases; verify both explicit
-package and app-wide discovery without dropping existing demo assertions.
-READY means unambiguous preservation design, not executed or approved coverage.
+Shared setup/check instructions are in [AGENTS.md](../../../AGENTS.md).
+Earlier `.venv`/railway_demo commands in design history are distinct from the
+standalone commands above. Combined validation, original nine demo tests and
+mutation probes are coordinator-owned; this README does not claim they ran here.

@@ -1,5 +1,8 @@
 # HOME regression design — Wave 1.5
 
+Historical design record; see [Wave 2 execution](README.md) and
+[approved clarification](wave-2-findings.md#approved-semantic-clarification).
+
 Source baseline: branch `prototype/railway`, commit
 `7e25ac2f06b2d88a0220526771585f30df10c57a`.
 Refinement baseline: `c8bbc4e94fdd135485c034981c0a25e09e902679`.

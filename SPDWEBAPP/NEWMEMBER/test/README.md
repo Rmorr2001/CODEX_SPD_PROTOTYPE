@@ -1,61 +1,51 @@
-# New-member marks regression design
+# New-member marks regression tests
 
-Wave 1.5 refines source inspection into independent case designs, pending coordinator
-verification. See the [case index and readiness counts](regression-spec.md#case-readiness-and-index). No executable tests were added and no application tests were run.
-Scope: public landing, mark requests/approval/editing, dashboards/helpers, history,
-XLSX exports, the local template filter, and marks admin. See the
-[regression specification](regression-spec.md), [shared testing map](../../../docs/testing/README.md),
-and [mandatory Wave 1 contract](../../../docs/testing/wave-1-agent-prompt.md).
+Wave 2 implements all **50 frozen READY designs** from baseline `4b103f6` as
+50 discoverable test methods. [case-map.json](case-map.json) maps each READY ID
+to its fully qualified unittest ID. The [regression specification](regression-spec.md)
+and [workflow case designs](cases/) retain the source inventory, role matrix and
+38 blocked designs: 14 NEEDS_FIX and 24 POLICY_BLOCKED. Those blocked cases are
+not passing coverage, skips or expected failures.
 
-`NEWMEMBER/tests.py` is an assertion-free placeholder. Existing demo assertions
-in `railway_demo/tests.py:31–38,58–72` check seed count and privileged/new-member
-page rendering; they do not verify marks writes, totals, exports or narrow roles.
+Tests cover public navigation, login/role/CSRF boundaries, signed multi-target
+requests, board auto-approval, review/edit audit fields, unchanged records,
+analytics/date windows, history queries, parsed XLSX cells and Django admin.
+[Wave 2 findings](wave-2-findings.md) records the coordinator-approved admin
+redirect clarification and the resolved shared template setup issue.
 
-Current documented commands, from repository root after the environment is set
-up per [root guidance](../../../AGENTS.md) and [demo setup](../../railway_demo/README.md):
-
-```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test railway_demo
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test NEWMEMBER
-```
-
-The latter currently targets a placeholder, not meaningful marks coverage.
-The [shared fixture contract](../../../docs/testing/fixture-contract.md) defines
-business/demo modes and future helpers; no shared harness exists yet.
-Coordinator alone runs the shared baseline in Wave 1. Do not assume the local
-coordinator environment path is portable or install dependencies in this wave.
-
-Proposed Wave 2 layout (singular `test/`; none of these Python files exist yet):
-
-```text
-test/
-  __init__.py
-  assertions.py             # reusable marks/audit/unchanged-record assertions
-  test_requests.py          # N01, helper boundary
-  test_decisions.py         # N02–N04, transitions and atomicity
-  test_read_models.py        # N00, N05–N06, N08
-  test_exports.py            # N07, parsed XLSX cells/types
-  test_admin.py              # C03
-  test_postgres_races.py     # independent connections; conditional infrastructure
-```
-
-Proposed discovery commands, to verify in Wave 2:
+Run from the repository root in the installed isolated environment:
 
 ```sh
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test NEWMEMBER.test
-DJANGO_SETTINGS_MODULE=railway_demo.settings .venv/bin/python SPDWEBAPP/manage.py test NEWMEMBER.test.test_requests
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test NEWMEMBER.test --noinput
+DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test NEWMEMBER --noinput
 ```
 
-Case files: [boundaries](cases/boundaries.md), [requests](cases/requests.md),
-[decisions](cases/decisions.md), [editing](cases/editing.md),
-[read models](cases/read-models.md), [history/filter](cases/history-filter.md),
-[exports](cases/exports.md), and [admin](cases/admin.md).
+Both explicit-package and app-label discovery ran **50 tests successfully**, with
+no skips or expected failures and no system-check issues. The obsolete empty
+`NEWMEMBER/tests.py` was removed after package discovery was established. For
+other environments, use a Python executable with the project's installed test
+dependencies; the `/workspace/work/` environment path is local to this session.
+The commands use [safe shared settings](../../SPDWEBAPP_CORE/testing/settings.py),
+real middleware/admin/templates and a synthetic test database; they import no
+runtime secret configuration and use no external services.
 
-38 original groups become 88 independently named designs:
-50 READY, 14 NEEDS_FIX, 24 POLICY_BLOCKED,
-0 INFRA_BLOCKED. These are readiness counts, not executed test results.
-No old dense case prose remains. Original-parent mapping is in the specification.
-Admin uses the common business mode; PostgreSQL races remain policy-blocked
-until reviewer conflict semantics are defined. Current commands above are
-existing setup references. Proposed commands require the future isolated
-business settings module chosen by the coordinator, not runtime secret imports.
+Implementation:
+
+- [support.py](support.py): thin real-ORM mark fixtures and domain state assertions.
+- [test_boundaries.py](test_boundaries.py): public/login/role boundaries and real CSRF.
+- [test_requests.py](test_requests.py): signed batches and auto-approval.
+- [test_decisions.py](test_decisions.py): pending review, decisions, edits and failure containment.
+- [test_read_models.py](test_read_models.py): totals, date windows, history and filter arithmetic.
+- [test_exports.py](test_exports.py): parsed XLSX values/types, totals and empty output.
+- [test_admin.py](test_admin.py): real model permissions, forms, display and deletion.
+
+Fixtures follow the [shared contract](../../../docs/testing/fixture-contract.md).
+Each test uses explicit synthetic actors; named rows and role/major/permission/group
+relations are compared against fresh database state, and unexpected media writes
+are checked. Allowed mark changes are compared against every persisted field.
+Only the clock and a deliberate pre-SQL save failure are patched; roles, queries,
+aggregations and request handlers execute normally. No eligibility, repeated-review,
+visibility or retention policy has been selected, and no application behavior was fixed.
+
+The coordinator owns combined-suite validation, the existing demo suite, mapping
+acceptance and bounded mutation probes under [Wave 2 goals](../../../docs/testing/wave-2-goals.md).

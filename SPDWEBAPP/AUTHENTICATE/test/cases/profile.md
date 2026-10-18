@@ -6,7 +6,7 @@
 [Fresh actor/file fixture legend](../fixture-notes.md) applies independently to every case.
 
 Payload P is form data: username="updated-a", email="updated@example.invalid",
-firstName="Alex", lastName="Example", hometown="Columbia", pclass="Alpha".
+firstName="Alex", lastName="Example", hometown="Demo Town", pclass="Alpha".
 A/B are distinct synthetic users. No target identity is inferred from posted IDs.
 
 Every case is a design only. Refresh named rows/relations and check file bytes
