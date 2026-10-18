@@ -111,3 +111,10 @@ configuration were untouched. Documentation links and staged whitespace were
 reviewed. The GitHub Actions workflow repeats the audit, probes, original demo,
 Django/drift checks and source-explorer tests, uploading JSON and coverage evidence.
 Local results above do not claim a hosted GitHub Actions run has passed.
+
+## Subsequent independent review
+
+[The adversarial review](adversarial-review.md) challenged this completed baseline
+and demonstrated seven narrow fixture/output gaps. The execution counts above
+remain historical results; they are not a claim that every assertion is adequate.
+See the review for reproducible evidence and proportionate improvements.

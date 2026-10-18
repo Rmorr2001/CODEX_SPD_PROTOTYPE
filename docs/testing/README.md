@@ -16,6 +16,11 @@ failures in these passing counts. See [actual results](wave-2-results.md) and
 | MISC | [Announcements and alerts](../../SPDWEBAPP/MISC/test/README.md) | 80 | 23 |
 | Total | | 393 | 284 |
 
+The subsequent [independent adversarial review](adversarial-review.md) found
+four READY fixture/assertion gaps and three preservation-design extensions.
+Passing mapped methods establish execution; they do not alone prove adequacy.
+The review includes full-suite surviving defects and controls that were caught.
+
 ## Setup and commands
 
 From the repository root, Python 3.12:

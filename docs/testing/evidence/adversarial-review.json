@@ -1,0 +1,660 @@
+{
+  "reviewed_commit": "cb69127",
+  "date": "2026-10-18",
+  "new_probes": [
+    {
+      "name": "auth_foreign_majors",
+      "domain": "AUTHENTICATE",
+      "target": "AUTHENTICATE.views.update_majors",
+      "old": "Brother_Profile.objects.get(user=request.user)",
+      "new": "Brother_Profile.objects.get(user_id=data.get(\"user_id\", request.user.pk))",
+      "baseline": {
+        "exit_status": 0,
+        "tests_run": 76,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 13.178,
+        "log": "work/adversarial_identity/auth_foreign_majors-baseline.log"
+      },
+      "mutant": {
+        "exit_status": 1,
+        "tests_run": 76,
+        "failures": [
+          "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_own_mutations_ignore_foreign_target_fields (operation='update_majors')"
+        ],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 4.802,
+        "log": "work/adversarial_identity/auth_foreign_majors-mutant.log"
+      },
+      "restored": {
+        "exit_status": 0,
+        "tests_run": 76,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 4.959,
+        "log": "work/adversarial_identity/auth_foreign_majors-restored.log"
+      },
+      "classification": "assertion kill",
+      "review_classification": "regression detected; separate assertion failures from errors"
+    },
+    {
+      "name": "auth_foreign_photo",
+      "domain": "AUTHENTICATE",
+      "target": "AUTHENTICATE.views.reset_photo",
+      "old": "Brother_Profile.objects.get(user=request.user)",
+      "new": "Brother_Profile.objects.get(user_id=request.POST.get(\"user_id\", request.user.pk))",
+      "baseline": {
+        "exit_status": 0,
+        "tests_run": 76,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 11.129,
+        "log": "work/adversarial_identity/auth_foreign_photo-baseline.log"
+      },
+      "mutant": {
+        "exit_status": 2,
+        "tests_run": 76,
+        "failures": [
+          "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_own_mutations_ignore_foreign_target_fields (operation='reset-photo')"
+        ],
+        "errors": [
+          "AUTHENTICATE.test.test_http_boundaries.HttpBoundaryTests.test_own_mutations_ignore_foreign_target_fields (operation='update_photo')"
+        ],
+        "skips": 0,
+        "elapsed_seconds": 8.495,
+        "log": "work/adversarial_identity/auth_foreign_photo-mutant.log"
+      },
+      "restored": {
+        "exit_status": 0,
+        "tests_run": 76,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 4.801,
+        "log": "work/adversarial_identity/auth_foreign_photo-restored.log"
+      },
+      "classification": "mixed assertion failure and cascading error",
+      "review_classification": "regression detected; separate assertion failures from errors"
+    },
+    {
+      "name": "auth_pclass",
+      "domain": "AUTHENTICATE",
+      "target": "AUTHENTICATE.views.update_profile",
+      "old": "brother_profile.pclass = pclass",
+      "new": "pass # omitted pclass persistence",
+      "baseline": {
+        "exit_status": 0,
+        "tests_run": 76,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 11.149,
+        "log": "work/adversarial_identity/auth_pclass-baseline.log"
+      },
+      "mutant": {
+        "exit_status": 0,
+        "tests_run": 76,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 9.109,
+        "log": "work/adversarial_identity/auth_pclass-mutant.log"
+      },
+      "restored": {
+        "exit_status": 0,
+        "tests_run": 76,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 9.291,
+        "log": "work/adversarial_identity/auth_pclass-restored.log"
+      },
+      "classification": "survives",
+      "review_classification": "fixture or preservation-output gap"
+    },
+    {
+      "name": "nm_display_name",
+      "domain": "NEWMEMBER",
+      "target": "NEWMEMBER.views_functions.calculate_member_marks",
+      "old": "f\"{member.firstName} {member.lastName}\"",
+      "new": "member.firstName",
+      "baseline": {
+        "exit_status": 0,
+        "tests_run": 50,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 16.809,
+        "log": "work/adversarial_identity/nm_display_name-baseline.log"
+      },
+      "mutant": {
+        "exit_status": 0,
+        "tests_run": 50,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 12.064,
+        "log": "work/adversarial_identity/nm_display_name-mutant.log"
+      },
+      "restored": {
+        "exit_status": 0,
+        "tests_run": 50,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 18.946,
+        "log": "work/adversarial_identity/nm_display_name-restored.log"
+      },
+      "classification": "survives",
+      "review_classification": "fixture or preservation-output gap"
+    },
+    {
+      "name": "nm_fraction",
+      "domain": "NEWMEMBER",
+      "target": "NEWMEMBER.views_functions.get_personal_stats",
+      "old": "round(class_average, 1)",
+      "new": "int(class_average)",
+      "baseline": {
+        "exit_status": 0,
+        "tests_run": 50,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 15.747,
+        "log": "work/adversarial_identity/nm_fraction-baseline.log"
+      },
+      "mutant": {
+        "exit_status": 0,
+        "tests_run": 50,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 10.915,
+        "log": "work/adversarial_identity/nm_fraction-mutant.log"
+      },
+      "restored": {
+        "exit_status": 0,
+        "tests_run": 50,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 11.224,
+        "log": "work/adversarial_identity/nm_fraction-restored.log"
+      },
+      "classification": "survives",
+      "review_classification": "fixture or preservation-output gap"
+    },
+    {
+      "name": "pp_closer_creator",
+      "domain": "PARLEYPRO",
+      "target": "PARLEYPRO.pp_functions.handling_end_vote_request",
+      "old": "current_poll.save()",
+      "new": "current_poll.created_by = request.user\n        current_poll.save()",
+      "baseline": {
+        "exit_status": 0,
+        "tests_run": 58,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 4.618,
+        "log": "work/adversarial_identity/pp_closer_creator-baseline.log"
+      },
+      "mutant": {
+        "exit_status": 0,
+        "tests_run": 58,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 4.867,
+        "log": "work/adversarial_identity/pp_closer_creator-mutant.log"
+      },
+      "restored": {
+        "exit_status": 0,
+        "tests_run": 58,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 3.822,
+        "log": "work/adversarial_identity/pp_closer_creator-restored.log"
+      },
+      "classification": "survives",
+      "review_classification": "documented policy blocker, not new finding"
+    },
+    {
+      "name": "pp_page_swapped",
+      "domain": "PARLEYPRO",
+      "target": "PARLEYPRO.views.poll_index",
+      "old": "'nay_votes': nay_votes,\n        'aye_votes': aye_votes,",
+      "new": "'nay_votes': aye_votes,\n        'aye_votes': nay_votes,",
+      "baseline": {
+        "exit_status": 0,
+        "tests_run": 58,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 5.484,
+        "log": "work/adversarial_identity/pp_page_swapped-baseline.log"
+      },
+      "mutant": {
+        "exit_status": 0,
+        "tests_run": 58,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 4.306,
+        "log": "work/adversarial_identity/pp_page_swapped-mutant.log"
+      },
+      "restored": {
+        "exit_status": 0,
+        "tests_run": 58,
+        "failures": [],
+        "errors": [],
+        "skips": 0,
+        "elapsed_seconds": 3.928,
+        "log": "work/adversarial_identity/pp_page_swapped-restored.log"
+      },
+      "classification": "survives",
+      "review_classification": "fixture or preservation-output gap"
+    },
+    {
+      "probe": "home_board",
+      "domain": "HOME",
+      "settings": "SPDWEBAPP_CORE.testing.settings",
+      "baseline": {
+        "tests": 63,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "witness_baseline": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "mutant": {
+        "tests": 63,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "witness_mutant": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [
+          "__main__.BoardWitness.test_external_vp_is_correct_profile"
+        ],
+        "error_ids": [],
+        "exit": 1
+      },
+      "restored": {
+        "tests": 64,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "review_classification": "fixture or preservation-output gap"
+    },
+    {
+      "probe": "home_media",
+      "domain": "HOME",
+      "settings": "SPDWEBAPP_CORE.testing.settings",
+      "baseline": {
+        "tests": 63,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "mutant": {
+        "tests": 63,
+        "failures": 4,
+        "errors": 2,
+        "skipped": 0,
+        "failure_ids": [
+          "HOME.test.test_demo_seed.SeedTests.test_seed_copies_only_public_source_asset",
+          "HOME.test.test_demo_seed.SeedTests.test_seed_interest_url_uses_local_demo_host",
+          "HOME.test.test_seed_failures.SeedFailureTests.test_media_setup_failures_roll_back_prior_db_writes (failure='second-copy')",
+          "HOME.test.test_seed_failures.SeedFailureTests.test_seed_retry_after_partial_failure_finishes_once"
+        ],
+        "error_ids": [
+          "HOME.test.test_demo_seed.SeedTests.test_first_seed_creates_public_content_and_media",
+          "HOME.test.test_seed_failures.SeedFailureTests.test_late_seed_db_failure_rolls_back_all_database_writes"
+        ],
+        "exit": 6
+      },
+      "restored": {
+        "tests": 63,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "review_classification": "regression detected; separate assertion failures from errors"
+    },
+    {
+      "probe": "misc_audit",
+      "domain": "MISC",
+      "settings": "SPDWEBAPP_CORE.testing.settings",
+      "baseline": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "mutant": {
+        "tests": 80,
+        "failures": 6,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [
+          "MISC.test.test_admin_actions.AdminActionTests.test_admin_history_is_scoped_to_object_and_actor",
+          "MISC.test.test_admin_actions.AdminActionTests.test_admin_valid_csrf_pair_allows_intended_write (model='AnnouncementAlert', action='change')",
+          "MISC.test.test_admin_permissions.AdminPermissionTests.test_admin_does_not_require_member_profile",
+          "MISC.test.test_admin_writes.AdminWriteTests.test_announcement_admin_edit_preserves_inactive_flag",
+          "MISC.test.test_admin_writes.AdminWriteTests.test_announcement_admin_ignores_excluded_field_payloads",
+          "MISC.test.test_admin_writes.AdminWriteTests.test_save_continue_and_addanother_have_concrete_redirects"
+        ],
+        "error_ids": [],
+        "exit": 6
+      },
+      "restored": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "review_classification": "regression detected; separate assertion failures from errors"
+    },
+    {
+      "probe": "misc_filter",
+      "domain": "MISC",
+      "settings": "SPDWEBAPP_CORE.testing.settings",
+      "baseline": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "mutant": {
+        "tests": 80,
+        "failures": 4,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [
+          "MISC.test.test_integration.IntegrationTests.test_dashboard_empty_or_inactive_only_has_no_table",
+          "MISC.test.test_integration.IntegrationTests.test_dashboard_selects_only_active_announcements",
+          "MISC.test.test_integration.IntegrationTests.test_eligible_roles_receive_global_active_content",
+          "MISC.test.test_integration.IntegrationTests.test_next_dashboard_read_reflects_activation_change"
+        ],
+        "error_ids": [],
+        "exit": 4
+      },
+      "restored": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "review_classification": "regression detected; separate assertion failures from errors"
+    },
+    {
+      "probe": "ph_name",
+      "domain": "PHILANTHROPY",
+      "settings": "SPDWEBAPP_CORE.testing.settings",
+      "baseline": {
+        "tests": 66,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "witness_baseline": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "mutant": {
+        "tests": 66,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "witness_mutant": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [
+          "__main__.NameWitness.test_progress_preserves_member_display_name"
+        ],
+        "error_ids": [],
+        "exit": 1
+      },
+      "restored": {
+        "tests": 67,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "review_classification": "fixture or preservation-output gap"
+    },
+    {
+      "probe": "ph_owner",
+      "domain": "PHILANTHROPY",
+      "settings": "SPDWEBAPP_CORE.testing.settings",
+      "baseline": {
+        "tests": 66,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "mutant": {
+        "tests": 66,
+        "failures": 3,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [
+          "PHILANTHROPY.test.test_approvals.ApprovalTests.test_initial_approval_updates_only_decision_fields",
+          "PHILANTHROPY.test.test_approvals.ApprovalTests.test_initial_denial_updates_only_decision_fields",
+          "PHILANTHROPY.test.test_integration.ApprovedProjectionTests.test_submit_then_approve_updates_all_approved_projections_once"
+        ],
+        "error_ids": [],
+        "exit": 3
+      },
+      "restored": {
+        "tests": 66,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "review_classification": "regression detected; separate assertion failures from errors"
+    },
+    {
+      "probe": "ph_sort",
+      "domain": "PHILANTHROPY",
+      "settings": "SPDWEBAPP_CORE.testing.settings",
+      "baseline": {
+        "tests": 66,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "witness_baseline": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "mutant": {
+        "tests": 66,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "witness_mutant": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [
+          "__main__.SortingWitness.test_descending_progress_reverses_creation_order"
+        ],
+        "error_ids": [],
+        "exit": 1
+      },
+      "restored": {
+        "tests": 67,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_ids": [],
+        "error_ids": [],
+        "exit": 0
+      },
+      "review_classification": "fixture or preservation-output gap"
+    }
+  ],
+  "identity_distinguishing_fixture_results": {
+    "auth_pclass": {
+      "initial": "Beta",
+      "submitted": "Alpha",
+      "clean": {
+        "response": {
+          "success": true
+        },
+        "pclass": "Alpha"
+      },
+      "mutant": {
+        "response": {
+          "success": true
+        },
+        "pclass": "Beta"
+      }
+    },
+    "pp_page_swapped": {
+      "clean": {
+        "aye": 2,
+        "nay": 1,
+        "status": 200
+      },
+      "mutant": {
+        "aye": 1,
+        "nay": 2,
+        "status": 200
+      }
+    },
+    "pp_closer_creator": {
+      "original_creator": "synthetic-creator",
+      "closer": "synthetic-closer",
+      "clean_creator": "synthetic-creator",
+      "mutant_creator": "synthetic-closer",
+      "scope": "POLICY_BLOCKED PP-16c: not a READY failure"
+    },
+    "nm_fraction": {
+      "member_totals": [
+        1,
+        0
+      ],
+      "clean": 0.5,
+      "mutant": 0
+    },
+    "nm_display_name": {
+      "clean": "Tess Able",
+      "mutant": "Tess"
+    }
+  },
+  "coordinator_changed_class_witness": {
+    "baseline": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "mutant": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "restored": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "coordinator_execution_accounting": {
+    "successful_ids": [
+      "__main__.Cases.test_clean"
+    ],
+    "failed_subtests": 1,
+    "skipped_subtests": 1,
+    "expected_failures": 1,
+    "unexpected_successes": 1,
+    "acceptance_would_fail": true
+  },
+  "coordinator_clean_combined_tests": 404,
+  "coordinator_clean_seconds": 56.302,
+  "coordinator_shuffled_tests": 404,
+  "coordinator_shuffle_seed": 20261018,
+  "coordinator_shuffle_seconds": 50.859
+}
