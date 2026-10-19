@@ -2,10 +2,8 @@
 FROM node:24.19.0-bookworm-slim AS frontend
 WORKDIR /frontend
 COPY frontend/package.json frontend/package-lock.json ./
-# Optional public proxy CA is mounted for cloud builds, never copied into an image.
-RUN --mount=type=secret,id=proxy_ca \
-    if [ -f /run/secrets/proxy_ca ]; then export NODE_EXTRA_CA_CERTS=/run/secrets/proxy_ca; fi; \
-    npm ci --no-audit --no-fund
+# Railway's Dockerfile parser supports cache mounts only; use its native CA trust.
+RUN npm ci --no-audit --no-fund
 COPY frontend/ ./
 RUN npm run build
 
@@ -21,9 +19,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 DJANGO_SETTINGS_MODULE=railway_
     FRONTEND_DIST_DIR=/app/frontend_dist
 WORKDIR /app
 COPY requirements.txt requirements-demo.txt ./
-RUN --mount=type=secret,id=proxy_ca \
-    if [ -f /run/secrets/proxy_ca ]; then export PIP_CERT=/run/secrets/proxy_ca; fi; \
-    pip install --no-cache-dir -r requirements-demo.txt && useradd --uid 1000 --create-home webapp
+RUN pip install --no-cache-dir -r requirements-demo.txt && useradd --uid 1000 --create-home webapp
 COPY --chown=webapp:webapp SPDWEBAPP/ ./
 COPY --from=frontend /frontend/dist/ /app/frontend_dist/
 COPY --from=file-tree /tmp/file-tree.html /app/railway_demo/static/railway_demo/file-tree.html

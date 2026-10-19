@@ -47,10 +47,11 @@ Source files are copied with web-user ownership so restrictive cloud-checkout
 permissions cannot prevent non-root startup. Node is absent from the runtime.
 
 Static collection uses explicit build settings without importing `secret_config`.
-An optional `proxy_ca` BuildKit mount supports trusted cloud-proxy builds; it is
-never copied into an image. Ordinary Railway builds need no session-specific CA
-or secret build arguments. The existing `railway.json` and root health path stay
-unchanged; live Railway verification belongs to the following delivery step.
+Railway builds use native CA trust without session-specific CA or secret build
+arguments. Its Dockerfile parser rejects secret mounts, even optional ones; the
+first live packaging attempt identified this and the deployment Dockerfile now
+uses plain install steps. The existing `railway.json` and root health path stay
+unchanged.
 
 ## Commands and configuration
 
@@ -67,7 +68,11 @@ FRONTEND_TEST_URL=http://127.0.0.1:8766 npm run test:e2e --prefix frontend
 ```
 
 Open `http://127.0.0.1:8766/app/`. These commands run an isolated local image, not
-a Railway deployment. Use the cloud runtime's trusted CA mount when required.
+a Railway deployment. For local builds behind the cloud proxy, use a temporary
+Dockerfile copy with trusted public CA secret mounts on npm/pip install steps
+and their `NODE_EXTRA_CA_CERTS`/`PIP_CERT` settings. Keep that local adaptation
+outside the repository and preserve TLS verification; never copy the CA or
+credential bindings into the runtime image.
 Runtime keys are described in the demo README; the new non-secret build-location
 key is `FRONTEND_DIST_DIR`. Frontend `VITE_*` values are public; no secrets are
 passed to the frontend bundle. Existing disposable SQLite/media and session-key
