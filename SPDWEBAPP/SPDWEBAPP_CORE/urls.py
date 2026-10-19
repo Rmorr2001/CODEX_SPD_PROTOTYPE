@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.views.static import serve
 
 urlpatterns = [
+    path("api/", include("SPDWEBAPP_CORE.api.urls")),
+    path("app/", include("SPDWEBAPP_CORE.frontend.urls")),
     # Use the custom ADMIN_URL from settings
     path(f'{settings.ADMIN_URL}/', admin.site.urls),
     # Other URLs go here...

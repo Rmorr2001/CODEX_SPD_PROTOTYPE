@@ -24,15 +24,18 @@ export DJANGO_SETTINGS_MODULE=railway_demo.settings
 .venv/bin/python SPDWEBAPP/manage.py makemigrations --check --dry-run
 ```
 
-There is no configured lint, formatting, or type-checking tool. Existing business
-app tests are scaffold placeholders; the demo tests exercise real seeded routes,
-role boundaries, CSRF protection, seed idempotency, and interactive profile/voting/request flows.
+The [backend regression suite](../../docs/testing/README.md) now implements the
+reviewed READY cases. The demo tests additionally exercise real seeded routes,
+roles, CSRF, seed idempotency and interactive profile/voting/request flows.
+Frontend build, formatting, type and browser checks are documented in
+[frontend/README](../../frontend/README.md); Python has no lint/type tooling.
 
 ## Deployment and data lifecycle
 
 The root Dockerfile installs the repository's existing pinned requirements plus
-Gunicorn/WhiteNoise. It collects existing static assets, then starts as a non-root
-user. Startup migrates a separate SQLite database and seeds 12 fictional users
+Gunicorn/WhiteNoise and the API dependencies. A Node build stage supplies the
+bundled React assets for `/app/`; static collection uses secret-free build settings.
+The final Python image runs as a non-root user. Startup migrates a separate SQLite database and seeds 12 fictional users
 and profiles, executive roles, dashboard links, banner/rush images from public
 repository assets, announcements, polls, service hours, and new-member marks.
 Repeated seeds upsert known samples; existing usable or privileged demo
@@ -55,7 +58,10 @@ Configuration keys (never document values): `DJANGO_SETTINGS_MODULE`,
 `DEMO_DATABASE_PATH`, `DEMO_MEDIA_ROOT`, `RAILWAY_PUBLIC_DOMAIN`, `PORT`, and
 `DJANGO_SECRET_KEY`. The public hostname supplies allowed-host validation.
 Railway terminates TLS; secure cookies and the forwarded-protocol header remain
-configured. The original home page is the deployment health check.
+configured. The original home page remains the Railway health check. `/api/v1/status/` is
+an additional database-independent liveness contract; `/api/v1/schema/` documents
+the current API. `FRONTEND_DIST_DIR` identifies the image-owned HTML/asset build
+directory. See [Part 2](../../docs/migration/part-2-foundation.md).
 
 Longer integration or architecture notes belong in this package's `docs/` when
 needed. Keep this README authoritative for the demo; link to it elsewhere.

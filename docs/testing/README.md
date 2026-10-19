@@ -1,8 +1,10 @@
 # Backend regression suite
 
 Wave 2 implements all **393 READY designs** frozen at `4b103f6`. The audited
-combined suite now runs 405 tests: 394 domain methods and 11 shared-harness tests.
-The existing nine demo tests run separately. There are no skipped or expected
+combined suite now runs 419 tests: 394 domain methods, 11 shared-harness tests
+and 14 API/frontend delivery tests.
+The existing nine demo tests run separately. [Part 2](../migration/part-2-foundation.md)
+also adds nine Playwright checks against the built React application. There are no skipped or expected
 failures in these passing counts. See [current hardening results](part-1-hardening.md),
 [original Wave 2 results](wave-2-results.md) and
 [the goals declared before dispatch](wave-2-goals.md).
@@ -44,7 +46,7 @@ For a scoped run, use the business settings above with
 `SPDWEBAPP/manage.py test PARLEYPRO.test --noinput` or app label `PARLEYPRO`.
 Both discovery forms were verified for every domain. Run the mapping audit for
 completion; plain Django discovery alone does not check the frozen inventory.
-No formatter, lint or static type-check command is configured.
+No Python formatter, lint or static type-check command is configured.
 
 `run_regressions.py` rejects missing, invalid and undiscovered READY mappings,
 then requires every mapped method to finish successfully. Skips, expected
@@ -58,10 +60,16 @@ It never edits source files and writes `work/mutation-results.json`.
 `NM-05-01b` now maps to its original signed-total method and a new fractional-mean
 method. All 393 frozen READY IDs remain required; no blocked design is promoted.
 
+The combined audit also discovers `SPDWEBAPP_CORE.api.test` and
+`SPDWEBAPP_CORE.frontend.test`; their tests exercise framework delivery, not
+additional frozen business-case IDs. Frontend build/type/format/browser commands
+are in [its README](../../frontend/README.md). Python lint/type tooling is absent.
+
 GitHub Actions runs these checks on pull requests and pushes to
 `prototype/railway`, uploading both JSON reports and `coverage.xml`. Reports and
 coverage files are ignored locally. Coverage includes the six domains and demo
-code, excluding migrations and test code; there is no percentage floor yet.
+code plus the new API/frontend Python packages, excluding migrations and test
+code; there is no percentage floor yet.
 
 ## Isolation and limits
 

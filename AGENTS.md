@@ -14,6 +14,9 @@ within a directory when present. Keep work focused on the requested change.
 - `SPDWEBAPP/manage.py` is the management entry point. Preserve its existing
   instruction not to modify it.
 - `SPDWEBAPP/SPDWEBAPP_CORE/` contains framework settings, root URLs, ASGI/WSGI.
+  Its [api/](SPDWEBAPP/SPDWEBAPP_CORE/api/README.md) and
+  [frontend/](SPDWEBAPP/SPDWEBAPP_CORE/frontend/README.md) compose `/api/v1/`
+  and `/app/`; [root frontend/](frontend/README.md) owns React/TypeScript/Vite.
 - Existing domains: `HOME`, `AUTHENTICATE`, `PARLEYPRO`, `PHILANTHROPY`,
   `NEWMEMBER`, and `MISC`. Preserve existing routes and naming in relevant work.
 - Domain regression work uses singular `test/` for tests and testing documentation.
@@ -27,13 +30,15 @@ within a directory when present. Keep work focused on the requested change.
 - `SPDWEBAPP/secret_config.py` is our inline-commented runtime config code,
   containing no literal credentials. Demo settings explicitly load this file.
 - `requirements.txt` pins original dependencies including Django 6.1.1;
-  `requirements-demo.txt` adds Gunicorn/WhiteNoise. Docker and railway.json
+  `requirements-demo.txt` adds Gunicorn/WhiteNoise. DRF/schema dependencies are pinned;
+  frontend dependencies are locked with Node 24.19.0. Docker and railway.json
   define the disposable interactive demo deployment.
 - [`tools/file_tree/`](tools/file_tree/README.md) generates the source explorer
   during each Docker build; generated HTML is not committed.
 - Demo SQLite/media live separately in `/tmp`; never import private member data.
   GitHub Actions runs the regression audit, demo tests, migration checks and
-  coverage. No lint, formatter or type checker is configured.
+  coverage. Frontend checks include TypeScript, Prettier and Playwright; Python
+  has no configured lint, formatter or type checker.
 
 This section is the current architecture map. Update it as the application grows
 and link each domain README here (or link a single root architecture document
@@ -130,6 +135,9 @@ Run from the repository root, using an isolated Python environment:
 ```sh
 python -m venv .venv
 .venv/bin/python -m pip install -r requirements-test.txt
+npm ci --prefix frontend
+npm run build --prefix frontend
+npm run format:check --prefix frontend
 .venv/bin/python -m coverage run tools/testing/run_regressions.py
 DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.demo_settings .venv/bin/python -m coverage run --append SPDWEBAPP/manage.py test railway_demo --noinput
 DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings .venv/bin/python SPDWEBAPP/manage.py check
@@ -145,9 +153,10 @@ DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings .venv/bin/python SPDWEBAP
   settings distinct from the standalone testing settings above.
 - Add meaningful domain-local tests for changed business behavior; maintain case
   mappings when changing the existing regression contracts.
-- No lint, formatting, or type-check commands are configured. Do not claim these
-  checks ran. If tooling is introduced, record its actual commands here and
-  declare its dependencies/configuration in the same change.
+- Python has no configured lint, formatting or type-check command. Frontend
+  `npm run typecheck`, `npm run format:check`, `npm run build` and
+  `npm run test:e2e` are documented in its README; no frontend linter is configured.
+  Do not claim unrun checks. Declare new tooling and its commands together.
 - Add meaningful tests for changed behavior, including relevant validation,
   failure, and authorization cases. Use Django's test framework and domain-local
   tests. Target a domain with `manage.py test <app_label>` when one exists.

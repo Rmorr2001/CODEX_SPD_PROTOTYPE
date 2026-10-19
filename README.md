@@ -61,3 +61,11 @@ See [Wave 2 results](docs/testing/wave-2-results.md) for evidence and limitation
 
 [Part 1 hardening](docs/testing/part-1-hardening.md) strengthens the seven
 demonstrated review gaps and requires 13 assertion-effectiveness probes in CI.
+
+## React and API foundation
+
+[Part 2 delivery](docs/migration/part-2-foundation.md) adds a bundled React workspace
+at `/app/`, JSON contracts under `/api/v1/` and OpenAPI schema. Existing Django
+pages remain at their original URLs. See [frontend setup](frontend/README.md)
+for local preview and checks. The Dockerfile builds React and runs only Python
+in production; this repository change does not itself verify a Railway release.

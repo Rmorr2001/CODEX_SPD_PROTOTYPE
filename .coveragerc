@@ -8,6 +8,8 @@ source =
     SPDWEBAPP/HOME
     SPDWEBAPP/MISC
     SPDWEBAPP/railway_demo
+    SPDWEBAPP/SPDWEBAPP_CORE/api
+    SPDWEBAPP/SPDWEBAPP_CORE/frontend
 omit =
     */migrations/*
     */test/*

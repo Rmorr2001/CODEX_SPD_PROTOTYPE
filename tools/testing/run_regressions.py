@@ -77,7 +77,8 @@ def main():
 
     inventory = json.loads((ROOT / "docs/testing/wave-2-inventory.json").read_text())
     mapping, errors = read_mapping(inventory)
-    labels = [*DOMAINS, "SPDWEBAPP_CORE.testing"]
+    labels = [*DOMAINS, "SPDWEBAPP_CORE.testing",
+              "SPDWEBAPP_CORE.api.test", "SPDWEBAPP_CORE.frontend.test"]
     probe = AuditedRunner(verbosity=0, interactive=False)
     discovered = [case.id() for case in flatten(probe.build_suite(labels))]
     for case_id, ids in mapping.items():

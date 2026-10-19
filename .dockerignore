@@ -9,3 +9,11 @@
 
 # Never let a prior generated snapshot enter the new source manifest.
 SPDWEBAPP/railway_demo/static/railway_demo/file-tree.html
+node_modules
+**/node_modules
+frontend/dist
+frontend/test-results
+frontend/playwright-report
+work
+**/.env
+**/.env.*

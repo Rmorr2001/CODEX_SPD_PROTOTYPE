@@ -1,0 +1,64 @@
+{
+  "baseline_commit": "79cff62",
+  "date_america_chicago": "2026-10-18",
+  "backend": {
+    "tests_run": 419,
+    "discovered_tests": 419,
+    "ready_cases": 393,
+    "verified_ready_cases": 393,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "unexpected_successes": 0
+  },
+  "new_delivery_tests": 14,
+  "legacy_demo_tests": 9,
+  "file_tree_tests": 5,
+  "mutation_checks": 13,
+  "all_mutations_caught": true,
+  "frontend": {
+    "typecheck": "PASS",
+    "format_check": "PASS",
+    "production_build": "PASS",
+    "fixture_browser_tests": 9,
+    "fixture_browser_seconds": 19.3,
+    "final_image_browser_tests": 9,
+    "final_image_browser_seconds": 18.4,
+    "vite_deep_link_and_api_proxy": "PASS"
+  },
+  "schema_validation": "PASS, fail-on-warn",
+  "migration_drift": "No changes detected",
+  "pip_check": "No broken requirements",
+  "image": {
+    "build": "PASS",
+    "id": "sha256:d3af5058085c31f60f161c913f741ad5227d166ac61c4ad4c7f7272d6a8c4e16",
+    "runtime_uid": 1000,
+    "runtime_node_executable": null,
+    "shell": {
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "no-cache"
+    },
+    "asset": {
+      "path": "/static/app/assets/index-BKpV2oL7.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=\"utf-8\"",
+      "cache_control": "max-age=315360000, public, immutable"
+    }
+  },
+  "python_coverage": {
+    "covered_lines": 1331,
+    "num_statements": 1438,
+    "percent_covered": 91.86320754716981,
+    "percent_covered_display": "92",
+    "missing_lines": 107,
+    "excluded_lines": 0,
+    "num_branches": 258,
+    "num_partial_branches": 13,
+    "covered_branches": 227,
+    "missing_branches": 31
+  },
+  "live_railway_deployment": "Not performed",
+  "hosted_ci_run": "Not verified"
+}

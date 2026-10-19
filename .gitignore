@@ -70,3 +70,9 @@ SPDWEBAPP/staticfiles/
 
 # File explorer is regenerated from source for every image build.
 SPDWEBAPP/railway_demo/static/railway_demo/file-tree.html
+
+# Bundled React artifacts and browser-check output.
+frontend/node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/

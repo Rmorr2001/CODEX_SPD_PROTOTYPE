@@ -1,0 +1,1 @@
+"""Composition regression tests."""
