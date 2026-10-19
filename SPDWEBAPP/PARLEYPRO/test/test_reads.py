@@ -20,14 +20,17 @@ class ReadTests(PollTestCase):
     def test_current_page_shows_open_poll_and_live_counts(self):
         poll = make_poll(creator=self.a, name="Current motion")
         choice = make_choice(self.a, "Aye")
-        before = snapshot_scope([poll, choice])
+        c = make_user(username="c", roles=("ACTIVE",))
+        c_choice = make_choice(c, "Aye")
+        before = snapshot_scope([poll, choice, c, c.brother_profile, c_choice],
+                                relations=[c.brother_profile.roles])
         background = self.background()
         response = self.client.get("/poll/")
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "poll_index.html")
         self.assertEqual(response.context["current_poll"].pk, poll.pk)
-        self.assertEqual((response.context["aye_votes"], response.context["nay_votes"]), (1, 1))
-        self.assertContains(response, "1 Aye")
+        self.assertEqual((response.context["aye_votes"], response.context["nay_votes"]), (2, 1))
+        self.assertContains(response, "2 Aye")
         self.assertContains(response, "1 Nay")
         self.assertContains(response, "Jan 15, 2026 11:59 AM")
         assert_unchanged(before)
@@ -35,16 +38,19 @@ class ReadTests(PollTestCase):
 
     def test_no_open_poll_page_remains_read_only_with_residual_choices(self):
         choice = make_choice(self.a, "Aye")
-        before = snapshot_scope([choice])
+        c = make_user(username="c", roles=("ACTIVE",))
+        c_choice = make_choice(c, "Aye")
+        before = snapshot_scope([choice, c, c.brother_profile, c_choice],
+                                relations=[c.brother_profile.roles])
         background = self.background()
         response = self.client.get("/poll/")
         self.assertEqual(response.status_code, 200)
         self.assertIsNone(response.context["current_poll"])
         self.assertContains(response, "No active poll at the moment")
-        self.assertEqual((response.context["aye_votes"], response.context["nay_votes"]), (1, 1))
+        self.assertEqual((response.context["aye_votes"], response.context["nay_votes"]), (2, 1))
         self.assertNotContains(response, 'name="aye"')
         self.assertNotContains(response, 'name="end_vote"')
-        self.assertEqual(Brother_votes.objects.count(), 2)
+        self.assertEqual(Brother_votes.objects.count(), 3)
         assert_unchanged(before)
         self.assert_background(background)
 

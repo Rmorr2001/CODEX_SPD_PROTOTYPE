@@ -45,7 +45,8 @@
     "NEWMEMBER.test.test_read_models.ReadModelTests.test_signed_class_totals_and_order_exclude_unapproved"
   ],
   "NM-05-01b": [
-    "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_use_approved_signed_totals"
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_use_approved_signed_totals",
+    "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_round_fractional_class_average"
   ],
   "NM-05-02a": [
     "NEWMEMBER.test.test_read_models.ReadModelTests.test_two_bound_date_ranges_are_inclusive"

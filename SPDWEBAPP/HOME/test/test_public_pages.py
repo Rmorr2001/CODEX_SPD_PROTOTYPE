@@ -129,15 +129,17 @@ class PublicPageTests(RegressionTestCase):
         expected = ["President", "External Vice President", "Director of Chapter Affairs",
                     "Director of Business", "Director of Recruitment", "Director of Philanthropy",
                     "Director of Risk Management", "Director of Social Affairs"]
+        expected_pairs = list(zip(expected, [u.brother_profile.pk for u in actors])) + [
+            ("President", b.brother_profile.pk),
+            ("Director of Philanthropy", a.brother_profile.pk),
+        ]
         for _ in range(2):
             response = self.client.get("/executive-board/")
             self.assertEqual(response.status_code, 200)
             pairs = [(position, brother.pk) for position, brother in response.context["exec_board_brothers"]]
             self.assertEqual(list(dict.fromkeys(p for p, _ in pairs)), expected)
             self.assertEqual(len(pairs), len(set(pairs)))
-            self.assertEqual(pairs.count(("President", a.brother_profile.pk)), 1)
-            self.assertEqual(pairs.count(("President", b.brother_profile.pk)), 1)
-            self.assertEqual(pairs.count(("Director of Philanthropy", a.brother_profile.pk)), 1)
+            self.assertCountEqual(pairs, expected_pairs)
         assert_unchanged(before)
         self.assertTrue(all(not hasattr(p, "position") for p in Brother_Profile.objects.all()))
 

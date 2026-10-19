@@ -39,6 +39,7 @@ class ReadModelTests(MarkCase):
         self.assertEqual([p['user'].pk for p in progress], [self.t1.pk, self.t2.pk, self.t3.pk])
         self.assertEqual([p['total_marks'] for p in progress], [-3, 0, 0])
         self.assertEqual([p['is_negative'] for p in progress], [True, False, False])
+        self.assertEqual([p['full_name'] for p in progress], ['T1 Able', 'T2 Baker', 'T3 Zed'])
         self.unchanged(before)
 
     def test_personal_stats_use_approved_signed_totals(self):
@@ -52,6 +53,24 @@ class ReadModelTests(MarkCase):
         self.assertEqual(second['standing'], 'Good Standing')
         self.assertEqual(second['class_average'], -1.0)
         self.unchanged(before)
+
+    def test_personal_stats_round_fractional_class_average(self):
+        mark = self.mark(self.a, self.t1, status='approved', value=1)
+        self.t3.brother_profile.roles.clear()
+        before = self.capture()
+        for target in (self.t1, self.t2):
+            self.assertEqual(f.get_personal_stats(target)['class_average'], 0.5)
+        self.unchanged(before)
+
+        self.t3.brother_profile.roles.add(
+            self.t1.brother_profile.roles.get(name='NEW_MEMBER'))
+        for value, expected in ((1, 0.3), (-1, -0.3), (2, 0.7)):
+            with self.subTest(approved_value=value):
+                Mark.objects.filter(pk=mark.pk).update(mark_value=value)
+                before = self.capture()
+                for target in (self.t1, self.t2, self.t3):
+                    self.assertEqual(f.get_personal_stats(target)['class_average'], expected)
+                self.unchanged(before)
 
     def test_two_bound_date_ranges_are_inclusive(self):
         requested = {}
@@ -115,6 +134,10 @@ class ReadModelTests(MarkCase):
             with at_time(NOW):
                 response = self.client.get(reverse('newmember_marks_dashboard'))
             self.assertEqual(response.status_code, 200)
+            self.assertEqual([p['full_name'] for p in response.context['new_members_progress']],
+                             ['T1 Able', 'T2 Baker', 'T3 Zed'])
+            for name in ('T1 Able', 'T2 Baker', 'T3 Zed'):
+                self.assertContains(response, name)
             if actor == self.a:
                 self.assertTemplateUsed(response, 'ACTIVE_newmember_marks_dashboard.html')
                 self.assertEqual(list(response.context['user_submitted_marks']), [own])

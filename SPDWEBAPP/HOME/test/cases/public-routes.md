@@ -151,6 +151,7 @@ GIVEN nine office Role rows in reverse insertion order
   AND B also holds PRESIDENT; no profile carries INT_VP
 WHEN anonymous GETs /executive-board/ twice
 THEN both responses are 200 with each holder-office pair exactly once
+  AND the complete pair multiset matches the independently assigned fixture holders
   AND order is PRESIDENT, EXT_VP, AFFAIRS_DIRECTOR, BUSINESS_MGR
   AND then RECRUITMENT_CHAIR, PHIL_CHAIR, RISK_MGR, SOCIAL_CHAIR
   AND no INT_VP card appears; no order between two PRESIDENT holders is asserted

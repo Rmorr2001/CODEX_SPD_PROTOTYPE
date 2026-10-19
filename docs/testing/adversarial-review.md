@@ -123,3 +123,9 @@ combined audit and the relevant mutants. Keep behavior/policy fixes separate.
 No application, existing test, harness, schema, deployment or business-policy
 changes were made during this review. New probe tools are diagnostic artifacts,
 not CI approval gates, and preserve their mutations within their own processes.
+
+## Follow-up implementation
+
+[Part 1 hardening](part-1-hardening.md) addresses the seven demonstrated gaps.
+This review and its JSON snapshot retain the historical `cb69127` findings;
+current probe outcomes and acceptance results are recorded in the follow-up.

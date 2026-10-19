@@ -24,6 +24,7 @@ Source: `SPDWEBAPP/AUTHENTICATE/views.py:126–164; SPDWEBAPP/AUTHENTICATE/model
 
 ```text
 GIVEN A/B have distinct profiles, no A image; A has major Physics
+  AND A starts in class Beta independently for every role variant; P submits Alpha
   AND A role variants: (), ACTIVE, EXEC, PHIL_CHAIR, NM_BOARD, NME
   AND also EXEC+ACTIVE, PHIL_CHAIR+ACTIVE, NEW_MEMBER, NEW_MEMBER+ACTIVE
   AND also NEW_MEMBER+EXEC+ACTIVE, ALUMNI, ALUMNI+ACTIVE

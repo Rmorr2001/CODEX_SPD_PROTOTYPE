@@ -1,0 +1,933 @@
+{
+  "baseline_commit": "be7261f",
+  "completion_date_america_chicago": "2026-10-18",
+  "frozen_inventory_sha256": "ff6e703cffeae8552a4168b6907b6a4db9abf05b74888303d2cea3c0b88ce57a",
+  "baseline": {
+    "combined_tests": 404,
+    "verified_ready_cases": 393,
+    "seconds": 102.965,
+    "seven_survivors": [
+      {
+        "name": "auth_pclass",
+        "domain": "AUTHENTICATE",
+        "target": "AUTHENTICATE.views.update_profile",
+        "old": "brother_profile.pclass = pclass",
+        "new": "pass # omitted pclass persistence",
+        "baseline": {
+          "exit_status": 0,
+          "tests_run": 76,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 36.716,
+          "log": "work/adversarial_identity/auth_pclass-baseline.log"
+        },
+        "mutant": {
+          "exit_status": 0,
+          "tests_run": 76,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 26.513,
+          "log": "work/adversarial_identity/auth_pclass-mutant.log"
+        },
+        "restored": {
+          "exit_status": 0,
+          "tests_run": 76,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 20.591,
+          "log": "work/adversarial_identity/auth_pclass-restored.log"
+        },
+        "classification": "survives"
+      },
+      {
+        "name": "pp_page_swapped",
+        "domain": "PARLEYPRO",
+        "target": "PARLEYPRO.views.poll_index",
+        "old": "'nay_votes': nay_votes,\n        'aye_votes': aye_votes,",
+        "new": "'nay_votes': aye_votes,\n        'aye_votes': nay_votes,",
+        "baseline": {
+          "exit_status": 0,
+          "tests_run": 58,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 34.3,
+          "log": "work/adversarial_identity/pp_page_swapped-baseline.log"
+        },
+        "mutant": {
+          "exit_status": 0,
+          "tests_run": 58,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 29.57,
+          "log": "work/adversarial_identity/pp_page_swapped-mutant.log"
+        },
+        "restored": {
+          "exit_status": 0,
+          "tests_run": 58,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 9.829,
+          "log": "work/adversarial_identity/pp_page_swapped-restored.log"
+        },
+        "classification": "survives"
+      },
+      {
+        "name": "nm_fraction",
+        "domain": "NEWMEMBER",
+        "target": "NEWMEMBER.views_functions.get_personal_stats",
+        "old": "round(class_average, 1)",
+        "new": "int(class_average)",
+        "baseline": {
+          "exit_status": 0,
+          "tests_run": 50,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 65.79,
+          "log": "work/adversarial_identity/nm_fraction-baseline.log"
+        },
+        "mutant": {
+          "exit_status": 0,
+          "tests_run": 50,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 23.342,
+          "log": "work/adversarial_identity/nm_fraction-mutant.log"
+        },
+        "restored": {
+          "exit_status": 0,
+          "tests_run": 50,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 11.918,
+          "log": "work/adversarial_identity/nm_fraction-restored.log"
+        },
+        "classification": "survives"
+      },
+      {
+        "name": "nm_display_name",
+        "domain": "NEWMEMBER",
+        "target": "NEWMEMBER.views_functions.calculate_member_marks",
+        "old": "f\"{member.firstName} {member.lastName}\"",
+        "new": "member.firstName",
+        "baseline": {
+          "exit_status": 0,
+          "tests_run": 50,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 60.785,
+          "log": "work/adversarial_identity/nm_display_name-baseline.log"
+        },
+        "mutant": {
+          "exit_status": 0,
+          "tests_run": 50,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 27.47,
+          "log": "work/adversarial_identity/nm_display_name-mutant.log"
+        },
+        "restored": {
+          "exit_status": 0,
+          "tests_run": 50,
+          "failures": [],
+          "errors": [],
+          "skips": 0,
+          "elapsed_seconds": 13.425,
+          "log": "work/adversarial_identity/nm_display_name-restored.log"
+        },
+        "classification": "survives"
+      },
+      {
+        "probe": "home_board",
+        "domain": "HOME",
+        "settings": "SPDWEBAPP_CORE.testing.settings",
+        "baseline": {
+          "tests": 63,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "witness_baseline": {
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "mutant": {
+          "tests": 63,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "witness_mutant": {
+          "tests": 1,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [
+            "__main__.BoardWitness.test_external_vp_is_correct_profile"
+          ],
+          "error_ids": [],
+          "exit": 1
+        },
+        "restored": {
+          "tests": 64,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        }
+      },
+      {
+        "probe": "ph_sort",
+        "domain": "PHILANTHROPY",
+        "settings": "SPDWEBAPP_CORE.testing.settings",
+        "baseline": {
+          "tests": 66,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "witness_baseline": {
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "mutant": {
+          "tests": 66,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "witness_mutant": {
+          "tests": 1,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [
+            "__main__.SortingWitness.test_descending_progress_reverses_creation_order"
+          ],
+          "error_ids": [],
+          "exit": 1
+        },
+        "restored": {
+          "tests": 67,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        }
+      },
+      {
+        "probe": "ph_name",
+        "domain": "PHILANTHROPY",
+        "settings": "SPDWEBAPP_CORE.testing.settings",
+        "baseline": {
+          "tests": 66,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "witness_baseline": {
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "mutant": {
+          "tests": 66,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        },
+        "witness_mutant": {
+          "tests": 1,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [
+            "__main__.NameWitness.test_progress_preserves_member_display_name"
+          ],
+          "error_ids": [],
+          "exit": 1
+        },
+        "restored": {
+          "tests": 67,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "failure_ids": [],
+          "error_ids": [],
+          "exit": 0
+        }
+      }
+    ]
+  },
+  "final_audit": {
+    "ready_cases": 393,
+    "verified_ready_cases": 393,
+    "discovered_tests": 405,
+    "tests_run": 405,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "unexpected_successes": 0,
+    "unsuccessful_case_ids": []
+  },
+  "final_seconds": 59.793,
+  "shuffled": {
+    "tests": 405,
+    "seed": 20261018,
+    "seconds": 58.007,
+    "outcome": "PASS"
+  },
+  "affected_domains": {
+    "tests": 314,
+    "seconds": 44.411,
+    "outcome": "PASS"
+  },
+  "demo": {
+    "tests": 9,
+    "seconds": 1.495,
+    "outcome": "PASS"
+  },
+  "source_explorer": {
+    "tests": 5,
+    "outcome": "PASS"
+  },
+  "django_check": "No issues",
+  "migration_drift": "No changes detected",
+  "coverage": {
+    "covered_lines": 1284,
+    "num_statements": 1391,
+    "percent_covered": 91.6312916919345,
+    "percent_covered_display": "92",
+    "missing_lines": 107,
+    "excluded_lines": 0,
+    "num_branches": 258,
+    "num_partial_branches": 13,
+    "covered_branches": 227,
+    "missing_branches": 31
+  },
+  "required_mutation_checks": [
+    {
+      "domain": "AUTHENTICATE",
+      "case_id": "AUTH-A04-01a",
+      "test_ids": [
+        "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile"
+      ],
+      "suite_labels": [
+        "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile"
+      ],
+      "scope": "mapped cases",
+      "mutation": "Corrupt the saved own-profile first name",
+      "baseline": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 1,
+        "failures": 13,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=())",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('ACTIVE',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('EXEC',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('PHIL_CHAIR',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NM_BOARD',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NME',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('EXEC', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('PHIL_CHAIR', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NEW_MEMBER',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NEW_MEMBER', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NEW_MEMBER', 'EXEC', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('ALUMNI',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('ALUMNI', 'ACTIVE'))"
+        ]
+      },
+      "restored": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "PARLEYPRO",
+      "case_id": "PP-15b",
+      "test_ids": [
+        "PARLEYPRO.test.test_votes.VoteTests.test_count_helper_respects_supplied_queryset"
+      ],
+      "suite_labels": [
+        "PARLEYPRO.test.test_votes.VoteTests.test_count_helper_respects_supplied_queryset"
+      ],
+      "scope": "mapped cases",
+      "mutation": "Inflate the Aye tally by one",
+      "baseline": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 1,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "PARLEYPRO.test.test_votes.VoteTests.test_count_helper_respects_supplied_queryset"
+        ]
+      },
+      "restored": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "case_id": "PH-C17a",
+      "test_ids": [
+        "PHILANTHROPY.test.test_statistics.AcademicYearTests.test_academic_year_dates_are_july_through_june"
+      ],
+      "suite_labels": [
+        "PHILANTHROPY.test.test_statistics.AcademicYearTests.test_academic_year_dates_are_july_through_june"
+      ],
+      "scope": "mapped cases",
+      "mutation": "Move academic-year start from July to August",
+      "baseline": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 1,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "PHILANTHROPY.test.test_statistics.AcademicYearTests.test_academic_year_dates_are_july_through_june"
+        ]
+      },
+      "restored": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "NEWMEMBER",
+      "case_id": "NM-05-01b",
+      "test_ids": [
+        "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_use_approved_signed_totals",
+        "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_round_fractional_class_average"
+      ],
+      "suite_labels": [
+        "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_use_approved_signed_totals",
+        "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_round_fractional_class_average"
+      ],
+      "scope": "mapped cases",
+      "mutation": "Include requested marks instead of approved personal marks",
+      "baseline": {
+        "tests_run": 2,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 2,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_use_approved_signed_totals"
+        ]
+      },
+      "restored": {
+        "tests_run": 2,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "HOME",
+      "case_id": "HOME-T02a",
+      "test_ids": [
+        "HOME.test.test_public_pages.PublicPageTests.test_active_count_uses_distinct_role_membership"
+      ],
+      "suite_labels": [
+        "HOME.test.test_public_pages.PublicPageTests.test_active_count_uses_distinct_role_membership"
+      ],
+      "scope": "mapped cases",
+      "mutation": "Count alumni instead of active profiles",
+      "baseline": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 1,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "HOME.test.test_public_pages.PublicPageTests.test_active_count_uses_distinct_role_membership"
+        ]
+      },
+      "restored": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "MISC",
+      "case_id": "MISC-T15b",
+      "test_ids": [
+        "MISC.test.test_calendar.CalendarTests.test_second_and_first_sunday_dates_across_years"
+      ],
+      "suite_labels": [
+        "MISC.test.test_calendar.CalendarTests.test_second_and_first_sunday_dates_across_years"
+      ],
+      "scope": "mapped cases",
+      "mutation": "Select the first March Sunday instead of the second",
+      "baseline": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 1,
+        "failures": 2,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "MISC.test.test_calendar.CalendarTests.test_second_and_first_sunday_dates_across_years (clock='2027-01-01T12:00:00Z')",
+          "MISC.test.test_calendar.CalendarTests.test_second_and_first_sunday_dates_across_years (clock='2028-01-01T12:00:00Z')"
+        ]
+      },
+      "restored": {
+        "tests_run": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "AUTHENTICATE",
+      "case_id": "AUTH-A04-01a",
+      "test_ids": [
+        "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile"
+      ],
+      "suite_labels": [
+        "AUTHENTICATE"
+      ],
+      "scope": "domain",
+      "mutation": "Discard the submitted profile class",
+      "baseline": {
+        "tests_run": 76,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 76,
+        "failures": 13,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=())",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('ACTIVE',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('EXEC',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('PHIL_CHAIR',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NM_BOARD',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NME',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('EXEC', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('PHIL_CHAIR', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NEW_MEMBER',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NEW_MEMBER', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('NEW_MEMBER', 'EXEC', 'ACTIVE'))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('ALUMNI',))",
+          "AUTHENTICATE.test.test_profile.ProfileTests.test_edit_own_profile (roles=('ALUMNI', 'ACTIVE'))"
+        ]
+      },
+      "restored": {
+        "tests_run": 76,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "PARLEYPRO",
+      "case_id": "PP-26a",
+      "test_ids": [
+        "PARLEYPRO.test.test_reads.ReadTests.test_current_page_shows_open_poll_and_live_counts"
+      ],
+      "suite_labels": [
+        "PARLEYPRO"
+      ],
+      "scope": "domain",
+      "mutation": "Reverse the current-page Aye and Nay counts",
+      "baseline": {
+        "tests_run": 58,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 58,
+        "failures": 2,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "PARLEYPRO.test.test_reads.ReadTests.test_current_page_shows_open_poll_and_live_counts",
+          "PARLEYPRO.test.test_reads.ReadTests.test_no_open_poll_page_remains_read_only_with_residual_choices"
+        ]
+      },
+      "restored": {
+        "tests_run": 58,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "HOME",
+      "case_id": "HOME-T02c",
+      "test_ids": [
+        "HOME.test.test_public_pages.PublicPageTests.test_board_role_order_and_multi_office_pairs"
+      ],
+      "suite_labels": [
+        "HOME"
+      ],
+      "scope": "domain",
+      "mutation": "Display the president under External Vice President",
+      "baseline": {
+        "tests_run": 63,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 63,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "HOME.test.test_public_pages.PublicPageTests.test_board_role_order_and_multi_office_pairs"
+        ]
+      },
+      "restored": {
+        "tests_run": 63,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "case_id": "PH-C18a",
+      "test_ids": [
+        "PHILANTHROPY.test.test_statistics.StatisticsTests.test_chapter_and_personal_approved_totals_are_scoped"
+      ],
+      "suite_labels": [
+        "PHILANTHROPY"
+      ],
+      "scope": "domain",
+      "mutation": "Remove descending dashboard progress ordering",
+      "baseline": {
+        "tests_run": 66,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 66,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "PHILANTHROPY.test.test_statistics.StatisticsTests.test_chapter_and_personal_approved_totals_are_scoped"
+        ]
+      },
+      "restored": {
+        "tests_run": 66,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "NEWMEMBER",
+      "case_id": "NM-05-01b",
+      "test_ids": [
+        "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_use_approved_signed_totals",
+        "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_round_fractional_class_average"
+      ],
+      "suite_labels": [
+        "NEWMEMBER"
+      ],
+      "scope": "domain",
+      "mutation": "Truncate the fractional personal class average",
+      "baseline": {
+        "tests_run": 51,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 51,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "NEWMEMBER.test.test_read_models.ReadModelTests.test_personal_stats_round_fractional_class_average"
+        ]
+      },
+      "restored": {
+        "tests_run": 51,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "NEWMEMBER",
+      "case_id": "NM-05-01a",
+      "test_ids": [
+        "NEWMEMBER.test.test_read_models.ReadModelTests.test_signed_class_totals_and_order_exclude_unapproved"
+      ],
+      "suite_labels": [
+        "NEWMEMBER"
+      ],
+      "scope": "domain",
+      "mutation": "Drop the surname from new-member progress",
+      "baseline": {
+        "tests_run": 51,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 51,
+        "failures": 2,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "NEWMEMBER.test.test_read_models.ReadModelTests.test_signed_class_totals_and_order_exclude_unapproved",
+          "NEWMEMBER.test.test_read_models.ReadModelTests.test_single_role_dashboard_selects_matching_context"
+        ]
+      },
+      "restored": {
+        "tests_run": 51,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    },
+    {
+      "domain": "PHILANTHROPY",
+      "case_id": "PH-C18a",
+      "test_ids": [
+        "PHILANTHROPY.test.test_statistics.StatisticsTests.test_chapter_and_personal_approved_totals_are_scoped"
+      ],
+      "suite_labels": [
+        "PHILANTHROPY"
+      ],
+      "scope": "domain",
+      "mutation": "Blank the philanthropy progress member name",
+      "baseline": {
+        "tests_run": 66,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "mutant": {
+        "tests_run": 66,
+        "failures": 1,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": [
+          "PHILANTHROPY.test.test_statistics.StatisticsTests.test_chapter_and_personal_approved_totals_are_scoped"
+        ]
+      },
+      "restored": {
+        "tests_run": 66,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "failure_ids": []
+      },
+      "caught_by_assertions": true
+    }
+  ]
+}

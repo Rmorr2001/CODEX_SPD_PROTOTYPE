@@ -42,8 +42,10 @@ class AcademicYearTests(SimpleTestCase):
 class StatisticsTests(PhilanthropyCase):
     def setUp(self):
         super().setUp()
-        self.a = make_user(username='a', roles=('ACTIVE',))
-        self.b = make_user(username='b', roles=('ACTIVE',))
+        self.a = make_user(username='a', roles=('ACTIVE',),
+                           profile_fields={'firstName': 'Alex', 'lastName': 'Able'})
+        self.b = make_user(username='b', roles=('ACTIVE',),
+                           profile_fields={'firstName': 'Blair', 'lastName': 'Baker'})
         self.f = make_event(self.b, title='Outside control', hours=7,
                             day=date(2024, 7, 1), status='approved')
         login_actor(self.client, self.a)
@@ -80,10 +82,12 @@ class StatisticsTests(PhilanthropyCase):
         self.unchanged(before)
 
     def test_chapter_and_personal_approved_totals_are_scoped(self):
-        c = make_user(username='zero', roles=('ACTIVE',))
+        c = make_user(username='zero', roles=('ACTIVE',),
+                      profile_fields={'firstName': 'Casey', 'lastName': 'Cole'})
         d = make_user(username='inactive', roles=('ALUMNI',))
-        events = [make_event(self.a, hours=10, day=date(2025, 7, 1), status='approved'),
-                  make_event(self.b, hours=5, day=date(2025, 7, 1), status='approved'),
+        # Totals oppose profile creation order, so the dashboard must actually sort.
+        events = [make_event(self.a, hours=5, day=date(2025, 7, 1), status='approved'),
+                  make_event(self.b, hours=10, day=date(2025, 7, 1), status='approved'),
                   make_event(d, hours=99, day=date(2025, 7, 1), status='approved'),
                   make_event(self.a, hours=40, day=date(2025, 7, 2)),
                   make_event(self.a, hours=50, day=date(2025, 7, 3), status='denied'),
@@ -94,23 +98,28 @@ class StatisticsTests(PhilanthropyCase):
         context = response.context
         for key, value in {'total_chapter_hours': 15, 'total_active_members': 3,
                            'avg_hours_per_brother': 5, 'members_meeting_goal': 1,
-                           'user_total_hours': 10}.items():
+                           'user_total_hours': 5}.items():
             self.assertEqual(context[key], value, key)
-        self.assertEqual([(p['user'].pk, p['total_hours']) for p in
+        self.assertEqual([(p['user'].pk, p['full_name'], p['total_hours']) for p in
                           context['brothers_progress']],
-                         [(self.a.pk, 10), (self.b.pk, 5), (c.pk, 0)])
+                         [(self.b.pk, 'Blair Baker', 10),
+                          (self.a.pk, 'Alex Able', 5), (c.pk, 'Casey Cole', 0)])
+        for name in ('Alex Able', 'Blair Baker', 'Casey Cole'):
+            self.assertContains(response, name)
         self.assertCountEqual(context['user_events'], [events[0], events[3], events[4]])
         request = RequestFactory().get(DASHBOARD)
         request.user = self.a
         own, total = functions.get_user_events_and_total_hours(
             request, date(2025, 7, 1), date(2026, 6, 30))
-        self.assertEqual(total, 10)
+        self.assertEqual(total, 5)
         self.assertEqual(list(own), [events[4], events[3], events[0]])
         progress, total, goal = functions.collect_philanthropy_statistics(
             [self.a.brother_profile, self.b.brother_profile, c.brother_profile],
             date(2025, 7, 1), date(2026, 6, 30))
         self.assertEqual((total, goal), (15, 1))
-        self.assertEqual([p['total_hours'] for p in progress], [10, 5, 0])
+        self.assertEqual([(p['user'].pk, p['full_name'], p['total_hours']) for p in progress],
+                         [(self.a.pk, 'Alex Able', 5),
+                          (self.b.pk, 'Blair Baker', 10), (c.pk, 'Casey Cole', 0)])
         self.unchanged(before)
 
     def test_goal_threshold_is_ten_approved_hours(self):

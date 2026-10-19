@@ -53,8 +53,11 @@ Each business domain has a singular `test/` folder containing executable tests,
 case mappings, specifications and testing documentation. Start with
 [the six-domain testing map](docs/testing/README.md) for setup and commands.
 
-Wave 2 verifies all 393 READY case designs: 404 combined tests including the
+Wave 2 verifies all 393 READY case designs: 405 combined tests including the
 shared harness, plus the nine existing demo tests. The 284 remaining designs
 retain explicit defect, policy or infrastructure blockers. An executable mapping
 audit prevents missing or skipped tests from being counted as verified cases.
 See [Wave 2 results](docs/testing/wave-2-results.md) for evidence and limitations.
+
+[Part 1 hardening](docs/testing/part-1-hardening.md) strengthens the seven
+demonstrated review gaps and requires 13 assertion-effectiveness probes in CI.

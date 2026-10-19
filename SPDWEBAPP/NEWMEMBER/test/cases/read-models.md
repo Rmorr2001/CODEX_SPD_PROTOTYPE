@@ -19,6 +19,7 @@ GIVEN NEW_MEMBER T1/T2/T3 named Able/Baker/Zed and ALUMNI B
   AND before = snapshot_scope(scope_rows, relations=scope_relations, files=scope_files)
 WHEN get_new_members() and calculate_member_marks(members) run
 THEN source members are T1,T2,T3 by last name; progress totals are -3,0,0
+  AND full_name values are exactly "T1 Able", "T2 Baker", "T3 Zed"
   AND is_negative is True,False,False and tie retains supplied member order
   AND no B progress or unapproved value appears
   AND all named marks/users/profiles/roles and mark count remain unchanged
@@ -42,6 +43,18 @@ THEN T1 total=-3,class_average=-1.0,standing="Needs Improvement"
   AND requested/denied rows never affect latest, total or average
   AND all named marks/users/roles and mark count remain unchanged
   AND assert_unchanged(before)
+```
+
+Part 1 preservation extension, also mapped to `NM-05-01b`:
+
+```text
+GIVEN two NEW_MEMBER targets have approved signed totals [1,0]
+WHEN get_personal_stats runs for either target
+THEN class_average is exactly 0.5 and all captured rows/relations/files are unchanged
+GIVEN a third NEW_MEMBER with zero marks joins the fixture
+WHEN the first target's approved total is separately 1, -1 or 2
+THEN every member's class_average is respectively 0.3, -0.3 or 0.7
+  AND each read preserves the captured fixture state
 ```
 
 ### NM-05-02a — test_two_bound_date_ranges_are_inclusive
@@ -155,6 +168,8 @@ THEN ACTIVE response uses ACTIVE_newmember_marks_dashboard.html with A's M only
   AND ACTIVE has analytics, personal_stats=None,is_active=True
   AND T1 response uses newmember_marks_dashboard.html with personal total=-3
   AND T1 has analytics=None,is_active=False; both responses are 200
+  AND both progress contexts and rendered member labels include exactly the full names
+      "T1 Able", "T2 Baker" and "T3 Zed" for the three fixture members
   AND M/Z/users/roles/mark count/session identities are unchanged
   AND assert_unchanged(before)
 ```

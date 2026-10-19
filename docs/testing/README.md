@@ -1,9 +1,10 @@
 # Backend regression suite
 
 Wave 2 implements all **393 READY designs** frozen at `4b103f6`. The audited
-combined suite runs 404 tests: 393 domain methods and 11 shared-harness tests.
+combined suite now runs 405 tests: 394 domain methods and 11 shared-harness tests.
 The existing nine demo tests run separately. There are no skipped or expected
-failures in these passing counts. See [actual results](wave-2-results.md) and
+failures in these passing counts. See [current hardening results](part-1-hardening.md),
+[original Wave 2 results](wave-2-results.md) and
 [the goals declared before dispatch](wave-2-goals.md).
 
 | Domain | Tests and documentation | Verified READY | Blocked designs |
@@ -18,8 +19,9 @@ failures in these passing counts. See [actual results](wave-2-results.md) and
 
 The subsequent [independent adversarial review](adversarial-review.md) found
 four READY fixture/assertion gaps and three preservation-design extensions.
-Passing mapped methods establish execution; they do not alone prove adequacy.
-The review includes full-suite surviving defects and controls that were caught.
+[Part 1 hardening](part-1-hardening.md) closes those seven demonstrated gaps.
+Passing mapped methods establish execution; the assertion-kill checks supply
+separate evidence that the strengthened tests reject the reviewed defects.
 
 ## Setup and commands
 
@@ -48,9 +50,13 @@ No formatter, lint or static type-check command is configured.
 then requires every mapped method to finish successfully. Skips, expected
 failures and unexpected successes fail the audit. It writes
 `work/test-results.json`, including all 284 blocked designs and their reasons.
-`probe_regressions.py` applies one bounded in-memory behavior mutation per domain:
-clean test must pass, mutant must fail by assertion, restored test must pass.
+`probe_regressions.py` requires 13 bounded in-memory behavior mutations to be
+caught: the original six mapped-case probes and seven adversarial defects tested
+against complete affected-domain suites. Clean/restored runs must pass; mutants
+must fail by assertion with zero errors, skips or expected/unexpected outcomes.
 It never edits source files and writes `work/mutation-results.json`.
+`NM-05-01b` now maps to its original signed-total method and a new fractional-mean
+method. All 393 frozen READY IDs remain required; no blocked design is promoted.
 
 GitHub Actions runs these checks on pull requests and pushes to
 `prototype/railway`, uploading both JSON reports and `coverage.xml`. Reports and

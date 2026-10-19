@@ -51,3 +51,9 @@ POL-01–09 and DEF-01–08 before passing-test credit.
 
 Source design baseline: `7e25ac2`; refinement: `c8bbc4e`; implementation freeze: `4b103f6`.
 Coordinator owns combined/demo-suite runs, mapping audit and mutation effectiveness.
+
+## Part 1 hardening
+
+[The hardening results](../../../docs/testing/part-1-hardening.md) record the
+stronger preservation assertions, clean-suite results and required mutation kills.
+The historical Wave 2 findings above retain their original counts and evidence.

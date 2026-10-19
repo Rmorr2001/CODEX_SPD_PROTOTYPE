@@ -46,3 +46,9 @@ Shared setup/check instructions are in [AGENTS.md](../../../AGENTS.md).
 Earlier `.venv`/railway_demo commands in design history are distinct from the
 standalone commands above. Combined validation, original nine demo tests and
 mutation probes are coordinator-owned; this README does not claim they ran here.
+
+## Part 1 hardening
+
+[The hardening results](../../../docs/testing/part-1-hardening.md) record the
+stronger preservation assertions, clean-suite results and required mutation kills.
+The historical Wave 2 findings above retain their original counts and evidence.

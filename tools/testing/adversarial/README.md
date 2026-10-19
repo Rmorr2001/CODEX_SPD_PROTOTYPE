@@ -1,8 +1,9 @@
 # Adversarial review probes
 
 Diagnostic artifacts for [the independent review](../../../docs/testing/adversarial-review.md)
-of `cb69127`. These are separate from CI's six original effectiveness probes.
-They reproduce both surviving defects and controls caught by the existing suite;
+of `cb69127`. Seven reviewed defects now also run as required kills in CI's 13-probe
+`tools/testing/probe_regressions.py` gate. These scripts retain their historical
+diagnostic role and report both detected defects and any remaining survivors;
 a zero script exit status is not a migration-approval verdict. Read the JSON and
 report classification. No application source file is edited.
 
@@ -35,9 +36,9 @@ mutant and restored witnesses. Fresh in-memory SQLite is created per runner.
 These scripts need no network, runtime configuration, deployed database or secrets.
 
 The historical [JSON snapshot](../../../docs/testing/evidence/adversarial-review.json)
-and reviewer reports record outcomes at the reviewed commit. A future assertion
-improvement should turn the relevant survivor into an assertion kill; do not
-weaken the test to retain the old result. Scripts require their unique source
+and reviewer reports record outcomes at the reviewed commit. [Part 1 hardening](../../../docs/testing/part-1-hardening.md) turns the seven
+reviewed survivors into assertion kills; do not weaken tests to retain their
+historical results. Scripts require their unique source
 fragments to match, so later refactoring may require updating the diagnostic seam.
 Raw reviewer scripts were preserved here with portable repository-root discovery,
 output-directory creation and the identity witness import path adjusted.

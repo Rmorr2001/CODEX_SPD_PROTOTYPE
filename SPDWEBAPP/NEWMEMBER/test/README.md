@@ -1,8 +1,9 @@
 # New-member marks regression tests
 
-Wave 2 implements all **50 frozen READY designs** from baseline `4b103f6` as
-50 discoverable test methods. [case-map.json](case-map.json) maps each READY ID
-to its fully qualified unittest ID. The [regression specification](regression-spec.md)
+The current suite implements all **50 frozen READY designs** from baseline
+`4b103f6` with **51 discoverable test methods**. [case-map.json](case-map.json)
+maps each READY ID to its fully qualified unittest IDs; `NM-05-01b` includes
+a separate fractional-average method. The [regression specification](regression-spec.md)
 and [workflow case designs](cases/) retain the source inventory, role matrix and
 38 blocked designs: 14 NEEDS_FIX and 24 POLICY_BLOCKED. Those blocked cases are
 not passing coverage, skips or expected failures.
@@ -20,7 +21,8 @@ DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzo
 DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings /workspace/work/spd-mizzou-venv/bin/python SPDWEBAPP/manage.py test NEWMEMBER --noinput
 ```
 
-Both explicit-package and app-label discovery ran **50 tests successfully**, with
+At the original Wave 2 baseline, explicit-package and app-label discovery ran
+**50 tests successfully**, with
 no skips or expected failures and no system-check issues. The obsolete empty
 `NEWMEMBER/tests.py` was removed after package discovery was established. For
 other environments, use a Python executable with the project's installed test
@@ -49,3 +51,9 @@ visibility or retention policy has been selected, and no application behavior wa
 
 The coordinator owns combined-suite validation, the existing demo suite, mapping
 acceptance and bounded mutation probes under [Wave 2 goals](../../../docs/testing/wave-2-goals.md).
+
+## Part 1 hardening
+
+[The hardening results](../../../docs/testing/part-1-hardening.md) record the
+stronger preservation assertions, clean-suite results and required mutation kills.
+The historical Wave 2 findings above retain their original counts and evidence.

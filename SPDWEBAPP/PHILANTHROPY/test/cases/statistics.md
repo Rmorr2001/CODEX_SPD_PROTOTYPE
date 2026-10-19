@@ -140,15 +140,19 @@ Status: `READY` | Blockers: none beyond shared harness
 Source: `SPDWEBAPP/PHILANTHROPY/views_functions.py:8–61`
 
 ```text
-GIVEN A/B/C have ACTIVE; D has ALUMNI; approved 2025-07-01 events A10/B5/D99 have hours10/5/99
+GIVEN A/B/C have ACTIVE; D has ALUMNI; profiles are created in A,B,C order
+  AND A is Alex Able, B is Blair Baker and C is Casey Cole
+  AND approved 2025-07-01 events A5/B10/D99 have hours5/10/99
   AND A has requested R40 hours40, denied N50 hours50 and approved O70 dated 2025-06-30
-  AND before = snapshot_scope([A,B,C,D,A10,B5,D99,R40,N50,O70],
+  AND before = snapshot_scope([A,B,C,D,A5,B10,D99,R40,N50,O70],
       relations=(A_profile.roles, B_profile.roles, C_profile.roles, D_profile.roles))
 WHEN A GETs /philanthropy/?year=2025 and H2 helpers query (2025-07-01,2026-06-30)
 THEN response is 200; chapter total15, ACTIVE count3, average5 and goal count1
-  AND sorted progress is [A:10,B:5,C:0]
-  AND own events are A10/R40/N50, own total10; B5/D99/O70 do not enter own in-range list
-  AND A10/B5/D99/R40/N50/O70, users A/B/C/D and their profile roles are unchanged
+  AND sorted dashboard progress is [(B,"Blair Baker",10),(A,"Alex Able",5),(C,"Casey Cole",0)]
+  AND all three full names are rendered as member labels
+  AND the collection helper retains its explicitly supplied A,B,C order and full names
+  AND own events are A5/R40/N50, own total5; B10/D99/O70 do not enter own in-range list
+  AND A5/B10/D99/R40/N50/O70, users A/B/C/D and their profile roles are unchanged
 ```
 
 ### PH-C18b — test_goal_threshold_is_ten_approved_hours

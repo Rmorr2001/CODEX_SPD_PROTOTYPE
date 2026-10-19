@@ -59,3 +59,9 @@ file-retention policy, browser/static integration and unsafe behavior remain blo
 
 [File-tree generator verification](../../../tools/file_tree/README.md) is a separate
 tooling gate and is not counted as new HOME business coverage.
+
+## Part 1 hardening
+
+[The hardening results](../../../docs/testing/part-1-hardening.md) record the
+stronger preservation assertions, clean-suite results and required mutation kills.
+The historical Wave 2 findings above retain their original counts and evidence.

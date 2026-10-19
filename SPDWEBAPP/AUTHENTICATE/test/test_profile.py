@@ -22,6 +22,8 @@ class ProfileTests(IdentityCase):
         self.major("Physics", self.a)
         for roles in ALL_ROLES:
             with self.subTest(roles=roles):
+                # Every role variant must exercise a change, rather than an idempotent write.
+                Brother_Profile.objects.filter(user=self.a).update(pclass="Beta")
                 set_roles(self.a, roles)
                 self.login()
                 before = self.pair_snapshot()

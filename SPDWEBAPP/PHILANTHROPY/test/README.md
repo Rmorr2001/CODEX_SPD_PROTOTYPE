@@ -66,3 +66,9 @@ See the findings document for evidence and the initial failed-run history.
 No application/schema/dependency/configuration/deployment changes or business
 policy decisions were made. PostgreSQL races and other non-READY designs remain
 future work; this SQLite suite does not establish concurrency guarantees.
+
+## Part 1 hardening
+
+[The hardening results](../../../docs/testing/part-1-hardening.md) record the
+stronger preservation assertions, clean-suite results and required mutation kills.
+The historical Wave 2 findings above retain their original counts and evidence.

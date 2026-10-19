@@ -16,7 +16,7 @@ jobs:
           cache: pip
       - run: python -m pip install -r requirements-test.txt
       - run: python -m coverage run tools/testing/run_regressions.py
-      - name: Assertion effectiveness
+      - name: Assertion effectiveness (13 probes)
         run: python tools/testing/probe_regressions.py
       - name: Existing demo regression
         env:

@@ -23,11 +23,11 @@ Source: `SPDWEBAPP/PARLEYPRO/views.py:15–34`; `SPDWEBAPP/PARLEYPRO/templates/p
 
 ```text
 GIVEN A has only ACTIVE; A owns open P with saved aggregate counts 0/0
-  AND ACTIVE B has Aye; A has Nay; B owns closed H
-  AND before = snapshot_scope([A, B, P, H, A_choice, B_choice])
+  AND A and ACTIVE C have Aye; ACTIVE B has Nay; B owns closed H
+  AND before captures A/B/C, profiles, roles, P, H and all three choices
 WHEN A GETs /poll/
 THEN response is 200 using poll_index.html with current_poll=P
-  AND context aye_votes=1 and nay_votes=1 and both numeric bars are rendered
+  AND context aye_votes=2 and nay_votes=1; rendered labels say 2 Aye and 1 Nay
   AND P's displayed start is converted to America/Chicago
   AND assert_unchanged(before); GET does not update P's stored aggregates
 ```
@@ -42,11 +42,11 @@ Source: `SPDWEBAPP/PARLEYPRO/views.py:22–34`; `SPDWEBAPP/PARLEYPRO/templates/p
 
 ```text
 GIVEN A has only ACTIVE; B owns closed H; no poll is open
-  AND A has Aye and ACTIVE B has Nay
-  AND before = snapshot_scope([A, B, H, A_choice, B_choice])
+  AND A and ACTIVE C have Aye; ACTIVE B has Nay
+  AND before captures A/B/C, profiles, roles, H and all three choices
 WHEN A GETs /poll/
 THEN response is 200 with current_poll=None and No active poll at the moment
-  AND context still has aye_votes=1 and nay_votes=1
+  AND context still has aye_votes=2 and nay_votes=1
   AND vote buttons for an active poll are absent
   AND assert_unchanged(before); no residual choices are deleted
 ```
