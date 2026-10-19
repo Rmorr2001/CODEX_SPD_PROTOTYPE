@@ -100,6 +100,9 @@ React business screens, schema/data migrations or production cutover are include
 
 ## Actual local results
 
+Subsequent Railway deployment and its remaining live-verification limitation are
+recorded in the [deployment evidence](railway-foundation-deployment.md).
+
 Completed 18 October 2026 (America/Chicago), from baseline `79cff62`:
 
 | Check | Result |
