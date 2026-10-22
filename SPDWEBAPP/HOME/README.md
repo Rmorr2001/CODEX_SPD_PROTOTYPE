@@ -21,3 +21,9 @@ cards in the existing `executive_board` position order. Multi-role members appea
 once per position; missing positions are omitted. The card whitelist is name,
 displayed position and safe image URL, without contact data. `api_about.py` owns
 this presentation read model and `test/test_about_api.py` locks its boundaries.
+
+`GET /api/v1/public/recruitment/` exposes configured `interest_url` and ordered
+`slides` (caption/safe image only). Missing/unsafe/self-referencing recruitment
+links return null. Equal-order photos use primary-key order for stability. There
+is no event schedule, RSVP, signup mutation or new recruitment rule. Tests in
+`test/test_recruitment_api.py` cover these boundaries.

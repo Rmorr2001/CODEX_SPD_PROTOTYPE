@@ -23,3 +23,9 @@ keys are needed. Member-only records never belong in this API.
 command. Backend public contract tests: `manage.py test HOME.test.test_public_api`
 with standalone testing settings. Future public pages extend this domain rather
 than the application composition folder.
+
+S03 adds `/app/join`, reading ordered recruitment images/captions and the validated
+configured destination from `/api/v1/public/recruitment/`. Missing links point to
+the original recruitment page with an explicit label. The page invents no dates,
+RSVP form or recruitment email. `test/join.spec.ts` covers real data, empty/error
+states, retry, internal navigation and mobile width.

@@ -5,8 +5,10 @@ from rest_framework.permissions import AllowAny
 from .views import ApiNotFoundView, StatusView
 from HOME.api import PublicHomeView
 from HOME.api_about import PublicAboutView
+from HOME.api_recruitment import PublicRecruitmentView
 
 urlpatterns = [
+    path('v1/public/recruitment/', PublicRecruitmentView.as_view(), name='api_public_recruitment'),
     path('v1/public/about/', PublicAboutView.as_view(), name='api_public_about'),
     path('v1/public/home/', PublicHomeView.as_view(), name='api_public_home'),
     path('v1/status/', StatusView.as_view(), name='api_status'),

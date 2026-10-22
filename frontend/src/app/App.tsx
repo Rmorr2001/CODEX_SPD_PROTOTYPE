@@ -3,6 +3,7 @@ import { ServiceConnection } from '../components/ServiceConnection';
 import { PublicLayout } from '../domains/public/PublicLayout';
 import { Home } from '../domains/public/Home';
 import { About } from '../domains/public/About';
+import { Join } from '../domains/public/Join';
 
 export function App() {
   return (
@@ -10,6 +11,7 @@ export function App() {
       <Route element={<PublicLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="join" element={<Join />} />
         <Route
           path="connection"
           element={

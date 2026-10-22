@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { chapterSite } from '../../app/links';
 import { Arrow } from './Arrow';
@@ -185,9 +186,9 @@ export function About() {
           <h2>Build what comes next.</h2>
           <p>Start by getting to know us.</p>
         </div>
-        <a className="button primary" href={`${chapterSite}rush/`}>
+        <Link className="button primary" to="/join">
           Explore recruitment <Arrow />
-        </a>
+        </Link>
       </section>
     </div>
   );

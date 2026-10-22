@@ -16,7 +16,7 @@ test('home presents chapter content from the real public API without invented ev
   ).toBeVisible();
   await expect(page.getByRole('link', { name: 'Join SPD', exact: true }).last()).toHaveAttribute(
     'href',
-    '/rush/',
+    '/app/join',
   );
   await expect(
     page.getByRole('img', {
@@ -39,7 +39,7 @@ test('failed home content shows retry and preserves useful chapter links', async
   await expect(page.getByRole('alert')).toContainText('Chapter updates are unavailable.');
   await expect(page.getByRole('link', { name: 'Explore recruitment' })).toHaveAttribute(
     'href',
-    '/rush/',
+    '/app/join',
   );
   await page.unroute('**/api/v1/public/home/');
   await page.getByRole('button', { name: 'Retry chapter updates' }).click();

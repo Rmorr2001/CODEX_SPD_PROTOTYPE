@@ -27,7 +27,7 @@ export function PublicLayout() {
           <NavLink to="/about">About</NavLink>
           <Link to="/about#leadership">Brotherhood</Link>
           <Link to="/#purpose">Our purpose</Link>
-          <a href={`${chapterSite}rush/`}>Join SPD</a>
+          <NavLink to="/join">Join SPD</NavLink>
           <a className="member-login" href={`${chapterSite}auth/login/`}>
             Member login <Arrow />
           </a>

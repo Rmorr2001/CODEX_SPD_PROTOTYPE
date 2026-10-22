@@ -8,8 +8,8 @@ explicitly says otherwise. This work does not deploy a new Railway release.
 | --- | --- | --- | --- |
 | S01 Home | [PASS](reviews/S01-code.md) | [PASS](reviews/S01-visual.md) | Accepted: React public home + real read API |
 | S02 About & Brotherhood | [PASS](reviews/S02-code.md) | [PASS](reviews/S02-visual.md) | Accepted: real public leadership and history |
-| S03 Recruitment | Pending | Pending | Building |
-| S04 Dashboard + session boundary | Pending | Pending | Planned |
+| S03 Recruitment | [PASS](reviews/S03-code.md) | [PASS](reviews/S03-visual.md) | Accepted: real recruitment slides and safe links |
+| S04 Dashboard + session boundary | Pending | Pending | Building |
 | S05 Member directory | Pending | Pending | Planned |
 | S06 My profile | Pending | Pending | Planned |
 | S07 Chapter decisions | Pending | Pending | Planned |

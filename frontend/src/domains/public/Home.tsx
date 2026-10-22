@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { Arrow } from './Arrow';
 import './home.css';
 import { useEffect, useState } from 'react';
-import { chapterSite } from '../../app/links';
 import { fetchHome, publicAsset, type HomeContent } from './content';
 
 const pillars = [
@@ -71,9 +70,9 @@ export function Home() {
             each other for what’s next.
           </p>
           <div className="hero-actions">
-            <a className="button primary" href={`${chapterSite}rush/`}>
+            <Link className="button primary" to="/join">
               Join SPD <Arrow />
-            </a>
+            </Link>
             <Link className="button outline" to="/about">
               Meet the chapter
             </Link>
@@ -119,9 +118,9 @@ export function Home() {
           <p>Get to know the chapter, explore recruitment, and see where you belong.</p>
         </div>
         <div className="next-actions">
-          <a className="button primary" href={content?.rush_interest_url ?? `${chapterSite}rush/`}>
+          <Link className="button primary" to="/join">
             Explore recruitment <Arrow />
-          </a>
+          </Link>
           <a href="https://www.instagram.com/sigphimizzou/">
             Follow chapter events on Instagram <Arrow />
           </a>
