@@ -5,7 +5,7 @@ from rest_framework import serializers
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .api import safe_public_url
+from SPDWEBAPP_CORE.api.links import safe_public_url
 from .models import RushFormLink, RushSlide
 
 

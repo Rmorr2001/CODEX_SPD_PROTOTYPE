@@ -28,9 +28,9 @@ export function PublicLayout() {
           <Link to="/about#leadership">Brotherhood</Link>
           <Link to="/#purpose">Our purpose</Link>
           <NavLink to="/join">Join SPD</NavLink>
-          <a className="member-login" href={`${chapterSite}auth/login/`}>
+          <Link className="member-login" to="/login">
             Member login <Arrow />
-          </a>
+          </Link>
         </nav>
       </header>
       <main id="main" className="public-main">

@@ -29,3 +29,7 @@ DJANGO_SETTINGS_MODULE=SPDWEBAPP_CORE.testing.settings .venv/bin/python SPDWEBAP
 These tests use synthetic settings and fixtures, no runtime credentials.
 The [combined audit](../../../docs/testing/README.md) also discovers this package.
 Update serializers, contract documentation and meaningful tests together.
+
+`links.py` owns the shared safe presentation-link guard used by public and
+member read models. It rejects executable/protocol-relative/malformed URLs and
+embedded credentials; domain serializers still whitelist every returned field.

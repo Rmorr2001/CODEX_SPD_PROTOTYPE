@@ -85,7 +85,7 @@ def seed_home():
         host = settings.DEMO_PUBLIC_DOMAIN or "localhost"
         RushFormLink.objects.create(link=f"https://{host}/rush/")
     RushSlide.objects.get_or_create(caption="Chapter life — sample slide", defaults={"image": "rush_slides/demo-slide.webp", "order": 0})
-    AnnouncementAlert.objects.update_or_create(title="Welcome to the seeded demo", defaults={"content": "All member names and workflow records here are fictional. Switch personas above to explore the original app.", "is_active": True})
+    AnnouncementAlert.objects.update_or_create(title="Welcome to the seeded demo", defaults={"content": "All member names and workflow records here are fictional. Use demo sign-in to choose a role and explore fictional workflows.", "is_active": True})
     DayLightSavingsAlert.objects.get_or_create(name="Demo chapter notice", defaults={"is_active": False})
     for order, (text, link) in enumerate([("Executive Board", "/executive-board/"), ("Rush Information", "/rush/"), ("Member profile", "/auth/profile/")]):
         DashboardLink.objects.update_or_create(text=text, defaults={"link": link, "order": order})

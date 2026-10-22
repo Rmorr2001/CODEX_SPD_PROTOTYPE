@@ -1,0 +1,103 @@
+.access-page {
+  max-width: 1200px;
+  min-height: 70vh;
+  margin: auto;
+  padding: 70px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 100px;
+  align-items: start;
+}
+.access-intro {
+  padding-top: 40px;
+}
+.access-intro h1 {
+  font:
+    500 clamp(46px, 5vw, 66px)/1.08 Georgia,
+    serif;
+  letter-spacing: -0.04em;
+  margin-bottom: 26px;
+}
+.access-intro p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 300px;
+}
+.access-intro > a {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 12px;
+}
+.access-card {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  padding: 34px;
+  background: white;
+}
+.access-card h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+.access-card > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 14px;
+}
+.access-card > .button {
+  margin-top: 4px;
+}
+.demo-entry {
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+  padding-top: 28px;
+}
+.demo-entry h3 {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+.demo-entry p {
+  font-size: 12px;
+  color: var(--muted);
+}
+.demo-entry form {
+  display: grid;
+  gap: 12px;
+}
+.demo-entry label {
+  font-size: 12px;
+  font-weight: 600;
+}
+.demo-entry select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #93939c;
+  background: white;
+  color: #22222a;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 13px;
+}
+.demo-entry select:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+.demo-entry .button {
+  justify-content: center;
+  margin-top: 4px;
+  cursor: pointer;
+}
+@media (max-width: 750px) {
+  .access-page {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 35px 24px;
+  }
+  .access-intro {
+    padding-top: 0;
+  }
+  .access-intro h1 {
+    font-size: 44px;
+  }
+  .access-card {
+    padding: 26px;
+  }
+}

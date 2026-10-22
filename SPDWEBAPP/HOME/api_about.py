@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from AUTHENTICATE.models import Brother_Profile
-from .api import safe_public_url
+from SPDWEBAPP_CORE.api.links import safe_public_url
 
 # Mirrors HOME.views.executive_board; these are display positions, not new permissions.
 EXECUTIVE_POSITIONS = (

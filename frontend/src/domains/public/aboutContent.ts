@@ -1,4 +1,4 @@
-import { safePublicUrl } from './content';
+import { safePublicUrl } from '../../api/links';
 
 export type Executive = { name: string; position: string; image: string | null };
 export type AboutContent = { active_count: number; executives: Executive[] };

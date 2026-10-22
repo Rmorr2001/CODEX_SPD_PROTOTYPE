@@ -1,27 +1,13 @@
 """Explicit public presentation contracts; never serialize member profiles here."""
-from urllib.parse import urlsplit
 from drf_spectacular.utils import extend_schema
 from rest_framework import serializers
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import BannerImage, RushFormLink
+from SPDWEBAPP_CORE.api.links import safe_public_url
 
 
-def safe_public_url(value):
-    """Reject executable, protocol-relative and malformed configured links."""
-    if not value or any(char.isspace() for char in value) or '\\' in value:
-        return None
-    try:
-        parsed = urlsplit(value)
-        parsed.port  # Reject malformed ports rather than returning an unusable URL.
-    except ValueError:
-        return None
-    if parsed.username or parsed.password:
-        return None
-    if value.startswith('/') and not value.startswith('//'):
-        return value
-    return value if parsed.scheme in {'http', 'https'} and parsed.hostname else None
 
 
 class HomeContentSerializer(serializers.Serializer):

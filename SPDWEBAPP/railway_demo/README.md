@@ -93,3 +93,13 @@ works independently of the ChatGPT embed.
 
 See [the generator README](../../tools/file_tree/README.md) for manual build and
 verification commands.
+
+## React member entry
+
+The React login screen uses the existing native POST `/demo/enter/` with its
+normal CSRF cookie/form token. An optional `next` accepts only `/app/dashboard`
+and `/app/new-members` exactly; missing/invalid returns preserve original default
+redirects. A NEW_MEMBER requesting a React return always lands at
+`/app/new-members`. This is a demo-only navigation change, not a new login API,
+permission grant or password. Non-demo entry stays 404. Boundary tests live in
+`test/test_entry_return.py`; the existing demo tests remain in `tests.py`.

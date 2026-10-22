@@ -4,14 +4,23 @@ import { PublicLayout } from '../domains/public/PublicLayout';
 import { Home } from '../domains/public/Home';
 import { About } from '../domains/public/About';
 import { Join } from '../domains/public/Join';
+import { Login } from '../domains/identity/Login';
+import { MemberLayout } from '../domains/identity/MemberLayout';
+import { Dashboard } from '../domains/identity/Dashboard';
+import { NewMemberBridge } from '../domains/identity/NewMemberBridge';
 
 export function App() {
   return (
     <Routes>
+      <Route element={<MemberLayout />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="new-members" element={<NewMemberBridge />} />
+      </Route>
       <Route element={<PublicLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="join" element={<Join />} />
+        <Route path="login" element={<Login />} />
         <Route
           path="connection"
           element={

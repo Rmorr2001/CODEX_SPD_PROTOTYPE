@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from AUTHENTICATE.models import Brother_Profile
 from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseNotFound
 from django.shortcuts import redirect
 from django.views.decorators.http import require_POST
@@ -20,4 +21,9 @@ def enter(request):
     if user is None or user.has_usable_password():
         return HttpResponse("The demo account is not ready.", status=503)
     login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+    next_path = request.POST.get("next")
+    if next_path in {"/app/dashboard", "/app/new-members"}:
+        if Brother_Profile.objects.filter(user=user, roles__name="NEW_MEMBER").exists():
+            return redirect("/app/new-members")
+        return redirect(next_path)
     return redirect("alumni_roster" if request.POST.get("persona") == "alumni" else "dashboard")

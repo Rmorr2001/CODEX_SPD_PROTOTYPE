@@ -66,8 +66,11 @@ a React read-only view plus clearly labeled links to functioning legacy write fo
 - Minimal session read endpoint returns authenticated flag and only the caller's
   safe identity/roles/capabilities when authenticated; never session keys, auth
   credentials or a list of members. Preserve cookie-based SessionAuthentication.
-- Sign in opens `/auth/login/`; demo persona selection opens functioning legacy
-  demo UI, whose `/demo/enter/` POST stays CSRF-protected. Accounts have unusable
+- Sign in opens `/auth/login/` with a fixed local return path. Demo persona
+  selection may use a native form to the existing `/demo/enter/` POST, which stays
+  CSRF-protected and available only in demo mode. A demo-only optional return path
+  is restricted to `/app/dashboard` and `/app/new-members`; absent/invalid return
+  paths preserve existing default redirects. Accounts have unusable
   seeded passwords: do not show a made-up shared password or automatic login.
 - React member screens show a clear sign-in state for anonymous callers and
   access-denied state for insufficient roles, with no confidential data flash.

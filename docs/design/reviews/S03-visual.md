@@ -26,6 +26,7 @@ without clipping or overflow. Section spacing is consistent, text remains
 readable and both primary and supporting actions remain easy to identify.
 No required visual revision remains.
 
-Optional copy polish: use a visitor-oriented label such as “Explore recruitment”
-rather than “Open recruitment link,” and describe where it leads without the
-technical phrase “configured destination.” The current action is understandable.
+The coordinator also applied optional visitor-facing copy polish. Reopened both
+refreshed screenshots: the primary action now says “Explore recruitment,” and
+the guidance describes connecting with the chapter without configuration jargon.
+The final visual verdict remains PASS with that optional item closed.

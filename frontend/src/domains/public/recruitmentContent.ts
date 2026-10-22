@@ -1,4 +1,4 @@
-import { safePublicUrl } from './content';
+import { safePublicUrl } from '../../api/links';
 
 export type RecruitmentSlide = { caption: string; image: string | null };
 export type RecruitmentContent = { interest_url: string | null; slides: RecruitmentSlide[] };
