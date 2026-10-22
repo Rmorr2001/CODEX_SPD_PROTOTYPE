@@ -13,8 +13,8 @@ explicitly says otherwise. This work does not deploy a new Railway release.
 | S05 Member directory | [PASS](reviews/S05-code.md) | [PASS](reviews/S05-visual.md) | Accepted: private directory, search, mobile detail selection |
 | S06 My profile | [PASS](reviews/S06-code.md) | [PASS](reviews/S06-visual.md) | Accepted: caller-only profile + functioning legacy edit link |
 | S07 Chapter decisions | [PASS](reviews/S07-code.md) | [PASS](reviews/S07-visual.md) | Accepted: authorized Aye/Nay snapshot and stored results |
-| S08 Service hours | Pending | Pending | Building |
-| S09 New-member marks | Pending | Pending | Planned |
+| S08 Service hours | [PASS](reviews/S08-code.md) | [PASS](reviews/S08-visual.md) | Accepted: own academic-year hours and discoverable mobile table |
+| S09 New-member marks | Pending | Pending | Building |
 
 Review reports live in [reviews/](reviews/); concept boards in
 [references/](references/); rendered screenshots in `evidence/`.

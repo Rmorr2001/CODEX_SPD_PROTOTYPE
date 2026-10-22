@@ -10,6 +10,7 @@ import { Dashboard } from '../domains/identity/Dashboard';
 import { Directory } from '../domains/identity/Directory';
 import { Profile } from '../domains/identity/Profile';
 import { Decisions } from '../domains/decisions/Decisions';
+import { ServiceHours } from '../domains/service/ServiceHours';
 import { NewMemberBridge } from '../domains/identity/NewMemberBridge';
 
 export function App() {
@@ -20,6 +21,7 @@ export function App() {
         <Route path="members" element={<Directory />} />
         <Route path="profile" element={<Profile />} />
         <Route path="polls" element={<Decisions />} />
+        <Route path="service" element={<ServiceHours />} />
         <Route path="new-members" element={<NewMemberBridge />} />
       </Route>
       <Route element={<PublicLayout />}>

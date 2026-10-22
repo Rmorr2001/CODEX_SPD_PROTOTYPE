@@ -48,10 +48,10 @@ export function MemberLayout() {
             </NavLink>
           )}
           {member.capabilities.service_hours && (
-            <a href={`${chapterSite}philanthropy/`}>
+            <NavLink to="/service">
               <span className="nav-mark" aria-hidden="true" />
               Service hours
-            </a>
+            </NavLink>
           )}
           {member.capabilities.new_members && (
             <a href={`${chapterSite}newmember/marks/`}>

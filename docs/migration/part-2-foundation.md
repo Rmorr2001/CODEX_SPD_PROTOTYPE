@@ -102,6 +102,9 @@ React business screens, schema/data migrations or production cutover are include
 
 Subsequent Railway deployment and its remaining live-verification limitation are
 recorded in the [deployment evidence](railway-foundation-deployment.md).
+The later nine-screen redesign is tracked separately in the
+[screen delivery log](../design/delivery-log.md); its read adapters and demo
+session entry extend this foundation without rewriting the legacy transactions.
 
 Completed 18 October 2026 (America/Chicago), from baseline `79cff62`:
 
