@@ -1,0 +1,132 @@
+.public-header {
+  min-height: 94px;
+  padding: 22px max(32px, calc((100% - 1280px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  color: white;
+  background: var(--black);
+}
+.public-header a {
+  color: white;
+  text-decoration: none;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.brand-symbol {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 42px;
+  letter-spacing: -3px;
+}
+.brand-chapter {
+  border-left: 1px solid #66666c;
+  padding-left: 18px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+.brand-chapter small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.11em;
+  color: #d3d3d7;
+  margin-top: 7px;
+}
+.public-header nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-size: 12px;
+}
+.public-header nav a {
+  padding: 10px 0;
+}
+.public-header nav a:hover {
+  color: #ffb4bc;
+}
+.public-header .member-login {
+  border-left: 1px solid #505055;
+  padding-left: 28px;
+}
+.member-login svg {
+  margin-left: 10px;
+}
+.public-main {
+  min-height: 60vh;
+}
+.public-footer {
+  padding: 35px max(32px, calc((100% - 1216px) / 2));
+  background: var(--black);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 11px;
+}
+.footer-brand {
+  color: white;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 40px;
+  text-decoration: none;
+}
+.public-footer strong {
+  font-size: 12px;
+}
+.public-footer p {
+  color: #bfbfc5;
+  font-size: 10px;
+  margin: 6px 0 0;
+}
+.public-footer nav {
+  margin-left: auto;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.public-footer nav a {
+  color: #e3e3e7;
+}
+@media (max-width: 900px) {
+  .public-header {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 24px;
+  }
+  .public-header nav {
+    gap: 22px;
+  }
+}
+@media (max-width: 600px) {
+  .public-header {
+    padding: 18px 20px;
+  }
+  .brand-symbol {
+    font-size: 34px;
+  }
+  .brand-chapter {
+    font-size: 10px;
+  }
+  .public-header nav {
+    gap: 10px 20px;
+    font-size: 11px;
+  }
+  .public-header .member-login {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .public-footer {
+    padding: 28px 24px;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .public-footer nav {
+    width: 100%;
+    margin: 0;
+  }
+}

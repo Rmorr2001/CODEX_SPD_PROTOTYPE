@@ -3,14 +3,16 @@
 Owns the new member-interface shell at `/app/`. Existing Django pages remain
 available at their original URLs. React 19, TypeScript 7, Vite 8 and React Router 7
 are pinned in `package.json` and `package-lock.json`; use Node 24.19.0.
-No business screen, authentication flow or domain policy is migrated yet.
+The public home page is the first redesign slice. Member screens and write flows
+remain on the original site until their migration slices land.
 
 ## Structure and boundaries
 
 - `src/app/`: application composition, router, public legacy links and styles.
 - `src/api/client.ts`: same-origin JSON request and runtime status-contract validation.
 - `src/components/ServiceConnection.tsx`: loading, connection, error/retry and cancellation.
-- `src/pages/Workspace.tsx`: empty workspace with links to the existing site.
+- `src/domains/public/`: public page presentation, validated HOME content,
+  red/black layout and domain-local `test/`. See its README.
 - `test/`: Playwright checks against actual built assets and Django, including a
   real seeded legacy page. Network interception is limited to loading/error cases.
 

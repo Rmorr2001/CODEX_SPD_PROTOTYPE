@@ -15,12 +15,13 @@ test.beforeEach(async ({ request }) => {
     .toBe(200);
 });
 
-test('built workspace connects to the real API and retains legacy pages', async ({ page }) => {
+test('public home retains built assets and legacy pages', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/app/');
-  await expect(page.getByRole('heading', { name: 'Chapter workspace', exact: true })).toBeVisible();
-  await expect(page.getByRole('status')).toHaveText('Connected to the chapter service.');
+  await expect(
+    page.getByRole('heading', { name: 'Engineering a stronger brotherhood.', exact: true }),
+  ).toBeVisible();
   const scripts = await page
     .locator('script[src]')
     .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('src')));
@@ -46,7 +47,9 @@ test('unknown SPA route displays a useful empty state', async ({ page }) => {
   await page.goto('/app/does-not-exist');
   await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
   await page.getByRole('link', { name: 'Return to workspace' }).click();
-  await expect(page.getByRole('heading', { name: 'Chapter workspace', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Engineering a stronger brotherhood.', exact: true }),
+  ).toBeVisible();
 });
 
 test('unknown API paths stay JSON rather than the SPA shell', async ({ request }) => {
@@ -65,7 +68,7 @@ test('loading is visible until a response arrives', async ({ page }) => {
     await responseGate;
     await route.fulfill({ json: { status: 'ok', api_version: 'v1' } });
   });
-  await page.goto('/app/');
+  await page.goto('/app/connection');
   await expect(page.getByRole('status')).toHaveText('Checking the chapter service…');
   release();
   await expect(page.getByRole('status')).toHaveText('Connected to the chapter service.');
@@ -80,7 +83,7 @@ for (const failure of ['unavailable', 'invalid-contract', 'html-response'] as co
         return route.fulfill({ json: { status: 'ok', api_version: 999 } });
       return route.fulfill({ contentType: 'text/html', body: '<html>Wrong response</html>' });
     });
-    await page.goto('/app/');
+    await page.goto('/app/connection');
     await expect(page.getByRole('alert')).toHaveText(
       'Unable to reach the chapter service. Please try again.',
     );
@@ -93,8 +96,10 @@ for (const failure of ['unavailable', 'invalid-contract', 'html-response'] as co
 test('small screens retain navigation without page overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/app/');
-  await expect(page.getByRole('navigation')).toBeVisible();
-  await expect(page.getByRole('status')).toHaveText('Connected to the chapter service.');
+  await expect(page.getByRole('navigation', { name: 'Public navigation' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Engineering a stronger brotherhood.' }),
+  ).toBeVisible();
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
   ).toBeTruthy();

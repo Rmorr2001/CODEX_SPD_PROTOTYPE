@@ -6,8 +6,8 @@ explicitly says otherwise. This work does not deploy a new Railway release.
 
 | Screen | Correctness review | Visual comparison | Delivery status |
 | --- | --- | --- | --- |
-| S01 Home | Pending | Pending | Building |
-| S02 About & Brotherhood | Pending | Pending | Planned |
+| S01 Home | [PASS](reviews/S01-code.md) | [PASS](reviews/S01-visual.md) | Accepted: React public home + real read API |
+| S02 About & Brotherhood | Pending | Pending | Building |
 | S03 Recruitment | Pending | Pending | Planned |
 | S04 Dashboard + session boundary | Pending | Pending | Planned |
 | S05 Member directory | Pending | Pending | Planned |
