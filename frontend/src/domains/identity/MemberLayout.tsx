@@ -42,10 +42,10 @@ export function MemberLayout() {
             Members
           </NavLink>
           {member.capabilities.polls && (
-            <a href={`${chapterSite}poll/`}>
+            <NavLink to="/polls">
               <span className="nav-mark" aria-hidden="true" />
               Polls
-            </a>
+            </NavLink>
           )}
           {member.capabilities.service_hours && (
             <a href={`${chapterSite}philanthropy/`}>

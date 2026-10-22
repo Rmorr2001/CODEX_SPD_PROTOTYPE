@@ -7,14 +7,9 @@ from rest_framework import serializers
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Brother_Profile
+from .access import member_profile
 
 
-def member_profile(user):
-    """Return an authenticated caller's profile, or None without a profile lookup error."""
-    if not user.is_authenticated:
-        return None
-    return Brother_Profile.objects.prefetch_related('roles').filter(user=user).first()
 
 
 def member_identity(profile):

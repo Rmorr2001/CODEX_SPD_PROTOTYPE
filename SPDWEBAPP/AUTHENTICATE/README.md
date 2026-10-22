@@ -37,3 +37,9 @@ and safe photo URL; it accepts no user selector or write methods. Unrecognized
 query parameters cannot change the caller. Other-user URL paths remain JSON 404.
 Missing profiles are denied. `test/test_profile_api.py` verifies privacy and no
 mutation; existing profile/photo/major/password forms stay at `/auth/profile/`.
+
+`access.py` is the supported public boundary for other domain read adapters:
+`member_profile(user)` resolves a caller safely; `require_member_roles(user,
+*roles)` requires a profile and ALL supplied roles before domain queries. Session
+API retains its original import compatibility. Navigation capabilities are
+presentation only and never substitute for these server permission checks.

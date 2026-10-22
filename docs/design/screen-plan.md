@@ -20,8 +20,9 @@ new product promises. Railway/browser access is a separate verification concern.
 
 Each image is one three-panel board. Compare against the named panel only;
 the board headings/captions outside the simulated browser are not page content.
-All proposed routes/endpoints below are future delivery contracts, not existing
-capabilities. Keep `/app/connection` and the useful unknown-route screen.
+Routes below are delivery contracts; the [delivery log](delivery-log.md) records
+which have passed implementation and both reviews. Keep `/app/connection` and
+the useful unknown-route screen.
 
 | Order / screen | Proposed React route | Existing source / route | Image reference | Specification |
 | --- | --- | --- | --- | --- |
@@ -58,19 +59,21 @@ capabilities. Keep `/app/connection` and the useful unknown-route screen.
 
 ## API and permission boundaries
 
-All names below are proposed. Add typed read-only DRF adapters incrementally;
+Delivered names below track the accepted screen implementations; remaining
+contracts are proposed until their delivery-log gates pass. Add typed read-only
+DRF adapters incrementally;
 explicit serializers whitelist fields, JSON failures never turn into HTML or a
 successful empty payload, personal/member responses use `Cache-Control: no-store`.
 Existing `/api/v1/status/` remains unchanged. Preserve fail-closed API defaults.
 
-| Proposed GET contract | Screen / owner | Permission and boundary |
+| GET contract | Screen / owner | Permission and boundary |
 | --- | --- | --- |
-| `/api/v1/public/home/` | S01–S03 / HOME | Public, only public banner/rush material, safe external links and public chapter/board fields; never serialize all profiles |
+| `/api/v1/public/home/`, `/api/v1/public/about/`, `/api/v1/public/recruitment/` | S01–S03 / HOME | Public, only public banner/rush material, safe external links and public chapter/board fields; never serialize all profiles |
 | `/api/v1/session/` | A01 / AUTHENTICATE | Minimal authenticated flag and, only for signed-in caller, own display name/roles and supported navigation capabilities; no session identifier or password |
-| `/api/v1/member/dashboard/` | S04 / AUTHENTICATE + MISC | Authenticated; active announcements and configured DashboardLink entries; preserve new-member landing rule |
-| `/api/v1/member/directory/` | S05 / AUTHENTICATE | Authenticated; existing non-alumni/alumni sets, last-name order and distinct profiles; minimal name/roles/majors/image/pclass, no email/hometown by default |
-| `/api/v1/member/profile/` | S06 / AUTHENTICATE | Authenticated, current user's profile only; no arbitrary target-user selector or hidden privileges |
-| `/api/v1/member/polls/` | S07 / PARLEYPRO | Authenticated + ACTIVE; current poll, aggregate Aye/Nay and closed results; never individual voting identities |
+| `/api/v1/dashboard/` | S04 / AUTHENTICATE + MISC | Authenticated; active announcements and configured DashboardLink entries; preserve new-member landing rule |
+| `/api/v1/members/` | S05 / AUTHENTICATE | Authenticated; existing non-alumni/alumni sets, last-name order and distinct profiles; minimal name/roles/majors/image/pclass, no email/hometown by default |
+| `/api/v1/profile/` | S06 / AUTHENTICATE | Authenticated, current user's profile only; no arbitrary target-user selector or hidden privileges |
+| `/api/v1/polls/` | S07 / PARLEYPRO | Authenticated + ACTIVE; current poll, aggregate Aye/Nay and closed results; never individual voting identities |
 | `/api/v1/member/service/` | S08 / PHILANTHROPY | Authenticated + ACTIVE; own events and approved academic-year total, validated year input; approval links require PHIL_CHAIR + ACTIVE |
 | `/api/v1/member/new-members/` | S09 / NEWMEMBER | Authenticated; adapt existing role-specific read model without widening data. Personal new-member stats; ACTIVE analytics/submissions; NM_BOARD review capability. Unclassified roles get explicit unavailable state rather than invented privileges |
 

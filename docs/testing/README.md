@@ -1,11 +1,14 @@
 # Backend regression suite
 
 Wave 2 implements all **393 READY designs** frozen at `4b103f6`. The audited
-combined suite now runs 419 tests: 394 domain methods, 11 shared-harness tests
+combined Part 2 baseline ran 419 tests: 394 domain methods, 11 shared-harness tests
 and 14 API/frontend delivery tests.
-The existing nine demo tests run separately. [Part 2](../migration/part-2-foundation.md)
-also adds nine Playwright checks against the built React application. There are no skipped or expected
-failures in these passing counts. See [current hardening results](part-1-hardening.md),
+The original nine demo tests run separately. [Part 2](../migration/part-2-foundation.md)
+also added nine Playwright checks against the built React application. Subsequent
+screen slices add domain-local API/browser tests and bounded demo-entry checks;
+the [screen delivery log](../design/delivery-log.md) records current full-run results.
+There were no skipped or expected failures in the baseline passing counts.
+See [hardening results](part-1-hardening.md),
 [original Wave 2 results](wave-2-results.md) and
 [the goals declared before dispatch](wave-2-goals.md).
 

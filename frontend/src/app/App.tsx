@@ -9,6 +9,7 @@ import { MemberLayout } from '../domains/identity/MemberLayout';
 import { Dashboard } from '../domains/identity/Dashboard';
 import { Directory } from '../domains/identity/Directory';
 import { Profile } from '../domains/identity/Profile';
+import { Decisions } from '../domains/decisions/Decisions';
 import { NewMemberBridge } from '../domains/identity/NewMemberBridge';
 
 export function App() {
@@ -18,6 +19,7 @@ export function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="members" element={<Directory />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="polls" element={<Decisions />} />
         <Route path="new-members" element={<NewMemberBridge />} />
       </Route>
       <Route element={<PublicLayout />}>

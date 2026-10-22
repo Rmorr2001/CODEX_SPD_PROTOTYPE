@@ -12,8 +12,8 @@ explicitly says otherwise. This work does not deploy a new Railway release.
 | S04 Dashboard + session boundary | [PASS](reviews/S04-code.md) | [PASS](reviews/S04-visual.md) | Accepted: real session, CSRF demo entry, dashboard |
 | S05 Member directory | [PASS](reviews/S05-code.md) | [PASS](reviews/S05-visual.md) | Accepted: private directory, search, mobile detail selection |
 | S06 My profile | [PASS](reviews/S06-code.md) | [PASS](reviews/S06-visual.md) | Accepted: caller-only profile + functioning legacy edit link |
-| S07 Chapter decisions | Pending | Pending | Building |
-| S08 Service hours | Pending | Pending | Planned |
+| S07 Chapter decisions | [PASS](reviews/S07-code.md) | [PASS](reviews/S07-visual.md) | Accepted: authorized Aye/Nay snapshot and stored results |
+| S08 Service hours | Pending | Pending | Building |
 | S09 New-member marks | Pending | Pending | Planned |
 
 Review reports live in [reviews/](reviews/); concept boards in

@@ -3,8 +3,10 @@
 Owns the new member-interface shell at `/app/`. Existing Django pages remain
 available at their original URLs. React 19, TypeScript 7, Vite 8 and React Router 7
 are pinned in `package.json` and `package-lock.json`; use Node 24.19.0.
-The public home page is the first redesign slice. Member screens and write flows
-remain on the original site until their migration slices land.
+The [screen plan](../docs/design/screen-plan.md) maps the public and member read
+screens to their design/spec references. The [delivery log](../docs/design/delivery-log.md)
+records per-screen acceptance and screenshots. Business writes remain clearly
+linked to the original Django forms; a read screen is not a migrated transaction.
 
 ## Structure and boundaries
 
@@ -13,6 +15,12 @@ remain on the original site until their migration slices land.
 - `src/components/ServiceConnection.tsx`: loading, connection, error/retry and cancellation.
 - `src/domains/public/`: public page presentation, validated HOME content,
   red/black layout and domain-local `test/`. See its README.
+- `src/domains/identity/`: session/access states, member shell, dashboard,
+  directory and own profile, with its README and browser `test/`.
+- `src/domains/decisions/`: Aye/Nay motion presentation and aggregate/stored
+  results; voting remains linked to the existing chapter workflow.
+- `src/api/read.ts` and `links.ts`: shared authenticated read/cancellation states
+  and safe presentation URLs. Domain clients validate their own payload contracts.
 - `test/`: Playwright checks against actual built assets and Django, including a
   real seeded legacy page. Network interception is limited to loading/error cases.
 

@@ -10,14 +10,17 @@ DRF and drf-spectacular are pinned alongside the unchanged Django 6.1.1 version.
 `GET /api/v1/status/` returns exactly `{"status":"ok","api_version":"v1"}`.
 It is a public, noncached liveness check, with no database query or member data;
 it does not prove database readiness. `GET /api/v1/schema/` returns OpenAPI JSON
-for the current public status contract. Unmatched `/api/` paths return JSON 404s,
+for all currently mounted contracts. Unmatched `/api/` paths return JSON 404s,
 including unknown versions and non-GET methods. They never use the SPA fallback.
 
 `web_settings.py` supplies JSON rendering, SessionAuthentication and deny-anonymous
 IsAuthenticated defaults. Public status/schema/error boundaries opt out explicitly.
-SessionAuthentication's current anonymous denial is 403. Future domain endpoints
-must define their own action/object permissions; this foundation does not add
-login, current-user or write endpoints. Anonymous login CSRF remains future work.
+SessionAuthentication's anonymous denial is 403. Domain endpoints define their
+own action/object permissions and explicit response whitelists; see their READMEs
+and the [screen plan](../../../docs/design/screen-plan.md). Session and caller
+read endpoints now reuse existing Django cookie authentication. The demo entry
+form posts to the original CSRF-protected endpoint with a narrowly allowlisted
+React return path; no DRF business write or password-login API is introduced.
 
 From the repository root:
 
