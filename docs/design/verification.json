@@ -1,0 +1,60 @@
+{
+  "source_commit": "210c8283dd0693657ae6f534b1f1a0d1929d040f",
+  "environment": "local synthetic Django/demo SQLite; actual bundled React assets",
+  "screen_gates": {
+    "screens": 9,
+    "correctness_pass": 9,
+    "visual_pass": 9,
+    "screenshots": 24,
+    "login_included": true
+  },
+  "backend_audit": {
+    "tests_run": 472,
+    "ready_cases": 393,
+    "verified_ready_cases": 393,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "blocked_designs_unchanged": 284,
+  "demo_tests": {
+    "passed": 13
+  },
+  "browser_tests": {
+    "passed": 44,
+    "retries": 0,
+    "duration": "2.2 minutes"
+  },
+  "mutation_checks": {
+    "passed": 13,
+    "assertion_kills": 13,
+    "mutant_errors": 0,
+    "clean_and_restored_pass": true
+  },
+  "python_coverage": {
+    "configured_statement_branch_percent_rounded": 94,
+    "statements": 1839,
+    "missed_statements": 107,
+    "branches": 314,
+    "partial_branches": 13,
+    "javascript_source_coverage_measured": false
+  },
+  "other_checks": {
+    "typescript_vite_build": "passed",
+    "prettier": "passed",
+    "django_system_check": "passed",
+    "migration_drift": "none",
+    "openapi_validate_fail_on_warn": "passed",
+    "source_explorer_tests_passed": 5,
+    "modified_source_file_size_violations": 0
+  },
+  "integration_corrections": [
+    "Named distinct liveness/approval enums and aligned serializer choices with existing model values.",
+    "Updated the exact schema assertion to all eleven GET-only paths and their authentication contracts.",
+    "Updated the exact seed announcement assertion for reviewed cross-interface demo instructions."
+  ],
+  "review_timeout": "One independent S09 login wait timed out; the isolated case then passed. Cause not established. The final complete 44-test browser run passed without retries.",
+  "delivery_scope": "React read experiences with explicit links to original Django business writes; native CSRF-protected demo login reused with fixed allowlisted React return paths.",
+  "railway_deployed_by_this_work": false,
+  "hosted_ci_verified": false
+}

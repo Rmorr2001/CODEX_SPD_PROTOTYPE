@@ -1,6 +1,6 @@
 # React workspace
 
-Owns the new member-interface shell at `/app/`. Existing Django pages remain
+Owns the public/member React read screens at `/app/`. Existing Django pages remain
 available at their original URLs. React 19, TypeScript 7, Vite 8 and React Router 7
 are pinned in `package.json` and `package-lock.json`; use Node 24.19.0.
 The [screen plan](../docs/design/screen-plan.md) maps the public and member read
@@ -84,7 +84,11 @@ The shell revalidates; hashed assets are immutable. Refreshing a React deep link
 stays within `/app/`; missing `/api/` routes return JSON 404s.
 
 No application secret belongs in `VITE_*`: those values are public bundle content.
-The current client needs no custom frontend environment values and stores no
-bearer token. API authentication/session adapters are the next increment.
+The client needs no custom frontend environment values and stores no bearer token.
+Member reads reuse Django session cookies. `/app/login` provides existing-account
+sign-in and a native CSRF-protected demo-role form when demo mode is enabled.
+During Vite development, demo entry links to Django's origin to preserve CSRF
+origin checks; the built application uses one origin. No DRF password-login or
+business-write API is introduced.
 See [foundation delivery](../docs/migration/part-2-foundation.md) for Docker,
 backend contracts and verification limits.
