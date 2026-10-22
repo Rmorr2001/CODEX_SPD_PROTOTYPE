@@ -131,7 +131,7 @@ class SeedTests(SeedFixtureMixin, RegressionTestCase):
         alert = AnnouncementAlert.objects.get(title="Welcome to the seeded demo")
         self.assertTrue(alert.is_active)
         self.assertEqual(alert.content, "All member names and workflow records here are fictional. "
-                         "Switch personas above to explore the original app.")
+                         "Use demo sign-in to choose a role and explore fictional workflows.")
         self.assertFalse(DayLightSavingsAlert.objects.get(name="Demo chapter notice").is_active)
         self.assertEqual(list(DashboardLink.objects.values_list("text", "link", "order")), [
             ("Executive Board", "/executive-board/", 0), ("Rush Information", "/rush/", 1),

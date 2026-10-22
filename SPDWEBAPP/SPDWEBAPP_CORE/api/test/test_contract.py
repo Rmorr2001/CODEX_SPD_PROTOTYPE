@@ -38,12 +38,28 @@ class PublicApiTests(SimpleTestCase):
                     self.assertEqual(response['Content-Type'], 'application/json')
                     self.assertEqual(response.json(), {'detail': 'Not found.'})
 
-    def test_schema_describes_only_current_public_status(self):
+    def test_schema_describes_current_read_contracts_and_authentication(self):
         response = self.client.get('/api/v1/schema/')
         self.assertEqual(response.status_code, 200)
         document = response.json()
         self.assertEqual(document['info']['version'], '1.0.0')
-        self.assertEqual(set(document['paths']), {'/api/v1/status/'})
+        public_paths = {'/api/v1/status/', '/api/v1/public/home/',
+                        '/api/v1/public/about/', '/api/v1/public/recruitment/'}
+        private_paths = {'/api/v1/dashboard/', '/api/v1/members/', '/api/v1/profile/',
+                         '/api/v1/polls/', '/api/v1/service/', '/api/v1/new-members/'}
+        self.assertEqual(set(document['paths']), public_paths | private_paths | {'/api/v1/session/'})
+        for path, methods in document['paths'].items():
+            with self.subTest(path=path):
+                self.assertEqual(set(methods), {'get'})
+                self.assertIn('200', methods['get']['responses'])
+                if path in public_paths:
+                    self.assertFalse(methods['get'].get('security'))
+                elif path in private_paths:
+                    self.assertEqual(methods['get']['security'], [{'cookieAuth': []}])
+        self.assertIn({}, document['paths']['/api/v1/session/']['get']['security'])
+        schemas = document['components']['schemas']
+        self.assertEqual(schemas['LivenessStatusEnum']['enum'], ['ok'])
+        self.assertEqual(schemas['ApprovalStatusEnum']['enum'], ['approved', 'requested', 'denied'])
         operation = document['paths']['/api/v1/status/']['get']
         self.assertIn('200', operation['responses'])
         self.assertFalse(operation.get('security'))

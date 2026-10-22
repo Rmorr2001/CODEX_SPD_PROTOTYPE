@@ -36,3 +36,8 @@ Update serializers, contract documentation and meaningful tests together.
 `links.py` owns the shared safe presentation-link guard used by public and
 member read models. It rejects executable/protocol-relative/malformed URLs and
 embedded credentials; domain serializers still whitelist every returned field.
+
+Schema enum names distinguish public liveness from request approval statuses in
+`web_settings.py`. The service serializer uses its model's existing status choices;
+this changes schema naming, not stored values. The schema contract test locks the
+current eleven GET-only paths and their public/optional/protected authentication.

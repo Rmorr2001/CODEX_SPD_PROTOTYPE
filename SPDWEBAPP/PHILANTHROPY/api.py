@@ -7,6 +7,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from AUTHENTICATE.access import require_member_roles
+from .models import Philanthropy_Hours_Event_and_Request
 from .views_functions import get_academic_year_dates, get_available_academic_years, get_user_events_and_total_hours
 
 
@@ -27,7 +28,7 @@ class ServiceEventSerializer(serializers.Serializer):
     title = serializers.CharField()
     date = serializers.DateField()
     hours = serializers.IntegerField()
-    status = serializers.ChoiceField(choices=['requested', 'approved', 'denied'])
+    status = serializers.ChoiceField(choices=Philanthropy_Hours_Event_and_Request.STATUS_CHOICES)
 
 
 class ServiceSerializer(serializers.Serializer):

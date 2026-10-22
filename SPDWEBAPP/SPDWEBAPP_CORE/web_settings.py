@@ -12,6 +12,11 @@ REST_FRAMEWORK = {
 }
 SPECTACULAR_SETTINGS = {
     'TITLE': 'CODEX SPD API', 'VERSION': '1.0.0', 'SERVE_INCLUDE_SCHEMA': False,
+    # Liveness and request approval share a field name, but have distinct contracts.
+    'ENUM_NAME_OVERRIDES': {
+        'LivenessStatusEnum': ['ok'],
+        'ApprovalStatusEnum': ['approved', 'requested', 'denied'],
+    },
 }
 # Local builds use frontend/dist; Docker supplies its fixed, image-owned directory.
 FRONTEND_DIST_DIR = Path(os.environ.get(
