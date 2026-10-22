@@ -24,8 +24,8 @@ export function PublicLayout() {
           </span>
         </Link>
         <nav aria-label="Public navigation">
-          <a href={`${chapterSite}ourHistory/`}>About</a>
-          <a href={`${chapterSite}executive-board/`}>Brotherhood</a>
+          <NavLink to="/about">About</NavLink>
+          <Link to="/about#leadership">Brotherhood</Link>
           <Link to="/#purpose">Our purpose</Link>
           <a href={`${chapterSite}rush/`}>Join SPD</a>
           <a className="member-login" href={`${chapterSite}auth/login/`}>

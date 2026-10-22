@@ -2,7 +2,7 @@ import { chapterSite } from '../../app/links';
 
 export type HomeContent = { banner_image: string | null; rush_interest_url: string | null };
 
-function safePublicUrl(value: unknown): value is string | null {
+export function safePublicUrl(value: unknown): value is string | null {
   if (value === null) return true;
   if (typeof value !== 'string' || /[\s\\]/.test(value)) return false;
   if (/^\/(?!\/)/.test(value)) return true;

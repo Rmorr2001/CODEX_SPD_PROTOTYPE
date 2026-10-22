@@ -69,3 +69,11 @@ at `/app/`, JSON contracts under `/api/v1/` and OpenAPI schema. Existing Django
 pages remain at their original URLs. See [frontend setup](frontend/README.md)
 for local preview and checks. The Dockerfile builds React and runs only Python
 in production; this repository change does not itself verify a Railway release.
+
+## React screen redesign
+
+The [screen plan](docs/design/screen-plan.md) maps all nine public/member concepts
+to routes, reference images and executable specifications. The
+[delivery log](docs/design/delivery-log.md) records each builder/reviewer/visual
+comparison loop, actual screenshots and checks. Existing Django transaction
+forms remain available through clearly labeled links as read screens migrate.

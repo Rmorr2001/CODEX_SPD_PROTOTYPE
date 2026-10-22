@@ -2,12 +2,14 @@ import { Link, Route, Routes } from 'react-router-dom';
 import { ServiceConnection } from '../components/ServiceConnection';
 import { PublicLayout } from '../domains/public/PublicLayout';
 import { Home } from '../domains/public/Home';
+import { About } from '../domains/public/About';
 
 export function App() {
   return (
     <Routes>
       <Route element={<PublicLayout />}>
         <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
         <Route
           path="connection"
           element={

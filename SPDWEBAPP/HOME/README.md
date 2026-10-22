@@ -15,3 +15,9 @@ Tests and regression designs live in `test/`. Use standalone settings and run
 unsafe link handling, missing data and rejected mutations. React page notes live
 in `frontend/src/domains/public/README.md`; screen references live in
 `docs/design/screen-plan.md`. No new configuration keys are introduced.
+
+`GET /api/v1/public/about/` returns actual distinct ACTIVE count and executive
+cards in the existing `executive_board` position order. Multi-role members appear
+once per position; missing positions are omitted. The card whitelist is name,
+displayed position and safe image URL, without contact data. `api_about.py` owns
+this presentation read model and `test/test_about_api.py` locks its boundaries.

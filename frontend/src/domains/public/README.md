@@ -8,6 +8,11 @@ separate infrastructure diagnostic. Original Django routes remain available.
 S01 follows the left panel of `docs/design/references/public-pages.png`. Chapter
 copy and fallback imagery come from existing HOME templates and shared static
 assets. The page does not invent event dates, member counts or recruitment rules.
+S02 adds `/app/about` with a chapter-history excerpt, archival image and actual
+executive cards/ACTIVE count from `/api/v1/public/about/`; names, displayed
+positions and safe images are its complete public card contract. Contact fields
+are excluded. Empty/failure states stay explicit; legacy history/ethics remain linked.
+
 Public configured content comes from `/api/v1/public/home/`; missing content uses
 repository imagery and the existing recruitment page. A failed read exposes a
 retry message without hiding the editorial page. No credentials/configuration

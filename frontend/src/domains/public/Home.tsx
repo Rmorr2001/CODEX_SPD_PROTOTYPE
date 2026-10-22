@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Arrow } from './Arrow';
 import './home.css';
 import { useEffect, useState } from 'react';
@@ -73,9 +74,9 @@ export function Home() {
             <a className="button primary" href={`${chapterSite}rush/`}>
               Join SPD <Arrow />
             </a>
-            <a className="button outline" href={`${chapterSite}ourHistory/`}>
+            <Link className="button outline" to="/about">
               Meet the chapter
-            </a>
+            </Link>
           </div>
           <p className="hero-signature">
             SAME PROBLEMS. BRIGHTER PEOPLE.
