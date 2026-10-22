@@ -30,3 +30,10 @@ includes those profiles. Both retain distinct last-name order. Whitelist: profil
 id/display name, role codes/labels, majors, pclass and safe image URL. It excludes
 User fields, email and hometown. Invalid groups are 400; missing profiles and
 anonymous callers are denied. `test/test_directory_api.py` locks these contracts.
+
+`api_profile.py` adds authenticated `/api/v1/profile/` for request.user only.
+It returns the caller's names, username/email, hometown, pclass, majors, roles
+and safe photo URL; it accepts no user selector or write methods. Unrecognized
+query parameters cannot change the caller. Other-user URL paths remain JSON 404.
+Missing profiles are denied. `test/test_profile_api.py` verifies privacy and no
+mutation; existing profile/photo/major/password forms stay at `/auth/profile/`.

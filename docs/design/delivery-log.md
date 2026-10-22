@@ -11,8 +11,8 @@ explicitly says otherwise. This work does not deploy a new Railway release.
 | S03 Recruitment | [PASS](reviews/S03-code.md) | [PASS](reviews/S03-visual.md) | Accepted: real recruitment slides and safe links |
 | S04 Dashboard + session boundary | [PASS](reviews/S04-code.md) | [PASS](reviews/S04-visual.md) | Accepted: real session, CSRF demo entry, dashboard |
 | S05 Member directory | [PASS](reviews/S05-code.md) | [PASS](reviews/S05-visual.md) | Accepted: private directory, search, mobile detail selection |
-| S06 My profile | Pending | Pending | Building |
-| S07 Chapter decisions | Pending | Pending | Planned |
+| S06 My profile | [PASS](reviews/S06-code.md) | [PASS](reviews/S06-visual.md) | Accepted: caller-only profile + functioning legacy edit link |
+| S07 Chapter decisions | Pending | Pending | Building |
 | S08 Service hours | Pending | Pending | Planned |
 | S09 New-member marks | Pending | Pending | Planned |
 

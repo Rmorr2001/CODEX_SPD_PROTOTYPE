@@ -6,12 +6,14 @@ from .views import ApiNotFoundView, StatusView
 from AUTHENTICATE.api_session import SessionView
 from AUTHENTICATE.api_dashboard import DashboardView
 from AUTHENTICATE.api_directory import DirectoryView
+from AUTHENTICATE.api_profile import OwnProfileView
 from HOME.api import PublicHomeView
 from HOME.api_about import PublicAboutView
 from HOME.api_recruitment import PublicRecruitmentView
 
 urlpatterns = [
     path('v1/session/', SessionView.as_view(), name='api_session'),
+    path('v1/profile/', OwnProfileView.as_view(), name='api_own_profile'),
     path('v1/members/', DirectoryView.as_view(), name='api_members'),
     path('v1/dashboard/', DashboardView.as_view(), name='api_dashboard'),
     path('v1/public/recruitment/', PublicRecruitmentView.as_view(), name='api_public_recruitment'),

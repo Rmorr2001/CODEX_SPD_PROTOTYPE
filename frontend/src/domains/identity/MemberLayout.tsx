@@ -59,10 +59,10 @@ export function MemberLayout() {
               New members
             </a>
           )}
-          <a href={`${chapterSite}auth/profile/`}>
+          <NavLink to="/profile">
             <span className="nav-mark" aria-hidden="true" />
             Profile
-          </a>
+          </NavLink>
         </nav>
         <div className="member-rail-bottom">
           {state.data.demo_enabled && <Link to="/login">Change demo role</Link>}

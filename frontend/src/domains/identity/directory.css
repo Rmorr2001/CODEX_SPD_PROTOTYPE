@@ -88,31 +88,6 @@
 .directory-member:hover {
   background: #fcf8f9;
 }
-.directory-avatar {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  color: #6c2632;
-  background: #f5e7ea;
-  font:
-    20px Georgia,
-    serif;
-  overflow: hidden;
-}
-.directory-avatar img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-.directory-avatar.large {
-  width: 105px;
-  height: 105px;
-  font-size: 36px;
-  margin: 0 auto 24px;
-}
 .directory-card-copy {
   display: flex;
   flex-direction: column;
@@ -205,7 +180,7 @@
   .directory-detail {
     text-align: left;
   }
-  .directory-avatar.large {
+  .directory-detail .member-avatar.large {
     margin-left: 0;
   }
   .role-badges {

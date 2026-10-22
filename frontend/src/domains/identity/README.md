@@ -32,3 +32,10 @@ actual seeded group data, filters, navigation and exceptional states.
 `src/api/read.ts` owns common authenticated-read cancellation/timeouts and access
 errors; endpoint-specific validators remain with their domains. No identity is
 stored in localStorage and no pagination is fabricated for the complete roster.
+
+`Profile.tsx` owns `/app/profile` with actual own-profile display fields and real
+links to `/auth/profile/` for edits/photo/majors/password. It has no fake editable
+fields or Save action, graduation year, notification preferences or invented
+activity/progress. `MemberAvatar` now owns its shared avatar stylesheet; directory
+and profile retain honest missing-image initials. `test/profile.spec.ts` verifies
+actual caller data, real legacy edit navigation and denied/failed read handling.

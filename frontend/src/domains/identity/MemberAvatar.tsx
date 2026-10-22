@@ -1,3 +1,4 @@
+import './avatar.css';
 import { useState } from 'react';
 import { chapterSite } from '../../app/links';
 
@@ -14,7 +15,7 @@ export function MemberAvatar({
   const [failedImage, setFailedImage] = useState<string | null>(null);
   const src = image?.startsWith('/') ? `${chapterSite}${image.slice(1)}` : image;
   return (
-    <div className={`directory-avatar${large ? ' large' : ''}`}>
+    <div className={`member-avatar${large ? ' large' : ''}`}>
       {src && failedImage !== src ? (
         <img src={src} alt={name} onError={() => setFailedImage(src ?? null)} />
       ) : (
