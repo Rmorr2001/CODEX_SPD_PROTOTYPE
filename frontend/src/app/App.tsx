@@ -7,6 +7,7 @@ import { Join } from '../domains/public/Join';
 import { Login } from '../domains/identity/Login';
 import { MemberLayout } from '../domains/identity/MemberLayout';
 import { Dashboard } from '../domains/identity/Dashboard';
+import { Directory } from '../domains/identity/Directory';
 import { NewMemberBridge } from '../domains/identity/NewMemberBridge';
 
 export function App() {
@@ -14,6 +15,7 @@ export function App() {
     <Routes>
       <Route element={<MemberLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="members" element={<Directory />} />
         <Route path="new-members" element={<NewMemberBridge />} />
       </Route>
       <Route element={<PublicLayout />}>

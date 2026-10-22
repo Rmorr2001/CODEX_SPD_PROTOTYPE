@@ -23,3 +23,10 @@ by public HOME and member read models. Frontend views and access handling live i
 Run `manage.py test AUTHENTICATE.test.test_read_api` with standalone test settings;
 full regression commands and unresolved policy cases are in docs/testing/README.
 No new credentials or environment keys are introduced.
+
+`api_directory.py` adds authenticated `/api/v1/members/?group=current|alumni`.
+Current excludes all profiles with ALUMNI, including dual-role members; alumni
+includes those profiles. Both retain distinct last-name order. Whitelist: profile
+id/display name, role codes/labels, majors, pclass and safe image URL. It excludes
+User fields, email and hometown. Invalid groups are 400; missing profiles and
+anonymous callers are denied. `test/test_directory_api.py` locks these contracts.

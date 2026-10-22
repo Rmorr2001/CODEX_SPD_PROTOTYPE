@@ -22,3 +22,13 @@ Build first, then use the frontend README's Playwright command. Tests cover real
 entry/data/logout and anonymous, missing-profile, permission, empty and failed
 read states. Synthetic HTTP interception is limited to those exceptional states.
 No new environment/configuration keys or application credentials are needed.
+
+`Directory.tsx` owns `/app/members`: current/alumni groups, real-data search and
+role filters, selected-member details and explicit empty/no-results/error states.
+Only directory-whitelisted fields appear. `MemberAvatar` supplies initials for
+absent/broken pictures; no portraits are invented. `test/directory.spec.ts` tests
+actual seeded group data, filters, navigation and exceptional states.
+
+`src/api/read.ts` owns common authenticated-read cancellation/timeouts and access
+errors; endpoint-specific validators remain with their domains. No identity is
+stored in localStorage and no pagination is fabricated for the complete roster.

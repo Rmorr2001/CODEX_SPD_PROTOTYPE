@@ -1,3 +1,4 @@
+import { MemberAccessError } from '../../api/read';
 import { safePublicUrl } from '../../api/links';
 
 export type DashboardContent = {
@@ -5,7 +6,7 @@ export type DashboardContent = {
   announcements: { id: number; title: string; content: string; created_at: string }[];
   links: { text: string; url: string }[];
 };
-export class MemberAccessError extends Error {}
+export { MemberAccessError } from '../../api/read';
 
 function announcement(value: unknown): value is DashboardContent['announcements'][number] {
   return Boolean(

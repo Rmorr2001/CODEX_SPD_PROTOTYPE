@@ -10,8 +10,8 @@ explicitly says otherwise. This work does not deploy a new Railway release.
 | S02 About & Brotherhood | [PASS](reviews/S02-code.md) | [PASS](reviews/S02-visual.md) | Accepted: real public leadership and history |
 | S03 Recruitment | [PASS](reviews/S03-code.md) | [PASS](reviews/S03-visual.md) | Accepted: real recruitment slides and safe links |
 | S04 Dashboard + session boundary | [PASS](reviews/S04-code.md) | [PASS](reviews/S04-visual.md) | Accepted: real session, CSRF demo entry, dashboard |
-| S05 Member directory | Pending | Pending | Building |
-| S06 My profile | Pending | Pending | Planned |
+| S05 Member directory | [PASS](reviews/S05-code.md) | [PASS](reviews/S05-visual.md) | Accepted: private directory, search, mobile detail selection |
+| S06 My profile | Pending | Pending | Building |
 | S07 Chapter decisions | Pending | Pending | Planned |
 | S08 Service hours | Pending | Pending | Planned |
 | S09 New-member marks | Pending | Pending | Planned |

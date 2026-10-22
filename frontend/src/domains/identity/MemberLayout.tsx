@@ -37,10 +37,10 @@ export function MemberLayout() {
             <span className="nav-mark" aria-hidden="true" />
             Dashboard
           </NavLink>
-          <a href={`${chapterSite}auth/roster/`}>
+          <NavLink to="/members">
             <span className="nav-mark" aria-hidden="true" />
             Members
-          </a>
+          </NavLink>
           {member.capabilities.polls && (
             <a href={`${chapterSite}poll/`}>
               <span className="nav-mark" aria-hidden="true" />
