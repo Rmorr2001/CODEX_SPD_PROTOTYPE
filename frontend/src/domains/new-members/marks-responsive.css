@@ -1,0 +1,61 @@
+@media (max-width: 1200px) {
+  .marks-personal-summary {
+    grid-template-columns: 140px minmax(180px, 1fr);
+  }
+  .marks-class-average {
+    grid-column: 1/-1;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 22px 0 0;
+  }
+  .marks-class-average strong {
+    font-size: 28px;
+  }
+}
+@media (max-width: 800px) {
+  .marks-heading,
+  .marks-review {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .marks-personal-summary {
+    padding: 26px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .marks-total {
+    text-align: left;
+  }
+  .marks-total strong {
+    font-size: 62px;
+  }
+  .marks-personal-grid,
+  .marks-active-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .marks-analytics {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 0;
+  }
+  .marks-analytics > div:nth-child(3) {
+    border-left: 0;
+  }
+  .marks-card-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .class-marks-list li {
+    gap: 12px;
+    padding: 22px 18px;
+  }
+  .marks-submission-list li {
+    grid-template-columns: minmax(0, 1fr) 35px;
+    gap: 12px;
+  }
+  .marks-submission-list .mark-status {
+    grid-column: 1;
+    justify-self: start;
+  }
+}

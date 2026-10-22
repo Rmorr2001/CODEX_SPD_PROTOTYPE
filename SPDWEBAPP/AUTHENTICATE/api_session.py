@@ -23,7 +23,7 @@ def member_identity(profile):
             'dashboard': 'NEW_MEMBER' not in codes,
             'members': True, 'profile': True,
             'polls': 'ACTIVE' in codes, 'service_hours': 'ACTIVE' in codes,
-            'new_members': bool(codes & {'ACTIVE', 'NEW_MEMBER'}),
+            'new_members': bool(codes & {'ACTIVE', 'NEW_MEMBER', 'NM_BOARD'}),
         },
     }
 

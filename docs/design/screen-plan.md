@@ -75,7 +75,7 @@ Existing `/api/v1/status/` remains unchanged. Preserve fail-closed API defaults.
 | `/api/v1/profile/` | S06 / AUTHENTICATE | Authenticated, current user's profile only; no arbitrary target-user selector or hidden privileges |
 | `/api/v1/polls/` | S07 / PARLEYPRO | Authenticated + ACTIVE; current poll, aggregate Aye/Nay and closed results; never individual voting identities |
 | `/api/v1/service/` | S08 / PHILANTHROPY | Authenticated + ACTIVE; own events and approved academic-year total, validated year input; approval links require PHIL_CHAIR + ACTIVE |
-| `/api/v1/member/new-members/` | S09 / NEWMEMBER | Authenticated; adapt existing role-specific read model without widening data. Personal new-member stats; ACTIVE analytics/submissions; NM_BOARD review capability. Unclassified roles get explicit unavailable state rather than invented privileges |
+| `/api/v1/new-members/` | S09 / NEWMEMBER | Authenticated; adapt existing role-specific read model without widening data. Personal new-member stats; ACTIVE analytics/submissions; NM_BOARD review capability. Unclassified roles get explicit unavailable state rather than invented privileges |
 
 API wrappers must not invoke rendering views for their side effects or weaken
 security to duplicate legacy accidents. Reuse read helpers when appropriate;

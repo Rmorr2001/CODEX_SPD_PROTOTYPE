@@ -1,0 +1,348 @@
+.marks-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+.marks-heading h1 {
+  font-size: clamp(31px, 3.5vw, 44px);
+  margin: 10px 0;
+}
+.marks-heading p:not(.eyebrow) {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 620px;
+  line-height: 1.8;
+}
+.marks-heading .button {
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.marks-personal-summary {
+  display: grid;
+  grid-template-columns: 180px minmax(200px, 1fr) 180px;
+  gap: 34px;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  background: white;
+  align-items: center;
+}
+.marks-total {
+  text-align: center;
+}
+.marks-total p {
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  margin: 0;
+  font-weight: 700;
+}
+.marks-total strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 76px;
+  line-height: 1.5;
+}
+.marks-total > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.marks-standing h2 {
+  font-size: 27px;
+  margin: 10px 0 12px;
+}
+.marks-standing p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+  max-width: 340px;
+}
+.marks-standing a {
+  display: inline-block;
+  font-size: 11px;
+  margin-top: 8px;
+  line-height: 1.8;
+}
+.marks-class-average {
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+.marks-class-average strong {
+  font-family: Georgia, serif;
+  display: block;
+  font-size: 37px;
+  margin-bottom: 8px;
+}
+.marks-class-average > span {
+  font-size: 11px;
+  font-weight: 700;
+}
+.marks-class-average p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+.marks-personal-grid,
+.marks-active-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr);
+  gap: 26px;
+  margin-top: 28px;
+  align-items: start;
+}
+.marks-card {
+  border: 1px solid var(--line);
+  background: white;
+  min-width: 0;
+}
+.marks-card-title {
+  padding: 21px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.marks-card-title h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.marks-card-title > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.marks-history,
+.class-marks-list,
+.marks-submission-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.marks-history li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 24px;
+}
+.marks-history li + li,
+.class-marks-list li + li,
+.marks-submission-list li + li {
+  border-top: 1px solid var(--line);
+}
+.mark-value {
+  display: flex;
+  flex-direction: column;
+  font-size: 26px;
+  font-family: Georgia, serif;
+  min-width: 52px;
+}
+.mark-value > span {
+  font-size: 10px;
+  font-family: Arial, sans-serif;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.marks-history h3,
+.class-marks-list h3,
+.marks-submission-list h3 {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.marks-history time {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.mark-status {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 5px 8px;
+  border: 1px solid #c5c7ca;
+  background: #f4f4f4;
+  color: #3c4147;
+}
+.mark-status.requested {
+  background: #fff8e9;
+  border-color: #e5ce95;
+  color: #795600;
+}
+.mark-status.denied {
+  background: #fff1f2;
+  border-color: #e9bac0;
+  color: #a61729;
+}
+.marks-latest {
+  padding: 28px;
+}
+.marks-latest .eyebrow {
+  font-size: 9px;
+  line-height: 1.8;
+}
+.latest-mark-value {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 45px;
+  margin: 24px 0 15px;
+}
+.marks-latest h2 {
+  font-size: 23px;
+  line-height: 1.4;
+}
+.marks-latest time {
+  color: var(--muted);
+  font-size: 11px;
+}
+.marks-latest p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+  margin-top: 22px;
+}
+.marks-empty {
+  padding: 26px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.marks-analytics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  padding: 28px 0;
+}
+.marks-analytics > div {
+  padding: 0 26px;
+}
+.marks-analytics > div + div {
+  border-left: 1px solid var(--line);
+}
+.marks-analytics strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+.marks-analytics span {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.8;
+  display: block;
+}
+.class-marks-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px 65px;
+  gap: 16px;
+  align-items: center;
+  padding: 22px 24px;
+}
+.class-marks-list li > div > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.class-marks-list strong {
+  font-family: Georgia, serif;
+  font-size: 27px;
+}
+.negative {
+  color: #aa1425;
+}
+.class-marks-list a {
+  font-size: 10px;
+  line-height: 1.8;
+}
+.marks-note {
+  padding: 25px 10px;
+}
+.marks-note h2 {
+  font-size: 27px;
+  margin: 16px 0;
+  line-height: 1.4;
+}
+.marks-note p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+.marks-note a {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.marks-submissions {
+  margin-top: 28px;
+}
+.marks-explanation {
+  padding: 0 24px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+  margin-top: 20px;
+}
+.marks-submission-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px 70px;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 24px;
+}
+.marks-submission-list p {
+  color: var(--muted);
+  font-size: 10px;
+  margin: 0;
+  line-height: 1.9;
+}
+.marks-submission-list strong {
+  font-family: Georgia, serif;
+  font-size: 24px;
+}
+.marks-submission-list .mark-status {
+  text-align: center;
+}
+.marks-review {
+  margin-top: 30px;
+  padding: 28px;
+  background: #fff4f5;
+  border: 1px solid #e2bcc2;
+  border-left: 3px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.marks-review .eyebrow {
+  font-size: 9px;
+}
+.marks-review h2 {
+  font-size: 24px;
+  margin: 12px 0;
+}
+.marks-review p:not(.eyebrow) {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+.marks-review .button {
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.marks-footer {
+  padding: 30px 0 0;
+}
+.marks-footer p {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 19px;
+}
+.marks-footer a {
+  font-size: 11px;
+  line-height: 1.8;
+}

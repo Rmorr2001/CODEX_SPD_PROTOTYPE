@@ -6,8 +6,10 @@ cookie session with no browser-stored identity; `MemberLayout` renders protected
 children only after a genuine authenticated profile. `Dashboard` reads active
 announcements and safe ordered chapter links from AUTHENTICATE's read contracts.
 Counts derive from those arrays; no events, tasks, hour requirements or charts
-are invented. New members land separately at `/app/new-members`, temporarily
-linked to the existing new-member tools until that screen is migrated.
+are invented. New members land separately at
+[`/app/new-members`](../new-members/README.md), preserving the session landing rule.
+New-member board roles also receive that navigation capability for a limited
+review handoff; authentication is still the real server session.
 
 Sign in and logout remain the original Django flows. On the disposable demo,
 login offers a native CSRF-protected form to the existing `/demo/enter/` endpoint,

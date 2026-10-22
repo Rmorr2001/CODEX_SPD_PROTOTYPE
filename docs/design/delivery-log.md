@@ -14,7 +14,7 @@ explicitly says otherwise. This work does not deploy a new Railway release.
 | S06 My profile | [PASS](reviews/S06-code.md) | [PASS](reviews/S06-visual.md) | Accepted: caller-only profile + functioning legacy edit link |
 | S07 Chapter decisions | [PASS](reviews/S07-code.md) | [PASS](reviews/S07-visual.md) | Accepted: authorized Aye/Nay snapshot and stored results |
 | S08 Service hours | [PASS](reviews/S08-code.md) | [PASS](reviews/S08-visual.md) | Accepted: own academic-year hours and discoverable mobile table |
-| S09 New-member marks | Pending | Pending | Building |
+| S09 New-member marks | [PASS](reviews/S09-code.md) | [PASS](reviews/S09-visual.md) | Accepted: scoped personal/active/board-only marks |
 
 Review reports live in [reviews/](reviews/); concept boards in
 [references/](references/); rendered screenshots in `evidence/`.
@@ -24,5 +24,5 @@ rewritten as React forms or that generated sample policies were adopted.
 
 ## Final verification
 
-Pending the sequential screen reviews. Record actual commands/results and any
-unresolved limitations here before completing the sequence.
+All nine screen gates have passed. Combined verification is in progress; final
+counts and the integration corrections will be recorded here before completion.

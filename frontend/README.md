@@ -21,6 +21,8 @@ linked to the original Django forms; a read screen is not a migrated transaction
   results; voting remains linked to the existing chapter workflow.
 - `src/domains/service/`: own academic-year hours, approved totals and event
   statuses; requests and chair review open the existing Django forms.
+- `src/domains/new-members/`: personal approved marks, active-member summaries
+  and a limited board-only handoff; no invented milestone/eligibility engine.
 - `src/api/read.ts` and `links.ts`: shared authenticated read/cancellation states
   and safe presentation URLs. Domain clients validate their own payload contracts.
 - `test/`: Playwright checks against actual built assets and Django, including a

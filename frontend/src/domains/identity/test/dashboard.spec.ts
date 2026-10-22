@@ -38,10 +38,8 @@ test('real demo entry loads the caller and actual active announcements and resou
 test('new member native entry respects the actual separate landing rule', async ({ page }) => {
   await enterDemo(page, 'newmember');
   await expect(page).toHaveURL(/\/app\/new-members$/);
-  await expect(page.getByRole('link', { name: 'Open your new-member dashboard' })).toHaveAttribute(
-    'href',
-    '/newmember/',
-  );
+  await expect(page.getByRole('heading', { name: 'New-member marks', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Your approved history' })).toBeVisible();
   await expect(page.locator('.dashboard-summary')).toHaveCount(0);
   const dashboard = await (await page.request.get('/api/v1/dashboard/')).json();
   expect(dashboard.announcements).toEqual([]);

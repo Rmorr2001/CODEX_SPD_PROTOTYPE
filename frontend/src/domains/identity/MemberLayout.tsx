@@ -54,10 +54,10 @@ export function MemberLayout() {
             </NavLink>
           )}
           {member.capabilities.new_members && (
-            <a href={`${chapterSite}newmember/marks/`}>
+            <NavLink to="/new-members">
               <span className="nav-mark" aria-hidden="true" />
               New members
-            </a>
+            </NavLink>
           )}
           <NavLink to="/profile">
             <span className="nav-mark" aria-hidden="true" />

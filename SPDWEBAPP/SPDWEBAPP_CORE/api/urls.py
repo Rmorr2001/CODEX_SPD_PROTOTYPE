@@ -9,12 +9,14 @@ from AUTHENTICATE.api_directory import DirectoryView
 from AUTHENTICATE.api_profile import OwnProfileView
 from PARLEYPRO.api import DecisionsView
 from PHILANTHROPY.api import ServiceView
+from NEWMEMBER.api import NewMemberMarksView
 from HOME.api import PublicHomeView
 from HOME.api_about import PublicAboutView
 from HOME.api_recruitment import PublicRecruitmentView
 
 urlpatterns = [
     path('v1/session/', SessionView.as_view(), name='api_session'),
+    path('v1/new-members/', NewMemberMarksView.as_view(), name='api_new_members'),
     path('v1/service/', ServiceView.as_view(), name='api_service'),
     path('v1/polls/', DecisionsView.as_view(), name='api_decisions'),
     path('v1/profile/', OwnProfileView.as_view(), name='api_own_profile'),

@@ -11,7 +11,7 @@ import { Directory } from '../domains/identity/Directory';
 import { Profile } from '../domains/identity/Profile';
 import { Decisions } from '../domains/decisions/Decisions';
 import { ServiceHours } from '../domains/service/ServiceHours';
-import { NewMemberBridge } from '../domains/identity/NewMemberBridge';
+import { NewMemberMarks } from '../domains/new-members/NewMemberMarks';
 
 export function App() {
   return (
@@ -22,7 +22,7 @@ export function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="polls" element={<Decisions />} />
         <Route path="service" element={<ServiceHours />} />
-        <Route path="new-members" element={<NewMemberBridge />} />
+        <Route path="new-members" element={<NewMemberMarks />} />
       </Route>
       <Route element={<PublicLayout />}>
         <Route index element={<Home />} />
