@@ -54,6 +54,7 @@ export async function command(
     }
     if (options.notify !== false && url.startsWith('/api/v1/polls/')) notifySaved('polls');
     if (options.notify !== false && url.startsWith('/api/v1/service/')) notifySaved('service');
+    if (options.notify !== false && url.startsWith('/api/v1/new-members/')) notifySaved('marks');
     return result;
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError')

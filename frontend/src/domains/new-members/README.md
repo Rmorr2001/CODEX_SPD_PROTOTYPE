@@ -1,37 +1,35 @@
 # New-member marks
 
-Owns `/app/new-members`, replacing the temporary identity-domain handoff.
-`NewMemberMarks.tsx` composes loading/access/retry states and the role-specific
-panels. `content.ts` validates the read contract, signed values and safe legacy
-links. `MarksPanels.tsx` renders actual records; `marks-responsive.css` owns
-narrow layouts separately from base styles.
+Owns `/app/new-members`, `/new`, `/review`, `/history/:userId`,
+`/marks/:id/edit` and `/export` beneath that prefix. The source-cited
+[behavior/acceptance document](../../../../SPDWEBAPP/NEWMEMBER/docs/react-behavior.md)
+is authoritative for legacy rules, integrity fixes and unresolved policy.
 
-NEW_MEMBER receives its own approved total, standing, class average, latest
-approved mark and approved history, even when also ACTIVE. ACTIVE receives class
-approved totals/analytics and only its own pending/recent denied submissions.
-NM_BOARD alone receives a review handoff, without class records or personal
-reasons. No milestones, eligibility promises, progress percentages or attendance
-are fabricated. See the backend [authoritative rules](../../../../SPDWEBAPP/NEWMEMBER/README.md).
+`NewMemberMarks`/`MarksPanels` present approved personal/active summaries and own
+pending/recent-denied submissions. Board-only overview directs to the review
+queue. `MarkForm` handles validated multi-recipient signed submission and board
+edit/single-recipient retarget; `MarkReview` decides pending requests;
+`MarkHistory` presents approved details/audit; `MarkExport` downloads actual
+Current/historical workbooks. `MarksFrame` owns labeled icon navigation and a
+contextual Legacy comparison URL for every workflow. There are no fake save,
+review, totals or initiation/progress controls.
 
-The existing chapter site owns all writes: ACTIVE can request marks, NM_BOARD
-can review and edit them; the additional NME denial rule remains there. Links
-identify that destination, with the established Django origin during Vite
-development. No new configuration keys or credentials are needed.
+`contracts.ts` validates response shapes; field drafts stay independent of
+background reads. Forms guard dirty/back/reload and busy states. A form-local
+operation UUID survives timeout/retry; the backend atomically returns the same
+batch for replay. The client never automatically retries or fabricates success.
+Stale edit conflicts preserve fields and offer an explicit confirmed reload.
+Review and read pages refresh while visible and on successful same-origin writes;
+legacy changes reconcile from the same database. Existing API/HTML operations
+remain server-authoritative for roles, recipients, audits and signed arithmetic.
+No browser-stored identity, credentials or external integration is introduced.
 
-`test/marks.spec.ts` checks real native demo entry, actual personal/class reads,
-role controls, legacy request/history handoff, session expiry, network retry,
-refresh and 390px layout. Build first, then run the frontend README's browser
-command with `--grep 'new member sees|active class totals|ordinary active|marks network'`.
-
-The React page still has read-only marks parity: personal approved history/standing,
-active class totals and own pending/recent-denied submissions. It has no React
-create, approval, edit, other-member history or export APIs yet. Those actions
-remain explicitly labeled legacy links, governed by existing server permissions.
-Personal history now anchors to the history already rendered in React instead of
-leaving the page. The duplicate latest-entry rail and empty class-grid column are
-removed. No arithmetic or role policy changed.
-
-Before migrating writes, specify shared validation/atomic operations, board
-creation's existing auto-approval, eligible targets and batch behavior, and review
-reversal/self-review/educator-only deny policy. Existing HTML handlers have weaker
-validation and different deny paths; do not quietly copy those defects into APIs.
+Run `npm run build --prefix frontend`, `npm run format:check --prefix frontend`
+and `npm run test:e2e --prefix frontend` from repository root. `test/marks.spec.ts`
+covers real read/role/error/mobile behavior. `test/transactions.spec.ts` drives
+actual cross-interface creation/decision/totals, board auto-approval/edit/revoke,
+stale form recovery, Current/historical downloads and interrupted acknowledgement
+replay at390px. The wrapper runs after seeded read contracts, like existing poll/
+service mutation scenarios. Backend tests additionally cover invalid batches,
+forged identity/CSRF, direct role conjunctions and workbook cell types/identities.
+No new production configuration keys are required.

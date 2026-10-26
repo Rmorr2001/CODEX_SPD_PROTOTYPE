@@ -10,7 +10,7 @@
     
     <div class="dashboard-buttons d-flex justify-content-center gap-3 mb-4">
         <a href="{% url 'newmember_request' %}" class="btn btn-primary">Submit Marks</a>
-        <a href="{% url 'newmember_approve' %}" class="btn btn-primary">Review Pending Marks</a>
+        {% if is_new_member_board %}<a href="{% url 'newmember_approve' %}" class="btn btn-primary">Review Pending Marks</a>{% endif %}
     </div>
 
     <!-- Active Member Insights Section -->

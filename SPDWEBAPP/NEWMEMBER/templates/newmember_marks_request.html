@@ -10,6 +10,7 @@
     <div class="profile-card shadow-sm mx-auto">
         <form method="POST" class="p-4 p-md-5">
             {% csrf_token %}
+            {% if editing %}<input type="hidden" name="revision" value="{{ revision }}">{% else %}<input type="hidden" name="request_key" value="{{ request_key }}">{% endif %}
             
             <div class="mb-4">
                 <label class="form-label fw-bold mb-3">Select New Members</label>
@@ -50,7 +51,7 @@
             
             <div class="mb-4">
                 <label class="form-label fw-bold">Reason</label>
-                <input type="text" class="form-control custom-input" id="mark_reason" name="mark_reason" value="{% if editing %}{{ mark.mark_event_title }}{% endif %}" required>
+                <input type="text" class="form-control custom-input" id="mark_reason" name="mark_reason" maxlength="100" value="{% if editing %}{{ mark.mark_event_title }}{% endif %}" required>
             </div>
             
             <div class="selected-members-preview mb-4 d-none">
@@ -208,16 +209,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (selectedOptions.length > 0) {
             previewDiv.classList.remove('d-none');
-            previewList.innerHTML = selectedOptions
-                .map(option => `<div class="selected-member">
-                    <span class="badge">
-                        <i class="fas fa-user me-2"></i>${option.text}
-                    </span>
-                </div>`)
-                .join('');
+            previewList.replaceChildren(...selectedOptions.map(option => {
+                const member = document.createElement('div');
+                member.className = 'selected-member';
+                const badge = document.createElement('span');
+                badge.className = 'badge';
+                badge.textContent = option.text;
+                member.append(badge);
+                return member;
+            }));
         } else {
             previewDiv.classList.add('d-none');
-            previewList.innerHTML = '';
+            previewList.replaceChildren();
         }
     });
 });

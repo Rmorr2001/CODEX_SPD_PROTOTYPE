@@ -15,11 +15,11 @@ test('new member sees actual own approved history and standing after native entr
   await expect(page.locator('.marks-history li')).toHaveCount(data.personal.history.length);
   await expect(page.getByRole('link', { name: 'View your history' })).toHaveAttribute(
     'href',
-    '#approved-marks',
+    '/app/new-members/history/' + data.personal.history_url.split('/').filter(Boolean).at(-1),
   );
   await expect(page.locator('.marks-analytics')).toHaveCount(0);
-  await expect(page.getByRole('link', { name: 'Submit marks (legacy)' })).toHaveCount(0);
-  await expect(page.getByRole('link', { name: 'Review marks (legacy)' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Submit marks', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Review marks', exact: true })).toHaveCount(0);
   await page.reload();
   await expect(page.locator('.marks-total strong')).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
@@ -30,7 +30,7 @@ test('new member sees actual own approved history and standing after native entr
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBeTruthy();
   await page.getByRole('link', { name: 'View your history' }).click();
-  await expect(page).toHaveURL(/\/app\/new-members#approved-marks$/);
+  await expect(page).toHaveURL(/\/app\/new-members\/history\/\d+$/);
 });
 
 test('active class totals and executive own submissions use real data and legacy workflows', async ({
@@ -53,17 +53,17 @@ test('active class totals and executive own submissions use real data and legacy
       member.display_name,
     );
   }
-  await expect(page.getByRole('link', { name: 'Review marks (legacy)' })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'Review marks', exact: true })).toHaveAttribute(
     'href',
-    '/newmember/approve/',
+    '/app/new-members/review',
   );
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBeTruthy();
-  await page.getByRole('link', { name: 'Submit marks (legacy)' }).click();
-  await expect(page).toHaveURL(/\/newmember\/request\/$/);
-  await expect(page.locator('input[name="mark_value"]')).toBeVisible();
+  await page.getByRole('link', { name: 'Submit marks', exact: true }).click();
+  await expect(page).toHaveURL(/\/app\/new-members\/new$/);
+  await expect(page.getByLabel('Marks', { exact: true })).toBeVisible();
 });
 
 test('ordinary active has no review action and alumni are denied without marks', async ({
@@ -72,7 +72,7 @@ test('ordinary active has no review action and alumni are denied without marks',
   await enterDemo(page);
   await page.goto('/app/new-members');
   await expect(page.locator('.marks-analytics')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Review marks (legacy)' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Review marks', exact: true })).toHaveCount(0);
   await expect(page.getByText('You have no pending or recent denied submissions.')).toBeVisible();
   await enterDemo(page, 'alumni');
   expect((await page.request.get('/api/v1/new-members/')).status()).toBe(403);

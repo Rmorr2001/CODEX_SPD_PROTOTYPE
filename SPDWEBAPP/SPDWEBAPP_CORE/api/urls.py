@@ -7,14 +7,13 @@ from AUTHENTICATE.api_session import SessionView
 from AUTHENTICATE.api_dashboard import DashboardView
 from AUTHENTICATE.api_directory import DirectoryView
 from AUTHENTICATE.api_profile import OwnProfileView
-from NEWMEMBER.api import NewMemberMarksView
 from HOME.api import PublicHomeView
 from HOME.api_about import PublicAboutView
 from HOME.api_recruitment import PublicRecruitmentView
 
 urlpatterns = [
     path('v1/session/', SessionView.as_view(), name='api_session'),
-    path('v1/new-members/', NewMemberMarksView.as_view(), name='api_new_members'),
+    path('v1/new-members/', include('NEWMEMBER.api.urls')),
     path('v1/service/', include('PHILANTHROPY.api.urls')),
     path('v1/polls/', include('PARLEYPRO.api.urls')),
     path('v1/profile/', OwnProfileView.as_view(), name='api_own_profile'),

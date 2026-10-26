@@ -57,3 +57,15 @@ acceptance and bounded mutation probes under [Wave 2 goals](../../../docs/testin
 [The hardening results](../../../docs/testing/part-1-hardening.md) record the
 stronger preservation assertions, clean-suite results and required mutation kills.
 The historical Wave 2 findings above retain their original counts and evidence.
+
+
+## Functional React migration
+
+The historical counts/blocked designs above remain provenance, not a statement
+that newly supported workflows are read-only. `test_transactions_api.py` adds
+cross-adapter batch replay/conflict/atomicity, role/CSRF, stale review/edit,
+board auto-approval, educator revocation, history scope and literal/identity-safe
+workbook checks. The current acceptance decisions and remaining policy boundaries
+are documented in [the behavior contract](../docs/react-behavior.md). Schema tests
+now include the new authenticated endpoints. Header quoting was corrected while
+preserving the workbook filename/content contract.

@@ -15,6 +15,10 @@ import { ServiceForm } from '../domains/service/ServiceForm';
 import { ServiceReview } from '../domains/service/ServiceReview';
 import { ServiceChapter, ServiceHistory } from '../domains/service/ServiceReports';
 import { ServiceHours } from '../domains/service/ServiceHours';
+import { MarkForm } from '../domains/new-members/MarkForm';
+import { MarkReview } from '../domains/new-members/MarkReview';
+import { MarkHistory } from '../domains/new-members/MarkHistory';
+import { MarkExport } from '../domains/new-members/MarkExport';
 import { NewMemberMarks } from '../domains/new-members/NewMemberMarks';
 
 export function App() {
@@ -34,6 +38,11 @@ export function App() {
         <Route path="service/chapter" element={<ServiceChapter />} />
         <Route path="service/events/:id/edit" element={<ServiceForm />} />
         <Route path="new-members" element={<NewMemberMarks />} />
+        <Route path="new-members/new" element={<MarkForm />} />
+        <Route path="new-members/review" element={<MarkReview />} />
+        <Route path="new-members/history/:userId" element={<MarkHistory />} />
+        <Route path="new-members/marks/:id/edit" element={<MarkForm />} />
+        <Route path="new-members/export" element={<MarkExport />} />
       </Route>
       <Route element={<PublicLayout />}>
         <Route index element={<Home />} />

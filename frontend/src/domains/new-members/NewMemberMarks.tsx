@@ -1,5 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { MarksFrame } from './MarksFrame';
+import { useSearchParams } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { chapterSite } from '../../app/links';
 import { useMemberRead } from '../../api/read';
 import { fetchMarks } from './content';
@@ -8,7 +9,8 @@ import './marks.css';
 import './marks-responsive.css';
 
 export function NewMemberMarks() {
-  const { state, retry } = useMemberRead(fetchMarks);
+  const [params] = useSearchParams();
+  const { state, retry } = useMemberRead(fetchMarks, { resource: 'marks', refreshMs: 3000 });
   if (state.kind === 'loading')
     return (
       <section className="member-notice">
@@ -36,33 +38,22 @@ export function NewMemberMarks() {
       </section>
     );
   const data = state.data;
+  if (data.mode === 'review') return <Navigate to="/new-members/review" replace />;
   return (
     <>
-      <section className="marks-heading">
-        <div>
-          <h1>New-member marks</h1>
-        </div>
-        {data.can_submit && (
-          <Button asChild>
-            <a href={`${chapterSite}newmember/request/`}>Submit marks (legacy)</a>
-          </Button>
+      <MarksFrame title="New-member marks" legacy="/newmember/marks/">
+        {params.get('submitted') === '1' && <p role="status">Marks saved.</p>}
+        {state.stale && (
+          <p role="status">
+            Updates paused. <button onClick={retry}>Retry</button>
+          </p>
         )}
-      </section>
-      {data.personal && <PersonalMarks personal={data.personal} />}
-      {data.analytics && <ActiveMarks data={data} />}
-      {data.can_review && (
-        <section className="marks-review">
-          <div>
-            <h2>Review mark requests</h2>
-          </div>
-          <Button asChild>
-            <a href={`${chapterSite}newmember/approve/`}>Review marks (legacy)</a>
-          </Button>
-        </section>
-      )}
-      <footer className="marks-footer">
-        <a href={`${chapterSite}newmember/`}>New-member resources (legacy)</a>
-      </footer>
+        {data.personal && <PersonalMarks personal={data.personal} />}
+        {data.analytics && <ActiveMarks data={data} />}
+        <footer className="marks-footer">
+          <a href={`${chapterSite}newmember/`}>New-member resources (legacy)</a>
+        </footer>
+      </MarksFrame>
     </>
   );
 }

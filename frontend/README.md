@@ -1,13 +1,13 @@
 # React workspace
 
-Owns the React public/member experiences at `/app/`, including poll and service
+Owns the React public/member experiences at `/app/`, including poll, service and marks
 transactions. `/` redirects here; original Django home is `/legacy/`, and other
 legacy deep links remain. React 19, TypeScript 7, Vite 8 and React Router 7
 are pinned in `package.json` and `package-lock.json`; use Node 24.19.0.
 The [screen plan](../docs/design/screen-plan.md) maps the public and member read
 screens to their design/spec references. The [delivery log](../docs/design/delivery-log.md)
 records per-screen acceptance and screenshots. The [functional milestone](../docs/migration/functional-milestone-1.md) adds
-shared poll/service writes; marks and account edits still use explicit legacy links.
+shared poll/service writes. [Marks behavior and acceptance](../SPDWEBAPP/NEWMEMBER/docs/react-behavior.md) defines the full shared marks migration; account edits remain explicit legacy links.
 
 ## Structure and boundaries
 
@@ -23,7 +23,8 @@ shared poll/service writes; marks and account edits still use explicit legacy li
 - `src/domains/service/`: own academic-year hours, approved totals and event
   statuses, fractional submissions, chair review/edit and approved reports.
 - `src/domains/new-members/`: personal approved marks, active-member summaries
-  and a limited board-only handoff; no invented milestone/eligibility engine.
+  and full batch submission, board review/edit/revoke, history and export, with
+  contextual legacy comparison; no invented milestone/eligibility engine.
 - `src/api/write.ts`: CSRF-protected JSON mutations with explicit pending/error
   behavior and no automatic retries.
 - `src/api/read.ts` and `links.ts`: shared authenticated read/cancellation states

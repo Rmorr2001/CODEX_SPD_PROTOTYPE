@@ -1,9 +1,6 @@
 import { type MarksContent, type Mark, markDate, signed } from './content';
-import { chapterSite } from '../../app/links';
-
-function originalLink(path: string) {
-  return path.startsWith('/') ? `${chapterSite}${path.slice(1)}` : path;
-}
+import { Link } from 'react-router-dom';
+import { historyPath } from './contracts';
 
 export function MarkList({ marks, empty }: { marks: Mark[]; empty: string }) {
   if (!marks.length) return <p className="marks-empty">{empty}</p>;
@@ -42,7 +39,7 @@ export function PersonalMarks({ personal }: { personal: NonNullable<MarksContent
         </div>
         <div className="marks-standing">
           <h2>{personal.standing}</h2>
-          <a href="#approved-marks">View your history</a>
+          <Link to={historyPath(personal.history_url)}>View your history</Link>
         </div>
         <div className="marks-class-average">
           <strong>{personal.class_average}</strong>
@@ -102,12 +99,12 @@ export function ActiveMarks({ data }: { data: MarksContent }) {
                   <strong className={member.is_negative ? 'negative' : ''}>
                     {signed(member.total_marks)}
                   </strong>
-                  <a
-                    href={originalLink(member.history_url)}
-                    aria-label={`View ${member.display_name} history (legacy)`}
+                  <Link
+                    to={historyPath(member.history_url)}
+                    aria-label={`View ${member.display_name} history`}
                   >
-                    History (legacy) <span aria-hidden="true">→</span>
-                  </a>
+                    History <span aria-hidden="true">→</span>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -48,6 +48,14 @@ class PublicApiTests(SimpleTestCase):
         private_paths = {'/api/v1/dashboard/', '/api/v1/members/', '/api/v1/profile/',
                          '/api/v1/polls/', '/api/v1/service/', '/api/v1/new-members/'}
         writes = {
+            '/api/v1/new-members/submissions/': {'post'},
+            '/api/v1/new-members/options/': {'get'},
+            '/api/v1/new-members/review/': {'get'},
+            '/api/v1/new-members/history/{user_id}/': {'get'},
+            '/api/v1/new-members/export/': {'get'},
+            '/api/v1/new-members/{mark_id}/': {'get', 'patch'},
+            '/api/v1/new-members/{mark_id}/decision/': {'post'},
+            '/api/v1/new-members/{mark_id}/revoke/': {'post'},
             '/api/v1/polls/': {'get', 'post'},
             '/api/v1/polls/{poll_id}/': {'get'},
             '/api/v1/polls/{poll_id}/vote/': {'put'},
@@ -67,7 +75,7 @@ class PublicApiTests(SimpleTestCase):
             with self.subTest(path=path):
                 self.assertEqual(set(methods), writes.get(path, {'get'}))
                 for method, operation in methods.items():
-                    self.assertIn('201' if method == 'post' and path in {'/api/v1/polls/', '/api/v1/service/'} else '200', operation['responses'])
+                    self.assertIn('201' if method == 'post' and path in {'/api/v1/polls/', '/api/v1/service/', '/api/v1/new-members/submissions/'} else '200', operation['responses'])
                     if path in public_paths:
                         self.assertFalse(operation.get('security'))
                     elif path in private_paths:

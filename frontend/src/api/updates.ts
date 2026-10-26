@@ -1,5 +1,5 @@
 /** Invalidate records across mounted views/tabs without broadcasting member data. */
-export type Resource = 'polls' | 'service';
+export type Resource = 'polls' | 'service' | 'marks';
 const eventName = 'spd-records-changed';
 const channelName = 'spd-records';
 

@@ -90,3 +90,14 @@ does not settle those policies or port the legacy transactions. Existing integer
 service-hour storage, disposable demo data and legacy write limitations remain
 documented in their owning domains. No Railway redeployment or hosted CI result
 is claimed by these local checks.
+
+
+## Marks functional migration
+
+The original S09 acceptance above covers the historical scoped read screen.
+The [current behavior/acceptance contract](../../SPDWEBAPP/NEWMEMBER/docs/react-behavior.md)
+now maps batch submission, review, edit/retarget, educator denial, history, exports,
+role boundaries and the new shared operation receipt migration. Current React
+workflows have contextual legacy comparison links rather than legacy-only forms.
+Local browser and built-image evidence is recorded with that domain contract;
+live deployment acceptance is verified separately by the coordinator.

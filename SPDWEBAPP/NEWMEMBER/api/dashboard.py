@@ -5,7 +5,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from AUTHENTICATE.access import require_member_roles
-from .views_functions import (
+from ..views_functions import (
     get_new_members, calculate_member_marks, get_user_submitted_marks,
     get_personal_stats, get_active_member_analytics, get_member_mark_history,
 )
@@ -89,7 +89,7 @@ def active_data(user):
 
 class NewMemberMarksView(APIView):
     """NEW_MEMBER personal, ACTIVE class, or NM_BOARD review-only; no writes."""
-    @extend_schema(responses=MarksSerializer)
+    @extend_schema(operation_id="marks_dashboard", responses=MarksSerializer)
     def get(self, request):
         profile = require_member_roles(request.user)
         roles = {role.name for role in profile.roles.all()}

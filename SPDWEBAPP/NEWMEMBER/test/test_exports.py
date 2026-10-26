@@ -20,7 +20,7 @@ class ExportTests(MarkCase):
         response = self.client.get(reverse('export_newmember_marks'), {'pclass': 'Current'})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-        self.assertEqual(response['Content-Disposition'], 'attachment; filename=Approved_Current_Class_Newmember_Marks.xlsx')
+        self.assertEqual(response['Content-Disposition'], 'attachment; filename="Approved_Current_Class_Newmember_Marks.xlsx"')
         workbook = load_workbook(BytesIO(response.content), data_only=False)
         self.assertEqual(workbook.sheetnames, ['New Member Marks'])
         self.unchanged(before)

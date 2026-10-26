@@ -57,7 +57,7 @@
                                 <td class="py-3 px-4">
                                     <form method="POST" class="d-flex gap-2">
                                         {% csrf_token %}
-                                        <input type="hidden" name="mark_id" value="{{ request.id }}">
+                                        <input type="hidden" name="mark_id" value="{{ request.id }}"><input type="hidden" name="revision" value="{{ request.revision }}">
                                         <button type="submit" name="action" value="approve" class="btn btn-approve">Approve</button>
                                         <button type="submit" name="action" value="deny" class="btn btn-deny">Deny</button>
                                     </form>
@@ -111,7 +111,7 @@
                             
                             <form method="POST" class="d-flex gap-2">
                                 {% csrf_token %}
-                                <input type="hidden" name="mark_id" value="{{ request.id }}">
+                                <input type="hidden" name="mark_id" value="{{ request.id }}"><input type="hidden" name="revision" value="{{ request.revision }}">
                                 <button type="submit" name="action" value="approve" class="btn btn-approve flex-grow-1">Approve</button>
                                 <button type="submit" name="action" value="deny" class="btn btn-deny flex-grow-1">Deny</button>
                             </form>

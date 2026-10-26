@@ -8,6 +8,8 @@ class NewMember_Mark_Event_and_Request(models.Model):
         ('denied', 'Denied'),
     ]
 
+    submission = models.ForeignKey('MarkSubmission', null=True, blank=True, on_delete=models.SET_NULL, related_name='marks')
+
     requesting_user = models.ForeignKey(
         User, 
         on_delete=models.CASCADE,
@@ -59,3 +61,14 @@ class NewMember_Mark_Event_and_Request(models.Model):
         verbose_name = "New Member Mark Event"
         verbose_name_plural = "New Member Mark Events"
         ordering = ['-mark_event_date']
+
+
+class MarkSubmission(models.Model):
+    """One actor-owned form operation, allowing safe acknowledgement after an interrupted POST."""
+    requester = models.ForeignKey(User, on_delete=models.CASCADE)
+    request_key = models.UUIDField()
+    fingerprint = models.CharField(max_length=64)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['requester', 'request_key'], name='unique_mark_submission')]

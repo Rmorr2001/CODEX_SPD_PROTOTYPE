@@ -1,10 +1,8 @@
 from .models import NewMember_Mark_Event_and_Request
 from AUTHENTICATE.models import Brother_Profile
-from django.db.models import Sum
+from django.db.models import Q, Sum
 from django.utils import timezone
-from datetime import date, timedelta
-from django.contrib import messages
-from django.shortcuts import redirect
+from datetime import timedelta
 
 def get_new_members():
     """Get all users with NEW_MEMBER role, ordered by last name"""
@@ -43,7 +41,6 @@ def calculate_member_marks(new_members, start_date=None, end_date=None):
     return sorted(new_members_progress, key=lambda x: x['total_marks'])
 
 
-from django.db.models import Q
 
 def get_user_submitted_marks(user, start_date=None, end_date=None):
     """Get marks submitted by a specific user within date range, excluding approved marks"""
@@ -113,49 +110,28 @@ def get_active_member_analytics(new_members_progress):
         ).count()
     }
 
-def create_mark_requests(requesting_user, target_users, mark_value, mark_reason, mark_date):
-    """Create multiple mark requests, auto-approve if NM_BOARD"""
+def create_mark_requests(requesting_user, target_users, mark_value, mark_reason, mark_date, request_key=None):
+    """Compatibility result for HTML callers; shared operations own validation and writes."""
+    from .operations import submit_marks
     try:
-        is_board_member = check_user_role(requesting_user, 'NM_BOARD')
-        created_marks = []
-        for user_id in target_users:
-            new_mark = NewMember_Mark_Event_and_Request(
-                requesting_user=requesting_user,
-                target_user_id=user_id,
-                mark_event_title=mark_reason,
-                mark_value=mark_value,
-                mark_event_date=mark_date,
-                mark_approval_status='approved' if is_board_member else 'requested',
-                mark_submission_approval_date=timezone.now() if is_board_member else None,
-                mark_approver_name=f"{requesting_user.brother_profile.firstName} {requesting_user.brother_profile.lastName}" if is_board_member else None,
-            )
-            created_marks.append(new_mark)
-        
-        NewMember_Mark_Event_and_Request.objects.bulk_create(created_marks)
-        return True, f'Marks submitted successfully for {len(target_users)} new member(s)!'
-    except Exception as e:
-        return False, f'Error submitting marks: {str(e)}'
+        rows = submit_marks(requesting_user, target_users,
+                            {'mark_value': mark_value, 'mark_reason': mark_reason, 'mark_date': mark_date}, request_key)
+        return True, f'Marks submitted successfully for {len(rows)} new member(s)!'
+    except Exception:
+        return False, 'Error submitting marks: Check recipients and fields, then check existing submissions before retrying.'
 
 
 def process_mark_approval(request, mark_id, action):
-    """Process mark approval/denial"""
+    """Compatibility result; never disclose database errors in a user message."""
+    from django.http import Http404
+    from .operations import decide_mark
     try:
-        mark = NewMember_Mark_Event_and_Request.objects.get(id=mark_id)
-        if action == 'approve':
-            mark.mark_approval_status = 'approved'
-            mark.mark_approver_name = f"{request.user.brother_profile.firstName} {request.user.brother_profile.lastName}"
-            mark.mark_submission_approval_date = timezone.now()
-        elif action == 'deny':
-            mark.mark_approval_status = 'denied'
-            mark.mark_approver_name = f"{request.user.brother_profile.firstName} {request.user.brother_profile.lastName}"
-            mark.mark_submission_approval_date = timezone.now()
-        
-        mark.save()
+        decide_mark(request.user, mark_id, action, request.POST.get('revision') if hasattr(request, 'POST') else None)
         return True, f"Mark(s) successfully {'approved' if action == 'approve' else 'denied'}!"
-    except NewMember_Mark_Event_and_Request.DoesNotExist:
+    except Http404:
         return False, 'Mark not found'
-    except Exception as e:
-        return False, f'Error processing request: {str(e)}'
+    except Exception:
+        return False, 'Error processing request: The record changed or could not be saved. Refresh before retrying.'
 
 def get_pending_mark_requests():
     """Get all pending mark requests with proper user relationship traversal"""
@@ -189,4 +165,6 @@ def get_member_mark_history(user_id):
 
 def check_user_role(user, role_name):
     """Check if user has a specific role"""
-    return user.brother_profile.roles.filter(name=role_name).exists()
+    from AUTHENTICATE.access import member_profile
+    profile = member_profile(user)
+    return bool(profile and profile.roles.filter(name=role_name).exists())

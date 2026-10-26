@@ -17,7 +17,7 @@ within a directory when present. Keep work focused on the requested change.
   Its [api/](SPDWEBAPP/SPDWEBAPP_CORE/api/README.md) and
   [frontend/](SPDWEBAPP/SPDWEBAPP_CORE/frontend/README.md) compose `/api/v1/`
   and `/app/`; [root frontend/](frontend/README.md) owns React/TypeScript/Vite.
-- `frontend/src/domains/` owns React public/member reads and poll/service transactions, with
+- `frontend/src/domains/` owns React public/member reads and poll/service/marks transactions, with
   domain READMEs and singular `test/` directories. The
   [screen plan](docs/design/screen-plan.md) maps routes, image/spec references,
   permission boundaries and independent correctness/visual review gates;
@@ -32,6 +32,9 @@ within a directory when present. Keep work focused on the requested change.
   [the next experience plan](docs/migration/react-experience-next.md): shared
   confirmed updates, Tailwind/shadcn-style member shell and a Radix service Sheet;
   reference provenance and local/live verification are recorded separately.
+- [Marks behavior and acceptance](SPDWEBAPP/NEWMEMBER/docs/react-behavior.md)
+  maps the full React marks workflow, shared operations, distinct adapters,
+  idempotent batch migration and supported role boundaries.
 - Existing domains: `HOME`, `AUTHENTICATE`, `PARLEYPRO`, `PHILANTHROPY`,
   `NEWMEMBER`, and `MISC`. Preserve existing routes and naming in relevant work.
 - Domain regression work uses singular `test/` for tests and testing documentation.
