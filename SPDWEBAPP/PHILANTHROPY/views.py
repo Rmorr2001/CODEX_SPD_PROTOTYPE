@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied, ValidationError
 from SPDWEBAPP_CORE.domain import Conflict
-from .operations import submit_event, edit_event
+from .operations import decision_is_available, submit_event, edit_event
 from .models import Philanthropy_Hours_Event_and_Request
 from AUTHENTICATE.models import Brother_Profile, Role
 from django.utils import timezone
@@ -88,6 +88,9 @@ def philanthropy_approve(request):
         philanthropy_approval_status='requested'
     ).select_related('user', 'user__brother_profile').order_by('-philanthropy_event_date')
     
+    for event in pending_requests:
+        event.can_decide = decision_is_available(request.user.pk, event)
+
     return render(request, 'philanthropy_approve.html', {'pending_requests': pending_requests})
 
 

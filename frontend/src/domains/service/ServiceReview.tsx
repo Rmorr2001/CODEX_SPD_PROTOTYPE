@@ -43,18 +43,27 @@ export function ServiceReview() {
       {state.kind === 'ready' &&
         (state.data.length ? (
           state.data.map((entry) => (
-            <article className="transaction-panel" key={entry.id}>
+            <article className="transaction-panel" key={entry.id} data-request-id={entry.id}>
               <h2>{entry.title}</h2>
               <p>
                 {entry.owner_name} · {entry.hours} hours · {entry.date}
               </p>
               <div className="transaction-actions">
-                <button disabled={busy !== null} onClick={() => void decide(entry.id, 'approve')}>
-                  Approve {entry.title}
-                </button>
-                <button disabled={busy !== null} onClick={() => void decide(entry.id, 'deny')}>
-                  Deny {entry.title}
-                </button>
+                {entry.can_decide ? (
+                  <>
+                    <button
+                      disabled={busy !== null}
+                      onClick={() => void decide(entry.id, 'approve')}
+                    >
+                      Approve {entry.title}
+                    </button>
+                    <button disabled={busy !== null} onClick={() => void decide(entry.id, 'deny')}>
+                      Deny {entry.title}
+                    </button>
+                  </>
+                ) : (
+                  <span>Another chair must review.</span>
+                )}
                 <Link to={`/service/events/${entry.id}/edit`}>Edit entry</Link>
               </div>
             </article>

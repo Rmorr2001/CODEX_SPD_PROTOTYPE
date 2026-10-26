@@ -21,16 +21,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for request in pending_requests %}
+                        {% for event in pending_requests %}
                         <tr {% if forloop.counter|divisibleby:2 %}style="background-color: #f9f9f9;"{% endif %}>
-                            <td style="padding: 15px 20px;">{{ request.user.brother_profile.firstName }} {{ request.user.brother_profile.lastName }}</td>
-                            <td style="padding: 15px 20px;">{{ request.philanthropy_event_title }}</td>
-                            <td style="padding: 15px 20px;">{{ request.philanthropy_event_hours }}</td>
-                            <td style="padding: 15px 20px;">{{ request.philanthropy_event_date|date:"M d, Y" }}</td>
+                            <td style="padding: 15px 20px;">{{ event.user.brother_profile.firstName }} {{ event.user.brother_profile.lastName }}</td>
+                            <td style="padding: 15px 20px;">{{ event.philanthropy_event_title }}</td>
+                            <td style="padding: 15px 20px;">{{ event.philanthropy_event_hours }}</td>
+                            <td style="padding: 15px 20px;">{{ event.philanthropy_event_date|date:"M d, Y" }}</td>
                             <td style="padding: 15px 20px;">
+                                {% if event.can_decide %}
                                 <form method="POST" class="d-inline">
                                     {% csrf_token %}
-                                    <input type="hidden" name="event_id" value="{{ request.id }}">
+                                    <input type="hidden" name="event_id" value="{{ event.id }}">
                                     <button type="submit" name="action" value="approve" 
                                         style="background-color: #28a745; color: white; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 8px; font-size: 14px;">
                                         Approve
@@ -40,6 +41,7 @@
                                         Deny
                                     </button>
                                 </form>
+                                {% else %}<span>Another chair must review.</span>{% endif %}
                             </td>
                         </tr>
                         {% endfor %}

@@ -169,6 +169,7 @@ class ServiceTransactionTests(RegressionTestCase):
         client = Client(enforce_csrf_checks=True)
         client.force_login(self.chair)
         client.get('/philanthropy/approve/')
+        client.get('/api/v1/session/')  # No token form is rendered when every decision is unavailable.
         token = client.cookies['csrftoken'].value
         for event, action in [(pending, 'approve'), (pending, 'deny'),
                               (reviewed, 'deny'), (reviewed, 'approve')]:

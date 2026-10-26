@@ -1,0 +1,59 @@
+{
+  "base_commit": "1417a71551ed56e3accf1cd4e7e0c7eb0801444e",
+  "source_sha256": "67ade148055ea07d5ba52644a622ed46250c76c4b6c71708f61adb79f57f5355",
+  "source_paths": [
+    "SPDWEBAPP/PARLEYPRO/api/commands.py",
+    "SPDWEBAPP/PARLEYPRO/api/reads.py",
+    "SPDWEBAPP/PARLEYPRO/operations.py",
+    "SPDWEBAPP/PARLEYPRO/templates/poll_index.html",
+    "SPDWEBAPP/PARLEYPRO/test/test_ui_permissions.py",
+    "SPDWEBAPP/PARLEYPRO/views.py",
+    "SPDWEBAPP/PHILANTHROPY/api/commands.py",
+    "SPDWEBAPP/PHILANTHROPY/api/serializers.py",
+    "SPDWEBAPP/PHILANTHROPY/operations.py",
+    "SPDWEBAPP/PHILANTHROPY/templates/philanthropy_approve.html",
+    "SPDWEBAPP/PHILANTHROPY/test/test_transactions_api.py",
+    "SPDWEBAPP/PHILANTHROPY/test/test_ui_permissions.py",
+    "SPDWEBAPP/PHILANTHROPY/views.py",
+    "frontend/src/domains/service/ServiceReview.tsx",
+    "frontend/src/domains/service/transactions.ts",
+    "frontend/test/permission-affordances.spec.ts"
+  ],
+  "backend": {
+    "tests_run": 503,
+    "ready_cases": 393,
+    "verified_ready_cases": 393,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "targeted_poll_service_passed": 163,
+  "demo_passed": 13,
+  "mutation_assertion_kills": 13,
+  "mutation_errors": 0,
+  "mutation_clean_baselines_restorations": true,
+  "server_playwright": {
+    "passed": 52,
+    "retries": 0,
+    "duration": "1.5m"
+  },
+  "image_playwright": {
+    "passed": 52,
+    "retries": 0,
+    "duration": "1.4m"
+  },
+  "image_sha256": "5c6cbe2aa00b62bdce13163e13498d57ed04c6fb3af620282a56d18c8ea7aa12",
+  "checks": {
+    "typescript_build": "passed",
+    "formatting": "passed",
+    "schema_validate_fail_on_warn": "passed",
+    "migration_drift": "none",
+    "diff_sizes": "passed"
+  },
+  "new_migrations": 0,
+  "permission_policy_changed": false,
+  "queue_contract_addition": "can_decide boolean only on role-authorized review rows",
+  "browser_first_attempt": "Title-only selector matched three seeded rows; corrected to request-ID identity; full rerun passed.",
+  "public_browser_qa": "parent owns live checks; consumer hostname remains policy-blocked",
+  "reference_images_inspected": false
+}

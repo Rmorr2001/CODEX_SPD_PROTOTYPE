@@ -1,5 +1,5 @@
 """Single-open chapter voting, shared by HTML and REST request adapters."""
-from django.core.exceptions import ValidationError
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import transaction
 from django.db.models import F
 from django.shortcuts import get_object_or_404
@@ -8,6 +8,15 @@ from AUTHENTICATE.access import require_domain_roles as require_roles
 from SPDWEBAPP_CORE.domain import Conflict
 from .forms import VotePollForm
 from .models import Brother_votes, Vote_Poll, PollWorkflowLock
+
+
+def can_manage_polls(user):
+    """Presentation capability uses the same ALL-role boundary as create/close."""
+    try:
+        require_roles(user, 'ACTIVE', 'EXEC')
+    except PermissionDenied:
+        return False
+    return True
 
 
 def lock_workflow():

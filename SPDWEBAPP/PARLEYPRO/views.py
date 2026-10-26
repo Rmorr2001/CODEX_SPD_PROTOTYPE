@@ -8,7 +8,7 @@ from django.shortcuts import redirect, render
 from SPDWEBAPP_CORE.domain import Conflict
 from .forms import VotePollForm
 from .models import Brother_votes, Vote_Poll
-from .operations import create_poll, current_poll
+from .operations import can_manage_polls, create_poll, current_poll
 from .pp_decorators import requires_role
 from .pp_functions import count_all_current_votes, Vote_Yes_No_or_StartANDEndVote
 
@@ -34,6 +34,7 @@ def poll_index(request):
         'nay_votes': nay_votes,
         'aye_votes': aye_votes,
         'current_poll': current_poll(),
+        'can_manage': can_manage_polls(request.user),
     }
     return render(request, 'poll_index.html', context)
 

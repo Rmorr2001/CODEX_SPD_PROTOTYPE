@@ -8,7 +8,7 @@ from AUTHENTICATE.access import require_member_roles
 from ..models import Philanthropy_Hours_Event_and_Request as Event
 from ..operations import submit_event, decide_event, edit_event
 from .reads import ServiceView
-from .serializers import EventInput, DecisionInput, EventSerializer
+from .serializers import EventInput, DecisionInput, EventSerializer, ReviewEventSerializer
 
 
 def event_response(event, status=200):
@@ -52,9 +52,9 @@ class DecisionView(APIView):
 
 
 class ReviewView(APIView):
-    @extend_schema(responses=EventSerializer(many=True))
+    @extend_schema(responses=ReviewEventSerializer(many=True))
     def get(self, request):
         require_member_roles(request.user, 'ACTIVE', 'PHIL_CHAIR')
         events = Event.objects.filter(philanthropy_approval_status='requested').select_related(
             'user__brother_profile').order_by('-philanthropy_event_date', '-pk')
-        return Response(EventSerializer(events, many=True).data, headers={'Cache-Control': 'no-store'})
+        return Response(ReviewEventSerializer(events, many=True, context={'request': request}).data, headers={'Cache-Control': 'no-store'})

@@ -28,9 +28,14 @@ export function serviceRecord(value: unknown): value is ServiceRecord {
     ['requested', 'approved', 'denied'].includes(String(row.status))
   );
 }
-export async function readRecords(url: string, signal: AbortSignal): Promise<ServiceRecord[]> {
+export type ReviewRecord = ServiceRecord & { can_decide: boolean };
+function reviewRecord(value: unknown): value is ReviewRecord {
+  return serviceRecord(value) && 'can_decide' in value && typeof value.can_decide === 'boolean';
+}
+
+export async function readRecords(url: string, signal: AbortSignal): Promise<ReviewRecord[]> {
   const result = await memberJson(url, signal);
-  if (!Array.isArray(result) || !result.every(serviceRecord))
+  if (!Array.isArray(result) || !result.every(reviewRecord))
     throw new Error('Invalid service records');
   return result;
 }

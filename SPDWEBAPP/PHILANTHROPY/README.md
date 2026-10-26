@@ -52,3 +52,11 @@ fractional totals/exports, ownership, role/CSRF denial and failed writes.
 Frontend `test/` and `frontend/test/zz-transactions.spec.ts` cover forms and role
 switches. Use root verification commands; see the
 [milestone document](../../docs/migration/functional-milestone-1.md).
+
+
+The authorized review queue adds server-derived can_decide per row. Both legacy
+and React hide decision controls for own requests using the shared existing
+pending/non-self predicate; forged POSTs are still rejected. Own requests remain
+visible and chair-edit permissions are unchanged. Domain test_ui_permissions.py
+and frontend permission-affordances.spec.ts cover these boundaries.
+See [the correction](../../docs/migration/permission-affordances.md).

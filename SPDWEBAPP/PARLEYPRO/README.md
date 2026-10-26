@@ -34,3 +34,9 @@ role denial, repeat/stale operations and failure rollback. `test/test_read_api.p
 retains read privacy/order tests. Run with the root AGENTS.md standalone commands.
 Browser transactions live in `frontend/test/zz-transactions.spec.ts`. No new
 credentials or runtime configuration keys are required.
+
+
+Management controls in both interfaces use operations.can_manage_polls, the
+same ALL-role boundary as create/close. test/test_ui_permissions.py covers normal
+ACTIVE, ACTIVE+EXEC, EXEC-only and anonymous capabilities plus forged closure.
+See [the permission correction](../../docs/migration/permission-affordances.md).

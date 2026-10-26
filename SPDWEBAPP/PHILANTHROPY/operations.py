@@ -32,6 +32,11 @@ def submit_event(user, data):
     return Event.objects.create(user=user, **service_fields(data))
 
 
+def decision_is_available(user_id, event):
+    """After role authorization, only another member's pending request is decidable."""
+    return event.user_id != user_id and event.philanthropy_approval_status == 'requested'
+
+
 @transaction.atomic
 def decide_event(user, event_id, action):
     """Decide a pending request; exceptional self/reversal policies remain unresolved."""
@@ -40,9 +45,9 @@ def decide_event(user, event_id, action):
         raise ValidationError({'action': 'Choose approve or deny.'})
     event = get_object_or_404(Event, pk=event_id)
     # Conditional update makes competing decisions observable without overwriting audit.
-    if event.user_id == user.pk:
-        raise Conflict('Self-review is unavailable pending an explicit chapter policy.')
-    if event.philanthropy_approval_status != 'requested':
+    if not decision_is_available(user.pk, event):
+        if event.user_id == user.pk:
+            raise Conflict('Self-review is unavailable pending an explicit chapter policy.')
         raise Conflict('This request has already been reviewed. Refresh the queue.')
     changed = Event.objects.filter(pk=event.pk, philanthropy_approval_status='requested').update(
         philanthropy_approval_status='approved' if action == 'approve' else 'denied',

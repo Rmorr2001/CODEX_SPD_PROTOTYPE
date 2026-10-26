@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from AUTHENTICATE.access import require_member_roles
 from ..models import Brother_votes, Vote_Poll
-from ..operations import create_poll, cast_vote, close_poll
+from ..operations import can_manage_polls, create_poll, cast_vote, close_poll
 from .reads import DecisionsView, motion_data
 from .serializers import CreateInput, BallotInput, PollDetailSerializer
 from django.shortcuts import get_object_or_404
@@ -18,7 +18,7 @@ def poll_response(user, poll):
         aye = Brother_votes.objects.filter(user_vote_choice='Aye').count()
         nay = Brother_votes.objects.filter(user_vote_choice='Nay').count()
     data = {**motion_data(poll, aye, nay), 'own_choice': Brother_votes.objects.filter(user=user).values_list('user_vote_choice', flat=True).first() if poll.Vote_Poll_End is None else None,
-            'can_manage': user.brother_profile.roles.filter(name='EXEC').exists()}
+            'can_manage': can_manage_polls(user)}
     return Response(PollDetailSerializer(data).data,
                     headers={'Cache-Control': 'no-store'})
 

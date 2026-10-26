@@ -52,3 +52,16 @@ class ChapterSerializer(serializers.Serializer):
 class HistorySerializer(serializers.Serializer):
     events = EventSerializer(many=True)
     approved_hours = serializers.FloatField()
+
+
+class ReviewEventSerializer(EventSerializer):
+    """Expose decision availability only in the already role-authorized review queue."""
+    can_decide = serializers.SerializerMethodField()
+
+    def get_can_decide(self, obj) -> bool:
+        from ..operations import decision_is_available
+        request = self.context.get('request')
+        return bool(request and decision_is_available(request.user.pk, obj))
+
+    class Meta(EventSerializer.Meta):
+        fields = [*EventSerializer.Meta.fields, 'can_decide']

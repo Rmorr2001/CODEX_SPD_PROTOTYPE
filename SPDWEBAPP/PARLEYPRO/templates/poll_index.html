@@ -7,10 +7,9 @@
         <h1>Current Poll</h1>
         <div class="header-actions">
             <a href="{% url 'past_polls' %}" class="btn btn-secondary">View Past Polls</a>
+            {% if can_manage %}
             <a href="{% url 'start_vote' %}" class="btn btn-primary">Start New Vote</a>
-           <!-- {% if perms.polls.add_vote_poll %} is how you would write it if you wanted to do it the safer django admin way
-                <a href="{% url 'start_vote' %}" class="btn btn-primary">Start New Vote</a>
-             {% endif %} -->
+            {% endif %}
             <label>
                 <input type="checkbox" id="live-update-toggle" unchecked>
                 Enable Live Updates
@@ -34,10 +33,9 @@
                     <div class="vote-buttons">
                         <button type="submit" name="aye" class="btn btn-success">Aye</button>
                         <button type="submit" name="nay" class="btn btn-danger">Nay</button>
+                        {% if can_manage %}
                         <button type="submit" name="end_vote" class="btn btn-warning">End Vote</button>
-                        <!-- {% if perms.polls.change_vote_poll %} ->
-                        <button type="submit" name="end_vote" class="btn btn-warning">End Vote</button>
-                         {% endif %} -->
+                        {% endif %}
                     </div>
                 </form>
             </div>
@@ -70,9 +68,7 @@
     {% else %}
         <div class="no-active-poll">
             <p>No active poll at the moment</p>
-            <!-- {% if perms.polls.add_vote_poll %}
-                <a href="{% url 'start_vote' %}" class="btn btn-primary">Start New Vote</a>
-            {% endif %} -->
+
         </div>
     {% endif %}
 

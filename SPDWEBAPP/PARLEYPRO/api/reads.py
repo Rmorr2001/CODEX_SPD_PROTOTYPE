@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from AUTHENTICATE.access import require_member_roles
 from ..models import Brother_votes, Vote_Poll
 from ..pp_functions import count_all_current_votes
+from ..operations import can_manage_polls
 from .serializers import MotionSerializer, DecisionsSerializer
 
 
@@ -19,7 +20,7 @@ class DecisionsView(APIView):
     """Require ACTIVE and expose no individual vote identities or ballot writes."""
     @extend_schema(operation_id='polls_list', responses=DecisionsSerializer)
     def get(self, request):
-        profile = require_member_roles(request.user, 'ACTIVE')
+        require_member_roles(request.user, 'ACTIVE')
         current = Vote_Poll.objects.filter(Vote_Poll_End__isnull=True).order_by('-Vote_Poll_Start', '-pk').first()
         current_data = None
         if current:
@@ -29,6 +30,6 @@ class DecisionsView(APIView):
                   for poll in Vote_Poll.objects.filter(Vote_Poll_End__isnull=False).order_by('-Vote_Poll_End', '-pk')]
         return Response(DecisionsSerializer({
             'current': current_data, 'closed': closed,
-            'can_manage': profile.roles.filter(name='EXEC').exists(),
+            'can_manage': can_manage_polls(request.user),
             'own_choice': Brother_votes.objects.filter(user=request.user).values_list('user_vote_choice', flat=True).first() if current else None,
         }).data, headers={'Cache-Control': 'no-store'})
