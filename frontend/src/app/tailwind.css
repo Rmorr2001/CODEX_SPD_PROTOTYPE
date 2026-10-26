@@ -3,6 +3,9 @@
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities) source(none);
 @source '../components/ui';
+@source '../domains/identity/MemberLayout.tsx';
+@source '../domains/service';
+@source '../domains/decisions';
 
 /* New components opt in; existing --muted and other domain tokens stay untouched. */
 .spd-ui {
@@ -12,7 +15,8 @@
   --primary-foreground: #ffffff;
   --secondary: #f4f4f5;
   --secondary-foreground: #111114;
-  --muted: #f4f4f5;
+  --ui-muted: #f4f4f5;
+  --muted: #59595f;
   --muted-foreground: #5f606b;
   --border: #d7d7dc;
   --input: #d7d7dc;
@@ -27,7 +31,7 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
+  --color-muted: var(--ui-muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-input: var(--input);

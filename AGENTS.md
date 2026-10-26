@@ -30,8 +30,8 @@ within a directory when present. Keep work focused on the requested change.
   scope, decimal migration, pending policies and release verification.
 - React state/styling work is mapped in
   [the next experience plan](docs/migration/react-experience-next.md): shared
-  confirmed updates and opt-in Tailwind/shadcn foundation; selected visuals
-  require reference inspection before implementation.
+  confirmed updates, Tailwind/shadcn-style member shell and a Radix service Sheet;
+  reference provenance and local/live verification are recorded separately.
 - Existing domains: `HOME`, `AUTHENTICATE`, `PARLEYPRO`, `PHILANTHROPY`,
   `NEWMEMBER`, and `MISC`. Preserve existing routes and naming in relevant work.
 - Domain regression work uses singular `test/` for tests and testing documentation.

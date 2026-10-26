@@ -1,50 +1,66 @@
+import type { ReactNode } from 'react';
+import { Card } from '@/components/ui/card';
 import type { Motion } from './content';
 
-export function MotionCard({ motion, current = false }: { motion: Motion; current?: boolean }) {
+export function MotionCard({
+  motion,
+  current = false,
+  children,
+}: {
+  motion: Motion;
+  current?: boolean;
+  children?: ReactNode;
+}) {
   const total = motion.aye + motion.nay;
-  const ayePercent = total ? Math.round((motion.aye / total) * 100) : 0;
-  const nayPercent = total ? Math.round((motion.nay / total) * 100) : 0;
   const date = new Intl.DateTimeFormat('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
   }).format(new Date(motion.ended_at ?? motion.started_at));
   return (
-    <article className={`motion-card${current ? ' current' : ''}`}>
-      <div className="motion-top">
-        <h3>{motion.title}</h3>
-        <span className={`motion-status${current ? ' open' : ''}`}>
-          {current ? 'OPEN' : 'CLOSED'}
+    <Card className={`motion-card p-5 sm:p-7${current ? ' current' : ''}`}>
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="m-0 text-lg font-semibold leading-normal [overflow-wrap:anywhere]">
+          {motion.title}
+        </h3>
+        <span
+          className={`motion-status shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${current ? 'open border-primary/25 bg-primary/5 text-primary' : 'border-border text-muted-foreground'}`}
+        >
+          {current ? 'Open' : 'Closed'}
         </span>
       </div>
-      <p className="motion-date">
+      <p className="mb-6 mt-2 text-xs text-muted-foreground">
         {current ? 'Opened' : 'Closed'} {date}
       </p>
-      <div className="vote-tallies">
-        <div className="vote-row">
-          <div>
-            <strong>Aye</strong>
-            <span>
-              {motion.aye} votes · {ayePercent}%
-            </span>
-          </div>
-          <div className="vote-track" aria-hidden="true">
-            <span style={{ width: `${ayePercent}%` }} />
-          </div>
-        </div>
-        <div className="vote-row nay">
-          <div>
-            <strong>Nay</strong>
-            <span>
-              {motion.nay} votes · {nayPercent}%
-            </span>
-          </div>
-          <div className="vote-track" aria-hidden="true">
-            <span style={{ width: `${nayPercent}%` }} />
-          </div>
-        </div>
+      <div className="space-y-5">
+        {(['Aye', 'Nay'] as const).map((choice) => {
+          const count = choice === 'Aye' ? motion.aye : motion.nay;
+          const percent = total ? Math.round((count / total) * 100) : 0;
+          return (
+            <div className="vote-row" key={choice}>
+              <div className="mb-2 flex justify-between gap-4 text-sm">
+                <strong className="font-medium">{choice}</strong>
+                <span className="text-muted-foreground">
+                  {count} votes · {percent}%
+                </span>
+              </div>
+              <div
+                className="vote-track h-2 overflow-hidden rounded-full bg-muted"
+                aria-hidden="true"
+              >
+                <span
+                  className={`block h-full ${choice === 'Aye' ? 'bg-primary' : 'bg-zinc-500'}`}
+                  style={{ width: `${percent}%` }}
+                />
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <p className="vote-total">{total ? `${total} total votes` : 'No votes recorded'}</p>
-    </article>
+      <p className="mb-0 mt-4 text-xs text-muted-foreground">
+        {total ? `${total} total votes` : 'No votes recorded'}
+      </p>
+      {children && <div className="mt-6 border-t border-border pt-5">{children}</div>}
+    </Card>
   );
 }

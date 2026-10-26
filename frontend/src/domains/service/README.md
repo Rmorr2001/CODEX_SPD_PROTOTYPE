@@ -21,13 +21,15 @@ permissions, migration impacts and unresolved self-review/reversal policy.
 `test/zz-transactions.spec.ts` exercises actual submissions and decisions through
 both interfaces. Build and run per frontend README. No new production keys.
 
-The stateful ServiceForm component exceeds the usual80-line review threshold.
-Its one loading/validation/submission lifecycle and tightly related accessible
-fields are kept together after review; the file remains below the
-400-line maximum. Reporting and chair decisions are separate responsibilities.
+`ServiceEntryForm` and `useServiceDraft` share fields/validation/submission between
+full-page routes and `ServiceQuickEntry`, mounted in the member toolbar. The Sheet
+uses Event, Date and Hours only. Its local draft survives background reads;
+Escape/Cancel/Back ask before discarding edits, pending writes block dismissal,
+and confirmed success closes/reset the form. Navigation uses React Router's data
+router for `useBlocker`. The direct create/edit URLs still work.
 
-Visible service views now reconcile every three seconds and on focus/successful
-writes. Confirmed chair decisions update the queue immediately, while independent
-sessions receive authoritative server changes without navigation. See the root
-experience plan for the selected quick-entry Sheet using existing Event, Date and Hours fields;
-that component is not claimed implemented by this foundation pass.
+Visible service views reconcile every three seconds and on focus/successful
+writes. Confirmed decisions update the queue immediately; independent sessions
+receive authoritative changes without navigation. `test/quick-entry.spec.ts`
+covers desktop/390px submission, focus, cancellation, back/forward, refresh/API
+failure retention and busy/duplicate-write protection. No new storage or policy.

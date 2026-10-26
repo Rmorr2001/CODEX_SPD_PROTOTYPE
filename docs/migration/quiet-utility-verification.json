@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-26",
+  "source_base": "79a5e68e75331a561d6bfe6718f60968f358390c",
+  "scope": "Selected A+C member shell, combined ballot/tallies, service quick-entry Sheet; frontend and documentation only",
+  "production_build": {
+    "command": "npm run build --prefix frontend",
+    "result": "passed",
+    "javascript": "index-_WXFLirV.js",
+    "css": "index-BwazQApd.css"
+  },
+  "format": {
+    "command": "npm run format:check --prefix frontend",
+    "result": "passed"
+  },
+  "browser_server": {
+    "command": "FRONTEND_TEST_PORT=8767 PYTHON_EXECUTABLE=/workspace/work/spd-mizzou-venv/bin/python PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium npm run test:e2e --prefix frontend -- --output=/workspace/work/ac-clean-server-results",
+    "passed": 57,
+    "failed": 0,
+    "log": "/workspace/work/ac-clean-server.log"
+  },
+  "browser_docker": {
+    "command": "FRONTEND_TEST_URL=http://127.0.0.1:8766 PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium npm run test:e2e --prefix frontend -- --output=/workspace/work/ac-final-image-results",
+    "passed": 57,
+    "failed": 0,
+    "log": "/workspace/work/ac-final-image.log",
+    "image": "sha256:9696b9f8f26ff1e0914ea8566748e22460a5f200d76135005c493a84e3f0f054",
+    "build_note": "Session CA mounted only in temporary Dockerfile dependency-install RUN steps; canonical Railway Dockerfile unchanged"
+  },
+  "health": {
+    "target": "locally built image",
+    "path": "/api/v1/status/",
+    "anonymous_http": 200,
+    "json": {
+      "status": "ok",
+      "api_version": "v1"
+    }
+  },
+  "new_cases": 5,
+  "new_case_scope": [
+    "1536px and 390px drawer submission and mobile navigation",
+    "focus trap, initial focus, focus return",
+    "dirty Cancel/Escape dismissal, Back/Forward/reopen",
+    "draft preservation through failed three-second refresh",
+    "API validation retention, busy dismissal blocking and duplicate-write prevention",
+    "ineligible member control hidden"
+  ],
+  "screenshots_inspected": [
+    "/workspace/work/ac-polls-desktop.png",
+    "/workspace/work/ac-polls-mobile.png",
+    "/workspace/work/ac-sheet-desktop.png",
+    "/workspace/work/ac-sheet-mobile.png",
+    "/workspace/work/ac-service.png",
+    "/workspace/work/ac-dashboard.png"
+  ],
+  "reference_provenance": "Implemented from parent-inspected A/C specification. Original Library pixels not available in this executor; no exact-fidelity claim.",
+  "backend": "No backend/model/migration/config changes. Prior 503-test audit at permission release is applicable, not rerun here; real backend transactions exercised by both browser targets.",
+  "iteration_notes": [
+    "Initial server run was interrupted after rebuilding its bundle invalidated copied static assets; final fresh server passed.",
+    "Outdated heading selectors updated for intentional Polls/Close poll labels.",
+    "Reused preview database caused duplicate-title assertions; final suites used fresh isolated databases.",
+    "Formatting checked again after final heading selector correction."
+  ],
+  "review": {
+    "diff": "reviewed",
+    "source_lines": "all changed application source files <=168 physical lines; new primitives <=59; largest changed test174",
+    "migrations": [],
+    "runtime_configuration_changes": [],
+    "secrets": "none added"
+  },
+  "live_browser": "Not run in this executor: public demo hostname remains outside allowed network hosts. Parent owns live verification after release."
+}

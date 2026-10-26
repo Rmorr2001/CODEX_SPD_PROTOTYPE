@@ -41,3 +41,11 @@ fields or Save action, graduation year, notification preferences or invented
 activity/progress. `MemberAvatar` now owns its shared avatar stylesheet; directory
 and profile retain honest missing-image initials. `test/profile.spec.ts` verifies
 actual caller data, real legacy edit navigation and denied/failed read handling.
+
+`MemberLayout` composes the shared Tailwind MemberShell across protected routes:
+compact charcoal sidebar, crimson active link, discreet Legacy view and a mobile
+modal navigation menu. Route capabilities remain server-derived. Eligible members
+get the shared service quick-entry Sheet; direct create/edit routes keep one form
+at a time. Public marketing pages keep their existing layout. React Router's data
+router provides navigation blocking for dirty Sheet drafts; session/native POST
+login/logout boundaries are unchanged.

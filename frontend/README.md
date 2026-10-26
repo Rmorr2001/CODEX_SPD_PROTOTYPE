@@ -98,11 +98,12 @@ Django session and CSRF boundaries.
 See [foundation delivery](../docs/migration/part-2-foundation.md) for Docker,
 backend contracts and verification limits.
 
-## Next experience work (local)
+## Member experience migration
 
 [The state/UI migration plan](../docs/migration/react-experience-next.md) records
-the copy cleanup, shared confirmed updates and bounded three-second refresh.
-Tailwind4's Vite plugin is configured without Preflight, scanning only new UI
-primitives; components.json and cn prepare shadcn adoption. No shadcn components
-or Zustand store have been added yet. Selected A/C visual implementation and the
-service Sheet depend on inspecting the actual reference images.
+confirmed updates, bounded three-second refresh, and selected A+C implementation.
+Tailwind4 now styles the common member shell, combined poll card and Radix service
+Sheet through reviewed shadcn-style primitives. Preflight is omitted to preserve
+unmigrated domain/public CSS. No Zustand store or new business fields are added.
+The plan records reference provenance, keyboard/draft protections, preview commands
+and test evidence separately from live deployment verification.

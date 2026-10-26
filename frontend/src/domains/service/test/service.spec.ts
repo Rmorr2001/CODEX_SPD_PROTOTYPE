@@ -8,16 +8,13 @@ test('service shows actual own stored totals, statuses and working academic year
   const data = await (await page.request.get('/api/v1/service/')).json();
   await page
     .getByRole('navigation', { name: 'Member navigation' })
-    .getByRole('link', { name: 'Service hours', exact: true })
+    .getByRole('link', { name: 'Service', exact: true })
     .click();
   await expect(page).toHaveURL(/\/app\/service$/);
   await expect(page.locator('#service-total-title strong')).toHaveText(String(data.approved_hours));
   await expect(page.locator('.service-table tbody tr')).toHaveCount(data.events.length);
   await expect(page.locator('.service-status.requested').first()).toHaveText('…Pending');
-  await expect(page.getByRole('link', { name: 'Log service hours' })).toHaveAttribute(
-    'href',
-    '/app/service/new',
-  );
+  await expect(page.getByRole('button', { name: 'Log service', exact: true })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Review service requests' })).toHaveAttribute(
     'href',
     '/app/service/review',
@@ -25,10 +22,6 @@ test('service shows actual own stored totals, statuses and working academic year
   await expect(
     page.getByRole('link', { name: 'Log hours in chapter site', exact: true }),
   ).toHaveCount(0);
-  await expect(page.locator('.service-heading a.primary')).toHaveAttribute(
-    'href',
-    '/app/service/new',
-  );
   await expect(page.getByRole('link', { name: 'Legacy service', exact: true })).toHaveAttribute(
     'href',
     '/philanthropy/',
@@ -81,7 +74,7 @@ test('service failure retries against actual data and request handoff opens real
   await page.unroute('**/api/v1/service/**');
   await page.getByRole('button', { name: 'Try again' }).click();
   await expect(page.locator('.service-summary')).toBeVisible();
-  await page.getByRole('link', { name: 'Log service hours' }).click();
-  await expect(page).toHaveURL(/\/app\/service\/new$/);
+  await page.getByRole('button', { name: 'Log service', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Log service' })).toBeVisible();
   await expect(page.getByLabel('Hours', { exact: true })).toBeVisible();
 });

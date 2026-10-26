@@ -47,15 +47,16 @@ export function PollDetail() {
       )}
       {state.kind === 'ready' && (
         <>
-          <MotionCard motion={state.data} current={!state.data.ended_at} />
-          {!state.data.ended_at && (
-            <PollActions
-              id={state.data.id}
-              canManage={state.data.can_manage}
-              ownChoice={state.data.own_choice}
-              done={retry}
-            />
-          )}
+          <MotionCard motion={state.data} current={!state.data.ended_at}>
+            {!state.data.ended_at && (
+              <PollActions
+                id={state.data.id}
+                canManage={state.data.can_manage}
+                ownChoice={state.data.own_choice}
+                done={retry}
+              />
+            )}
+          </MotionCard>
           <button onClick={retry}>Refresh results</button>
         </>
       )}

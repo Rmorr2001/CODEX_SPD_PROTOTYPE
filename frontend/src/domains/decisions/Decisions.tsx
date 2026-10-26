@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import { chapterSite } from '../../app/links';
+import { Button } from '@/components/ui/button';
 import { useLiveDecisions } from './useLiveDecisions';
 import { CreateMotion, PollActions } from './PollActions';
 import { MotionCard } from './MotionCard';
-import './decisions.css';
 
 export function Decisions() {
   const { state, retry, saved } = useLiveDecisions();
@@ -26,56 +25,49 @@ export function Decisions() {
   const { current, closed, can_manage, own_choice } = state.data;
   return (
     <>
-      <div className="decisions-heading">
-        <h1>Chapter decisions.</h1>
-        <div>
-          <button className="refresh-results" onClick={retry}>
-            Refresh results
-          </button>{' '}
-          ·{' '}
-          <a href={`${chapterSite}poll/`} aria-label="Legacy poll">
-            Legacy
-          </a>
-        </div>
+      <div className="mb-8 flex items-center justify-between gap-4">
+        <h1>Polls</h1>
+        <Button variant="outline" onClick={retry}>
+          Refresh results
+        </Button>
       </div>
       {state.stale && (
         <p role="status">
           Updates paused. <button onClick={retry}>Retry</button>
         </p>
       )}
-      <section className="decisions-section" aria-labelledby="current-motion-title">
-        <div className="decisions-section-title">
+      <section className="mb-8" aria-labelledby="current-motion-title">
+        <div className="mb-4">
           <h2 id="current-motion-title">Current motion</h2>
         </div>
         {current ? (
-          <>
-            <MotionCard motion={current} current />
+          <MotionCard motion={current} current>
             <PollActions
               id={current.id}
               ownChoice={own_choice}
               canManage={can_manage}
               done={saved}
             />
-          </>
+          </MotionCard>
         ) : (
-          <div className="motion-empty">
+          <div className="rounded-xl border border-border bg-white p-6">
             <p>No open motion.</p>
             {can_manage && <CreateMotion done={saved} />}
           </div>
         )}
       </section>
-      <section className="decisions-section" aria-labelledby="closed-motion-title">
-        <div className="decisions-section-title">
+      <section className="mb-8" aria-labelledby="closed-motion-title">
+        <div className="mb-4">
           <h2 id="closed-motion-title">Recent results</h2>
         </div>
         {closed.length ? (
-          <div className="closed-motion-list">
+          <div className="closed-motion-list grid gap-4">
             {closed.map((motion) => (
               <MotionCard motion={motion} key={motion.id} />
             ))}
           </div>
         ) : (
-          <p className="motion-empty">No results yet.</p>
+          <p className="rounded-xl border border-border bg-white p-6">No results yet.</p>
         )}
       </section>
     </>

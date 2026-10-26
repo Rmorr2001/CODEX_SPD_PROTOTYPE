@@ -73,9 +73,6 @@ export function ServiceHours() {
         <div>
           <h1>Service hours</h1>
         </div>
-        <Link className="button primary" to="/service/new">
-          Log service hours
-        </Link>
       </div>
       <section className="service-summary" aria-labelledby="service-total-title">
         <div>
@@ -164,7 +161,6 @@ export function ServiceHours() {
         <section className="service-empty">
           <h2>No service entries for this year.</h2>
           <p>Your service records will appear here after you submit them.</p>
-          <Link to="/service/new">Log your first service hours</Link>
         </section>
       )}
     </>

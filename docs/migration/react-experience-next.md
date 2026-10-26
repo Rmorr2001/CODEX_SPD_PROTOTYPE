@@ -1,107 +1,78 @@
-# React experience: live data, less copy and UI migration
+# React experience: live data and quiet utility UI
 
-This is local work after fedf8e9; it is not a published redesign. The user selected
-A's quiet utility structure and C's service quick-entry drawer. Existing real
-Django models, domain operations, session/CSRF boundaries and legacy routes remain
-shared. Parent coordination owns the image concepts and release.
+The user selected A's quiet utility structure with C's service quick-entry drawer.
+This iteration follows the parent's inspected visual specification. The original
+A/C Library PNGs were not materialized in this executor, so exact pixel fidelity
+is not claimed. Local rendered screenshots were inspected; parent compares the
+live result with the authoritative concepts. No image assets, accounts or services
+were provisioned to work around the transfer boundary.
 
-## Current architecture and implemented local changes
+## Implemented scope
 
-Before this pass: React19/Vite8/TypeScript7 with hand-written CSS; no Zustand,
-Tailwind or shadcn. Polls fetched every5seconds; service reads only loaded on
-mount. Most successful mutations refetched whole views, producing loading gaps.
+- Shared member shell: 260px charcoal sidebar, crimson identity/active row,
+  off-white canvas, compact navigation, discreet Legacy view. Mobile uses a
+  modal navigation Sheet. Public marketing retains its layout.
+- Polls: one white bordered Card holds title/status, Aye/Nay counts/percent/bars,
+  selected vote, ballot choices and authorized Close poll. Past results stay below;
+  no motion-detail links, slogans or explanatory rail. Direct detail routes work.
+- Service: Log service opens a right-side Sheet with existing Event/Date/Hours,
+  Submit/Cancel. No Notes field or schema expansion. Shared fields and submission
+  hook serve both Sheet and direct full-page create/edit URLs.
+- Real Radix Dialog owns focus trap/return and modal semantics. Dirty dismissal
+  and Back require confirmation; pending writes block dismissal/duplicate submit.
+  Errors retain fields; success closes and resets the form. Narrow screens use
+  full-width Sheet. The draft survives background resource refreshes.
+- Shared Django models, operations, permissions, API/HTML route separation,
+  fractional storage and audit history are unchanged. Marks/profile mutations
+  remain explicit legacy handoffs; this UI release does not migrate them.
 
-- Both motion-detail links and the explanatory poll rail are removed. Polls keep
-  the motion, choices, selected vote, counts and authorized create/close controls.
-- Ornamental eyebrows, repeated slogans and explanatory paragraphs are trimmed
-  across member/public pages. Essential labels, errors, data, dates, roles and
-  mobile table/accessibility hints stay. Legacy navigation is discreet.
-- One shared read hook owns bounded request timeout/cancellation, live refresh
-  and invalidation. Visible poll/service views refresh at most every3seconds and
-  on focus/visibility return. Hidden views do not poll. Requests do not overlap.
-- Successful writes notify mounted views and same-origin tabs without sending
-  member data. Confirmed poll responses update choice/tallies immediately; chair
-  decisions remove confirmed queue items immediately. Other sessions reconcile
-  through server reads. This is bounded polling, not push/SSE/WebSocket realtime.
-- Background transport failure retains the last confirmed data with a short
-  paused status. Authentication/permission denial clears protected data. Changing
-  query/year clears the old query's values. Mutations are never auto-retried.
+## State and synchronization
 
-## State recommendation
+No Zustand: local draft/menu state and shared query lifecycle are proportionate.
+A store would not synchronize users. Confirmed poll responses update choice/tallies
+immediately and chair decisions remove confirmed queue items. Successful writes
+invalidate mounted/same-origin-tab reads without broadcasting member data.
+Visible poll/service views reconcile every three seconds and on focus; hidden
+views pause. Background transport failures retain confirmed data; denied access
+clears protected data. Queries cancel obsolete requests and do not overlap.
+Mutations never auto-retry. This is bounded polling, not push realtime.
 
-Zustand is not installed. It can coordinate transient drawer/navigation state if
-multiple distant controls need it, but it cannot synchronize independent users or
-replace Django's authorization/data source. Current route-local state plus the
-shared query lifecycle is proportionate. Avoid duplicating server responses in
-both a store and separate hooks. Consider a dedicated query cache if concurrent
-consumers/deduplication become a demonstrated need; this pass has no global
-persistent member-data cache or optimistic unconfirmed success.
+## Tailwind/shadcn migration
 
-## Tailwind/shadcn foundation
+Tailwind4.3.3/Vite plugin, aliases, components.json, clsx and tailwind-merge are
+installed. This increment adds reviewed local shadcn-style Button/CVA+Slot, Input,
+Card, MemberShell and Radix Sheet primitives. Exact new dependencies:
+@radix-ui/react-dialog 1.3.1, @radix-ui/react-slot 1.5.0,
+class-variance-authority 0.7.1. The canonical Dockerfile/Railway config is unchanged.
+Preflight is omitted; scanning is limited to UI and migrated domain sources.
+Semantic tokens live under .spd-ui, including portal content. Generic anchor and
+button defaults use the base layer so utilities can override them.
 
-Installed exact Tailwind4.3.3 and its Vite plugin; registry peer metadata supports
-Vite8. Added standard @ aliases, components.json scaffold destinations, clsx2.1.1,
-tailwind-merge3.7.0 and the cn helper. No generated shadcn primitives are installed
-yet, and the existing pages have not been restyled as those components.
+React Router now uses createBrowserRouter/RouterProvider to support useBlocker;
+existing App route declarations, basename, deep links, authentication and native
+POST logout remain. Subsequent domain CSS migrations can proceed separately;
+this is not a claim that every page now uses shadcn primitives.
 
-Tailwind scans only components/ui; Preflight is omitted so existing CSS does not
-reset. Semantic red/black/neutral variables are opt-in beneath .spd-ui, avoiding
-collisions with existing domain tokens. The starter components.json is scaffold
-configuration, not a selected visual preset applied to the app. Before generation,
-review generated styles/dependencies and the chosen references.
+## Verification and preview
 
-Sources: [Tailwind Preflight and selective imports](https://tailwindcss.com/docs/preflight),
-[shadcn existing Vite setup](https://ui.shadcn.com/docs/installation/vite),
-[components configuration](https://ui.shadcn.com/docs/components-json).
+See [this iteration's evidence](quiet-utility-verification.json). Domain-local
+service/test/quick-entry.spec.ts covers desktop1536px/390px, focus trap/return,
+dirty cancellation, Back/Forward/reopen, failed refresh preservation, validation
+errors, busy dismissal and duplicate-write protection. Existing suites continue
+cross-interface voting/close/results, fractional service/approval/history/export,
+role denial, self-review affordances and all member/public reads.
 
-## Selected implementation increments
+To preview a production bundle with an isolated fictional database:
 
-1. Finish verification of the cleanup, state lifecycle and foundation. Add tests
-   for confirmed updates before refetch, cross-session service/poll updates,
-   background-error retention and denied-data clearing.
-2. Inspect the actual A/C image pixels in this consumer, then implement the compact
-   crimson/dark sidebar and a single poll card with tally and ballot. Keep past
-   results restrained and one discreet contextual Legacy entry. Preserve mobile
-   navigation, contrast, focus visibility and role-authorized actions.
-3. Add a shadcn/Radix Sheet for service quick entry, with existing Event, Date and Hours fields,
-   Submit/Cancel. Reuse the shared service form and API. Trap/return focus, support
-   Escape/Cancel, confirm dirty dismissal, protect pending submission, and retain
-   input on errors. Keep the direct full-page URL working as a fallback.
-4. Notes were an image-concept suggestion, not an approved business-field addition.
-   Do not render or persist Notes in this iteration. Any later user-requested
-   expansion must define storage/validation/privacy and legacy/API round trips.
-5. Verify selected visual structure against reference pixels and local screenshots,
-   run transactions/mobile/drawer tests and a built-image check, then return the
-   bounded diff for parent-managed publication. Do not change polling eligibility,
-   self-review/reversal policy, account/marks business scope or real databases.
+```sh
+npm ci --prefix frontend
+npm run build --prefix frontend
+FRONTEND_TEST_PORT=8000 .venv/bin/python tools/testing/serve_frontend.py
+```
 
-## Reference-materialization boundary
-
-Requested A: libfile_2a284e52d2408191ac5ab3e1ffc7982b (A-quiet-utility.png).
-Requested C: libfile_43a3c6c0dc28819197c213498e5c0e48 (C-action-workspace.png).
-This consumer's available skill catalog has no Library skill, and its tool catalog
-has no standalone Library resolve/materialize operation. Page file reads require
-an accessible Page ID plus an observed Page reference, neither supplied for these
-files. download_file accepts Sediment file IDs only, not Library IDs. Parent paths
-are not assumed accessible. Exact pixel matching is not claimed and dependent
-visual implementation waits for a supported authorized transfer/read route.
-
-
-## Bounded release evidence
-
-The completed cleanup/refresh/foundation is independently releasable while A/C
-reference transfer is resolved. Production TypeScript/Vite, formatting, diff and
-source sizes passed. All50Playwright checks passed once against the synthetic
-server and once against the locally built Docker image. The first concurrent
-server run had an artifact ENOENT because both runners shared the output folder;
-a separate-output full rerun passed. See [verification](react-experience-next-verification.json).
-No backend/schema/permission changes were made; the prior497-test backend audit
-is applicable and is not claimed as rerun. No drawer, Notes field, Zustand store
-or generated shadcn primitive is claimed by this bounded release.
-
-Supported consumer inputs are a genuine Sediment upload ID for download_file,
-or actual authorized bytes/files/ref materialized locally then inspected with
-view_image. An explicitly supplied authorized Git ref containing the images can
-be fetched and its blobs written to consumer-local paths before inspection.
-Library IDs cannot be converted into Sediment IDs; no guessed URLs, unrelated
-Page reads, or assumed parent filesystem paths are used.
+Open http://127.0.0.1:8000/app/login in the runtime browser, enter a fictional
+persona, visit Polls, then Log service. The loopback URL is runtime-local, not a
+public preview. The runner migrates/seeds synthetic SQLite/media and removes them
+on exit. Browser commands and Docker checks are documented in frontend/README.md.
+The previously published cleanup evidence remains in
+[its historical report](react-experience-next-verification.json).

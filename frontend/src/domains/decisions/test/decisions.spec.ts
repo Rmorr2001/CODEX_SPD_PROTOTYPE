@@ -16,9 +16,9 @@ test('decisions prioritize real React ballots and label legacy links as comparis
     `${content.current.aye} votes`,
   );
   await expect(page.locator('.closed-motion-list .motion-card')).toHaveCount(content.closed.length);
-  await expect(page.getByRole('link', { name: 'Legacy poll', exact: true })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'Legacy view', exact: true })).toHaveAttribute(
     'href',
-    '/poll/',
+    '/legacy/',
   );
   await expect(page.getByRole('button', { name: 'Vote Aye', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Vote Nay', exact: true })).toBeVisible();
@@ -28,7 +28,7 @@ test('decisions prioritize real React ballots and label legacy links as comparis
   await page.getByRole('button', { name: 'Refresh results' }).click();
   await expect(page.locator('.motion-card.current')).toBeVisible();
   await page.reload();
-  await expect(page.getByRole('heading', { name: 'Chapter decisions.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Polls' })).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),

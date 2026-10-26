@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { command } from '../../api/write';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export function PollActions({
   id,
@@ -31,28 +33,42 @@ export function PollActions({
     }
   }
   return (
-    <section aria-label="Your ballot" className="transaction-panel">
+    <section aria-label="Your ballot" className="space-y-4">
       <p>
         Your vote:{' '}
         <strong>{ownChoice === 'Aye' || ownChoice === 'Nay' ? ownChoice : 'Not cast'}</strong>
       </p>
-      <div className="transaction-actions">
-        <button disabled={busy} aria-pressed={ownChoice === 'Aye'} onClick={() => void act('Aye')}>
+      <div className="flex flex-wrap items-center gap-3">
+        <Button
+          variant="outline"
+          className="aria-pressed:border-primary aria-pressed:bg-primary/5 aria-pressed:text-primary"
+          disabled={busy}
+          aria-pressed={ownChoice === 'Aye'}
+          onClick={() => void act('Aye')}
+        >
           Vote Aye
-        </button>
-        <button disabled={busy} aria-pressed={ownChoice === 'Nay'} onClick={() => void act('Nay')}>
+        </Button>
+        <Button
+          variant="outline"
+          className="aria-pressed:border-primary aria-pressed:bg-primary/5 aria-pressed:text-primary"
+          disabled={busy}
+          aria-pressed={ownChoice === 'Nay'}
+          onClick={() => void act('Nay')}
+        >
           Vote Nay
-        </button>
+        </Button>
         {canManage && (
-          <button
+          <Button
+            variant="outline"
+            className="sm:ml-auto"
             disabled={busy}
             onClick={() => {
               if (window.confirm('Close this motion and save its final results?'))
                 void act('close');
             }}
           >
-            Close motion
-          </button>
+            Close poll
+          </Button>
         )}
       </div>
       {busy && <p role="status">Saving…</p>}
@@ -84,14 +100,16 @@ export function CreateMotion({ done }: { done: (result: unknown) => void }) {
       }}
     >
       <label htmlFor="motion-title">Motion title</label>
-      <input
+      <Input
         id="motion-title"
         required
         maxLength={200}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <button disabled={busy}>Open motion</button>
+      <Button type="submit" disabled={busy}>
+        Open motion
+      </Button>
       {error && <p role="alert">{error}</p>}
     </form>
   );

@@ -10,12 +10,10 @@ test.describe('cross-interface transactions', () => {
   }) => {
     await enterDemo(page, 'executive');
     await page.goto('/app/polls');
-    await expect(
-      page.getByRole('heading', { name: 'Chapter decisions.', exact: true }),
-    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Polls', exact: true })).toBeVisible();
     page.on('dialog', (dialog) => void dialog.accept());
-    if (await page.getByRole('button', { name: 'Close motion', exact: true }).count()) {
-      await page.getByRole('button', { name: 'Close motion', exact: true }).click();
+    if (await page.getByRole('button', { name: 'Close poll', exact: true }).count()) {
+      await page.getByRole('button', { name: 'Close poll', exact: true }).click();
     }
     await page.getByLabel('Motion title').fill('Fictional migration demonstration');
     await page.getByRole('button', { name: 'Open motion', exact: true }).click();
@@ -48,10 +46,10 @@ test.describe('cross-interface transactions', () => {
         .poll(async () => (await (await page.request.get(`/api/v1/polls/${id}/`)).json()).nay)
         .toBe(1);
       await expect(page.getByText('1 votes · 100%', { exact: true })).toBeVisible();
-      await page.getByRole('button', { name: 'Close motion', exact: true }).click();
+      await page.getByRole('button', { name: 'Close poll', exact: true }).click();
       await expect(page.getByLabel('Motion title')).toBeVisible();
       await member.goto(`/app/polls/${id}`);
-      await expect(member.getByText('CLOSED', { exact: true })).toBeVisible();
+      await expect(member.getByText('Closed', { exact: true })).toBeVisible();
       await expect(member.getByRole('button', { name: 'Vote Aye', exact: true })).toHaveCount(0);
       await member.goto('/poll/past_polls/');
       await expect(

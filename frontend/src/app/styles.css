@@ -15,10 +15,13 @@
 body {
   margin: 0;
 }
-a {
-  color: #a5182a;
-  text-underline-offset: 4px;
+@layer base {
+  a {
+    color: #a5182a;
+    text-underline-offset: 4px;
+  }
 }
+
 button,
 a {
   outline-offset: 5px;
@@ -28,15 +31,18 @@ button:focus-visible,
 input:focus-visible {
   outline: 3px solid #c51f32;
 }
-button {
-  font: inherit;
-  cursor: pointer;
-  border: 1px solid #85858d;
-  border-radius: 4px;
-  padding: 10px 16px;
-  color: #1b1b20;
-  background: white;
+@layer base {
+  button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #85858d;
+    border-radius: 4px;
+    padding: 10px 16px;
+    color: #1b1b20;
+    background: white;
+  }
 }
+
 h1,
 h2,
 h3,

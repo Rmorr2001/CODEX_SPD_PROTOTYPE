@@ -1,12 +1,20 @@
-# UI foundation
+# Member UI primitives
 
-Reserved for reviewed shadcn primitives for the user's selected A/C direction, once its reference pixels are accessible.
-No primitives or visual redesign have been installed yet. `components.json`
-provides scaffold destinations; `src/lib/utils.ts` owns the normal class helper.
+Shared presentation only: Button (CVA/Slot), Input, Card, MemberShell and Sheet.
+Sheet uses the real Radix Dialog primitive following the shadcn composition
+pattern: modal focus trap/return, title, Escape, portal and overlay. These are
+reviewed local components, not a claim that a generator copied a complete theme.
+The service domain owns its draft, dirty/busy dismissal policy and API calls;
+identity owns navigation capabilities. Do not move business rules here.
 
-Tailwind4 scans only this directory; Preflight is omitted to protect existing
-styles. New components must render beneath `.spd-ui` to use isolated semantic
-red/black/neutral tokens. Follow the staged migration document before running a
-component generator: inspect generated styles and dependencies, retain accessible
-labels/keyboard behavior, and test real domain transactions. Avoid domain rules
-or data fetching in this shared UI folder.
+Tailwind4 scans this folder and the migrated identity/service/decisions sources.
+Preflight is omitted to protect existing domain/public CSS. Render under `.spd-ui`
+for semantic crimson/charcoal/neutral tokens (portal Sheets opt in themselves).
+Native controls retain accessible labels and visible focus states. No configuration
+keys or credentials are required. `components.json` and `src/lib/utils.ts` define
+the normal aliases/class helper.
+
+Run `npm run build --prefix frontend`, `npm run format:check --prefix frontend`,
+and `npm run test:e2e --prefix frontend` from the repository root. Drawer tests
+live in service/test; member shell and domain transactions are covered by their
+own domain tests. See the root experience plan for migration scope/evidence.
