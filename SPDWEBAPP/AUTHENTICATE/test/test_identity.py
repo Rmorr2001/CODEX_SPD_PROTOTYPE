@@ -100,7 +100,7 @@ class RoleGateTests(IdentityCase):
                 client = Client()
                 self.login(client=client)
                 before = self.pair_snapshot()
-                self.assert_denied(client.get("/test-role-gate/"), reverse("poll"), message)
+                self.assert_denied(client.get("/test-role-gate/"), "/legacy/", message)
                 self.assert_identity(client, self.a)
                 self.assert_pair_unchanged(before)
 
@@ -124,7 +124,7 @@ class RoleGateTests(IdentityCase):
         self.client = Client()
         self.login(user=no_profile)
         before, pair = member_state(no_profile), self.pair_snapshot()
-        self.assert_denied(self.client.get("/test-role-gate/"), reverse("poll"), "User profile not found.")
+        self.assert_denied(self.client.get("/test-role-gate/"), "/legacy/", "User profile not found.")
         self.assert_identity(self.client, no_profile)
         self.assertFalse(Brother_Profile.objects.filter(user=no_profile).exists())
         self.assert_member_unchanged(before, no_profile)

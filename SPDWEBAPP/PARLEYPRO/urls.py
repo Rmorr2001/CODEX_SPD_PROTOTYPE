@@ -8,6 +8,6 @@ urlpatterns = [
     path('poll-results/', views.poll_results, name='poll_results'), #Used for Live Update
     #path('logout/', views.logoutUser, name="logout"),
 
-    path('poll-results/', views.poll_results, name='poll_results'), #Used for Live Update
+
     #path('logout/', views.logoutUser, name="logout"),
 ]

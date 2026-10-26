@@ -1,7 +1,7 @@
 # CODEX-SPD-PROTOTYPE Railway demo
 
 Runs the existing application from `smk37git/SPDWEBAPP_ENV`, based on main commit
-`004a433`, with its original routes and design. This package owns demo-only
+`004a433`, with its original routes/design available alongside the React frontend. This package owns demo-only
 settings, persona entry, demo boundaries, fictional seed records, and tests.
 Business models and views remain in HOME, AUTHENTICATE, PARLEYPRO, PHILANTHROPY,
 NEWMEMBER, and MISC. No private database or machine-local secret configuration is imported.
@@ -58,7 +58,8 @@ Configuration keys (never document values): `DJANGO_SETTINGS_MODULE`,
 `DEMO_DATABASE_PATH`, `DEMO_MEDIA_ROOT`, `RAILWAY_PUBLIC_DOMAIN`, `PORT`, and
 `DJANGO_SECRET_KEY`. The public hostname supplies allowed-host validation.
 Railway terminates TLS; secure cookies and the forwarded-protocol header remain
-configured. The original home page remains the Railway health check. `/api/v1/status/` is
+configured. The Railway health check is `/api/v1/status/`; `/` redirects to React and the
+original home remains at `/legacy/`. `/api/v1/status/` is
 an additional database-independent liveness contract; `/api/v1/schema/` documents
 the current API. `FRONTEND_DIST_DIR` identifies the image-owned HTML/asset build
 directory. See [Part 2](../../docs/migration/part-2-foundation.md).
@@ -98,8 +99,17 @@ verification commands.
 
 The React login screen uses the existing native POST `/demo/enter/` with its
 normal CSRF cookie/form token. An optional `next` accepts only `/app/dashboard`
-and `/app/new-members` exactly; missing/invalid returns preserve original default
-redirects. A NEW_MEMBER requesting a React return always lands at
+and `/app/new-members` exactly, plus four explicit legacy comparison paths;
+missing/invalid returns select the caller's React landing. A NEW_MEMBER requesting a React return always lands at
 `/app/new-members`. This is a demo-only navigation change, not a new login API,
 permission grant or password. Non-demo entry stays 404. Boundary tests live in
 `test/test_entry_return.py`; the existing demo tests remain in `tests.py`.
+
+
+## Functional migration release
+
+See [milestone 1](../../docs/migration/functional-milestone-1.md) for the poll mutex
+and Decimal service-hour migrations, root/auth routing changes and release checks.
+Poll/service writes now work in React and legacy against the same demo records.
+Self-review and reversal remain explicitly blocked pending chapter policy.
+Publishing this branch deploys immediately; retain the local review boundary.

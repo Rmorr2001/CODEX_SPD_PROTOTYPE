@@ -1,5 +1,8 @@
 # React screen delivery log
 
+Historical nine-screen release evidence. For subsequent transaction work, see
+[functional milestone 1](../migration/functional-milestone-1.md).
+
 Scope: [screen plan](screen-plan.md), generated concepts and actual domain rules.
 All acceptance evidence below is local synthetic Django/demo data unless a row
 explicitly says otherwise. This work does not deploy a new Railway release.

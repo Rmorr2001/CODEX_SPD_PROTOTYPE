@@ -229,3 +229,43 @@
     padding: 22px;
   }
 }
+
+/* Shared transaction controls keep native forms readable in the member workspace. */
+.transaction-panel {
+  padding: 1.25rem;
+  margin-block: 1rem;
+  background: white;
+  border: 1px solid #d7d7dc;
+  border-radius: 0.5rem;
+}
+form.transaction-panel {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 42rem;
+}
+.transaction-panel input {
+  min-width: 0;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #6b6b76;
+  border-radius: 0.25rem;
+}
+.transaction-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.transaction-panel button,
+.member-rail-bottom button {
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+}
+.transaction-panel button[aria-pressed='true'] {
+  background: #a91729;
+  color: white;
+}
+.transaction-panel button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}

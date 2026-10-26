@@ -1,26 +1,11 @@
 """Read-only motion results; current vote-store totals are distinct from saved history."""
 from drf_spectacular.utils import extend_schema
-from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from AUTHENTICATE.access import require_member_roles
-from .models import Brother_votes, Vote_Poll
-from .pp_functions import count_all_current_votes
-
-
-class MotionSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    title = serializers.CharField()
-    started_at = serializers.DateTimeField()
-    ended_at = serializers.DateTimeField(allow_null=True)
-    aye = serializers.IntegerField(min_value=0)
-    nay = serializers.IntegerField(min_value=0)
-
-
-class DecisionsSerializer(serializers.Serializer):
-    current = MotionSerializer(allow_null=True)
-    closed = MotionSerializer(many=True)
-    can_manage = serializers.BooleanField()
+from ..models import Brother_votes, Vote_Poll
+from ..pp_functions import count_all_current_votes
+from .serializers import MotionSerializer, DecisionsSerializer
 
 
 def motion_data(poll, aye, nay):
@@ -32,7 +17,7 @@ def motion_data(poll, aye, nay):
 
 class DecisionsView(APIView):
     """Require ACTIVE and expose no individual vote identities or ballot writes."""
-    @extend_schema(responses=DecisionsSerializer)
+    @extend_schema(operation_id='polls_list', responses=DecisionsSerializer)
     def get(self, request):
         profile = require_member_roles(request.user, 'ACTIVE')
         current = Vote_Poll.objects.filter(Vote_Poll_End__isnull=True).order_by('-Vote_Poll_Start', '-pk').first()
@@ -45,4 +30,5 @@ class DecisionsView(APIView):
         return Response(DecisionsSerializer({
             'current': current_data, 'closed': closed,
             'can_manage': profile.roles.filter(name='EXEC').exists(),
+            'own_choice': Brother_votes.objects.filter(user=request.user).values_list('user_vote_choice', flat=True).first() if current else None,
         }).data, headers={'Cache-Control': 'no-store'})

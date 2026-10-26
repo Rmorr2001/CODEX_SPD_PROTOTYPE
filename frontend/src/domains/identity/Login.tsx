@@ -1,3 +1,4 @@
+import { SignOut } from './SignOut';
 import { Link } from 'react-router-dom';
 import { chapterSite } from '../../app/links';
 import { type SessionState, useSession } from './session';
@@ -54,7 +55,7 @@ export function AccessPanel({ state, retry }: { state: SessionState; retry: () =
             <p role="alert">
               Your member profile is unavailable. Please contact your chapter administrator.
             </p>
-            <a href={`${chapterSite}auth/logout/`}>Sign out</a>
+            <SignOut />
           </>
         )}
         {session && !session.authenticated && (

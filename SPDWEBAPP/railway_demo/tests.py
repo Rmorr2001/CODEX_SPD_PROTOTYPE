@@ -47,9 +47,9 @@ class RailwayDemoTests(TestCase):
             call_command("seed_railway_demo")
 
     def test_original_public_pages_render(self):
-        for path in ("/", "/ourHistory/", "/codeOfEthics/", "/rush/", "/executive-board/", "/auth/login/"):
+        for path in ("/legacy/", "/ourHistory/", "/codeOfEthics/", "/rush/", "/executive-board/", "/auth/login/"):
             self.assertEqual(self.client.get(path).status_code, 200, path)
-        self.assertContains(self.client.get("/"), "Sigma Phi Delta: Beta-Omicron Chapter")
+        self.assertContains(self.client.get("/legacy/"), "Sigma Phi Delta: Beta-Omicron Chapter")
 
     def test_anonymous_member_pages_require_login(self):
         for path in ("/auth/dashboard/", "/auth/roster/", "/auth/profile/", "/philanthropy/"):

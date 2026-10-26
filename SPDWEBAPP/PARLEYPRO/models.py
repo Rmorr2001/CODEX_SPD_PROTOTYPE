@@ -1,5 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+
+class PollWorkflowLock(models.Model):
+    """One internal mutex row for the global legacy ballot store."""
+    version = models.PositiveBigIntegerField(default=0)
+
 # Create your models here.
 
 # class Vote_Tracker(models.Model):

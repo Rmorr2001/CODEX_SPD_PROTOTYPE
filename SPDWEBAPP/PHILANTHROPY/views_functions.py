@@ -62,28 +62,22 @@ def collect_philanthropy_statistics(active_brothers, start_date, end_date):
 
 # views def philanthropy_approve(request):
 def philanthropy_approval_POST(request):
-        if request.method == 'POST':
-            event_id = request.POST.get('event_id')
-            action = request.POST.get('action')
-            
-            try:
-                event = Philanthropy_Hours_Event_and_Request.objects.get(id=event_id)
-                if action == 'approve':
-                    event.philanthropy_approval_status = 'approved'
-                    event.philanthropy_event_approver_name = f"{request.user.brother_profile.firstName} {request.user.brother_profile.lastName}"
-                    event.philanthropy_event_submission_approval_date = timezone.now()
-                elif action == 'deny':
-                    event.philanthropy_approval_status = 'denied'
-                    event.philanthropy_event_approver_name = f"{request.user.brother_profile.firstName} {request.user.brother_profile.lastName}"
-                    event.philanthropy_event_submission_approval_date = timezone.now()
-                
-                event.save()
-                messages.success(request, f"Event successfully {'approved' if action == 'approve' else 'denied'}!")
-                
-            except Philanthropy_Hours_Event_and_Request.DoesNotExist:
-                messages.error(request, 'Event not found')
-            except Exception as e:
-                messages.error(request, f'Error processing request: {str(e)}')
+    """HTML messages around the same decision operation used by REST."""
+    from django.core.exceptions import ValidationError
+    from django.http import Http404
+    from SPDWEBAPP_CORE.domain import Conflict
+    from .operations import decide_event
+    if request.method != 'POST':
+        return
+    try:
+        decide_event(request.user, request.POST.get('event_id'), request.POST.get('action'))
+        messages.success(request, f"Event successfully {'approved' if request.POST.get('action') == 'approve' else 'denied'}!")
+    except Http404:
+        messages.error(request, 'Event not found')
+    except (ValidationError, Conflict, ValueError):
+        messages.error(request, 'Error processing request: Invalid request or review conflict.')
+    except Exception:
+        messages.error(request, 'Error processing request: Unable to save the decision. Please refresh.')
 
 # view def brother_philanthropy_history(request, user_id):
 def retrieve_individual_brother_history(brother, user_id):

@@ -14,13 +14,14 @@ test('service shows actual own stored totals, statuses and working academic year
   await expect(page.locator('#service-total-title strong')).toHaveText(String(data.approved_hours));
   await expect(page.locator('.service-table tbody tr')).toHaveCount(data.events.length);
   await expect(page.locator('.service-status.requested').first()).toHaveText('…Pending');
-  await expect(page.getByRole('link', { name: 'Log hours in chapter site' })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'Log service hours' })).toHaveAttribute(
     'href',
-    '/philanthropy/request/',
+    '/app/service/new',
   );
-  await expect(
-    page.getByRole('link', { name: 'Review service requests in chapter site' }),
-  ).toHaveAttribute('href', '/philanthropy/approve/');
+  await expect(page.getByRole('link', { name: 'Review service requests' })).toHaveAttribute(
+    'href',
+    '/app/service/review',
+  );
   const previous = String(data.available_years[data.available_years.length - 1]);
   await page.getByLabel('Academic year').selectOption(previous);
   await expect(page).toHaveURL(new RegExp(`year=${previous}`));
@@ -49,9 +50,7 @@ test('service approval is gated and alumni API reads are denied', async ({ page 
   await enterDemo(page);
   await page.goto('/app/service');
   await expect(page.locator('.service-summary')).toBeVisible();
-  await expect(
-    page.getByRole('link', { name: 'Review service requests in chapter site' }),
-  ).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Review service requests' })).toHaveCount(0);
   await enterDemo(page, 'alumni');
   expect((await page.request.get('/api/v1/service/')).status()).toBe(403);
   await page.goto('/app/service');
@@ -71,7 +70,7 @@ test('service failure retries against actual data and request handoff opens real
   await page.unroute('**/api/v1/service/**');
   await page.getByRole('button', { name: 'Try again' }).click();
   await expect(page.locator('.service-summary')).toBeVisible();
-  await page.getByRole('link', { name: 'Log hours in chapter site' }).click();
-  await expect(page).toHaveURL(/\/philanthropy\/request\/$/);
-  await expect(page.locator('input[name="hours"]')).toBeVisible();
+  await page.getByRole('link', { name: 'Log service hours' }).click();
+  await expect(page).toHaveURL(/\/app\/service\/new$/);
+  await expect(page.getByLabel('Hours', { exact: true })).toBeVisible();
 });

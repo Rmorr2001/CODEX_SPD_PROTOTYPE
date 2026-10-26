@@ -8,9 +8,14 @@ export type Motion = {
   aye: number;
   nay: number;
 };
-export type DecisionsContent = { current: Motion | null; closed: Motion[]; can_manage: boolean };
+export type DecisionsContent = {
+  current: Motion | null;
+  closed: Motion[];
+  can_manage: boolean;
+  own_choice?: string | null;
+};
 
-function motion(value: unknown): value is Motion {
+export function isMotion(value: unknown): value is Motion {
   return Boolean(
     value &&
     typeof value === 'object' &&
@@ -41,13 +46,19 @@ export async function fetchDecisions(signal: AbortSignal): Promise<DecisionsCont
     !data ||
     typeof data !== 'object' ||
     !('current' in data) ||
-    !(data.current === null || (motion(data.current) && data.current.ended_at === null)) ||
+    !(data.current === null || (isMotion(data.current) && data.current.ended_at === null)) ||
     !('closed' in data) ||
     !Array.isArray(data.closed) ||
-    !data.closed.every((value: unknown) => motion(value) && value.ended_at !== null) ||
+    !data.closed.every((value: unknown) => isMotion(value) && value.ended_at !== null) ||
     !('can_manage' in data) ||
     typeof data.can_manage !== 'boolean'
   )
     throw new Error('Invalid motion results');
-  return { current: data.current, closed: data.closed, can_manage: data.can_manage };
+  return {
+    current: data.current,
+    closed: data.closed,
+    can_manage: data.can_manage,
+    own_choice:
+      'own_choice' in data && typeof data.own_choice === 'string' ? data.own_choice : null,
+  };
 }

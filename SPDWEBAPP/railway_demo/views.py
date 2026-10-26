@@ -26,4 +26,6 @@ def enter(request):
         if Brother_Profile.objects.filter(user=user, roles__name="NEW_MEMBER").exists():
             return redirect("/app/new-members")
         return redirect(next_path)
-    return redirect("alumni_roster" if request.POST.get("persona") == "alumni" else "dashboard")
+    if next_path in {"/auth/dashboard/", "/auth/alumni_roster/", "/newmember/marks/", "/legacy/"}:
+        return redirect(next_path)
+    return redirect("/app/new-members" if Brother_Profile.objects.filter(user=user, roles__name="NEW_MEMBER").exists() else "/app/dashboard")

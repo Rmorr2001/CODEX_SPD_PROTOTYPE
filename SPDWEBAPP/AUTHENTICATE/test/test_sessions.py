@@ -56,7 +56,7 @@ class SessionTests(IdentityCase):
         session.save()
         old_key = session.session_key
         response = self.credentials()
-        self.assertRedirects(response, reverse("home"), fetch_redirect_response=False)
+        self.assertRedirects(response, "/app/dashboard", fetch_redirect_response=False)
         self.assert_identity(self.client, self.a)
         self.assertNotEqual(self.client.session.session_key, old_key)
         self.a.refresh_from_db()
@@ -78,7 +78,7 @@ class SessionTests(IdentityCase):
         user = make_user(username="no-profile", with_profile=False)
         before = member_state(user)
         response = self.credentials(user=user)
-        self.assertRedirects(response, reverse("home"), fetch_redirect_response=False)
+        self.assertRedirects(response, "/app/dashboard", fetch_redirect_response=False)
         self.assert_identity(self.client, user)
         self.assertFalse(Brother_Profile.objects.filter(user=user).exists())
         self.assert_member_unchanged(before, user, user_fields=("last_login",))

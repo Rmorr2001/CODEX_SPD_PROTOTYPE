@@ -124,7 +124,7 @@ class CreationTests(PollTestCase):
         before = self.background()
         # Isolate clock imports only: keep actual form validation and model save.
         with at_time(T + timedelta(seconds=1)):
-            with patch("PARLEYPRO.views.timezone", SimpleNamespace(now=lambda: T)):
+            with patch("PARLEYPRO.operations.timezone", SimpleNamespace(now=lambda: T)):
                 response = self.client.post("/poll/start_vote/", {"Vote_Poll_Name": "Two clocks"})
         self.assertRedirects(response, reverse("poll"), fetch_redirect_response=False)
         poll = Vote_Poll.objects.exclude(pk=self.h.pk).get()

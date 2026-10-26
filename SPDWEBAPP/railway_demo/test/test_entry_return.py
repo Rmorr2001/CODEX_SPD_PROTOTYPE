@@ -14,12 +14,12 @@ class DemoReturnTests(TestCase):
         self.addCleanup(override.disable)
         call_command('seed_railway_demo', verbosity=0)
 
-    def test_absent_and_invalid_return_preserve_existing_defaults(self):
-        self.assertEqual(self.client.post('/demo/enter/', {'persona': 'active'}).url, '/auth/dashboard/')
-        self.assertEqual(self.client.post('/demo/enter/', {'persona': 'alumni'}).url, '/auth/alumni_roster/')
+    def test_absent_and_invalid_return_use_react_defaults(self):
+        self.assertEqual(self.client.post('/demo/enter/', {'persona': 'active'}).url, '/app/dashboard')
+        self.assertEqual(self.client.post('/demo/enter/', {'persona': 'alumni'}).url, '/app/dashboard')
         for path in ('https://outside.invalid/', '//outside.invalid/', '/app/dashboard?next=bad', '/app/not-real'):
             with self.subTest(path=path):
-                self.assertEqual(self.client.post('/demo/enter/', {'persona': 'active', 'next': path}).url, '/auth/dashboard/')
+                self.assertEqual(self.client.post('/demo/enter/', {'persona': 'active', 'next': path}).url, '/app/dashboard')
 
     def test_safe_return_and_newmember_landing(self):
         self.assertEqual(self.client.post('/demo/enter/', {'persona': 'executive', 'next': '/app/dashboard'}).url, '/app/dashboard')

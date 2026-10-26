@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet, useOutletContext } from 'react-router-dom';
 import { chapterSite } from '../../app/links';
+import { SignOut } from './SignOut';
 import { AccessPanel } from './Login';
 import { type Member, useSession } from './session';
 import './member.css';
@@ -68,7 +69,8 @@ export function MemberLayout() {
           {state.data.demo_enabled && <Link to="/login">Change demo role</Link>}
           <Link to="/">Chapter homepage</Link>
           <Link to="/connection">Connection</Link>
-          <a href={`${chapterSite}auth/logout/`}>Sign out</a>
+          <a href={`${chapterSite}legacy/`}>Django HTML/CSS</a>
+          <SignOut />
         </div>
         <p className="rail-signature">
           PEOPLE.

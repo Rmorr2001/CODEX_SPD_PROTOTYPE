@@ -53,7 +53,7 @@ test('alumni navigation reflects actual role and logout ends the real session', 
   const nav = page.getByRole('navigation', { name: 'Member navigation' });
   await expect(nav.getByRole('link', { name: 'Polls', exact: true })).toHaveCount(0);
   await expect(nav.getByRole('link', { name: 'Service hours', exact: true })).toHaveCount(0);
-  await page.getByRole('link', { name: 'Sign out', exact: true }).click();
+  await page.getByRole('button', { name: 'Sign out', exact: true }).click();
   expect((await (await page.request.get('/api/v1/session/')).json()).authenticated).toBe(false);
 });
 

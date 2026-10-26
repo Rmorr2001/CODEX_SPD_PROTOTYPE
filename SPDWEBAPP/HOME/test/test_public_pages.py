@@ -17,7 +17,7 @@ from .helpers import HTML, content, file_path, slide, upload
 
 
 ROUTES = {
-    "/": "HOME/home.html", "/ourHistory/": "HOME/ourHistory.html",
+    "/legacy/": "HOME/home.html", "/ourHistory/": "HOME/ourHistory.html",
     "/codeOfEthics/": "HOME/codeOfEthics.html", "/rush/": "HOME/rush.html",
     "/executive-board/": "HOME/executive_board.html",
 }
@@ -48,7 +48,7 @@ class PublicPageTests(RegressionTestCase):
     def test_home_without_banner_omits_banner_image(self):
         keep = slide()
         before = snapshot_scope([keep], files=[file_path(keep.image)])
-        response = self.client.get("/")
+        response = self.client.get("/legacy/")
         self.assertContains(response, "Sigma Phi Delta: Beta-Omicron Chapter")
         self.assertNotIn("Fraternity Banner", [i.get("alt") for i in HTML(response).attrs("img")])
         self.assertIn("/rush/", [a.get("href") for a in HTML(response).attrs("a")])
@@ -94,7 +94,7 @@ class PublicPageTests(RegressionTestCase):
         login_actor(self.client, actor)
         actor.refresh_from_db()
         before = snapshot_scope([actor, *rows], files=[file_path(rows[0].image)])
-        response = self.client.get("/")
+        response = self.client.get("/legacy/")
         self.assertContains(response, "profileless")
         self.assertTrue(any(i.get("src", "").endswith("images/default_profile.png")
                             for i in HTML(response).attrs("img")))
@@ -190,7 +190,7 @@ class PublicPageTests(RegressionTestCase):
         login_actor(self.client, actor)
         rows = content()
         before = snapshot_scope([actor, *rows])
-        request = RequestFactory().get("/", {"error": "<img src=x onerror=alert(1)>"})
+        request = RequestFactory().get("/legacy/", {"error": "<img src=x onerror=alert(1)>"})
         request.user, request.session = actor, self.client.session
         request._messages = FallbackStorage(request)
         messages.error(request, "<script>alert(1)</script>")
@@ -207,7 +207,7 @@ class PublicPageTests(RegressionTestCase):
         link.link = "https://example.invalid/rush?a=1&b=2"
         link.save()
         before = snapshot_scope(list(rows), files=[file_path(rows[0].image), file_path(rows[2].image)])
-        for path, count in (("/", 1), ("/rush/", 2)):
+        for path, count in (("/legacy/", 1), ("/rush/", 2)):
             response = self.client.get(path)
             self.assertEqual([a.get("href") for a in HTML(response).attrs("a")].count(link.link), count)
             self.assertContains(response, "a=1&amp;b=2", count=count)
@@ -238,7 +238,7 @@ class PublicPageTests(RegressionTestCase):
         banner = BannerImage.objects.create(image="banners/absent.webp")
         obj = RushSlide.objects.create(image="rush_slides/absent.webp", caption="Absent")
         before = snapshot_scope([banner, obj])
-        for path, field in (("/", banner.image), ("/rush/", obj.image)):
+        for path, field in (("/legacy/", banner.image), ("/rush/", obj.image)):
             response = self.client.get(path)
             self.assertEqual(response.status_code, 200)
             self.assertIn(field.url, [i.get("src") for i in HTML(response).attrs("img")])
@@ -263,7 +263,7 @@ class PublicPageTests(RegressionTestCase):
     def test_public_unsafe_request_rejects_bad_csrf(self):
         client = csrf_client()
         rows = content()
-        client.get("/", secure=True)
+        client.get("/legacy/", secure=True)
         self.assertIn("csrftoken", client.cookies)
         before = snapshot_scope(list(rows), files=[file_path(rows[0].image)])
         for path in ROUTES:

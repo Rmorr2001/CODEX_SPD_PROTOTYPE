@@ -39,7 +39,7 @@ class AccessTests(PhilanthropyCase):
             with self.subTest(actor=actor.username, method=method, path=path):
                 extra = {'HTTP_REFERER': referrer} if referrer else {}
                 response = getattr(self.client, method)(path, data, **extra)
-                self.assertRedirects(response, referrer or reverse('poll'),
+                self.assertRedirects(response, referrer or '/legacy/',
                                      fetch_redirect_response=False)
                 text = ' '.join(messages(response))
                 for name in required:

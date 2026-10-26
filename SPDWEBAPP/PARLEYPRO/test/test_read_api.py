@@ -64,7 +64,7 @@ class DecisionsReadApiTests(TestCase):
 
     def test_empty_current_and_zero_vote_contracts(self):
         self.client.force_login(self.user)
-        self.assertEqual(self.client.get('/api/v1/polls/').json(), {'current': None, 'closed': [], 'can_manage': False})
+        self.assertEqual(self.client.get('/api/v1/polls/').json(), {'current': None, 'closed': [], 'can_manage': False, 'own_choice': None})
         self.poll('No votes yet')
         data = self.client.get('/api/v1/polls/').json()
         self.assertEqual((data['current']['aye'], data['current']['nay']), (0, 0))
@@ -77,10 +77,11 @@ class DecisionsReadApiTests(TestCase):
         self.profile.roles.remove(Role.objects.get(name='ACTIVE'))
         self.assertEqual(self.client.get('/api/v1/polls/').status_code, 403)
 
-    def test_read_adapter_never_accepts_ballots(self):
+    def test_collection_rejects_legacy_ballot_keys(self):
         self.client.force_login(self.user)
         current = self.poll('Open motion')
-        self.assertEqual(self.client.post('/api/v1/polls/', {'aye': 1}).status_code, 405)
+        self.profile.roles.add(Role.objects.get_or_create(name='EXEC')[0])
+        self.assertEqual(self.client.post('/api/v1/polls/', {'aye': 1}).status_code, 400)
         self.assertFalse(Brother_votes.objects.exists())
         current.refresh_from_db()
         self.assertIsNone(current.Vote_Poll_End)

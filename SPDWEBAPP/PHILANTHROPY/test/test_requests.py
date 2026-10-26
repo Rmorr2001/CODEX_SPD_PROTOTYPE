@@ -57,7 +57,7 @@ class RequestTests(RequestFixtures, PhilanthropyCase):
         for field in ('event_title', 'hours', 'event_date', 'csrfmiddlewaretoken'):
             self.assertContains(response, f'name="{field}"')
         self.assertContains(response, 'min="0.5"')
-        self.assertContains(response, 'step="0.5"')
+        self.assertContains(response, 'step="0.01"')
         self.assertIn('csrftoken', client.cookies)
         self.unchanged(before)
         self.assertEqual(Event.objects.count(), 1)

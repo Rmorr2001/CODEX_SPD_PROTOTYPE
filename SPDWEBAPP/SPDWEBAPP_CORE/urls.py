@@ -19,8 +19,10 @@ from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    path("", RedirectView.as_view(url="/app/", permanent=False), name="react_home"),
     path("api/", include("SPDWEBAPP_CORE.api.urls")),
     path("app/", include("SPDWEBAPP_CORE.frontend.urls")),
     # Use the custom ADMIN_URL from settings

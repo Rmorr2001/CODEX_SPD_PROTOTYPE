@@ -9,7 +9,11 @@ import { MemberLayout } from '../domains/identity/MemberLayout';
 import { Dashboard } from '../domains/identity/Dashboard';
 import { Directory } from '../domains/identity/Directory';
 import { Profile } from '../domains/identity/Profile';
+import { PollDetail } from '../domains/decisions/PollDetail';
 import { Decisions } from '../domains/decisions/Decisions';
+import { ServiceForm } from '../domains/service/ServiceForm';
+import { ServiceReview } from '../domains/service/ServiceReview';
+import { ServiceChapter, ServiceHistory } from '../domains/service/ServiceReports';
 import { ServiceHours } from '../domains/service/ServiceHours';
 import { NewMemberMarks } from '../domains/new-members/NewMemberMarks';
 
@@ -21,7 +25,14 @@ export function App() {
         <Route path="members" element={<Directory />} />
         <Route path="profile" element={<Profile />} />
         <Route path="polls" element={<Decisions />} />
+        <Route path="polls/:id" element={<PollDetail />} />
         <Route path="service" element={<ServiceHours />} />
+        <Route path="service/new" element={<ServiceForm />} />
+        <Route path="service/review" element={<ServiceReview />} />
+        <Route path="service/history" element={<ServiceHistory />} />
+        <Route path="service/history/:userId" element={<ServiceHistory />} />
+        <Route path="service/chapter" element={<ServiceChapter />} />
+        <Route path="service/events/:id/edit" element={<ServiceForm />} />
         <Route path="new-members" element={<NewMemberMarks />} />
       </Route>
       <Route element={<PublicLayout />}>

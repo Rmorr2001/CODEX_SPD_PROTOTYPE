@@ -135,7 +135,7 @@ class ApprovalTests(PhilanthropyCase):
         before = self.capture(self.b, self.c, self.e, self.f)
         for action in ('approve', 'deny'):
             with self.subTest(action=action):
-                with patch.object(Event, 'save', side_effect=RuntimeError('synthetic')):
+                with patch('django.db.models.query.QuerySet.update', side_effect=RuntimeError('synthetic')):
                     response = self.client.post(APPROVE, {'event_id': self.e.pk,
                                                           'action': action})
                 self.assertEqual(response.status_code, 200)

@@ -45,7 +45,7 @@ export function PublicLayout() {
           <p>Beta-Omicron Chapter · University of Missouri, Columbia</p>
         </div>
         <nav aria-label="Footer navigation">
-          <a href={chapterSite}>Open chapter site</a>
+          <a href={`${chapterSite}legacy/`}>Django HTML/CSS</a>
           <NavLink to="/connection">Connection</NavLink>
         </nav>
       </footer>

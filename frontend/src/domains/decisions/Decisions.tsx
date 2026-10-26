@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { chapterSite } from '../../app/links';
-import { useMemberRead } from '../../api/read';
-import { fetchDecisions } from './content';
+import { useLiveDecisions } from './useLiveDecisions';
+import { CreateMotion, PollActions } from './PollActions';
 import { MotionCard } from './MotionCard';
 import './decisions.css';
 
 export function Decisions() {
-  const { state, retry } = useMemberRead(fetchDecisions);
+  const { state, retry } = useLiveDecisions();
   if (state.kind === 'loading') return <p role="status">Loading chapter decisions…</p>;
   if (state.kind === 'denied')
     return (
@@ -27,7 +27,7 @@ export function Decisions() {
         <button onClick={retry}>Try again</button>
       </section>
     );
-  const { current, closed, can_manage } = state.data;
+  const { current, closed, can_manage, own_choice } = state.data;
   return (
     <>
       <div className="decisions-heading">
@@ -50,6 +50,13 @@ export function Decisions() {
             {current ? (
               <>
                 <MotionCard motion={current} current />
+                <Link to={`/polls/${current.id}`}>Motion details</Link>
+                <PollActions
+                  id={current.id}
+                  ownChoice={own_choice}
+                  canManage={can_manage}
+                  done={retry}
+                />
                 <a className="button primary vote-action" href={`${chapterSite}poll/`}>
                   Vote in chapter site
                 </a>
@@ -72,7 +79,10 @@ export function Decisions() {
             {closed.length ? (
               <div className="closed-motion-list">
                 {closed.map((motion) => (
-                  <MotionCard motion={motion} key={motion.id} />
+                  <div key={motion.id}>
+                    <MotionCard motion={motion} />
+                    <Link to={`/polls/${motion.id}`}>View motion details</Link>
+                  </div>
                 ))}
               </div>
             ) : (
@@ -87,12 +97,13 @@ export function Decisions() {
             Current tallies use the chapter’s current vote records. Closed motions show saved final
             totals.
           </p>
-          <p>Results are a snapshot. Refresh to check for updates.</p>
+          <p>Results refresh every five seconds while this page is visible.</p>
           <a href={`${chapterSite}poll/past_polls/`}>View past polls in chapter site</a>
           {can_manage && (
             <div className="motion-management">
               <span className="eyebrow">EXECUTIVE TOOLS</span>
-              <p>Open a new chapter motion through the existing voting workflow.</p>
+              <p>One chapter motion can be open at a time.</p>
+              {!current && <CreateMotion done={retry} />}
               <a href={`${chapterSite}poll/start_vote/`}>Create a motion in chapter site</a>
             </div>
           )}

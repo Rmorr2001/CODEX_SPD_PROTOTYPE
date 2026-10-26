@@ -7,8 +7,8 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from AUTHENTICATE.access import require_member_roles
-from .models import Philanthropy_Hours_Event_and_Request
-from .views_functions import get_academic_year_dates, get_available_academic_years, get_user_events_and_total_hours
+from ..models import Philanthropy_Hours_Event_and_Request
+from ..views_functions import get_academic_year_dates, get_available_academic_years, get_user_events_and_total_hours
 
 
 def selected_academic_year(value):
@@ -27,7 +27,7 @@ class ServiceEventSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     title = serializers.CharField()
     date = serializers.DateField()
-    hours = serializers.IntegerField()
+    hours = serializers.FloatField()
     status = serializers.ChoiceField(choices=Philanthropy_Hours_Event_and_Request.STATUS_CHOICES)
 
 
@@ -36,7 +36,7 @@ class ServiceSerializer(serializers.Serializer):
     available_years = serializers.ListField(child=serializers.IntegerField())
     start_date = serializers.DateField()
     end_date = serializers.DateField()
-    approved_hours = serializers.IntegerField()
+    approved_hours = serializers.FloatField()
     can_review = serializers.BooleanField()
     history_url = serializers.CharField()
     events = ServiceEventSerializer(many=True)
@@ -44,7 +44,7 @@ class ServiceSerializer(serializers.Serializer):
 
 class ServiceView(APIView):
     """Read only the caller's events and approved totals; ACTIVE gates all domain queries."""
-    @extend_schema(parameters=[OpenApiParameter('year', int, description='Academic-year starting year')], responses=ServiceSerializer)
+    @extend_schema(operation_id='service_list', parameters=[OpenApiParameter('year', int, description='Academic-year starting year')], responses=ServiceSerializer)
     def get(self, request):
         profile = require_member_roles(request.user, 'ACTIVE')
         year = selected_academic_year(request.query_params.get('year'))

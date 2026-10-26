@@ -5,6 +5,7 @@ from SPDWEBAPP_CORE.frontend.assets import immutable_file_test
 
 WEB_APPS = ['rest_framework', 'drf_spectacular']
 REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'SPDWEBAPP_CORE.api.errors.domain_exception_handler',
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.SessionAuthentication'],
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
     'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],

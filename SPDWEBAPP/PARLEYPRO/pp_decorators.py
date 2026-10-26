@@ -1,4 +1,6 @@
 from functools import wraps
+from urllib.parse import urlsplit
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -25,7 +27,9 @@ def requires_role(*role_names):
             # Get the previous page URL
             previous_page = request.META.get('HTTP_REFERER')
             # Default fallback if no referrer is available
-            fallback_url = 'poll'
+            fallback_url = '/legacy/'
+            if previous_page and (not url_has_allowed_host_and_scheme(previous_page, {request.get_host()}, require_https=request.is_secure()) or urlsplit(previous_page).path == request.path):
+                previous_page = None
             
             try:
                 brother_profile = Brother_Profile.objects.get(user=request.user)

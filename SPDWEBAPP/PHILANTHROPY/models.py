@@ -18,7 +18,7 @@ class Philanthropy_Hours_Event_and_Request(models.Model):
         default='requested',
         help_text="Event status: approved, requested, or denied"
     )
-    philanthropy_event_hours = models.IntegerField()
+    philanthropy_event_hours = models.DecimalField(max_digits=10, decimal_places=2)
     philanthropy_event_date = models.DateField(help_text="The date the event occurred")
     philanthropy_event_submission_request_date = models.DateTimeField(
         auto_now_add=True,

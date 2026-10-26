@@ -57,7 +57,7 @@ class DemoTests(IdentityCase):
         return snapshot_scope(rows, relations=relations)
 
     def assert_entered(self, client, response, user, destination):
-        self.assertRedirects(response, reverse(destination), fetch_redirect_response=False)
+        self.assertRedirects(response, "/app/new-members" if user.brother_profile.roles.filter(name="NEW_MEMBER").exists() else "/app/dashboard", fetch_redirect_response=False)
         self.assert_identity(client, user)
         user.refresh_from_db()
         self.assertEqual(user.last_login, CLOCK)

@@ -97,7 +97,7 @@ class IntegrationTests(RegressionTestCase):
             with self.subTest(urlconf=urlconf):
                 self.assertNotIn(daylight_savings_alert, list(callbacks(get_resolver(urlconf).url_patterns)))
                 self.assertEqual(resolve("/auth/dashboard/", urlconf=urlconf).url_name, "dashboard")
-                self.assertEqual(resolve("/", urlconf=urlconf).url_name, "home")
+                self.assertEqual(resolve("/legacy/", urlconf=urlconf).url_name, "home")
         import MISC.urls
         self.assertFalse(getattr(MISC.urls, "urlpatterns", []))
         self.assertFalse(AnnouncementAlert.objects.exists())
@@ -116,7 +116,7 @@ class IntegrationTests(RegressionTestCase):
         factory = RequestFactory()
         for method in (factory.get, factory.post):
             for date, message in variants:
-                request = method("/")  # Direct callable only: no claimed MISC route.
+                request = method("/legacy/")  # Direct callable only: no claimed MISC route.
                 with patch("MISC.views.get_next_dst_change", return_value=date), \
                         patch("MISC.views.render", return_value=sentinel.rendered) as render:
                     result = daylight_savings_alert(request)
@@ -179,7 +179,7 @@ class IntegrationTests(RegressionTestCase):
         # Preserve a separate anonymous browser after logging in the default client.
         anonymous = Client()
         for client in (anonymous, self.client):
-            response = client.get("/")
+            response = client.get("/legacy/")
             self.assertEqual(response.status_code, 200)
             for text in ("announcement-row", "clockButton", row.title, s.name):
                 self.assertNotContains(response, text)

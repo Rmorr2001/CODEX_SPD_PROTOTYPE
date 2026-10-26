@@ -48,20 +48,23 @@ export function ServiceHours() {
     );
   const data = state.data;
   const pending = data.events.filter((event) => event.status === 'requested').length;
-  const history = data.history_url.startsWith('/')
-    ? `${chapterSite}${data.history_url.slice(1)}`
-    : data.history_url;
+
   return (
     <>
+      {params.get('submitted') === '1' && <p role="status">Service hours submitted for review.</p>}
+      <nav aria-label="Service tools">
+        <Link to="/service/chapter">Chapter totals</Link> ·{' '}
+        <a href="/api/v1/service/export/">Download approved hours (XLSX)</a>
+      </nav>
       <div className="service-heading">
         <div>
           <p className="eyebrow">SERVICE THAT ADDS UP</p>
           <h1>Make your impact count.</h1>
           <p>Give back to the community. Keep track of the work you do.</p>
         </div>
-        <a className="button primary" href={`${chapterSite}philanthropy/request/`}>
-          Log hours in chapter site
-        </a>
+        <Link className="button primary" to="/service/new">
+          Log service hours
+        </Link>
       </div>
       <section className="service-summary" aria-labelledby="service-total-title">
         <div>
@@ -103,7 +106,7 @@ export function ServiceHours() {
             below.
           </p>
         </div>
-        <a href={history}>View your service history</a>
+        <Link to="/service/history">View your service history</Link>
       </div>
       {data.events.length > 0 && (
         <p id="service-table-hint" className="service-table-hint">
@@ -155,30 +158,23 @@ export function ServiceHours() {
       ) : (
         <section className="service-empty">
           <h2>No service entries for this year.</h2>
-          <p>
-            Your service records will appear here after they’re submitted through the chapter site.
-          </p>
-          <a href={`${chapterSite}philanthropy/request/`}>Log your first service hours</a>
+          <p>Your service records will appear here after you submit them.</p>
+          <Link to="/service/new">Log your first service hours</Link>
         </section>
       )}
       <div className="service-bottom">
         <section>
           <p className="eyebrow">KEEP MAKING A DIFFERENCE</p>
           <h2>Every contribution matters.</h2>
-          <p>
-            Use the chapter site to submit an event and its hours. You can return here to check its
-            review status.
-          </p>
+          <p>Submit an event and its hours here, then check its review status.</p>
           <a href={`${chapterSite}philanthropy/`}>Open the original service dashboard</a>
         </section>
         {data.can_review && (
           <aside className="service-review">
             <p className="eyebrow">PHILANTHROPY CHAIR</p>
             <h2>Review chapter requests</h2>
-            <p>Review chapter submissions through the existing approval workflow.</p>
-            <a href={`${chapterSite}philanthropy/approve/`}>
-              Review service requests in chapter site
-            </a>
+            <p>Review pending submissions and approve or deny them.</p>
+            <Link to="/service/review">Review service requests</Link>
           </aside>
         )}
       </div>

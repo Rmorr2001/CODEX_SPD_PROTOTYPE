@@ -25,7 +25,7 @@ class EditReadTests(PhilanthropyCase):
         self.assertTemplateUsed(response, 'philanthropy_request.html')
         self.assertIs(response.context['editing'], True)
         self.assertEqual(response.context['event'], self.e)
-        for value in ('value="Park"', 'value="2"', 'value="2026-07-01"'):
+        for value in ('value="Park"', 'value="2.00"', 'value="2026-07-01"'):
             self.assertContains(response, value)
         self.assertContains(response, 'name="csrfmiddlewaretoken"')
         self.assertIn('csrftoken', client.cookies)

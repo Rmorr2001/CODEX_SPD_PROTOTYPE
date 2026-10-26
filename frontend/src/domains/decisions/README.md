@@ -1,18 +1,18 @@
 # Chapter decisions
 
-Owns React `/app/polls`: actual current motion, aggregate Aye/Nay results and saved
-closed-motion results. PARLEYPRO's `/api/v1/polls/` read model requires ACTIVE.
-EXEC and ACTIVE together enable a real legacy creation link. Ballots and motion
-creation/closure remain in `/poll/` and `/poll/start_vote/`; this increment has no
-write API, radio inputs, invented multiple-choice poll or fake deadline.
+Owns `/app/polls` and `/app/polls/:id`: same-model current/historical results,
+caller choice, Aye/Nay writes, executive creation/closure and explicit legacy links.
+`content.ts` validates snapshots; `useLiveDecisions.ts` refreshes every five
+seconds while visible, without clearing active controls. `PollActions.tsx` owns
+pending/error states and never automatically retries a mutation.
 
-The current tally is the existing global `Brother_votes` aggregate, not a
-per-poll historical relation. Closed totals are the counts saved on each motion.
-UI explains snapshot results and offers a real Refresh read. Zero votes produce
-zero-width bars, not percentages of an invented threshold. No voter identities
-are exposed. `content.ts` validates contracts; shared `api/read.ts` handles access,
-failure/cancellation/timeout behavior. No new configuration keys are needed.
+The global legacy ballot store supports one open motion. Both interfaces share
+PARLEYPRO operations; no per-poll ballot model or independent concurrent polls
+are introduced. Closed results use saved totals; voter identities stay private.
+See [PARLEYPRO](../../../../SPDWEBAPP/PARLEYPRO/README.md) for authorization,
+atomic transitions, conflicts and server tests. No new configuration keys.
 
-`test/decisions.spec.ts` checks actual data/links, executive vs ordinary ACTIVE
-controls, ALUMNI denial and exceptional zero/empty/failure states. Build and run
-Playwright per frontend README. Backend contract tests are in PARLEYPRO/test.
+`test/decisions.spec.ts` retains read/access/error coverage. Cross-interface
+transaction coverage is in `frontend/test/zz-transactions.spec.ts`: React votes,
+legacy vote change, live result refresh, closure and saved-result navigation.
+Run the production build and Playwright per root frontend README.

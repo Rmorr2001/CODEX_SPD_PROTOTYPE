@@ -177,7 +177,7 @@ class HttpBoundaryTests(IdentityCase):
                     payload["csrfmiddlewaretoken"] = token if kind == "matching" else "invalid"
                 response = client.post("/auth/login/", payload)
                 if kind == "matching":
-                    self.assertRedirects(response, reverse("home"), fetch_redirect_response=False)
+                    self.assertRedirects(response, "/app/dashboard", fetch_redirect_response=False)
                     self.assert_identity(client, self.a)
                     self.assert_pair_unchanged(before, user_fields=("last_login",))
                 else:

@@ -33,7 +33,7 @@ function event(value: unknown): value is ServiceEvent {
     !Number.isNaN(Date.parse(value.date)) &&
     'hours' in value &&
     typeof value.hours === 'number' &&
-    Number.isInteger(value.hours) &&
+    Number.isFinite(value.hours) &&
     value.hours >= 0 &&
     'status' in value &&
     ['requested', 'approved', 'denied'].includes(String(value.status)),
@@ -63,7 +63,7 @@ export async function fetchService(
     !/^\d{4}-\d{2}-\d{2}$/.test(data.start_date) ||
     !/^\d{4}-\d{2}-\d{2}$/.test(data.end_date) ||
     typeof data.approved_hours !== 'number' ||
-    !Number.isInteger(data.approved_hours) ||
+    !Number.isFinite(data.approved_hours) ||
     data.approved_hours < 0 ||
     typeof data.can_review !== 'boolean' ||
     typeof data.history_url !== 'string' ||

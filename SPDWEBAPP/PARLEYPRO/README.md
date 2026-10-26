@@ -1,21 +1,36 @@
 # PARLEYPRO — chapter decisions
 
-Owns legacy Aye/Nay ballots, motion creation/closure and saved results. Original
-views, helpers, forms and routes remain unchanged. The frozen case map and
-regression designs/tests are in `test/`; unresolved legacy policy stays in the
-root testing documentation.
+Owns a single open chapter motion, global per-user Aye/Nay choices, closure and
+stored historical results. Both frontends operate on the same records.
 
-`api.py` adds read-only `/api/v1/polls/`. It requires ACTIVE through the public
-AUTHENTICATE/access.py role boundary. `can_manage` additionally requires EXEC;
-this is conjunction, not either role. The newest open motion is selected by
-start time, with PK tie-break. Current tallies use existing
-`count_all_current_votes(Brother_votes.objects)`; closed motions use their stored
-counts in descending end order. Null saved counts display as zero. Response
-fields contain motion metadata and aggregate tallies only, never individual
-votes/users. No-store, SessionAuthentication and JSON-only API defaults apply.
+- `urls.py` / `views.py`: legacy HTML under `/poll/`.
+- `api/urls.py`: REST routes under `/api/v1/polls/`; `serializers.py` owns JSON
+  contracts, `reads.py` snapshots, `commands.py` HTTP mutation adapters.
+- `operations.py`: shared validation, ACTIVE voting and ACTIVE+EXEC create/close,
+  serialized atomic transitions. The internal `PollWorkflowLock` row serializes
+  the global ballot store, including creation when no motion is open.
+- `pp_functions.py`: supported count helper and HTML action translation.
+- `test/`: regression designs, mappings and executable tests.
 
-No ballot, start/end mutation or new voting rule is introduced. Known legacy
-mutation behavior is not silently rewritten. React links to the existing forms.
-`test/test_read_api.py` covers role gates, scope, current/closed selection/order,
-zero/empty data, management conjunction, privacy and rejected ballot writes.
-Run it with standalone testing settings. No new credentials/config keys exist.
+REST collection GET returns current/closed motions, caller-only choice and
+management capability. POST creates a named motion. `GET <id>/` returns detail;
+`PUT <id>/vote/` accepts `choice: Aye|Nay`; `POST <id>/close/` saves results and
+resets current ballots. All require ACTIVE; creation/closure also require EXEC.
+Writes use Django sessions and real CSRF protection. Invalid input is400,
+denied access403, missing target404 and conflicting state409. No voter identities
+are disclosed. Results refresh every five seconds in the visible React list.
+
+Creating a second open motion is rejected. Repeated same-choice voting keeps
+one user row; closing an already closed ID cannot close another motion or reset
+its votes. A failed reset rolls back both stored totals and closure. Global tally
+membership and chapter-wide executive closure preserve established behavior;
+no quorum, pass threshold, new eligibility policy or per-poll ballots are invented.
+Legacy out-of-band multiple-open rows still read newest-first; supported writes
+never create them. Admin is not a prototype write surface.
+
+See [milestone scope and release impact](../../docs/migration/functional-milestone-1.md).
+`test/test_transactions_api.py` exercises both frontend directions, real CSRF,
+role denial, repeat/stale operations and failure rollback. `test/test_read_api.py`
+retains read privacy/order tests. Run with the root AGENTS.md standalone commands.
+Browser transactions live in `frontend/test/zz-transactions.spec.ts`. No new
+credentials or runtime configuration keys are required.

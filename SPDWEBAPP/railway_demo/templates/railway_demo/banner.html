@@ -1,6 +1,7 @@
 <aside style="padding:12px 20px;background:#fff3cd;color:#332500;text-align:center" aria-label="Demo controls">
   <strong>Demo site</strong> · Fictional data · Interactive sample database
-  <form method="post" action="{% url 'demo_enter' %}" style="display:inline-block;margin-left:12px">{% csrf_token %}
+  <a href="/app/">Django REST + React</a> · <a href="/legacy/">Django HTML/CSS</a>
+<form method="post" action="{% url 'demo_enter' %}" style="display:inline-block;margin-left:12px">{% csrf_token %}
     <label for="demo-persona">Explore as</label>
     <select id="demo-persona" name="persona">
       <option value="executive">Executive member</option><option value="active">Active member</option>

@@ -1,5 +1,6 @@
 # Bundled frontend delivery
 
+The root URL redirects to `/app/`; original home is `/legacy/`.
 Owns the Django boundary beneath `/app/`; React source is in root `frontend/`.
 No business rules or member records belong in this package.
 

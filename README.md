@@ -79,3 +79,12 @@ to routes, reference images and executable specifications. The
 [delivery log](docs/design/delivery-log.md) records each builder/reviewer/visual
 comparison loop, actual screenshots and checks. Existing Django transaction
 forms remain available through clearly labeled links as read screens migrate.
+
+## Functional React milestone 1 (pending release)
+
+[Milestone scope and release impact](docs/migration/functional-milestone-1.md)
+records React-first entry, shared poll transactions and fractional service-hour
+submission/review/reporting. `/` now targets React; original home is `/legacy/`.
+HTML and REST use shared operations and records. Marks/account mutations remain
+future work. This local implementation is not deployed merely because the earlier
+nine-screen release succeeded. Review before pushing: this branch auto-deploys.

@@ -17,12 +17,17 @@ within a directory when present. Keep work focused on the requested change.
   Its [api/](SPDWEBAPP/SPDWEBAPP_CORE/api/README.md) and
   [frontend/](SPDWEBAPP/SPDWEBAPP_CORE/frontend/README.md) compose `/api/v1/`
   and `/app/`; [root frontend/](frontend/README.md) owns React/TypeScript/Vite.
-- `frontend/src/domains/` owns the React public/member read experiences, with
+- `frontend/src/domains/` owns React public/member reads and poll/service transactions, with
   domain READMEs and singular `test/` directories. The
   [screen plan](docs/design/screen-plan.md) maps routes, image/spec references,
   permission boundaries and independent correctness/visual review gates;
   [delivery evidence](docs/design/delivery-log.md) distinguishes accepted reads
   from the still-linked Django transaction forms and local from live checks.
+- `/` redirects to React `/app/`; `/legacy/` retains the original home. Poll and
+  service `api/` packages keep REST routes separate from HTML routes while
+  `operations.py` shares validation, permissions and atomic transitions. See
+  [functional milestone 1](docs/migration/functional-milestone-1.md) for exact
+  scope, decimal migration, pending policies and release verification.
 - Existing domains: `HOME`, `AUTHENTICATE`, `PARLEYPRO`, `PHILANTHROPY`,
   `NEWMEMBER`, and `MISC`. Preserve existing routes and naming in relevant work.
 - Domain regression work uses singular `test/` for tests and testing documentation.

@@ -20,6 +20,7 @@ from PARLEYPRO.pp_decorators import requires_role
 from MISC.models import AnnouncementAlert
 
 
+from django.views.decorators.http import require_http_methods
 from .models import DashboardLink
 
 
@@ -69,6 +70,10 @@ def alumni_roster(request):
     return render(request, "AUTHENTICATE/roster.html", context)
 
 
+def react_landing(user):
+    return "/app/new-members" if Brother_Profile.objects.filter(user=user, roles__name="NEW_MEMBER").exists() else "/app/dashboard"
+
+
 def loginPage(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -78,11 +83,12 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             next_url = request.GET.get("next")
-            if next_url:
+            from django.utils.http import url_has_allowed_host_and_scheme
+            if next_url and next_url.startswith("/") and not next_url.startswith("//") and url_has_allowed_host_and_scheme(next_url, {request.get_host()}, require_https=request.is_secure()):
                 return redirect(
                     next_url
                 )  # Redirect to the URL they were trying to access
-            return redirect("home")
+            return redirect(react_landing(user))
         else:
             messages.error(request, "Invalid username or password.")
             return redirect("login")
@@ -91,9 +97,12 @@ def loginPage(request):
     return render(request, "AUTHENTICATE/login.html", context)
 
 
+@require_http_methods(["GET", "POST"])
 def logoutUser(request):
+    if request.method != "POST":
+        return render(request, "AUTHENTICATE/logout.html")
     logout(request)
-    return render(request, "HOME/home.html")
+    return redirect("/app/")
 
 
 @login_required

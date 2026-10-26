@@ -20,7 +20,8 @@ own action/object permissions and explicit response whitelists; see their README
 and the [screen plan](../../../docs/design/screen-plan.md). Session and caller
 read endpoints now reuse existing Django cookie authentication. The demo entry
 form posts to the original CSRF-protected endpoint with a narrowly allowlisted
-React return path; no DRF business write or password-login API is introduced.
+React or legacy return path. Poll/service writes now use separate domain `api/`
+packages and shared operations; password login remains native Django.
 
 From the repository root:
 
@@ -40,4 +41,6 @@ embedded credentials; domain serializers still whitelist every returned field.
 Schema enum names distinguish public liveness from request approval statuses in
 `web_settings.py`. The service serializer uses its model's existing status choices;
 this changes schema naming, not stored values. The schema contract test locks the
-current eleven GET-only paths and their public/optional/protected authentication.
+current public/optional/protected endpoints and their explicit GET/POST/PUT/PATCH
+contracts. `errors.py` maps domain validation/conflicts and sanitized database
+failures to JSON responses. See [functional milestone 1](../../../docs/migration/functional-milestone-1.md).

@@ -93,14 +93,14 @@ class MediaCompositionTests(RegressionTestCase):
         login_actor(self.client, actor)
         actor.refresh_from_db()
         before = snapshot_scope([actor, *rows], files=[file_path(rows[0].image)])
-        business = self.client.get("/")
+        business = self.client.get("/legacy/")
         self.assertEqual(business.status_code, 200)
         self.assertNotContains(business, "railway-demo-banner")
         templates = deepcopy(settings.TEMPLATES)
         templates[0]["OPTIONS"]["context_processors"].append("railway_demo.context.demo_state")
         with override_settings(ROOT_URLCONF="railway_demo.urls", DEMO_MODE=True, TEMPLATES=templates,
                                MIDDLEWARE=[*settings.MIDDLEWARE, "railway_demo.middleware.DemoBoundaryMiddleware"]):
-            demo = self.client.get("/", secure=True)
+            demo = self.client.get("/legacy/", secure=True)
         self.assertEqual(demo.status_code, 200)
         self.assertContains(demo, "Enter demo")
         self.assertTemplateUsed(demo, "railway_demo/banner.html")

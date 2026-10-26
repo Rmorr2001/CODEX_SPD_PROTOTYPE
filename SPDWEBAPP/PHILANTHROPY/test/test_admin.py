@@ -116,7 +116,7 @@ class AdminTests(PhilanthropyCase):
         before = self.capture(actor, self.b, self.e, self.f)
         variants = [('philanthropy_approval_status', 'bogus'),
                     ('philanthropy_event_title', 'x' * 101),
-                    ('philanthropy_event_hours', '1.5'),
+                    ('philanthropy_event_hours', '1.555'),
                     ('philanthropy_event_hours', 'NaN'),
                     ('philanthropy_event_hours', 'abc'),
                     ('philanthropy_event_date', 'abc'),

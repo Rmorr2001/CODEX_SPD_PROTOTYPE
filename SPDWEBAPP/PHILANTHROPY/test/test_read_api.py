@@ -1,4 +1,4 @@
-"""Own service reads retain academic boundaries, approvals and legacy integer storage."""
+"""Own service reads retain academic boundaries, approvals and exact decimal storage."""
 from datetime import date
 from django.contrib.auth.models import User
 from django.test import TestCase
@@ -75,15 +75,15 @@ class ServiceReadApiTests(TestCase):
         self.profile.roles.remove(Role.objects.get(name='ACTIVE'))
         self.assertEqual(self.client.get('/api/v1/service/').status_code, 403)
 
-    def test_fractional_input_preserves_existing_integer_storage_without_a_schema_fix(self):
+    def test_fractional_input_preserves_decimal_storage(self):
         self.client.force_login(self.user)
         event = self.event('Fractional legacy record', 1.75, date(self.year, 8, 1))
         event.refresh_from_db()
-        self.assertEqual(event.philanthropy_event_hours, 1)
+        self.assertEqual(event.philanthropy_event_hours, 1.75)
         data = self.client.get('/api/v1/service/').json()
-        self.assertEqual((data['approved_hours'], data['events'][0]['hours']), (1, 1))
+        self.assertEqual((data['approved_hours'], data['events'][0]['hours']), (1.75, 1.75))
 
-    def test_read_adapter_rejects_hour_submission(self):
+    def test_submission_requires_complete_validated_fields(self):
         self.client.force_login(self.user)
-        self.assertEqual(self.client.post('/api/v1/service/', {'hours': 2}).status_code, 405)
+        self.assertEqual(self.client.post('/api/v1/service/', {'hours': 2}).status_code, 400)
         self.assertFalse(Event.objects.exists())

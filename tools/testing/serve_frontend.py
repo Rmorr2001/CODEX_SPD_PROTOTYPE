@@ -27,6 +27,8 @@ def main():
         # Local HTTP browser fixtures only; deployed demo settings keep secure cookies.
         settings.SESSION_COOKIE_SECURE = False
         settings.CSRF_COOKIE_SECURE = False
+        # Explicit trust for the optional loopback Vite dev server, never deployed settings.
+        settings.CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:5173"]
         django.setup()
         call_command('migrate', interactive=False, verbosity=0)
         call_command('seed_railway_demo', verbosity=0)
