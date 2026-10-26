@@ -5,7 +5,21 @@ export function csrfToken(): string {
   return cookie ? decodeURIComponent(cookie.slice('csrftoken='.length)) : '';
 }
 
-export async function command(url: string, method: 'POST' | 'PUT' | 'PATCH', data: unknown = {}) {
+export class CommandError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+  ) {
+    super(message);
+  }
+}
+
+export async function command(
+  url: string,
+  method: 'POST' | 'PUT' | 'PATCH',
+  data: unknown = {},
+  options: { notify?: boolean } = {},
+) {
   const controller = new AbortController();
   const timer = window.setTimeout(() => controller.abort(), 15000);
   try {
@@ -33,12 +47,13 @@ export async function command(url: string, method: 'POST' | 'PUT' | 'PATCH', dat
               .flat()
               .filter((v) => typeof v === 'string')
           : [];
-      throw new Error(
+      throw new CommandError(
         values.join(' ') || 'The action could not be completed. Refresh and try again.',
+        response.status,
       );
     }
-    if (url.startsWith('/api/v1/polls/')) notifySaved('polls');
-    if (url.startsWith('/api/v1/service/')) notifySaved('service');
+    if (options.notify !== false && url.startsWith('/api/v1/polls/')) notifySaved('polls');
+    if (options.notify !== false && url.startsWith('/api/v1/service/')) notifySaved('service');
     return result;
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError')

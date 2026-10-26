@@ -29,6 +29,7 @@ export function useMemberRead<T>(
 ) {
   const { resource, refreshMs = 0 } = options;
   const [state, setState] = useState<ReadState<T>>({ kind: 'loading' });
+  const revision = useRef(0);
   const refreshRef = useRef<() => void>(() => {});
   useEffect(() => {
     let active = true;
@@ -39,6 +40,7 @@ export function useMemberRead<T>(
     async function refresh(force = false) {
       if (!active || (running && !force)) return;
       const requestId = ++generation;
+      const readRevision = revision.current;
       controller?.abort();
       const current = new AbortController();
       controller = current;
@@ -46,7 +48,7 @@ export function useMemberRead<T>(
       const timer = window.setTimeout(() => current.abort(), 15000);
       try {
         const data = await load(current.signal);
-        if (active && requestId === generation)
+        if (active && requestId === generation && readRevision === revision.current)
           setState((previous) => {
             // Reads return validated JSON. Identical snapshots need no render or live announcement.
             if (
@@ -58,7 +60,7 @@ export function useMemberRead<T>(
             return { kind: 'ready', data };
           });
       } catch (error) {
-        if (active && requestId === generation)
+        if (active && requestId === generation && readRevision === revision.current)
           setState((previous) => {
             if (error instanceof MemberAccessError) return { kind: 'denied' };
             return previous.kind === 'ready' ? { ...previous, stale: true } : { kind: 'failed' };
@@ -91,12 +93,12 @@ export function useMemberRead<T>(
     };
   }, [load, resource, refreshMs]);
   const retry = useCallback(() => refreshRef.current(), []);
-  const update = useCallback(
-    (merge: (data: T) => T) =>
-      setState((previous) =>
-        previous.kind === 'ready' ? { ...previous, data: merge(previous.data) } : previous,
-      ),
-    [],
-  );
+  const update = useCallback((merge: (data: T) => T) => {
+    // A read started before an acknowledged mutation cannot overwrite that acknowledgement.
+    revision.current++;
+    setState((previous) =>
+      previous.kind === 'ready' ? { ...previous, data: merge(previous.data) } : previous,
+    );
+  }, []);
   return { state, retry, update };
 }

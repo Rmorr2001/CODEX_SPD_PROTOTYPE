@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { ServiceNavigation } from './ServiceNavigation';
 import { useMember } from '../identity/MemberLayout';
 import { memberJson, useMemberRead } from '../../api/read';
 import { serviceRecord, type ServiceRecord } from './transactions';
@@ -29,7 +30,7 @@ export function ServiceHistory() {
   const { state, retry } = useMemberRead(load, { resource: 'service', refreshMs: 3000 });
   return (
     <section>
-      <Link to="/service">Service hours</Link>
+      <ServiceNavigation />
       <h1>Approved service history</h1>
       {state.kind === 'ready' && state.stale && (
         <p role="status">
@@ -98,7 +99,7 @@ export function ServiceChapter() {
   const { state, retry } = useMemberRead(load, { resource: 'service', refreshMs: 3000 });
   return (
     <section>
-      <Link to="/service">Your service hours</Link>
+      <ServiceNavigation />
       <h1>Chapter service</h1>
       {state.kind === 'ready' && state.stale && (
         <p role="status">

@@ -1,6 +1,7 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMember } from '../identity/MemberLayout';
 import { Card } from '@/components/ui/card';
+import { ServiceNavigation } from './ServiceNavigation';
 import { ServiceEntryForm } from './ServiceEntryForm';
 
 export function ServiceForm() {
@@ -11,7 +12,7 @@ export function ServiceForm() {
   if (!allowed) return <p role="alert">Your role cannot perform this service action.</p>;
   return (
     <section>
-      <Link to="/service">Service hours</Link>
+      <ServiceNavigation />
       <h1 className="mt-4">{id ? 'Edit service entry' : 'Log service hours'}</h1>
       <Card className="max-w-2xl p-6 sm:p-8">
         <ServiceEntryForm

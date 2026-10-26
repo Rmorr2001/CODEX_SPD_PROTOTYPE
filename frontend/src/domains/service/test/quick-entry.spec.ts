@@ -20,6 +20,8 @@ for (const width of [1536, 390]) {
     const dialog = page.getByRole('dialog', { name: 'Log service', exact: true });
     const event = dialog.getByLabel('Event', { exact: true });
     await expect(event).toBeFocused();
+    await expect(dialog.getByLabel('Recipient', { exact: true })).toHaveValue('Jordan Sample');
+    await expect(dialog.getByLabel('Recipient', { exact: true })).toHaveAttribute('readonly', '');
     await expect(dialog.getByLabel('Notes')).toHaveCount(0);
     const bounds = await dialog.boundingBox();
     expect(bounds!.width).toBeLessThanOrEqual(width);

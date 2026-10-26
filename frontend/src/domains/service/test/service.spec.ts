@@ -11,6 +11,16 @@ test('service shows actual own stored totals, statuses and working academic year
     .getByRole('link', { name: 'Service', exact: true })
     .click();
   await expect(page).toHaveURL(/\/app\/service$/);
+  const tools = page.getByRole('navigation', { name: 'Service tools' });
+  await expect(tools.getByRole('link', { name: 'Your hours', exact: true })).toHaveAttribute(
+    'aria-current',
+    'page',
+  );
+  for (const name of ['Your hours', 'Chapter totals', 'Review service requests']) {
+    const action = tools.getByRole('link', { name, exact: true });
+    await expect(action).toHaveAttribute('data-ui', 'button');
+    await expect(action.locator('svg[aria-hidden="true"]')).toBeVisible();
+  }
   await expect(page.locator('#service-total-title strong')).toHaveText(String(data.approved_hours));
   await expect(page.locator('.service-table tbody tr')).toHaveCount(data.events.length);
   await expect(page.locator('.service-status.requested').first()).toHaveText('…Pending');

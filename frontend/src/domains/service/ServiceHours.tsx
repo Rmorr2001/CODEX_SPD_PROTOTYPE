@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { ServiceQuickEntry } from './ServiceQuickEntry';
 import { fetchService, type ServiceContent } from './content';
 import './service.css';
+import { ServiceNavigation } from './ServiceNavigation';
 
 const labels = { approved: 'Approved', requested: 'Pending', denied: 'Denied' };
 function eventDate(date: string) {
@@ -23,7 +24,6 @@ function ServiceActivity({ data }: { data: ServiceContent }) {
     <>
       <div className="service-records-heading">
         <h2>Your activity</h2>
-        <Link to="/service/history">View your service history</Link>
       </div>
       {data.events.length ? (
         <>
@@ -109,6 +109,7 @@ export function ServiceHours() {
           </div>
         )}
       </header>
+      <ServiceNavigation />
       {params.get('submitted') === '1' && data && (
         <p role="status">Service hours submitted for review.</p>
       )}
@@ -168,11 +169,6 @@ export function ServiceHours() {
       {data && (
         <>
           <ServiceActivity data={data} />
-          <nav aria-label="Service tools" className="service-tools">
-            <Link to="/service/chapter">Chapter totals</Link>
-            {data.can_review && <Link to="/service/review">Review service requests</Link>}
-            <a href="/api/v1/service/export/">Download approved hours (XLSX)</a>
-          </nav>
         </>
       )}
     </>

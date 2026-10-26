@@ -3,6 +3,7 @@ import { Link, useBeforeUnload, useBlocker, useLocation } from 'react-router-dom
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ServiceEntryForm } from './ServiceEntryForm';
+import { ServiceIcon } from './ServiceNavigation';
 import type { ServiceGuard } from './useServiceDraft';
 
 /** A service-page Sheet protects drafts across refresh and navigation. */
@@ -55,7 +56,10 @@ export function ServiceQuickEntry() {
     <>
       <Sheet open={open} onOpenChange={close}>
         <SheetTrigger asChild>
-          <Button>Log service</Button>
+          <Button>
+            <ServiceIcon name="plus" />
+            Log service
+          </Button>
         </SheetTrigger>
         <SheetContent
           title="Log service"

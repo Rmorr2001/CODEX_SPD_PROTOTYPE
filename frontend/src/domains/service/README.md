@@ -38,3 +38,13 @@ Service entry belongs only to the service page, below personal approved/pending
 figures. Academic-year selection is in its header; activity precedes secondary
 tools. Success feedback can dismiss and expires after six seconds; leaving the
 page removes it. The drawer stays mounted through query refresh/year changes.
+
+`ServiceNavigation` supplies consistent labeled icon buttons (native navigation
+links) for Your hours, Chapter totals, Requests, History and Export, with active
+route state and chair-only request visibility. It stays inside service content.
+The form now identifies Recipient using the authenticated member for creation
+and stored owner for edits. That field is read-only: both original and current
+HTML workflows create only for the submitting member; chair edits preserve owner.
+Assigning to another member needs a chapter decision on authority/single-vs-batch
+recipients and a separate submitter audit before enabling it. No broader assignment
+permission or silent recipient payload is invented by this presentation pass.

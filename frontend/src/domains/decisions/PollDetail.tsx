@@ -1,12 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { memberJson, useMemberRead } from '../../api/read';
-import { isMotion, type Motion } from './content';
+import { isMotion, previewMotion, type Motion } from './content';
 import { MotionCard } from './MotionCard';
 import { PollActions } from './PollActions';
 
 export function PollDetail() {
   const { id } = useParams();
+  const [pending, setPending] = useState<string | null>(null);
   const load = useCallback(
     async (
       signal: AbortSignal,
@@ -28,7 +29,7 @@ export function PollDetail() {
     },
     [id],
   );
-  const { state, retry } = useMemberRead(load, { resource: 'polls', refreshMs: 3000 });
+  const { state, retry, update } = useMemberRead(load, { resource: 'polls', refreshMs: 3000 });
   return (
     <section>
       <Link to="/polls">All chapter decisions</Link>
@@ -47,13 +48,29 @@ export function PollDetail() {
       )}
       {state.kind === 'ready' && (
         <>
-          <MotionCard motion={state.data} current={!state.data.ended_at}>
+          <MotionCard
+            motion={previewMotion(state.data, state.data.own_choice, pending)}
+            current={!state.data.ended_at}
+          >
             {!state.data.ended_at && (
               <PollActions
+                key={state.data.id}
                 id={state.data.id}
                 canManage={state.data.can_manage}
                 ownChoice={state.data.own_choice}
-                done={retry}
+                preview={setPending}
+                reconcile={retry}
+                done={(result) => {
+                  if (isMotion(result))
+                    update((data) => ({
+                      ...data,
+                      ...result,
+                      own_choice:
+                        'own_choice' in result && typeof result.own_choice === 'string'
+                          ? result.own_choice
+                          : null,
+                    }));
+                }}
               />
             )}
           </MotionCard>

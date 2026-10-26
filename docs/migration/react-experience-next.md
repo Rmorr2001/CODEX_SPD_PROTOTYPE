@@ -99,3 +99,28 @@ transactions and drawer retention. Logs are runtime-local:
 `/workspace/work/feel-final-server.log` and `/workspace/work/feel-final-image.log`.
 The image serves index-CnpVB4xV.js and index-BqgWsZuX.css. No backend, migration,
 permission or Railway configuration changes; live acceptance remains parent-side.
+
+
+## Immediate vote feedback and service form
+
+The next bounded iteration separates a pending vote preview from confirmed data:
+selection/tallies respond on click, Saving persists through a serialized/coalesced
+write queue, and Saved requires the matching server acknowledgement. Failure is
+Not synced (transport failures may have uncertain persistence), rolls back the
+preview and offers explicit retry where safe. Older reads cannot overwrite a
+confirmed mutation. No network-latency elimination or server-push claim.
+
+Service routes share labeled icon navigation with active state. The form identifies
+the actual recipient, read-only under existing self-submission/owner-preserving
+edit rules. Cross-member chair assignment remains pending an explicit single-vs-
+batch authority decision; it is not enabled by a cosmetic recipient field.
+Domain READMEs own the detailed contracts and remaining scope.
+
+Verification for this follow-up: production build/type check, formatting and diff
+review passed; all64browser scenarios passed separately on fresh synthetic Django
+and Docker targets (`work/sync-release-server.log`, `work/sync-release-image.log`
+in this runtime). A manual held-write check observed immediate Nay/Saving while
+the database remained Aye, then Nay/Saved after acknowledgement; the fictional
+vote was restored. Desktop/mobile service navigation and the recipient form were
+visually inspected. Assets: index-dViGrCs1.js and index-BO9DSzIt.css. No backend,
+schema, approval policy or Railway configuration change; live QA is parent-side.

@@ -5,7 +5,7 @@ import { CreateMotion, PollActions } from './PollActions';
 import { MotionCard } from './MotionCard';
 
 export function Decisions() {
-  const { state, retry, saved } = useLiveDecisions();
+  const { state, retry, saved, preview } = useLiveDecisions();
   if (state.kind === 'loading') return <p role="status">Loading polls…</p>;
   if (state.kind === 'denied')
     return (
@@ -48,6 +48,8 @@ export function Decisions() {
               ownChoice={own_choice}
               canManage={can_manage}
               done={saved}
+              preview={(choice) => preview(current.id, choice)}
+              reconcile={retry}
             />
           </MotionCard>
         ) : (

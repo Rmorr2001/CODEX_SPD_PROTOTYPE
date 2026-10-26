@@ -62,3 +62,17 @@ export async function fetchDecisions(signal: AbortSignal): Promise<DecisionsCont
       'own_choice' in data && typeof data.own_choice === 'string' ? data.own_choice : null,
   };
 }
+
+/** Pending display only: replace this caller's confirmed ballot without changing server state. */
+export function previewMotion(
+  motion: Motion,
+  confirmed: string | null | undefined,
+  desired: string | null,
+): Motion {
+  if (!desired || desired === confirmed) return motion;
+  return {
+    ...motion,
+    aye: Math.max(0, motion.aye - (confirmed === 'Aye' ? 1 : 0) + (desired === 'Aye' ? 1 : 0)),
+    nay: Math.max(0, motion.nay - (confirmed === 'Nay' ? 1 : 0) + (desired === 'Nay' ? 1 : 0)),
+  };
+}

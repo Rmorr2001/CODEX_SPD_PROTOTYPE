@@ -51,7 +51,7 @@ test('unchanged, held and focus refreshes preserve mounted poll content and focu
   await expect(page.getByRole('button', { name: 'Log service', exact: true })).toHaveCount(0);
 });
 
-test('held repeated votes give immediate feedback without layout jumps or unconfirmed selection', async ({
+test('held repeated votes give immediate feedback without layout jumps and rolls back failed selection', async ({
   page,
 }) => {
   await enterDemo(page);
@@ -59,8 +59,8 @@ test('held repeated votes give immediate feedback without layout jumps or unconf
   const card = page.locator('.motion-card.current');
   await expect(card).toBeVisible();
   const before = await card.boundingBox();
-  const selected = card.getByRole('button', { pressed: true });
-  const selectedLabel = await selected.textContent();
+  const selectedLabel = await card.getByRole('button', { pressed: true }).textContent();
+  const selected = card.getByRole('button', { name: selectedLabel!.trim(), exact: true });
   const next = page.getByRole('button', {
     name: selectedLabel?.includes('Aye') ? 'Vote Nay' : 'Vote Aye',
     exact: true,
@@ -83,8 +83,9 @@ test('held repeated votes give immediate feedback without layout jumps or unconf
     await expect(card.getByRole('status')).toContainText('Saving');
     await expect.poll(() => writes).toBe(1);
     expect(await card.boundingBox()).toEqual(before);
-    await expect(selected).toHaveAttribute('aria-pressed', 'true');
-    await expect(next).toBeDisabled();
+    await expect(selected).toHaveAttribute('aria-pressed', 'false');
+    await expect(next).toHaveAttribute('aria-pressed', 'true');
+    await expect(next).toBeEnabled();
   } finally {
     release();
   }

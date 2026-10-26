@@ -1,4 +1,5 @@
 import { useEffect, useId, type Ref } from 'react';
+import { useMember } from '../identity/MemberLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useServiceDraft, type ServiceGuard, type ServiceSaved } from './useServiceDraft';
@@ -20,7 +21,9 @@ export function ServiceEntryForm({
   compact?: boolean;
 }) {
   const id = useId();
-  const { draft, setDraft, loading, busy, dirty, error, save } = useServiceDraft(eventId);
+  const member = useMember();
+  const { draft, setDraft, recipient, loading, busy, dirty, error, save } =
+    useServiceDraft(eventId);
   useEffect(() => {
     onGuardChange?.({ dirty, busy });
   }, [dirty, busy, onGuardChange]);
@@ -34,6 +37,22 @@ export function ServiceEntryForm({
         if (result) onSaved(result);
       }}
     >
+      <div className="grid gap-2">
+        <label className="text-sm font-semibold" htmlFor={`${id}-recipient`}>
+          Recipient
+        </label>
+        <Input
+          id={`${id}-recipient`}
+          value={eventId ? recipient : member.display_name}
+          readOnly
+          aria-describedby={`${id}-recipient-note`}
+        />
+        <span id={`${id}-recipient-note`} className="text-xs text-muted-foreground">
+          {eventId
+            ? 'The recipient of this entry stays the same.'
+            : 'This request records your own service hours.'}
+        </span>
+      </div>
       <div className="grid gap-2">
         <label className="text-sm font-semibold" htmlFor={`${id}-event`}>
           {compact ? 'Event' : 'Event title'}

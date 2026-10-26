@@ -15,6 +15,7 @@ export function useServiceDraft(eventId?: string) {
   const [baseline, setBaseline] = useState(initialDraft);
   const [loading, setLoading] = useState(Boolean(eventId));
   const [busy, setBusy] = useState(false);
+  const [recipient, setRecipient] = useState('');
   const [error, setError] = useState('');
   const sending = useRef(false);
   useEffect(() => {
@@ -27,6 +28,7 @@ export function useServiceDraft(eventId?: string) {
         if (!serviceRecord(result)) throw new Error('Invalid entry');
         if (active) {
           const next = { title: result.title, hours: String(result.hours), date: result.date };
+          setRecipient(result.owner_name);
           setDraft(next);
           setBaseline(next);
         }
@@ -76,5 +78,5 @@ export function useServiceDraft(eventId?: string) {
       setBusy(false);
     }
   }
-  return { draft, setDraft, loading, busy, dirty, error, save };
+  return { draft, setDraft, recipient, loading, busy, dirty, error, save };
 }

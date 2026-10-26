@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ServiceNavigation } from './ServiceNavigation';
 import { useMemberRead } from '../../api/read';
 import { command } from '../../api/write';
 import { readRecords } from './transactions';
@@ -26,7 +27,7 @@ export function ServiceReview() {
   }
   return (
     <section>
-      <Link to="/service">Service hours</Link>
+      <ServiceNavigation />
       <h1>Review service requests</h1>
       {state.kind === 'ready' && state.stale && (
         <p role="status">
