@@ -129,3 +129,34 @@ The user subsequently approved publishing this tested milestone to the disposabl
 demo on26October2026. The no-commit/no-push statements above describe the release
 review snapshot. Publishing triggers the existing branch-following Railway
 workflow; terminal deployment status must be verified separately from local tests.
+
+
+## Review correction: primary actions stay in React
+
+Railway's reported13ec2a8 asset `index-B7piq5bN.js` matches the served baseline
+Docker asset inspected locally. It contains `Log service hours`, not the reported
+`Log hours in chapter site`; the service action targets `/app/service/new`.
+The HTML response is `no-cache`, and hashed assets are immutable as designed.
+No wrong build directory, stale Docker copy or role-dependent old service CTA was
+reproduced. The exact reported old service label still needs the user's current
+page/DOM if it persists; it is not attributed to browser caching without evidence.
+
+A concrete issue was reproduced in that same bundle: a prominent primary
+`Vote in chapter site` link remained beside the functioning React ballot. This
+sent users to legacy `/poll/`, matching the navigation observed in deployment logs.
+The correction removes that primary handoff, labels the ballot `Vote here in React`,
+and groups old poll links under a secondary `Django HTML/CSS comparison` section.
+The service comparison link is likewise explicitly labeled as the original
+interface; its primary submission and review routes remain in React.
+
+Browser regression assertions now require visible real ballot controls, no
+legacy primary poll handoff, a React service primary URL, no old service CTA,
+and explicitly labeled comparison links. The correction changes presentation
+and tests only; it introduces no API, schema, permission or dependency changes.
+
+
+Correction verification: production build/TypeScript and formatting passed;
+47 browser tests passed on the synthetic server and47 on the rebuilt Docker
+image. Served corrected asset `index-CjTIIREB.js` has neither deprecated CTA and
+does include the React ballot label. No backend behavior changed, so the earlier
+497-test backend audit remains applicable rather than being claimed as rerun.

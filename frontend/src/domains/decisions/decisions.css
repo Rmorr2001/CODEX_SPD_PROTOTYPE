@@ -113,9 +113,7 @@
   margin-bottom: 0;
   padding-top: 2px;
 }
-.vote-action {
-  margin-top: 18px;
-}
+
 .closed-motion-list {
   display: grid;
   gap: 20px;
@@ -195,4 +193,18 @@
   .decisions-info {
     padding: 24px;
   }
+}
+
+/* Legacy navigation is comparison-only; the ballot remains the main action. */
+.legacy-comparison {
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.legacy-comparison h3 {
+  font-size: 15px;
+}
+.legacy-comparison a {
+  display: block;
+  margin-top: 12px;
 }

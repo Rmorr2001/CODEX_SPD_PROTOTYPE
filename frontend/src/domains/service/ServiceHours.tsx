@@ -164,10 +164,10 @@ export function ServiceHours() {
       )}
       <div className="service-bottom">
         <section>
-          <p className="eyebrow">KEEP MAKING A DIFFERENCE</p>
-          <h2>Every contribution matters.</h2>
-          <p>Submit an event and its hours here, then check its review status.</p>
-          <a href={`${chapterSite}philanthropy/`}>Open the original service dashboard</a>
+          <p className="eyebrow">DJANGO HTML/CSS COMPARISON</p>
+          <h2>Compare the original interface</h2>
+          <p>Log hours here in React. The original interface shows the same service records.</p>
+          <a href={`${chapterSite}philanthropy/`}>Django HTML/CSS service dashboard</a>
         </section>
         {data.can_review && (
           <aside className="service-review">

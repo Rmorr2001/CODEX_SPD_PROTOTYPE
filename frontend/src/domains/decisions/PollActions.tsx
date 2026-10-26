@@ -32,6 +32,7 @@ export function PollActions({
   }
   return (
     <section aria-label="Your ballot" className="transaction-panel">
+      <h3>Vote here in React</h3>
       <p>
         Your current vote:{' '}
         <strong>{ownChoice === 'Aye' || ownChoice === 'Nay' ? ownChoice : 'Not cast'}</strong>

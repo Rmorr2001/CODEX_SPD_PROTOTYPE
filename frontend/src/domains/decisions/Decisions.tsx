@@ -57,9 +57,6 @@ export function Decisions() {
                   canManage={can_manage}
                   done={retry}
                 />
-                <a className="button primary vote-action" href={`${chapterSite}poll/`}>
-                  Vote in chapter site
-                </a>
               </>
             ) : (
               <div className="motion-empty">
@@ -98,15 +95,22 @@ export function Decisions() {
             totals.
           </p>
           <p>Results refresh every five seconds while this page is visible.</p>
-          <a href={`${chapterSite}poll/past_polls/`}>View past polls in chapter site</a>
           {can_manage && (
             <div className="motion-management">
               <span className="eyebrow">EXECUTIVE TOOLS</span>
               <p>One chapter motion can be open at a time.</p>
               {!current && <CreateMotion done={retry} />}
-              <a href={`${chapterSite}poll/start_vote/`}>Create a motion in chapter site</a>
             </div>
           )}
+          <section aria-label="Django HTML/CSS comparison" className="legacy-comparison">
+            <h3>Compare the original interface</h3>
+            <p>Both interfaces use the same chapter motion and votes.</p>
+            <a href={`${chapterSite}poll/`}>Django HTML/CSS poll</a>
+            <a href={`${chapterSite}poll/past_polls/`}>Django HTML/CSS saved results</a>
+            {can_manage && (
+              <a href={`${chapterSite}poll/start_vote/`}>Django HTML/CSS motion creation</a>
+            )}
+          </section>
         </aside>
       </div>
     </>

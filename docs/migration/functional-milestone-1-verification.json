@@ -161,5 +161,22 @@
     "published": false,
     "snapshot_context": "Review snapshot before user publication approval; zero staged files/commits and published=false describe that review point."
   },
-  "publication_authorized": true
+  "publication_authorized": true,
+  "cta_correction": {
+    "base_commit": "13ec2a8eb85b90484375ffb277ac2a3cb46fa390",
+    "changed_frontend_source_sha256": "5a42b42c4b65b88c06d6e88b8176e6bcfcb69a9445b1c55e9cd5d9fffc2cc2db",
+    "baseline_served_js": "index-B7piq5bN.js",
+    "baseline_old_service_label_present": false,
+    "baseline_prominent_legacy_poll_label_present": true,
+    "corrected_served_js": "index-CjTIIREB.js",
+    "corrected_old_service_label_present": false,
+    "corrected_legacy_poll_handoff_label_present": false,
+    "synthetic_browser_passed": 47,
+    "docker_browser_passed": 47,
+    "image_sha256": "674beee0d387088dadf6104c54524557633e6f67f71dc9641d4d041494fddcce",
+    "build_and_formatting": "passed",
+    "api_permission_or_migration_changes": false,
+    "reported_old_service_label": "not reproduced in the same deployed baseline asset; no cache cause asserted",
+    "public_live_browser": "still blocked by runtime allowlist"
+  }
 }

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { enterDemo } from '../../identity/test/helpers';
 
-test('decisions render actual aggregate motion results and truthful legacy voting action', async ({
+test('decisions prioritize real React ballots and label legacy links as comparison', async ({
   page,
 }) => {
   await enterDemo(page, 'executive');
@@ -17,13 +17,24 @@ test('decisions render actual aggregate motion results and truthful legacy votin
   );
   await expect(page.locator('.closed-motion-list .motion-card')).toHaveCount(content.closed.length);
   await expect(
-    page.getByRole('link', { name: 'Vote in chapter site', exact: true }),
+    page.getByRole('link', { name: 'Django HTML/CSS poll', exact: true }),
   ).toHaveAttribute('href', '/poll/');
-  await expect(page.getByRole('link', { name: 'Create a motion in chapter site' })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'Django HTML/CSS motion creation' })).toHaveAttribute(
     'href',
     '/poll/start_vote/',
   );
-  await expect(page.locator('input[type="radio"]')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Vote in chapter site', exact: true })).toHaveCount(
+    0,
+  );
+  await expect(
+    page
+      .getByRole('region', { name: 'Your ballot' })
+      .getByRole('button', { name: 'Vote Aye', exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Django HTML/CSS comparison' })).toContainText(
+    'Both interfaces use the same chapter motion and votes.',
+  );
+  await expect(page.locator('.decisions-section a.button.primary')).toHaveCount(0);
   await page.getByRole('button', { name: 'Refresh results' }).click();
   await expect(page.locator('.motion-card.current')).toBeVisible();
   await page.reload();
@@ -40,7 +51,7 @@ test('decision creation is hidden for active nonexecutive and alumni read is den
   await enterDemo(page);
   await page.goto('/app/polls');
   await expect(page.locator('.motion-card.current')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Create a motion in chapter site' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Django HTML/CSS motion creation' })).toHaveCount(0);
   await enterDemo(page, 'alumni');
   expect((await page.request.get('/api/v1/polls/')).status()).toBe(403);
   await page.goto('/app/polls');
