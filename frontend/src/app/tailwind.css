@@ -1,0 +1,36 @@
+/* Foundation only: no Preflight reset and no scanning legacy domain class names. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+@source '../components/ui';
+
+/* New components opt in; existing --muted and other domain tokens stay untouched. */
+.spd-ui {
+  --background: #ffffff;
+  --foreground: #111114;
+  --primary: #c51f32;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #111114;
+  --muted: #f4f4f5;
+  --muted-foreground: #5f606b;
+  --border: #d7d7dc;
+  --input: #d7d7dc;
+  --ring: #c51f32;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+}

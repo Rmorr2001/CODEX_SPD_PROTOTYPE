@@ -44,7 +44,6 @@ function Leadership({
     <section id="leadership" className="about-leadership" aria-labelledby="leadership-title">
       <div className="about-section-top">
         <div>
-          <p className="eyebrow">CHAPTER LEADERSHIP</p>
           <h2 id="leadership-title">A team that builds a stronger chapter.</h2>
         </div>
         <a href={`${chapterSite}executive-board/`}>
@@ -105,7 +104,6 @@ export function About() {
     <div className="about-page">
       <section className="about-intro" aria-labelledby="about-title">
         <div>
-          <p className="eyebrow">ABOUT OUR CHAPTER</p>
           <h1 id="about-title">Built together.</h1>
           <p>
             The Beta-Omicron chapter of Sigma Phi Delta brings engineers together at Mizzou. We
@@ -129,7 +127,6 @@ export function About() {
       </figure>
       <section className="about-story" aria-labelledby="story-title">
         <div>
-          <p className="eyebrow">OUR BROTHERHOOD</p>
           <h2 id="story-title">
             Different paths.
             <br />A shared purpose.
@@ -182,7 +179,6 @@ export function About() {
       />
       <section className="about-recruitment">
         <div>
-          <p className="eyebrow">YOUR PLACE IN THE CHAPTER</p>
           <h2>Build what comes next.</h2>
           <p>Start by getting to know us.</p>
         </div>

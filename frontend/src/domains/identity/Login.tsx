@@ -19,17 +19,15 @@ export function AccessPanel({ state, retry }: { state: SessionState; retry: () =
   return (
     <div className="access-page">
       <section className="access-intro">
-        <p className="eyebrow">THE CHAPTER, CONNECTED</p>
         <h1>
           Good to have
           <br />
           you here.
         </h1>
-        <p>Your people. Your chapter. Everything you need to stay involved.</p>
+
         <Link to="/">Back to the chapter homepage</Link>
       </section>
       <section className="access-card" aria-labelledby="access-title">
-        <p className="eyebrow">MEMBER WORKSPACE</p>
         <h2 id="access-title">Member sign in</h2>
         {state.kind === 'loading' && <p role="status">Checking your session…</p>}
         {state.kind === 'failed' && (
@@ -60,7 +58,6 @@ export function AccessPanel({ state, retry }: { state: SessionState; retry: () =
         )}
         {session && !session.authenticated && (
           <>
-            <p>Use your chapter account to continue.</p>
             <a
               className="button primary"
               href={`${chapterSite}auth/login/?next=%2Fapp%2Fdashboard`}
@@ -72,10 +69,7 @@ export function AccessPanel({ state, retry }: { state: SessionState; retry: () =
         {session?.demo_enabled && (
           <div className="demo-entry">
             <h3>Explore the demo</h3>
-            <p>
-              Try a chapter role with fictional sample data. Demo changes are shared and may be
-              reset.
-            </p>
+            <p>Fictional data. Changes may reset.</p>
             {import.meta.env.DEV ? (
               <a href={`${chapterSite}app/login`}>Open demo entry on the chapter site</a>
             ) : csrf ? (

@@ -97,3 +97,12 @@ origin checks; the built application uses one origin. No DRF password-login API 
 Django session and CSRF boundaries.
 See [foundation delivery](../docs/migration/part-2-foundation.md) for Docker,
 backend contracts and verification limits.
+
+## Next experience work (local)
+
+[The state/UI migration plan](../docs/migration/react-experience-next.md) records
+the copy cleanup, shared confirmed updates and bounded three-second refresh.
+Tailwind4's Vite plugin is configured without Preflight, scanning only new UI
+primitives; components.json and cn prepare shadcn adoption. No shadcn components
+or Zustand store have been added yet. Selected A/C visual implementation and the
+service Sheet depend on inspecting the actual reference images.

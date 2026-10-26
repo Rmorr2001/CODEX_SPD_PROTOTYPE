@@ -26,7 +26,7 @@ test('public home retains built assets and legacy pages', async ({ page }) => {
     .locator('script[src]')
     .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('src')));
   expect(scripts.some((path) => path?.startsWith('/static/app/assets/'))).toBeTruthy();
-  await page.getByRole('link', { name: 'Django HTML/CSS' }).click();
+  await page.getByRole('link', { name: 'Legacy site' }).click();
   await expect(page).toHaveURL('/legacy/');
   await expect(
     page.getByText('Sigma Phi Delta: Beta-Omicron Chapter', { exact: false }),

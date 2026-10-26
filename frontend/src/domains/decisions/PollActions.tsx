@@ -10,7 +10,7 @@ export function PollActions({
   id: number;
   canManage: boolean;
   ownChoice?: string | null;
-  done: () => void;
+  done: (result: unknown) => void;
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -18,12 +18,12 @@ export function PollActions({
     setBusy(true);
     setError('');
     try {
-      await command(
+      const result = await command(
         `/api/v1/polls/${id}/${action === 'close' ? 'close' : 'vote'}/`,
         action === 'close' ? 'POST' : 'PUT',
         action === 'close' ? {} : { choice: action },
       );
-      done();
+      done(result);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Unable to save vote.');
     } finally {
@@ -32,9 +32,8 @@ export function PollActions({
   }
   return (
     <section aria-label="Your ballot" className="transaction-panel">
-      <h3>Vote here in React</h3>
       <p>
-        Your current vote:{' '}
+        Your vote:{' '}
         <strong>{ownChoice === 'Aye' || ownChoice === 'Nay' ? ownChoice : 'Not cast'}</strong>
       </p>
       <div className="transaction-actions">
@@ -62,7 +61,7 @@ export function PollActions({
   );
 }
 
-export function CreateMotion({ done }: { done: () => void }) {
+export function CreateMotion({ done }: { done: (result: unknown) => void }) {
   const [title, setTitle] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -74,9 +73,9 @@ export function CreateMotion({ done }: { done: () => void }) {
         setBusy(true);
         setError('');
         try {
-          await command('/api/v1/polls/', 'POST', { title });
+          const result = await command('/api/v1/polls/', 'POST', { title });
           setTitle('');
-          done();
+          done(result);
         } catch (e) {
           setError(e instanceof Error ? e.message : 'Unable to create motion.');
         } finally {

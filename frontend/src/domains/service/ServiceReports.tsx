@@ -26,11 +26,16 @@ export function ServiceHistory() {
     },
     [userId],
   );
-  const { state, retry } = useMemberRead(load);
+  const { state, retry } = useMemberRead(load, { resource: 'service', refreshMs: 3000 });
   return (
     <section>
       <Link to="/service">Service hours</Link>
       <h1>Approved service history</h1>
+      {state.kind === 'ready' && state.stale && (
+        <p role="status">
+          Updates paused. <button onClick={retry}>Retry</button>
+        </p>
+      )}
       {state.kind === 'ready' ? (
         <>
           <p>Lifetime approved: {state.data.approved_hours} hours</p>
@@ -90,11 +95,16 @@ export function ServiceChapter() {
     },
     [year],
   );
-  const { state, retry } = useMemberRead(load);
+  const { state, retry } = useMemberRead(load, { resource: 'service', refreshMs: 3000 });
   return (
     <section>
       <Link to="/service">Your service hours</Link>
       <h1>Chapter service</h1>
+      {state.kind === 'ready' && state.stale && (
+        <p role="status">
+          Updates paused. <button onClick={retry}>Retry</button>
+        </p>
+      )}
       <form
         className="transaction-panel"
         onSubmit={(e) => {

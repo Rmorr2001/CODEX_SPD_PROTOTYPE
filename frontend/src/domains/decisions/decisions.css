@@ -14,12 +14,7 @@
   font-size: 12px;
   border-color: #cbccd4;
 }
-.decisions-layout {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 28px;
-  align-items: start;
-}
+
 .decisions-section {
   margin-bottom: 34px;
 }
@@ -118,40 +113,7 @@
   display: grid;
   gap: 20px;
 }
-.decisions-info {
-  background: white;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--red);
-  border-radius: 4px;
-  padding: 28px;
-}
-.decisions-info h2 {
-  font-size: 23px;
-  line-height: 1.3;
-  margin-bottom: 20px;
-}
-.decisions-info p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 12px;
-}
-.decisions-info > a,
-.motion-management a {
-  font-size: 11px;
-  line-height: 1.8;
-  display: inline-block;
-  margin-top: 10px;
-}
-.motion-management {
-  border-top: 1px solid var(--line);
-  margin-top: 26px;
-  padding-top: 24px;
-}
-.motion-management .eyebrow {
-  font-size: 9px;
-}
-.motion-management p {
-  margin-block: 14px 0;
-}
+
 .motion-empty {
   background: white;
   border: 1px solid var(--line);
@@ -167,11 +129,7 @@
 .motion-empty p {
   margin: 0;
 }
-@media (max-width: 1000px) {
-  .decisions-layout {
-    grid-template-columns: 1fr;
-  }
-}
+
 @media (max-width: 700px) {
   .decisions-heading {
     flex-direction: column;
@@ -190,21 +148,6 @@
   .decisions-section-title {
     align-items: flex-start;
   }
-  .decisions-info {
-    padding: 24px;
-  }
 }
 
 /* Legacy navigation is comparison-only; the ballot remains the main action. */
-.legacy-comparison {
-  margin-top: 26px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
-.legacy-comparison h3 {
-  font-size: 15px;
-}
-.legacy-comparison a {
-  display: block;
-  margin-top: 12px;
-}

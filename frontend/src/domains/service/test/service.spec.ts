@@ -29,9 +29,10 @@ test('service shows actual own stored totals, statuses and working academic year
     'href',
     '/app/service/new',
   );
-  await expect(
-    page.getByRole('link', { name: 'Django HTML/CSS service dashboard', exact: true }),
-  ).toHaveAttribute('href', '/philanthropy/');
+  await expect(page.getByRole('link', { name: 'Legacy service', exact: true })).toHaveAttribute(
+    'href',
+    '/philanthropy/',
+  );
   const previous = String(data.available_years[data.available_years.length - 1]);
   await page.getByLabel('Academic year').selectOption(previous);
   await expect(page).toHaveURL(new RegExp(`year=${previous}`));

@@ -20,7 +20,7 @@ export function ServiceHours() {
   const [params, setParams] = useSearchParams();
   const year = params.get('year');
   const load = useCallback((signal: AbortSignal) => fetchService(year, signal), [year]);
-  const { state, retry } = useMemberRead(load);
+  const { state, retry } = useMemberRead(load, { resource: 'service', refreshMs: 3000 });
   if (state.kind === 'loading') return <p role="status">Loading your service hours…</p>;
   if (state.kind === 'denied')
     return (
@@ -52,15 +52,26 @@ export function ServiceHours() {
   return (
     <>
       {params.get('submitted') === '1' && <p role="status">Service hours submitted for review.</p>}
+      {state.stale && (
+        <p role="status">
+          Updates paused. <button onClick={retry}>Retry</button>
+        </p>
+      )}
       <nav aria-label="Service tools">
         <Link to="/service/chapter">Chapter totals</Link> ·{' '}
-        <a href="/api/v1/service/export/">Download approved hours (XLSX)</a>
+        {data.can_review && (
+          <>
+            <Link to="/service/review">Review service requests</Link> ·{' '}
+          </>
+        )}
+        <a href={`${chapterSite}philanthropy/`} aria-label="Legacy service">
+          Legacy
+        </a>{' '}
+        · <a href="/api/v1/service/export/">Download approved hours (XLSX)</a>
       </nav>
       <div className="service-heading">
         <div>
-          <p className="eyebrow">SERVICE THAT ADDS UP</p>
-          <h1>Make your impact count.</h1>
-          <p>Give back to the community. Keep track of the work you do.</p>
+          <h1>Service hours</h1>
         </div>
         <Link className="button primary" to="/service/new">
           Log service hours
@@ -68,7 +79,6 @@ export function ServiceHours() {
       </div>
       <section className="service-summary" aria-labelledby="service-total-title">
         <div>
-          <p className="eyebrow">APPROVED SERVICE HOURS</p>
           <h2 id="service-total-title">
             <strong>{data.approved_hours}</strong>
             <span>hours</span>
@@ -95,16 +105,11 @@ export function ServiceHours() {
         <div className="pending-summary">
           <strong>{pending}</strong>
           <span>pending {pending === 1 ? 'request' : 'requests'}</span>
-          <p>Awaiting chapter review</p>
         </div>
       </section>
       <div className="service-records-heading">
         <div>
           <h2>Your service hours</h2>
-          <p>
-            Approved totals include approved entries only. Pending and denied entries remain listed
-            below.
-          </p>
         </div>
         <Link to="/service/history">View your service history</Link>
       </div>
@@ -162,22 +167,6 @@ export function ServiceHours() {
           <Link to="/service/new">Log your first service hours</Link>
         </section>
       )}
-      <div className="service-bottom">
-        <section>
-          <p className="eyebrow">DJANGO HTML/CSS COMPARISON</p>
-          <h2>Compare the original interface</h2>
-          <p>Log hours here in React. The original interface shows the same service records.</p>
-          <a href={`${chapterSite}philanthropy/`}>Django HTML/CSS service dashboard</a>
-        </section>
-        {data.can_review && (
-          <aside className="service-review">
-            <p className="eyebrow">PHILANTHROPY CHAIR</p>
-            <h2>Review chapter requests</h2>
-            <p>Review pending submissions and approve or deny them.</p>
-            <Link to="/service/review">Review service requests</Link>
-          </aside>
-        )}
-      </div>
     </>
   );
 }

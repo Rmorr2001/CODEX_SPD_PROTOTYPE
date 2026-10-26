@@ -24,9 +24,9 @@ test('profile displays the actual caller and opens the functioning original edit
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBeTruthy();
   await expect(
-    page.getByRole('link', { name: 'Edit in chapter site', exact: true }),
+    page.getByRole('link', { name: 'Edit profile (legacy)', exact: true }),
   ).toHaveAttribute('href', '/auth/profile/');
-  await page.getByRole('link', { name: 'Edit in chapter site', exact: true }).click();
+  await page.getByRole('link', { name: 'Edit profile (legacy)', exact: true }).click();
   await expect(page).toHaveURL(/\/auth\/profile\/$/);
   await expect(page.locator('input[name="username"]')).toHaveValue(profile.username);
 });

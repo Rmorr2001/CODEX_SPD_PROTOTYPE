@@ -27,7 +27,6 @@ function MemberDetails({ member }: { member: DirectoryMember }) {
         <dt>Chapter</dt>
         <dd>Beta-Omicron · Mizzou</dd>
       </dl>
-      <p className="directory-privacy">A chapter directory, built around the people who make it.</p>
     </aside>
   );
 }
@@ -88,9 +87,7 @@ export function Directory() {
   return (
     <>
       <div className="directory-heading">
-        <p className="eyebrow">PEOPLE WHO BUILD TOGETHER</p>
         <h1>The chapter.</h1>
-        <p>Dedicated people. Shared purpose. Lasting connections.</p>
       </div>
       <div className="directory-tools">
         <div className="directory-tabs" role="group" aria-label="Roster group">

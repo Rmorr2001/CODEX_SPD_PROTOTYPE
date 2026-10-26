@@ -62,20 +62,16 @@ export function Dashboard() {
   return (
     <>
       <div className="dashboard-intro">
-        <p className="eyebrow">YOUR CHAPTER AT A GLANCE</p>
         <h1>Welcome back, {member.display_name.split(' ')[0]}.</h1>
-        <p>Stay connected to the people and work that move our chapter forward.</p>
       </div>
       <div className="dashboard-summary">
         <article>
           <span className="summary-number">{state.data.announcements.length}</span>
           <h2>Chapter announcements</h2>
-          <p>Active updates from your chapter</p>
         </article>
         <article>
           <span className="summary-number">{state.data.links.length}</span>
           <h2>Chapter resources</h2>
-          <p>Helpful links selected by the chapter</p>
         </article>
         <article>
           <span className="summary-label">YOUR ROLE</span>
@@ -84,7 +80,6 @@ export function Dashboard() {
               member.roles[0]?.label ??
               'Member'}
           </h2>
-          <p>Connected to the Beta-Omicron chapter</p>
         </article>
       </div>
       <div className="dashboard-columns">
@@ -116,7 +111,6 @@ export function Dashboard() {
         </section>
         <section className="member-card" aria-labelledby="resources-title">
           <h2 id="resources-title">Chapter resources</h2>
-          <p className="card-intro">Find your next step.</p>
           {state.data.links.length ? (
             <div className="resource-list">
               {state.data.links.map((link, index) => (
@@ -130,8 +124,7 @@ export function Dashboard() {
             <p className="member-empty">No chapter resources have been published yet.</p>
           )}
           <div className="legacy-tools">
-            <p>Looking for your familiar tools?</p>
-            <a href={`${chapterSite}auth/dashboard/`}>Open the original chapter dashboard</a>
+            <a href={`${chapterSite}auth/dashboard/`}>Legacy dashboard</a>
           </div>
         </section>
       </div>

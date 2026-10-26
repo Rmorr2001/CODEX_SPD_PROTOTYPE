@@ -76,3 +76,7 @@ frontend/node_modules/
 frontend/dist/
 frontend/test-results/
 frontend/playwright-report/
+
+# React's shadcn class helper is source, not a Python virtualenv library.
+!frontend/src/lib/
+!frontend/src/lib/utils.ts

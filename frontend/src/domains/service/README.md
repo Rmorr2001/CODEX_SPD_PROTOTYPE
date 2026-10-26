@@ -23,5 +23,11 @@ both interfaces. Build and run per frontend README. No new production keys.
 
 The stateful ServiceForm component exceeds the usual80-line review threshold.
 Its one loading/validation/submission lifecycle and tightly related accessible
-fields are kept together after review; the file is110 physical lines, below the
+fields are kept together after review; the file remains below the
 400-line maximum. Reporting and chair decisions are separate responsibilities.
+
+Visible service views now reconcile every three seconds and on focus/successful
+writes. Confirmed chair decisions update the queue immediately, while independent
+sessions receive authoritative server changes without navigation. See the root
+experience plan for the selected quick-entry Sheet using existing Event, Date and Hours fields;
+that component is not claimed implemented by this foundation pass.

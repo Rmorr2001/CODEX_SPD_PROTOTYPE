@@ -9,7 +9,7 @@ export function ServiceReview() {
     (signal: AbortSignal) => readRecords('/api/v1/service/review/', signal),
     [],
   );
-  const { state, retry } = useMemberRead(load);
+  const { state, retry, update } = useMemberRead(load, { resource: 'service', refreshMs: 3000 });
   const [busy, setBusy] = useState<number | null>(null);
   const [error, setError] = useState('');
   async function decide(id: number, action: 'approve' | 'deny') {
@@ -17,7 +17,7 @@ export function ServiceReview() {
     setError('');
     try {
       await command(`/api/v1/service/${id}/decision/`, 'POST', { action });
-      retry();
+      update((entries) => entries.filter((entry) => entry.id !== id));
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Unable to review request.');
     } finally {
@@ -28,10 +28,11 @@ export function ServiceReview() {
     <section>
       <Link to="/service">Service hours</Link>
       <h1>Review service requests</h1>
-      <p>
-        Only pending entries can be decided. Self-review and reversal are unavailable pending
-        chapter policy.
-      </p>
+      {state.kind === 'ready' && state.stale && (
+        <p role="status">
+          Updates paused. <button onClick={retry}>Retry</button>
+        </p>
+      )}
       {state.kind === 'loading' && <p role="status">Loading requests…</p>}
       {state.kind === 'denied' && <p role="alert">Active philanthropy chair access required.</p>}
       {state.kind === 'failed' && (

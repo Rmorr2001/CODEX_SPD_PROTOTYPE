@@ -92,8 +92,7 @@ test.describe('cross-interface transactions', () => {
       await chair.goto('/philanthropy/approve/');
       const row = chair.getByRole('row').filter({ hasText: 'Fictional React service 1.75' });
       await row.getByRole('button', { name: 'Approve', exact: true }).click();
-      await page.reload();
-      await expect(ownRow).toContainText('Approved');
+      await expect(ownRow).toContainText('Approved', { timeout: 10000 });
       await page.getByRole('link', { name: 'View your service history' }).click();
       await expect(
         page.getByRole('heading', { name: 'Fictional React service 1.75', exact: true }),
@@ -103,7 +102,6 @@ test.describe('cross-interface transactions', () => {
       await chair.getByLabel('Hours', { exact: true }).fill('2.25');
       await chair.getByRole('button', { name: 'Save service entry', exact: true }).click();
       await expect(chair).toHaveURL(/\/app\/service\/review$/);
-      await page.reload();
       await expect(
         page.getByRole('article').filter({ hasText: 'Fictional React service 1.75' }),
       ).toContainText('2.25 hours');
@@ -159,10 +157,9 @@ test.describe('cross-interface transactions', () => {
       await expect(
         chair.getByRole('heading', { name: 'React denial example', exact: true }),
       ).toHaveCount(0);
-      await page.goto('/app/service');
       await expect(
         page.getByRole('row').filter({ hasText: 'React approval example' }),
-      ).toContainText('Approved');
+      ).toContainText('Approved', { timeout: 10000 });
       await expect(page.getByRole('row').filter({ hasText: 'React denial example' })).toContainText(
         'Denied',
       );

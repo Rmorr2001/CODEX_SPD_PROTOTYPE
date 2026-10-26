@@ -1,39 +1,28 @@
-import { useEffect, useState } from 'react';
-import { MemberAccessError, type ReadState } from '../../api/read';
-import { fetchDecisions, type DecisionsContent } from './content';
+import { useMemberRead } from '../../api/read';
+import { fetchDecisions, isMotion } from './content';
 
-/** Refresh snapshots without unmounting the active form; no mutation is retried. */
+/** Show a confirmed mutation immediately, then reconcile authoritative shared tallies. */
 export function useLiveDecisions() {
-  const [state, setState] = useState<ReadState<DecisionsContent>>({ kind: 'loading' });
-  const [attempt, setAttempt] = useState(0);
-  useEffect(() => {
-    let active = true;
-    let running = false;
-    let controller: AbortController | null = null;
-    async function load() {
-      if (running) return;
-      running = true;
-      controller = new AbortController();
-      const timer = window.setTimeout(() => controller?.abort(), 15000);
-      try {
-        const data = await fetchDecisions(controller.signal);
-        if (active) setState({ kind: 'ready', data });
-      } catch (error) {
-        if (active) setState({ kind: error instanceof MemberAccessError ? 'denied' : 'failed' });
-      } finally {
-        running = false;
-        window.clearTimeout(timer);
-      }
-    }
-    void load();
-    const interval = window.setInterval(() => {
-      if (!document.hidden) void load();
-    }, 5000);
-    return () => {
-      active = false;
-      controller?.abort();
-      window.clearInterval(interval);
-    };
-  }, [attempt]);
-  return { state, retry: () => setAttempt((n) => n + 1) };
+  const query = useMemberRead(fetchDecisions, { resource: 'polls', refreshMs: 3000 });
+  function saved(result: unknown) {
+    if (isMotion(result))
+      query.update((data) =>
+        result.ended_at
+          ? {
+              ...data,
+              current: data.current?.id === result.id ? null : data.current,
+              closed: [result, ...data.closed.filter((motion) => motion.id !== result.id)],
+              own_choice: null,
+            }
+          : {
+              ...data,
+              current: result,
+              own_choice:
+                'own_choice' in result && typeof result.own_choice === 'string'
+                  ? result.own_choice
+                  : null,
+            },
+      );
+  }
+  return { ...query, saved };
 }

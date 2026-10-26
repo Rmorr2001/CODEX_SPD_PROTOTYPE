@@ -69,15 +69,9 @@ export function MemberLayout() {
           {state.data.demo_enabled && <Link to="/login">Change demo role</Link>}
           <Link to="/">Chapter homepage</Link>
           <Link to="/connection">Connection</Link>
-          <a href={`${chapterSite}legacy/`}>Django HTML/CSS</a>
+          <a href={`${chapterSite}legacy/`}>Legacy site</a>
           <SignOut />
         </div>
-        <p className="rail-signature">
-          PEOPLE.
-          <br />
-          PROGRESS.
-          <br />A STRONGER TOMORROW.
-        </p>
       </aside>
       <div className="member-workspace">
         <header className="member-topbar">

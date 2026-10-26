@@ -78,7 +78,6 @@ export function Join() {
         />
         <div className="join-shade" />
         <div className="join-hero-copy">
-          <p className="eyebrow">JOIN SIGMA PHI DELTA</p>
           <h1 id="join-title">
             Find your people.
             <br />
@@ -97,7 +96,6 @@ export function Join() {
       <div className="join-content">
         <section className="recruitment-guidance" aria-labelledby="guidance-title">
           <div>
-            <p className="eyebrow">YOUR NEXT STEP</p>
             <h2 id="guidance-title">Start with a conversation.</h2>
             <p>
               Explore recruitment details and find out how to connect with the chapter. Get to know
@@ -118,7 +116,6 @@ export function Join() {
           </aside>
         </section>
         <section className="expect-section" aria-labelledby="expect-title">
-          <p className="eyebrow">WHAT TO EXPECT</p>
           <h2 id="expect-title">More than a major in common.</h2>
           <div className="expect-grid">
             {expectations.map((item) => (
@@ -133,7 +130,6 @@ export function Join() {
         <section className="chapter-life" aria-labelledby="life-title">
           <div className="life-heading">
             <div>
-              <p className="eyebrow">A LOOK INSIDE</p>
               <h2 id="life-title">Chapter life.</h2>
             </div>
             <Link to="/about">
@@ -170,7 +166,6 @@ export function Join() {
           )}
         </section>
         <section className="join-bottom">
-          <p className="eyebrow">ENGINEERING. FRIENDSHIP. SERVICE.</p>
           <h2>
             Same problems.
             <br />

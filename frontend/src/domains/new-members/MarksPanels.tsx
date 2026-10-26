@@ -42,7 +42,6 @@ export function PersonalMarks({ personal }: { personal: NonNullable<MarksContent
           <span>Approved total</span>
         </div>
         <div className="marks-standing">
-          <p className="eyebrow">CURRENT STANDING</p>
           <h2>{personal.standing}</h2>
           <p>
             Standing reflects your approved mark total. A total of zero or higher is Good Standing.
@@ -64,7 +63,6 @@ export function PersonalMarks({ personal }: { personal: NonNullable<MarksContent
           <MarkList marks={personal.history} empty="You don’t have any approved marks yet." />
         </section>
         <aside className="marks-latest marks-card">
-          <p className="eyebrow">MOST RECENT APPROVED MARK</p>
           {personal.latest_mark ? (
             <>
               <strong className="latest-mark-value">{signed(personal.latest_mark.value)}</strong>
@@ -141,15 +139,6 @@ export function ActiveMarks({ data }: { data: MarksContent }) {
             <p className="marks-empty">No current new members are listed.</p>
           )}
         </section>
-        <aside className="marks-note">
-          <p className="eyebrow">A CLEARER VIEW</p>
-          <h2>Support the next chapter.</h2>
-          <p>
-            Class totals include approved marks only, ordered from lowest to highest. Individual
-            reasons stay in the chapter history workflow.
-          </p>
-          <a href={`${chapterSite}newmember/marks/`}>Open original marks dashboard</a>
-        </aside>
       </div>
       <section className="marks-card marks-submissions">
         <div className="marks-card-title">
@@ -157,8 +146,7 @@ export function ActiveMarks({ data }: { data: MarksContent }) {
           <span>Pending & recent denied</span>
         </div>
         <p className="marks-explanation">
-          Pending requests and your denied submissions from the past 14 days are shown by event
-          date. Approved entries are included in class totals.
+          Pending requests and denied entries from the past 14 days.
         </p>
         {data.submissions.length ? (
           <ul className="marks-submission-list">

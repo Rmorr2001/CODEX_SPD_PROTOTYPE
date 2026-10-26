@@ -60,7 +60,6 @@ export function Home() {
         />
         <div className="hero-shade" />
         <div className="hero-copy">
-          <p className="eyebrow light">ENGINEERING · FRIENDSHIP · SERVICE</p>
           <h1 id="home-title">
             Engineering <br />a stronger <br />
             <em>brotherhood.</em>
@@ -88,7 +87,6 @@ export function Home() {
       </section>
       <section className="purpose-section" id="purpose" aria-labelledby="purpose-title">
         <div className="section-heading">
-          <p className="eyebrow">OUR PURPOSE</p>
           <p className="section-marker">SCIENCE. FRIENDSHIP. DUTY.</p>
         </div>
         <h2 id="purpose-title">Engineering. Friendship. Service.</h2>
@@ -109,7 +107,6 @@ export function Home() {
       </section>
       <section className="chapter-next" aria-labelledby="next-title">
         <div>
-          <p className="eyebrow">YOUR NEXT CHAPTER</p>
           <h2 id="next-title">
             Good engineers.
             <br />

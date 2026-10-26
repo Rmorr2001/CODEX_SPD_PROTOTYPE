@@ -29,18 +29,15 @@ export function Profile() {
     <>
       <div className="profile-heading">
         <div>
-          <p className="eyebrow">YOUR PLACE IN THE CHAPTER</p>
           <h1>Your profile.</h1>
-          <p>Your details, your interests, your chapter identity.</p>
         </div>
         <a className="button primary" href={`${chapterSite}auth/profile/`}>
-          Edit in chapter site
+          Edit profile (legacy)
         </a>
       </div>
       <div className="profile-columns">
         <section className="member-card personal-details" aria-labelledby="personal-title">
           <h2 id="personal-title">Personal information</h2>
-          <p className="card-intro">The information on your chapter profile.</p>
           <dl className="profile-fields">
             <div>
               <dt>First name</dt>
@@ -80,10 +77,7 @@ export function Profile() {
             )}
           </div>
           <div className="profile-edit-note">
-            <p>Want to update something?</p>
-            <a href={`${chapterSite}auth/profile/`}>
-              Edit your details, photo, and majors on the chapter site
-            </a>
+            <a href={`${chapterSite}auth/profile/`}>Edit details (legacy)</a>
           </div>
         </section>
         <div className="profile-side">
@@ -99,16 +93,9 @@ export function Profile() {
           </section>
           <section className="member-card profile-account" aria-labelledby="account-title">
             <h2 id="account-title">Your account</h2>
-            <p>Manage your account details and password through your chapter profile.</p>
+
             <a href={`${chapterSite}auth/profile/`}>Open account settings</a>
           </section>
-          <aside className="profile-privacy">
-            <span className="eyebrow">YOUR ACCOUNT</span>
-            <p>
-              Keep your details current so your chapter can stay connected. Open your chapter
-              profile whenever something changes.
-            </p>
-          </aside>
         </div>
       </div>
     </>

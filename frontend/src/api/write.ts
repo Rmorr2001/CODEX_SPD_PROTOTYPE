@@ -1,3 +1,4 @@
+import { notifySaved } from './updates';
 /** Same-origin CSRF writes. Failures preserve the form; never automatically retry mutations. */
 export function csrfToken(): string {
   const cookie = document.cookie.split('; ').find((part) => part.startsWith('csrftoken='));
@@ -36,6 +37,8 @@ export async function command(url: string, method: 'POST' | 'PUT' | 'PATCH', dat
         values.join(' ') || 'The action could not be completed. Refresh and try again.',
       );
     }
+    if (url.startsWith('/api/v1/polls/')) notifySaved('polls');
+    if (url.startsWith('/api/v1/service/')) notifySaved('service');
     return result;
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError')

@@ -16,25 +16,15 @@ test('decisions prioritize real React ballots and label legacy links as comparis
     `${content.current.aye} votes`,
   );
   await expect(page.locator('.closed-motion-list .motion-card')).toHaveCount(content.closed.length);
-  await expect(
-    page.getByRole('link', { name: 'Django HTML/CSS poll', exact: true }),
-  ).toHaveAttribute('href', '/poll/');
-  await expect(page.getByRole('link', { name: 'Django HTML/CSS motion creation' })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'Legacy poll', exact: true })).toHaveAttribute(
     'href',
-    '/poll/start_vote/',
+    '/poll/',
   );
-  await expect(page.getByRole('link', { name: 'Vote in chapter site', exact: true })).toHaveCount(
-    0,
-  );
-  await expect(
-    page
-      .getByRole('region', { name: 'Your ballot' })
-      .getByRole('button', { name: 'Vote Aye', exact: true }),
-  ).toBeVisible();
-  await expect(page.getByRole('region', { name: 'Django HTML/CSS comparison' })).toContainText(
-    'Both interfaces use the same chapter motion and votes.',
-  );
-  await expect(page.locator('.decisions-section a.button.primary')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Vote Aye', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Vote Nay', exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: /motion details/i })).toHaveCount(0);
+  await expect(page.getByText('Stay part of the conversation.')).toHaveCount(0);
+  await expect(page.getByText('EXECUTIVE TOOLS', { exact: true })).toHaveCount(0);
   await page.getByRole('button', { name: 'Refresh results' }).click();
   await expect(page.locator('.motion-card.current')).toBeVisible();
   await page.reload();
@@ -83,13 +73,11 @@ test('decisions handle zero votes, no open motion and failed read with real retr
     route.fulfill({ json: { current: null, closed: [], can_manage: false } }),
   );
   await page.reload();
-  await expect(page.getByRole('heading', { name: 'The floor is clear.' })).toBeVisible();
-  await expect(page.getByText('No closed motions have been recorded yet.')).toBeVisible();
+  await expect(page.getByText('No open motion.', { exact: true })).toBeVisible();
+  await expect(page.getByText('No results yet.')).toBeVisible();
   await page.route('**/api/v1/polls/', (route) => route.fulfill({ status: 503, json: {} }));
   await page.reload();
-  await expect(page.getByRole('alert')).toHaveText(
-    'We couldn’t load the motion results. Please try again.',
-  );
+  await expect(page.getByRole('alert')).toHaveText('Couldn’t load polls.');
   await page.unroute('**/api/v1/polls/');
   await page.getByRole('button', { name: 'Try again' }).click();
   await expect(page.locator('.motion-card.current')).toBeVisible();

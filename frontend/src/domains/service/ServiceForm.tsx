@@ -45,9 +45,7 @@ export function ServiceForm() {
     <section>
       <Link to="/service">Service hours</Link>
       <h1>{id ? 'Edit service entry' : 'Log service hours'}</h1>
-      <p>
-        Submit at least 0.5 hours, with up to two decimal places. New entries await chair review.
-      </p>
+      <p>Minimum 0.5 hours.</p>
       {loading ? (
         <p role="status">Loading entry…</p>
       ) : (
