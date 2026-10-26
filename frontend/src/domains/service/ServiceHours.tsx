@@ -1,13 +1,15 @@
 import { useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { chapterSite } from '../../app/links';
 import { useMemberRead } from '../../api/read';
-import { fetchService } from './content';
+import { useMember } from '../identity/MemberLayout';
+import { Card } from '@/components/ui/card';
+import { ServiceQuickEntry } from './ServiceQuickEntry';
+import { fetchService, type ServiceContent } from './content';
 import './service.css';
 
 const labels = { approved: 'Approved', requested: 'Pending', denied: 'Denied' };
 function eventDate(date: string) {
-  // Date-only events must keep their calendar day across browser time zones.
+  // Date-only events retain their calendar day across browser time zones.
   return new Intl.DateTimeFormat('en-US', {
     month: 'short',
     day: 'numeric',
@@ -16,152 +18,162 @@ function eventDate(date: string) {
   }).format(new Date(`${date}T12:00:00Z`));
 }
 
+function ServiceActivity({ data }: { data: ServiceContent }) {
+  return (
+    <>
+      <div className="service-records-heading">
+        <h2>Your activity</h2>
+        <Link to="/service/history">View your service history</Link>
+      </div>
+      {data.events.length ? (
+        <>
+          <p id="service-table-hint" className="service-table-hint">
+            Scroll horizontally to see hours and status.
+          </p>
+          <div
+            className="service-table-wrap"
+            role="region"
+            aria-label="Your service hours table"
+            aria-describedby="service-table-hint"
+            tabIndex={0}
+          >
+            <table className="service-table">
+              <thead>
+                <tr>
+                  <th scope="col">Event</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Hours</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.events.map((event) => (
+                  <tr key={event.id}>
+                    <th scope="row">{event.title}</th>
+                    <td>
+                      <time dateTime={event.date}>{eventDate(event.date)}</time>
+                    </td>
+                    <td>{event.hours}</td>
+                    <td>
+                      <span className={`service-status ${event.status}`}>
+                        <span aria-hidden="true">
+                          {event.status === 'approved'
+                            ? '+'
+                            : event.status === 'requested'
+                              ? '…'
+                              : '−'}
+                        </span>
+                        {labels[event.status]}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <Card className="p-6">
+          <h2>No service entries for this year.</h2>
+        </Card>
+      )}
+    </>
+  );
+}
+
 export function ServiceHours() {
+  const member = useMember();
   const [params, setParams] = useSearchParams();
   const year = params.get('year');
   const load = useCallback((signal: AbortSignal) => fetchService(year, signal), [year]);
   const { state, retry } = useMemberRead(load, { resource: 'service', refreshMs: 3000 });
-  if (state.kind === 'loading') return <p role="status">Loading your service hours…</p>;
-  if (state.kind === 'denied')
-    return (
-      <section className="member-notice">
-        <h1>Active member access required</h1>
-        <p role="alert">
-          Service hours are available to active members. Sign in with an eligible account to
-          continue.
-        </p>
-        <Link to="/login">Member sign in</Link>
-      </section>
-    );
-  if (state.kind === 'failed')
-    return (
-      <section className="member-notice">
-        <h1>Service hours are unavailable</h1>
-        <p role="alert">We couldn’t load service hours for this academic year. Please try again.</p>
-        <button onClick={retry}>Try again</button>
-        {year && (
-          <Link className="reset-year" to="/service">
-            Return to the current academic year
-          </Link>
-        )}
-      </section>
-    );
-  const data = state.data;
-  const pending = data.events.filter((event) => event.status === 'requested').length;
-
+  const data = state.kind === 'ready' ? state.data : null;
   return (
     <>
-      {params.get('submitted') === '1' && <p role="status">Service hours submitted for review.</p>}
-      {state.stale && (
+      <header className="service-heading">
+        <h1>Service hours</h1>
+        {data && (
+          <div className="service-year">
+            <label htmlFor="academic-year">Academic year</label>
+            <select
+              id="academic-year"
+              value={String(data.year)}
+              onChange={(event) => setParams({ year: event.target.value })}
+            >
+              {data.available_years.map((value) => (
+                <option value={value} key={value}>
+                  {value}–{value + 1}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+      </header>
+      {params.get('submitted') === '1' && data && (
+        <p role="status">Service hours submitted for review.</p>
+      )}
+      {state.kind === 'ready' && state.stale && (
         <p role="status">
           Updates paused. <button onClick={retry}>Retry</button>
         </p>
       )}
-      <nav aria-label="Service tools">
-        <Link to="/service/chapter">Chapter totals</Link> ·{' '}
-        {data.can_review && (
-          <>
-            <Link to="/service/review">Review service requests</Link> ·{' '}
-          </>
+      <Card className="service-summary">
+        <div className="service-summary-data">
+          {data && (
+            <>
+              <div>
+                <h2 id="service-total-title">
+                  <strong>{data.approved_hours}</strong>
+                  <span>approved hours</span>
+                </h2>
+              </div>
+              <div className="pending-summary">
+                <strong>
+                  {data.events.filter((event) => event.status === 'requested').length}
+                </strong>
+                <span>pending requests</span>
+              </div>
+            </>
+          )}
+          {state.kind === 'loading' && <p role="status">Loading your service hours…</p>}
+          {state.kind === 'failed' && (
+            <div>
+              <h2>Service hours are unavailable</h2>
+              <p role="alert">
+                We couldn’t load service hours for this academic year. Please try again.
+              </p>
+              <button onClick={retry}>Try again</button>
+              {year && (
+                <Link className="reset-year" to="/service">
+                  Return to the current academic year
+                </Link>
+              )}
+            </div>
+          )}
+          {state.kind === 'denied' && (
+            <div>
+              <h2>Active member access required</h2>
+              <p role="alert">Service hours are available to active members.</p>
+              <Link to="/login">Member sign in</Link>
+            </div>
+          )}
+        </div>
+        {/* Keep the entry mounted through refresh/year changes so reads cannot erase a draft. */}
+        {member.capabilities.service_hours && state.kind !== 'denied' && (
+          <div className="service-entry-action">
+            <ServiceQuickEntry />
+          </div>
         )}
-        <a href={`${chapterSite}philanthropy/`} aria-label="Legacy service">
-          Legacy
-        </a>{' '}
-        · <a href="/api/v1/service/export/">Download approved hours (XLSX)</a>
-      </nav>
-      <div className="service-heading">
-        <div>
-          <h1>Service hours</h1>
-        </div>
-      </div>
-      <section className="service-summary" aria-labelledby="service-total-title">
-        <div>
-          <h2 id="service-total-title">
-            <strong>{data.approved_hours}</strong>
-            <span>hours</span>
-          </h2>
-          <p>
-            Recorded for the {data.year}–{data.year + 1} academic year
-          </p>
-        </div>
-        <div className="service-year">
-          <label htmlFor="academic-year">Academic year</label>
-          <select
-            id="academic-year"
-            value={String(data.year)}
-            onChange={(event) => setParams({ year: event.target.value })}
-          >
-            {data.available_years.map((value) => (
-              <option value={value} key={value}>
-                {value}–{value + 1}
-              </option>
-            ))}
-          </select>
-          <span>July 1 – June 30</span>
-        </div>
-        <div className="pending-summary">
-          <strong>{pending}</strong>
-          <span>pending {pending === 1 ? 'request' : 'requests'}</span>
-        </div>
-      </section>
-      <div className="service-records-heading">
-        <div>
-          <h2>Your service hours</h2>
-        </div>
-        <Link to="/service/history">View your service history</Link>
-      </div>
-      {data.events.length > 0 && (
-        <p id="service-table-hint" className="service-table-hint">
-          Scroll horizontally to see hours and status.
-        </p>
-      )}
-      {data.events.length ? (
-        <div
-          className="service-table-wrap"
-          role="region"
-          aria-label="Your service hours table"
-          aria-describedby="service-table-hint"
-          tabIndex={0}
-        >
-          <table className="service-table">
-            <thead>
-              <tr>
-                <th scope="col">Event</th>
-                <th scope="col">Date</th>
-                <th scope="col">Hours</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.events.map((event) => (
-                <tr key={event.id}>
-                  <th scope="row">{event.title}</th>
-                  <td>
-                    <time dateTime={event.date}>{eventDate(event.date)}</time>
-                  </td>
-                  <td>{event.hours}</td>
-                  <td>
-                    <span className={`service-status ${event.status}`}>
-                      <span aria-hidden="true">
-                        {event.status === 'approved'
-                          ? '+'
-                          : event.status === 'requested'
-                            ? '…'
-                            : '−'}
-                      </span>
-                      {labels[event.status]}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <section className="service-empty">
-          <h2>No service entries for this year.</h2>
-          <p>Your service records will appear here after you submit them.</p>
-        </section>
+      </Card>
+      {data && (
+        <>
+          <ServiceActivity data={data} />
+          <nav aria-label="Service tools" className="service-tools">
+            <Link to="/service/chapter">Chapter totals</Link>
+            {data.can_review && <Link to="/service/review">Review service requests</Link>}
+            <a href="/api/v1/service/export/">Download approved hours (XLSX)</a>
+          </nav>
+        </>
       )}
     </>
   );

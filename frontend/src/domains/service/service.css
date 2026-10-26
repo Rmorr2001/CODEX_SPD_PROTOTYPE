@@ -2,116 +2,96 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
-  margin-bottom: 30px;
+  gap: 24px;
+  margin-bottom: 28px;
 }
-.service-heading p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 13px;
-  margin: 0;
-}
-.service-heading .button {
-  flex-shrink: 0;
-}
-.service-summary {
-  background: white;
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--red);
-  border-radius: 5px;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
-  gap: 36px;
-  padding: 34px;
-  align-items: center;
-}
-.service-summary .eyebrow {
-  font-size: 9px;
-}
-.service-summary h2 {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  margin: 0 0 16px;
-}
-.service-summary h2 strong {
-  color: var(--red);
-  font-size: 60px;
-  font-weight: 650;
-  line-height: 1;
-}
-.service-summary h2 span {
-  font-size: 18px;
-  font-weight: 500;
-}
-.service-summary > div > p:not(.eyebrow) {
-  font-size: 11px;
-  color: var(--muted);
+.service-heading h1 {
   margin: 0;
 }
 .service-year {
-  display: grid;
+  display: flex;
   gap: 12px;
+  align-items: center;
 }
 .service-year label {
   font-size: 12px;
-  font-weight: 600;
+  color: var(--muted);
 }
 .service-year select {
   font: inherit;
-  font-size: 13px;
-  width: 100%;
-  padding: 12px;
-  background: #fafafb;
-  border: 1px solid #bfbfc9;
-  border-radius: 3px;
+  font-size: 14px;
+  padding: 10px 12px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 .service-year select:focus-visible {
   outline: 3px solid var(--red);
   outline-offset: 3px;
 }
-.service-year > span {
-  font-size: 10px;
+.service-summary {
+  padding: 28px;
+}
+.service-summary-data {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px;
+}
+.service-summary h2 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.service-summary h2 strong {
+  font-size: 44px;
+  font-weight: 650;
+  line-height: 1;
+  color: var(--black);
+}
+.service-summary h2 span {
+  font-size: 14px;
+  font-weight: 400;
   color: var(--muted);
 }
 .pending-summary {
-  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   border-left: 1px solid var(--line);
+  padding-left: 40px;
 }
-.pending-summary > strong {
-  display: block;
-  font-size: 30px;
-  line-height: 1;
-  margin-bottom: 12px;
+.pending-summary strong {
+  font-size: 28px;
+  line-height: 1.25;
 }
-.pending-summary > span {
-  display: block;
-  font-size: 12px;
-  margin-bottom: 12px;
+.pending-summary span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.service-entry-action {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  margin-top: 24px;
 }
 .service-records-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 28px;
-  margin: 36px 0 22px;
+  gap: 20px;
+  margin: 32px 0 16px;
 }
 .service-records-heading h2 {
-  margin-bottom: 10px;
-}
-.service-records-heading p {
-  font-size: 11px;
-  color: var(--muted);
   margin: 0;
-  max-width: 540px;
 }
-.service-records-heading > a {
-  font-size: 11px;
-  flex-shrink: 0;
+.service-records-heading a {
+  font-size: 13px;
 }
 .service-table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
-  border-radius: 5px;
+  border-radius: 12px;
   background: white;
 }
 .service-table-wrap:focus-visible {
@@ -123,10 +103,10 @@
   width: 100%;
   min-width: 560px;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
 }
 .service-table thead {
-  background: #f5f5f8;
+  background: #fafafa;
 }
 .service-table th,
 .service-table td {
@@ -135,7 +115,8 @@
 }
 .service-table thead th {
   font-weight: 600;
-  font-size: 11px;
+  font-size: 12px;
+  color: var(--muted);
 }
 .service-table tbody th {
   font-weight: 500;
@@ -148,8 +129,8 @@
 }
 .service-table time {
   white-space: nowrap;
-  font-size: 11px;
-  color: #53535f;
+  font-size: 13px;
+  color: var(--muted);
 }
 .service-status {
   display: inline-flex;
@@ -157,7 +138,7 @@
   align-items: center;
   border-radius: 12px;
   padding: 6px 10px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .service-status.approved {
   background: #e8f3ec;
@@ -171,104 +152,45 @@
   background: #fae8eb;
   color: #a22437;
 }
-.service-status > span {
-  font-weight: 700;
-}
-.service-empty {
-  border: 1px solid var(--line);
-  background: white;
-  padding: 30px;
-}
-.service-empty p {
-  color: var(--muted);
+.service-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: 24px;
   font-size: 13px;
-}
-.service-empty a {
-  font-size: 12px;
-}
-.service-bottom {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 40px;
-  margin-top: 30px;
-  align-items: start;
-}
-.service-bottom > section {
-  padding: 22px 0;
-}
-.service-bottom .eyebrow {
-  font-size: 9px;
-}
-.service-bottom h2 {
-  font-size: 21px;
-  margin-bottom: 15px;
-}
-.service-bottom p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 12px;
-}
-.service-bottom a {
-  display: inline-block;
-  font-size: 11px;
-  line-height: 1.8;
-  margin-top: 6px;
-}
-.service-review {
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--red);
-  background: white;
 }
 .reset-year {
   display: block;
-  font-size: 12px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 .service-table-hint {
   display: none;
 }
-@media (max-width: 1100px) {
+@media (max-width: 700px) {
+  .service-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
   .service-summary {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    padding: 22px;
+  }
+  .service-summary-data {
+    gap: 24px;
   }
   .pending-summary {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-    padding: 22px 0 0;
-    grid-column: 1 / -1;
+    padding-left: 24px;
   }
-}
-@media (max-width: 700px) {
+  .service-records-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
   .service-table-hint {
     display: block;
     color: var(--muted);
     font-size: 12px;
     margin: 0 0 12px;
-  }
-  .service-heading {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 22px;
-  }
-  .service-summary {
-    grid-template-columns: 1fr;
-    padding: 26px;
-  }
-  .service-summary h2 strong {
-    font-size: 54px;
-  }
-  .service-records-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 18px;
-  }
-  .service-records-heading p {
-    font-size: 12px;
-  }
-  .service-bottom {
-    grid-template-columns: 1fr;
-    gap: 10px;
   }
   .service-table th,
   .service-table td {

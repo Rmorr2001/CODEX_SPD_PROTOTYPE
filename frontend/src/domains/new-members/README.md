@@ -22,3 +22,16 @@ development. No new configuration keys or credentials are needed.
 role controls, legacy request/history handoff, session expiry, network retry,
 refresh and 390px layout. Build first, then run the frontend README's browser
 command with `--grep 'new member sees|active class totals|ordinary active|marks network'`.
+
+The React page still has read-only marks parity: personal approved history/standing,
+active class totals and own pending/recent-denied submissions. It has no React
+create, approval, edit, other-member history or export APIs yet. Those actions
+remain explicitly labeled legacy links, governed by existing server permissions.
+Personal history now anchors to the history already rendered in React instead of
+leaving the page. The duplicate latest-entry rail and empty class-grid column are
+removed. No arithmetic or role policy changed.
+
+Before migrating writes, specify shared validation/atomic operations, board
+creation's existing auto-approval, eligible targets and batch behavior, and review
+reversal/self-review/educator-only deny policy. Existing HTML handlers have weaker
+validation and different deny paths; do not quietly copy those defects into APIs.

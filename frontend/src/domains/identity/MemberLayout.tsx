@@ -1,11 +1,10 @@
-import { Link, NavLink, Outlet, useOutletContext, useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, useOutletContext } from 'react-router-dom';
 import { chapterSite } from '../../app/links';
 import { SignOut } from './SignOut';
 import { AccessPanel } from './Login';
 import { type Member, useSession } from './session';
 import { MemberShell } from '@/components/ui/member-shell';
 import { cn } from '@/lib/utils';
-import { ServiceQuickEntry } from '../service/ServiceQuickEntry';
 import './member.css';
 
 export function useMember(): Member {
@@ -39,7 +38,6 @@ function NavIcon({ name }: { name: string }) {
 
 export function MemberLayout() {
   const { state, retry } = useSession();
-  const location = useLocation();
   if (state.kind !== 'ready' || !state.data.authenticated || !state.data.member)
     return <AccessPanel state={state} retry={retry} />;
   const member = state.data.member;
@@ -102,8 +100,6 @@ export function MemberLayout() {
           <span className="ml-auto min-w-0 truncate text-sm font-medium text-[#5f606b]">
             {member.display_name}
           </span>
-          {member.capabilities.service_hours &&
-            !/^\/service\/(new|events\/)/.test(location.pathname) && <ServiceQuickEntry />}
         </>
       }
     >

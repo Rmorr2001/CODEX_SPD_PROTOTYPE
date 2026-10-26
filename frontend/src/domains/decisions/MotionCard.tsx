@@ -49,7 +49,7 @@ export function MotionCard({
                 aria-hidden="true"
               >
                 <span
-                  className={`block h-full ${choice === 'Aye' ? 'bg-primary' : 'bg-zinc-500'}`}
+                  className={`block h-full transition-[width] duration-300 ease-out motion-reduce:transition-none ${choice === 'Aye' ? 'bg-primary' : 'bg-zinc-500'}`}
                   style={{ width: `${percent}%` }}
                 />
               </div>

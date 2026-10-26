@@ -44,8 +44,7 @@ actual caller data, real legacy edit navigation and denied/failed read handling.
 
 `MemberLayout` composes the shared Tailwind MemberShell across protected routes:
 compact charcoal sidebar, crimson active link, discreet Legacy view and a mobile
-modal navigation menu. Route capabilities remain server-derived. Eligible members
-get the shared service quick-entry Sheet; direct create/edit routes keep one form
-at a time. Public marketing pages keep their existing layout. React Router's data
+modal navigation menu. Route capabilities remain server-derived. Service quick entry lives on the service page rather than in the global toolbar;
+direct create/edit routes keep their full-page forms. Public marketing pages keep their existing layout. React Router's data
 router provides navigation blocking for dirty Sheet drafts; session/native POST
 login/logout boundaries are unchanged.

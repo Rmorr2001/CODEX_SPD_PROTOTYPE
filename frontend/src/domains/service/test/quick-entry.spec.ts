@@ -10,6 +10,12 @@ for (const width of [1536, 390]) {
     await page.goto('/app/service');
     await expect(page.locator('.service-summary')).toBeVisible();
     const trigger = page.getByRole('button', { name: 'Log service', exact: true });
+    await expect(
+      page.locator('.member-topbar').getByRole('button', { name: 'Log service', exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      page.locator('.service-summary').getByRole('button', { name: 'Log service', exact: true }),
+    ).toBeVisible();
     await trigger.click();
     const dialog = page.getByRole('dialog', { name: 'Log service', exact: true });
     const event = dialog.getByLabel('Event', { exact: true });
@@ -52,6 +58,8 @@ for (const width of [1536, 390]) {
     await expect(
       page.getByRole('row').filter({ hasText: `Fictional drawer ${width}` }),
     ).toContainText('Pending');
+    await page.getByRole('button', { name: 'Dismiss service confirmation' }).click();
+    await expect(page.getByText('Service submitted.', { exact: true })).toHaveCount(0);
     await trigger.click();
     await expect(dialog.getByLabel('Event', { exact: true })).toHaveValue('');
     await page.keyboard.press('Escape');
@@ -73,7 +81,7 @@ test('drawer retains validation errors, blocks dismissal during a save and preve
   page,
 }) => {
   await enterDemo(page);
-  await page.goto('/app/polls');
+  await page.goto('/app/service');
   await page.getByRole('button', { name: 'Log service', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Log service', exact: true });
   await dialog.getByLabel('Event', { exact: true }).fill('Fictional validation');
@@ -111,21 +119,21 @@ test('dirty drawer handles browser back and forward without silent draft loss', 
   await enterDemo(page);
   await page
     .getByRole('navigation', { name: 'Member navigation' })
-    .getByRole('link', { name: 'Polls', exact: true })
+    .getByRole('link', { name: 'Service', exact: true })
     .click();
   await page.getByRole('button', { name: 'Log service', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Log service', exact: true });
   await dialog.getByLabel('Event', { exact: true }).fill('Keep this draft');
   page.once('dialog', (confirm) => confirm.dismiss());
   await page.goBack();
-  await expect(page).toHaveURL(/\/app\/polls$/);
+  await expect(page).toHaveURL(/\/app\/service$/);
   await expect(dialog.getByLabel('Event', { exact: true })).toHaveValue('Keep this draft');
   page.once('dialog', (confirm) => confirm.accept());
   await page.goBack();
   await expect(page).toHaveURL(/\/app\/dashboard$/);
   await expect(dialog).toHaveCount(0);
   await page.goForward();
-  await expect(page).toHaveURL(/\/app\/polls$/);
+  await expect(page).toHaveURL(/\/app\/service$/);
   await page.getByRole('button', { name: 'Log service', exact: true }).click();
   await expect(dialog.getByLabel('Event', { exact: true })).toHaveValue('');
 });

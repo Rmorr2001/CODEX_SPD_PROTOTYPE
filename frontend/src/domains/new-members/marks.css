@@ -177,33 +177,6 @@
   border-color: #e9bac0;
   color: #a61729;
 }
-.marks-latest {
-  padding: 28px;
-}
-.marks-latest .eyebrow {
-  font-size: 9px;
-  line-height: 1.8;
-}
-.latest-mark-value {
-  display: block;
-  font-family: Georgia, serif;
-  font-size: 45px;
-  margin: 24px 0 15px;
-}
-.marks-latest h2 {
-  font-size: 23px;
-  line-height: 1.4;
-}
-.marks-latest time {
-  color: var(--muted);
-  font-size: 11px;
-}
-.marks-latest p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.9;
-  margin-top: 22px;
-}
 .marks-empty {
   padding: 26px;
   color: var(--muted);

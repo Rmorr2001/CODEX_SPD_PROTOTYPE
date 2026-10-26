@@ -22,7 +22,7 @@ permissions, migration impacts and unresolved self-review/reversal policy.
 both interfaces. Build and run per frontend README. No new production keys.
 
 `ServiceEntryForm` and `useServiceDraft` share fields/validation/submission between
-full-page routes and `ServiceQuickEntry`, mounted in the member toolbar. The Sheet
+full-page routes and `ServiceQuickEntry`, mounted in the main service summary. The Sheet
 uses Event, Date and Hours only. Its local draft survives background reads;
 Escape/Cancel/Back ask before discarding edits, pending writes block dismissal,
 and confirmed success closes/reset the form. Navigation uses React Router's data
@@ -33,3 +33,8 @@ writes. Confirmed decisions update the queue immediately; independent sessions
 receive authoritative changes without navigation. `test/quick-entry.spec.ts`
 covers desktop/390px submission, focus, cancellation, back/forward, refresh/API
 failure retention and busy/duplicate-write protection. No new storage or policy.
+
+Service entry belongs only to the service page, below personal approved/pending
+figures. Academic-year selection is in its header; activity precedes secondary
+tools. Success feedback can dismiss and expires after six seconds; leaving the
+page removes it. The drawer stays mounted through query refresh/year changes.

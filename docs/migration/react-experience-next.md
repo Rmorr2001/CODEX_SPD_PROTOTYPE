@@ -15,7 +15,7 @@ were provisioned to work around the transfer boundary.
 - Polls: one white bordered Card holds title/status, Aye/Nay counts/percent/bars,
   selected vote, ballot choices and authorized Close poll. Past results stay below;
   no motion-detail links, slogans or explanatory rail. Direct detail routes work.
-- Service: Log service opens a right-side Sheet with existing Event/Date/Hours,
+- Service: Log service in the main service summary opens a right-side Sheet with existing Event/Date/Hours,
   Submit/Cancel. No Notes field or schema expansion. Shared fields and submission
   hook serve both Sheet and direct full-page create/edit URLs.
 - Real Radix Dialog owns focus trap/return and modal semantics. Dirty dismissal
@@ -76,3 +76,26 @@ public preview. The runner migrates/seeds synthetic SQLite/media and removes the
 on exit. Browser commands and Docker checks are documented in frontend/README.md.
 The previously published cleanup evidence remains in
 [its historical report](react-experience-next-verification.json).
+
+## Interaction follow-up
+
+After live review, service entry moved from the global toolbar into the main
+service summary; tools follow activity, and the confirmation dismisses/expires
+rather than following users across routes. Marks loses its empty class column
+and duplicate latest-entry rail; own history stays in React. Its remaining legacy
+write/review/history/export scope and policy questions are in the domain README.
+
+A held-vote comparison against the previous built image measured card height
+357.97 → 417.16px (59.19px shift); the corrected image remained394.78px. Pending
+feedback/error space is reserved, confirmed selection remains stable, concurrent
+clicks are guarded and tally widths respect reduced motion. Unchanged snapshots
+keep their read state; failed automatic reads do not flip to loading on retry.
+This reproduces one layout defect, not every reported live flashing symptom.
+
+Production build/type check, formatting and diff review passed. All60browser tests
+passed separately against fresh synthetic Django and Docker targets, including
+DOM/focus/layout observations, held/failed requests, duplicate clicks, shared
+transactions and drawer retention. Logs are runtime-local:
+`/workspace/work/feel-final-server.log` and `/workspace/work/feel-final-image.log`.
+The image serves index-CnpVB4xV.js and index-BqgWsZuX.css. No backend, migration,
+permission or Railway configuration changes; live acceptance remains parent-side.

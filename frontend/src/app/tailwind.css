@@ -6,6 +6,7 @@
 @source '../domains/identity/MemberLayout.tsx';
 @source '../domains/service';
 @source '../domains/decisions';
+@source '../domains/new-members';
 
 /* New components opt in; existing --muted and other domain tokens stay untouched. */
 .spd-ui {

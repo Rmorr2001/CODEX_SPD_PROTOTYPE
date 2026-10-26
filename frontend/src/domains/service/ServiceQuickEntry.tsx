@@ -5,11 +5,16 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ServiceEntryForm } from './ServiceEntryForm';
 import type { ServiceGuard } from './useServiceDraft';
 
-/** A persistent member-shell Sheet protects drafts across refresh and navigation. */
+/** A service-page Sheet protects drafts across refresh and navigation. */
 export function ServiceQuickEntry() {
   const [open, setOpen] = useState(false);
   const [guard, setGuard] = useState<ServiceGuard>({ dirty: false, busy: false });
   const [savedYear, setSavedYear] = useState<number | null>(null);
+  useEffect(() => {
+    if (savedYear === null) return;
+    const timer = window.setTimeout(() => setSavedYear(null), 6000);
+    return () => window.clearTimeout(timer);
+  }, [savedYear]);
   const firstField = useRef<HTMLInputElement>(null);
   const location = useLocation();
   const blocker = useBlocker(open && (guard.dirty || guard.busy));
@@ -86,6 +91,14 @@ export function ServiceQuickEntry() {
           >
             View service
           </Link>
+          <Button
+            variant="ghost"
+            className="ml-2 min-h-8 px-2"
+            aria-label="Dismiss service confirmation"
+            onClick={() => setSavedYear(null)}
+          >
+            ×
+          </Button>
         </div>
       )}
     </>

@@ -44,10 +44,19 @@ export function useMemberRead<T>(
       controller = current;
       running = true;
       const timer = window.setTimeout(() => current.abort(), 15000);
-      setState((previous) => (previous.kind === 'ready' ? previous : { kind: 'loading' }));
       try {
         const data = await load(current.signal);
-        if (active && requestId === generation) setState({ kind: 'ready', data });
+        if (active && requestId === generation)
+          setState((previous) => {
+            // Reads return validated JSON. Identical snapshots need no render or live announcement.
+            if (
+              previous.kind === 'ready' &&
+              !previous.stale &&
+              JSON.stringify(previous.data) === JSON.stringify(data)
+            )
+              return previous;
+            return { kind: 'ready', data };
+          });
       } catch (error) {
         if (active && requestId === generation)
           setState((previous) => {

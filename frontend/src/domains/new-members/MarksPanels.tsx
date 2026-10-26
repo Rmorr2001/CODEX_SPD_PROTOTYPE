@@ -37,16 +37,12 @@ export function PersonalMarks({ personal }: { personal: NonNullable<MarksContent
     <>
       <section className="marks-personal-summary" aria-labelledby="personal-marks-title">
         <div className="marks-total">
-          <p id="personal-marks-title">YOUR APPROVED MARKS</p>
+          <p id="personal-marks-title">Approved marks</p>
           <strong>{signed(personal.total_marks)}</strong>
-          <span>Approved total</span>
         </div>
         <div className="marks-standing">
           <h2>{personal.standing}</h2>
-          <p>
-            Standing reflects your approved mark total. A total of zero or higher is Good Standing.
-          </p>
-          <a href={originalLink(personal.history_url)}>View your history in chapter site</a>
+          <a href="#approved-marks">View your history</a>
         </div>
         <div className="marks-class-average">
           <strong>{personal.class_average}</strong>
@@ -55,33 +51,13 @@ export function PersonalMarks({ personal }: { personal: NonNullable<MarksContent
         </div>
       </section>
       <div className="marks-personal-grid">
-        <section className="marks-card">
+        <section className="marks-card" id="approved-marks">
           <div className="marks-card-title">
             <h2>Your approved history</h2>
             <span>{personal.history.length} entries</span>
           </div>
           <MarkList marks={personal.history} empty="You don’t have any approved marks yet." />
         </section>
-        <aside className="marks-latest marks-card">
-          {personal.latest_mark ? (
-            <>
-              <strong className="latest-mark-value">{signed(personal.latest_mark.value)}</strong>
-              <h2>{personal.latest_mark.title}</h2>
-              <time dateTime={personal.latest_mark.date}>
-                {markDate(personal.latest_mark.date)}
-              </time>
-            </>
-          ) : (
-            <>
-              <h2>A fresh start.</h2>
-              <p>Your latest approved mark will appear here.</p>
-            </>
-          )}
-          <p>
-            Only approved entries affect this total. Contact your new-member board with questions
-            about a record.
-          </p>
-        </aside>
       </div>
     </>
   );
@@ -128,9 +104,9 @@ export function ActiveMarks({ data }: { data: MarksContent }) {
                   </strong>
                   <a
                     href={originalLink(member.history_url)}
-                    aria-label={`View ${member.display_name} history in chapter site`}
+                    aria-label={`View ${member.display_name} history (legacy)`}
                   >
-                    History <span aria-hidden="true">→</span>
+                    History (legacy) <span aria-hidden="true">→</span>
                   </a>
                 </li>
               ))}

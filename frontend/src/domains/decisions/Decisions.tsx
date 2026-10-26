@@ -43,6 +43,7 @@ export function Decisions() {
         {current ? (
           <MotionCard motion={current} current>
             <PollActions
+              key={current.id}
               id={current.id}
               ownChoice={own_choice}
               canManage={can_manage}

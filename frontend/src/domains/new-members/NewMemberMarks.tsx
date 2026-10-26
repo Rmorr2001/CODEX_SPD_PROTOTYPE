@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { chapterSite } from '../../app/links';
 import { useMemberRead } from '../../api/read';
@@ -42,9 +43,9 @@ export function NewMemberMarks() {
           <h1>New-member marks</h1>
         </div>
         {data.can_submit && (
-          <a className="button primary" href={`${chapterSite}newmember/request/`}>
-            Submit marks in chapter site
-          </a>
+          <Button asChild>
+            <a href={`${chapterSite}newmember/request/`}>Submit marks (legacy)</a>
+          </Button>
         )}
       </section>
       {data.personal && <PersonalMarks personal={data.personal} />}
@@ -54,13 +55,13 @@ export function NewMemberMarks() {
           <div>
             <h2>Review mark requests</h2>
           </div>
-          <a className="button primary" href={`${chapterSite}newmember/approve/`}>
-            Review marks in chapter site
-          </a>
+          <Button asChild>
+            <a href={`${chapterSite}newmember/approve/`}>Review marks (legacy)</a>
+          </Button>
         </section>
       )}
       <footer className="marks-footer">
-        <a href={`${chapterSite}newmember/`}>Explore new-member resources in chapter site</a>
+        <a href={`${chapterSite}newmember/`}>New-member resources (legacy)</a>
       </footer>
     </>
   );

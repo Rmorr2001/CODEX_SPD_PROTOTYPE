@@ -13,12 +13,13 @@ test('new member sees actual own approved history and standing after native entr
     page.getByRole('heading', { name: data.personal.standing, exact: true }),
   ).toBeVisible();
   await expect(page.locator('.marks-history li')).toHaveCount(data.personal.history.length);
-  await expect(
-    page.getByRole('link', { name: 'View your history in chapter site' }),
-  ).toHaveAttribute('href', data.personal.history_url);
+  await expect(page.getByRole('link', { name: 'View your history' })).toHaveAttribute(
+    'href',
+    '#approved-marks',
+  );
   await expect(page.locator('.marks-analytics')).toHaveCount(0);
-  await expect(page.getByRole('link', { name: 'Submit marks in chapter site' })).toHaveCount(0);
-  await expect(page.getByRole('link', { name: 'Review marks in chapter site' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Submit marks (legacy)' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Review marks (legacy)' })).toHaveCount(0);
   await page.reload();
   await expect(page.locator('.marks-total strong')).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
@@ -28,8 +29,8 @@ test('new member sees actual own approved history and standing after native entr
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBeTruthy();
-  await page.getByRole('link', { name: 'View your history in chapter site' }).click();
-  await expect(page).toHaveURL(new RegExp(`${data.personal.history_url}$`));
+  await page.getByRole('link', { name: 'View your history' }).click();
+  await expect(page).toHaveURL(/\/app\/new-members#approved-marks$/);
 });
 
 test('active class totals and executive own submissions use real data and legacy workflows', async ({
@@ -52,7 +53,7 @@ test('active class totals and executive own submissions use real data and legacy
       member.display_name,
     );
   }
-  await expect(page.getByRole('link', { name: 'Review marks in chapter site' })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'Review marks (legacy)' })).toHaveAttribute(
     'href',
     '/newmember/approve/',
   );
@@ -60,7 +61,7 @@ test('active class totals and executive own submissions use real data and legacy
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBeTruthy();
-  await page.getByRole('link', { name: 'Submit marks in chapter site' }).click();
+  await page.getByRole('link', { name: 'Submit marks (legacy)' }).click();
   await expect(page).toHaveURL(/\/newmember\/request\/$/);
   await expect(page.locator('input[name="mark_value"]')).toBeVisible();
 });
@@ -71,7 +72,7 @@ test('ordinary active has no review action and alumni are denied without marks',
   await enterDemo(page);
   await page.goto('/app/new-members');
   await expect(page.locator('.marks-analytics')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Review marks in chapter site' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Review marks (legacy)' })).toHaveCount(0);
   await expect(page.getByText('You have no pending or recent denied submissions.')).toBeVisible();
   await enterDemo(page, 'alumni');
   expect((await page.request.get('/api/v1/new-members/')).status()).toBe(403);

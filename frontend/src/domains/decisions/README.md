@@ -23,3 +23,12 @@ Button/Card primitives use Tailwind; the superseded decisions stylesheet is
 removed. The shared lifecycle refreshes without unmounting active controls and
 immediately merges confirmed ballot snapshots. Direct detail URLs still work.
 See the root experience plan for state tradeoffs and selected visual work.
+
+Interaction follow-up: unchanged validated JSON snapshots keep the same read
+state; automatic retries retain failed states until recovery. Ballot feedback
+uses reserved space and preserves the confirmed selection while a write is pending
+or fails. A synchronous in-flight guard prevents repeated clicks from sending
+concurrent votes. Tally widths transition briefly with reduced-motion support.
+`test/interaction.spec.ts` observes DOM/focus/layout across held/unchanged reads,
+failed background retries and duplicate held writes. These are concrete local
+regressions; they do not establish every reported live flashing symptom reproduced.
