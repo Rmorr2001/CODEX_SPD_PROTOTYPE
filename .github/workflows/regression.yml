@@ -2,7 +2,7 @@ name: Application checks
 on:
   pull_request:
   push:
-    branches: [prototype/railway]
+    branches: [main]
 permissions:
   contents: read
 jobs:

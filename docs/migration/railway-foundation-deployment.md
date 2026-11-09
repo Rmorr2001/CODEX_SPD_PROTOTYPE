@@ -21,9 +21,9 @@ The first attempt at `5b3b8ba` failed before startup because Railway's Dockerfil
 parser rejects `type=secret` mounts. The deployed fix uses ordinary npm/pip install
 steps with Railway's native trust. No new service or configuration change was
 needed. The successful release was explicitly pinned to the commit; no automatic
-deployment triggers were returned. Deployment metadata labels its branch `main`,
-while the development branch remains `prototype/railway`; use the confirmed
-commit hash to identify this release.
+deployment triggers were returned. Deployment metadata labels its branch `main`;
+at that time development happened on `prototype/railway`, which has since been
+fast-forwarded into `main`. Use the confirmed commit hash to identify this release.
 
 ## URLs and remaining verification
 

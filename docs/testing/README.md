@@ -69,7 +69,7 @@ additional frozen business-case IDs. Frontend build/type/format/browser commands
 are in [its README](../../frontend/README.md). Python lint/type tooling is absent.
 
 GitHub Actions runs these checks on pull requests and pushes to
-`prototype/railway`, uploading both JSON reports and `coverage.xml`. Reports and
+`main`, uploading both JSON reports and `coverage.xml`. Reports and
 coverage files are ignored locally. Coverage includes the six domains and demo
 code plus the new API/frontend Python packages, excluding migrations and test
 code; there is no percentage floor yet.

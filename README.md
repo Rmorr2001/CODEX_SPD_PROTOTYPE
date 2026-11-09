@@ -6,8 +6,9 @@ Our editable Sigma Phi Delta prototype. The active cloud checkout is
 The GitHub repository is
 [`Rmorr2001/CODEX_SPD_PROTOTYPE`](https://github.com/Rmorr2001/CODEX_SPD_PROTOTYPE)
 (underscores in the GitHub name). The local `origin` remote points here. Our
-working branch is `prototype/railway`; local `main` still represents the
-original imported upstream revision, not the prototype branch.
+working branch is `main`, which contains the full prototype. The former
+`prototype/railway` branch was fast-forwarded into `main` at `f832d69`;
+historical documents that cite `prototype/railway` refer to that same history.
 
 `upstream` points to `smk37git/SPDWEBAPP_ENV` for deliberate source comparisons;
 local pushes to upstream are disabled. There is no automatic synchronization.
